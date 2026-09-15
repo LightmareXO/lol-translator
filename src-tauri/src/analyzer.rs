@@ -7,6 +7,15 @@ use std::{
 };
 use tauri::Manager;
 
+#[cfg(windows)]
+const PYTHON_NAME: &str = "python.exe";
+#[cfg(windows)]
+const VENV_BIN_DIRECTORY: &str = "Scripts";
+#[cfg(not(windows))]
+const PYTHON_NAME: &str = "python";
+#[cfg(not(windows))]
+const VENV_BIN_DIRECTORY: &str = "bin";
+
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 #[serde(deny_unknown_fields)]
 pub struct Region {
@@ -90,24 +99,65 @@ fn run_python(
         .map_err(|e| format!("Pythonから正しい検証結果を受け取れませんでした: {e}"))
 }
 
+fn resolve_python(app: &tauri::AppHandle) -> Result<PathBuf, String> {
+    let bundled = app
+        .path()
+        .resolve(
+            format!("analyzer-runtime/{PYTHON_NAME}"),
+            tauri::path::BaseDirectory::Resource,
+        )
+        .map_err(|e| e.to_string())?;
+    if bundled.is_file() {
+        return Ok(bundled);
+    }
+
+    if let Some(configured) = std::env::var_os("LOL_TRANSLATOR_PYTHON") {
+        let configured = PathBuf::from(configured);
+        if configured.is_absolute() && configured.is_file() {
+            return Ok(configured);
+        }
+        return Err(
+            "LOL_TRANSLATOR_PYTHONには存在するPython実行ファイルの絶対パスを指定してください。"
+                .into(),
+        );
+    }
+
+    #[cfg(debug_assertions)]
+    {
+        let development = Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("../analyzer/.venv")
+            .join(VENV_BIN_DIRECTORY)
+            .join(PYTHON_NAME);
+        if development.is_file() {
+            return Ok(development);
+        }
+    }
+
+    Err("専用Pythonランタイムが見つかりません。開発時はanalyzer/.venvを作成してください。".into())
+}
+
 #[tauri::command]
 pub async fn validate_analysis_request(
     app: tauri::AppHandle,
     request: AnalysisRequest,
 ) -> Result<String, String> {
+    // Microsoft Store Python redirects AppData paths into its package-local
+    // storage. Keeping the hand-off file below the user's home directory makes
+    // the same path visible to packaged and conventional Python installations.
     let directory = app
         .path()
-        .app_cache_dir()
+        .home_dir()
         .map_err(|e| e.to_string())?
+        .join(".lol-translator")
         .join("requests");
     let script = app
         .path()
         .resolve("analyzer/main.py", tauri::path::BaseDirectory::Resource)
         .map_err(|e| e.to_string())?;
-    let executable = std::env::var_os("LOL_TRANSLATOR_PYTHON").unwrap_or_else(|| "python".into());
+    let executable = resolve_python(&app)?;
     tauri::async_runtime::spawn_blocking(move || {
         let path = save_request(&request, &directory)?;
-        let validated = run_python(&executable, &script, &path)?;
+        let validated = run_python(executable.as_os_str(), &script, &path)?;
         if validated != request {
             return Err("Pythonの検証結果が送信した内容と一致しません。".into());
         }
@@ -197,12 +247,21 @@ mod tests {
         r.subtitle_region.x = 0.12345678901234568;
         fs::write(&r.video_path, b"existence validation only").unwrap();
         let path = save_request(&r, &directory).unwrap();
-        let executable =
-            std::env::var_os("LOL_TRANSLATOR_PYTHON").unwrap_or_else(|| "python".into());
+        let executable = Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("../analyzer/.venv")
+            .join(VENV_BIN_DIRECTORY)
+            .join(PYTHON_NAME);
+        assert!(
+            executable.is_file(),
+            "Create analyzer/.venv before running this test"
+        );
         let script = Path::new(env!("CARGO_MANIFEST_DIR")).join("../analyzer/main.py");
-        assert_eq!(run_python(&executable, &script, &path).unwrap(), r);
+        assert_eq!(
+            run_python(executable.as_os_str(), &script, &path).unwrap(),
+            r
+        );
         fs::remove_file(&r.video_path).unwrap();
-        assert!(run_python(&executable, &script, &path)
+        assert!(run_python(executable.as_os_str(), &script, &path)
             .unwrap_err()
             .contains("Pythonの入力検証に失敗"));
         fs::remove_file(path).unwrap();

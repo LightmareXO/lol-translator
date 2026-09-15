@@ -35,17 +35,20 @@ Native dialogs and actual media decoding require a desktop smoke test.
 
 ## Python request validation
 
-Install Python 3.10 or later. No third-party Python packages are needed yet.
-The app uses `python` on PATH. To use a virtual environment or a specific install,
-set `LOL_TRANSLATOR_PYTHON` to the Python executable's absolute path before
-starting the app (an executable path only, without quotes inside the value or arguments).
-Python itself is not bundled; `analyzer/main.py` is included as a Tauri resource.
+Install Python 3.10 through 3.12 and create the project-only environment with
+`python -m venv analyzer/.venv`. No third-party Python packages are needed yet.
+Development builds use `analyzer/.venv/Scripts/python.exe` and never fall back to
+the system `python` on PATH. Set `LOL_TRANSLATOR_PYTHON` to an existing Python
+executable's absolute path only when an explicit development override is needed.
+Packaged builds will use `analyzer-runtime/python.exe`; bundling that runtime is
+tracked separately and must be completed before distributing the app.
 
 After selecting a video and subtitle region, choose **Pythonへ渡して入力を検証**.
-Tauri writes UTF-8 JSON under its app-cache directory's `requests` subdirectory,
+Tauri writes UTF-8 JSON under the user's `.lol-translator/requests` directory,
 then runs `analyzer/main.py <request-path>` without a shell or a visible console.
-On Windows, this directory is normally
-`%LOCALAPPDATA%/com.lightmarexo.loltranslator/requests`.
+On Windows, this is normally `%USERPROFILE%/.lol-translator/requests`. It is kept
+outside `AppData` because Microsoft Store Python redirects that directory and
+otherwise cannot see a request created by Tauri.
 The success message displays the exact saved path. Requests have unique names,
 are not automatically deleted, and include the video's local path; do not publish
 them unintentionally. The video itself is never copied or uploaded.
