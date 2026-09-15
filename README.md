@@ -51,5 +51,7 @@ Native dialogs and actual media decoding require a desktop smoke test.
 5. Choose a different video, then a broken video file; verify replacement and the error message.
 
 On Windows, a 1920×1080 H.264/AAC MP4 (8m19s) was verified for loading,
-playback, pause, seeking to 4m10s, and cancellation. Error states and retry
-are covered by the component tests. Test videos are not part of this repository.
+playback, pause, seeking to 4m10s, and cancellation. An intentionally invalid MP4
+was also verified to display the playback error. Component tests cover retry,
+errors after loading, and ignoring events from a replaced video.
+Test videos are not part of this repository.

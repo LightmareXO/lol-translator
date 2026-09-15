@@ -123,6 +123,37 @@ describe("local video selection and playback", () => {
     expect(screen.getByText("second.MP4")).toBeInTheDocument();
   });
 
+  it("reports a playback failure after loading has succeeded", async () => {
+    render(<App />);
+    const video = await selectFirstVideo();
+    fireEvent.loadedData(video);
+    fireEvent.error(video);
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      "動画を再生できませんでした",
+    );
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
+  });
+
+  it("ignores events from the old video after replacement", async () => {
+    render(<App />);
+    const previous = await selectFirstVideo();
+    vi.mocked(open).mockResolvedValueOnce("C:/second.mp4");
+    vi.mocked(convertFileSrc).mockReturnValueOnce(
+      "http://asset.localhost/second.mp4",
+    );
+    await userEvent.click(
+      screen.getByRole("button", { name: "別の動画を選択" }),
+    );
+    const current = screen.getByLabelText("動画：second.mp4");
+    expect(current).toHaveAttribute("src", "http://asset.localhost/second.mp4");
+    fireEvent.loadedData(previous);
+    expect(screen.getByRole("status")).toBeInTheDocument();
+    fireEvent.loadedData(current);
+    fireEvent.error(previous);
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
+  });
+
   it("prevents opening multiple dialogs while selection is pending", async () => {
     let cancel: (value: null) => void = () => {};
     vi.mocked(open).mockReturnValueOnce(
