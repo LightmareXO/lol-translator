@@ -26,6 +26,9 @@
     }
   },
   "bundle": {
+    "resources": {
+      "../analyzer/main.py": "analyzer/main.py"
+    },
     "active": true,
     "targets": "all",
     "icon": [
