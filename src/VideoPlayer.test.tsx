@@ -1,3 +1,4 @@
+import { invoke } from "@tauri-apps/api/core";
 import {
   act,
   cleanup,
@@ -12,10 +13,12 @@ import { VideoPlayer } from "./VideoPlayer";
 let viewport = { x: 100, y: 200, width: 800, height: 600 };
 let notifyResize = () => {};
 const onChange = vi.fn();
+vi.mock("@tauri-apps/api/core", () => ({ invoke: vi.fn() }));
 
 beforeEach(() => {
   viewport = { x: 100, y: 200, width: 800, height: 600 };
   onChange.mockReset();
+  vi.mocked(invoke).mockReset();
   vi.stubGlobal(
     "ResizeObserver",
     class {
@@ -118,6 +121,26 @@ function drag(
 }
 
 describe("subtitle selection and playback integration", () => {
+  it("passes the selected coordinates to Python and resets results when cleared", async () => {
+    vi.mocked(invoke).mockResolvedValue("C:/cache/request.json");
+    const { surface } = setup();
+    const submit = () =>
+      screen.getByRole("button", { name: "Pythonへ渡して入力を検証" });
+    expect(submit()).toBeDisabled();
+    drag(surface, [300, 500], [700, 725]);
+    fireEvent.click(submit());
+    expect(invoke).toHaveBeenCalledWith("validate_analysis_request", {
+      request: {
+        video_path: "C:/test.mp4",
+        subtitle_region: { x: 0.25, y: 0.5, width: 0.5, height: 0.5 },
+      },
+    });
+    expect(await screen.findByRole("status")).toHaveTextContent("request.json");
+    fireEvent.click(screen.getByRole("button", { name: "範囲をクリア" }));
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
+    expect(submit()).toBeDisabled();
+  });
+
   it("waits for video dimensions and preserves playback controls outside selection mode", () => {
     render(<VideoPlayer path="C:/test.mp4" url="asset://first" />);
     expect(

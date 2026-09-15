@@ -2,7 +2,8 @@
 
 A desktop app for working with Korean subtitles embedded in League of Legends videos.
 Currently supports selecting and playing a local video, and choosing one subtitle
-region. OCR and translation are not implemented yet.
+region, and passing a JSON request to Python for input validation.
+OCR and translation are not implemented yet.
 
 ## Development
 
@@ -24,11 +25,53 @@ bun run check
 bun run test
 bun run build
 bun run tauri build --no-bundle
+python -m unittest discover -s analyzer -v
+cargo test --manifest-path src-tauri/Cargo.toml --lib -- --include-ignored
 ```
 
 Vitest and React Testing Library cover empty/loading/error states, cancellation,
 replacement, retrying the same file, and preventing concurrent selection dialogs.
 Native dialogs and actual media decoding require a desktop smoke test.
+
+## Python request validation
+
+Install Python 3.10 or later. No third-party Python packages are needed yet.
+The app uses `python` on PATH. To use a virtual environment or a specific install,
+set `LOL_TRANSLATOR_PYTHON` to the Python executable's absolute path before
+starting the app (an executable path only, without quotes inside the value or arguments).
+Python itself is not bundled; `analyzer/main.py` is included as a Tauri resource.
+
+After selecting a video and subtitle region, choose **Pythonへ渡して入力を検証**.
+Tauri writes UTF-8 JSON under its app-cache directory's `requests` subdirectory,
+then runs `analyzer/main.py <request-path>` without a shell or a visible console.
+On Windows, this directory is normally
+`%LOCALAPPDATA%/com.lightmarexo.loltranslator/requests`.
+The success message displays the exact saved path. Requests have unique names,
+are not automatically deleted, and include the video's local path; do not publish
+them unintentionally. The video itself is never copied or uploaded.
+If Python fails, an error is shown and the saved JSON remains available for diagnosis.
+
+The JSON contract is:
+
+```json
+{
+  "video_path": "C:/path/to/video.mp4",
+  "subtitle_region": { "x": 0.1, "y": 0.7, "width": 0.8, "height": 0.2 }
+}
+```
+
+Rust and Python check that the video path is absolute and points to a file,
+and that the rectangle has positive area and fits within normalized image bounds.
+Python also rejects malformed JSON and incorrect field types. This checks file
+existence, not video decoding, OCR quality, or subtitle contents.
+Run a saved request directly with `python analyzer/main.py <request-path>`;
+success prints the validated JSON and exits with 0, while failure writes an error
+to stderr and exits with 1. Quote paths that contain spaces.
+
+Changing or clearing the region, or selecting a video again, resets the displayed
+result. An already-started validation still finishes for its original input.
+Rust tests include an opt-in real-Python round trip (`--include-ignored` above);
+the default Rust test run does not require Python.
 
 ## Subtitle region selection
 
