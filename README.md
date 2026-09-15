@@ -1,8 +1,8 @@
 # LoL Translator
 
 A desktop app for working with Korean subtitles embedded in League of Legends videos.
-Currently supports selecting and playing a local video. Subtitle region selection,
-OCR, and translation are not implemented yet.
+Currently supports selecting and playing a local video, and choosing one subtitle
+region. OCR and translation are not implemented yet.
 
 ## Development
 
@@ -29,6 +29,27 @@ bun run tauri build --no-bundle
 Vitest and React Testing Library cover empty/loading/error states, cancellation,
 replacement, retrying the same file, and preventing concurrent selection dialogs.
 Native dialogs and actual media decoding require a desktop smoke test.
+
+## Subtitle region selection
+
+Choose **字幕範囲を指定** to pause playback and draw one rectangle over the image.
+Drag in any direction; drawing again replaces the previous rectangle.
+Choose **範囲指定を終了** to restore playback controls, or **範囲をクリア** to remove
+the rectangle. A cancelled or zero-area drag keeps the previous selection.
+With the selection surface focused, Enter/Space selects the whole image and
+Escape cancels the drag (or exits selection mode if no drag is active).
+
+Geometry in `src/subtitleRegion.ts` matches centered `object-fit: contain`,
+using the video's intrinsic dimensions and measured element size. The selectable
+surface excludes display letterboxing; it does not detect black pixels encoded
+in the video itself. Normalized coordinates survive window resizing.
+`VideoPlayer.onRegionChange` receives `{ x, y, width, height }` in the range
+0..1, or `null` when cleared. Only one region is kept, in memory for the current
+video. Selecting another file (including reloading the same file) resets it.
+
+Tests cover both black-bar orientations, matching aspect ratios, forward/reverse
+drags, normalization, boundaries, reselection, cancellation, pointer capture,
+resizing, and preserving playback controls.
 
 ## Local video playback
 
