@@ -1,0 +1,112 @@
+{
+  "job_sha256": "014cd238be2d0ab3064d094edc4ee075c0142ae7478dc9b7e29b04254f0c40ae",
+  "identity": {
+    "judge_model": "qwen3:8b",
+    "judge_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "model_info": {
+      "general.architecture": "qwen3",
+      "general.basename": "Qwen3",
+      "general.file_type": 15,
+      "general.license": "apache-2.0",
+      "general.parameter_count": 8190735360,
+      "general.quantization_version": 2,
+      "general.size_label": "8B",
+      "general.type": "model",
+      "qwen3.attention.head_count": 32,
+      "qwen3.attention.head_count_kv": 8,
+      "qwen3.attention.key_length": 128,
+      "qwen3.attention.layer_norm_rms_epsilon": 1e-6,
+      "qwen3.attention.value_length": 128,
+      "qwen3.block_count": 36,
+      "qwen3.context_length": 40960,
+      "qwen3.embedding_length": 4096,
+      "qwen3.feed_forward_length": 12288,
+      "qwen3.rope.freq_base": 1000000,
+      "tokenizer.ggml.add_bos_token": false,
+      "tokenizer.ggml.bos_token_id": 151643,
+      "tokenizer.ggml.eos_token_id": 151645,
+      "tokenizer.ggml.merges": [],
+      "tokenizer.ggml.model": "gpt2",
+      "tokenizer.ggml.padding_token_id": 151643,
+      "tokenizer.ggml.pre": "qwen2",
+      "tokenizer.ggml.token_type": [],
+      "tokenizer.ggml.tokens": []
+    },
+    "system_sha256": "52bf7878cb20dc9b7d1a16b4c9f7800778e2ac21e945532520f2e35411fbe708",
+    "schema_sha256": "d6705d886ad4fe8c7f442b5698dc845eee307550957fee096affd5db4ecd013c",
+    "outputs_sha256": "ed09fbf01dff4bcfb72b40dee8be602a347cb2025794909d11d0b8bfe5878871",
+    "dataset_sha256": "f350b25fdbc5372ef3a0a4d28cc3660ac73fbed38f06fe6f9cc98f3356171207",
+    "targets_sha256": "9c1dac6541ae1240f77755e139024d4d4e9a68d263ddcfa95bc9644f0ec1f539",
+    "settings": {
+      "temperature": 0,
+      "seed": 93271,
+      "num_predict": 1024,
+      "think": false
+    },
+    "runner_schema": 2,
+    "runner_sha256": "4a1f5791e647927d0069fb2a31333810fb9a3bf4a552d4dacfd59bc8f6182e16"
+  },
+  "job": {
+    "sample_id": "t22_speech_f02",
+    "group_id": "t22",
+    "source_ko": "왜케 어수선하냐 게임이",
+    "reference_ja": "なんでこんなにゲームが落ち着かないんだ",
+    "must_preserve": ["ゲームが混乱している", "疑問"],
+    "reference_status": "ai_provisional",
+    "candidates": [
+      {
+        "candidate_id": "candidate-217f95ff7ec0",
+        "ja": "なぜケアを修復するのかゲームが"
+      },
+      {
+        "candidate_id": "candidate-6594474f1294",
+        "ja": "なぜこんなにごちゃごちゃしているのゲームだ"
+      },
+      {
+        "candidate_id": "candidate-5fe43485eb3d",
+        "ja": "なぜケン アススレナーハ ゲームイ"
+      },
+      {
+        "candidate_id": "candidate-09974a4524ba",
+        "ja": "なぜケア修理するのかゲームが"
+      }
+    ]
+  },
+  "judgements": [
+    {
+      "candidate_id": "candidate-217f95ff7ec0",
+      "severity": "major",
+      "error_types": ["omission", "negation"],
+      "rationale": "「ケアを修復する」は原文の意味と無関係。疑問形は保持しているが、主語と目的が完全に崩れている。",
+      "semantic_signature": "なぜケアを修復するのかゲームが"
+    },
+    {
+      "candidate_id": "candidate-6594474f1294",
+      "severity": "minor",
+      "error_types": ["format"],
+      "rationale": "「ごちゃごちゃしている」は「落ち着かない」の意を間接的に表現しているが、文法的に不自然。",
+      "semantic_signature": "なぜこんなにごちゃごちゃしているのゲームだ"
+    },
+    {
+      "candidate_id": "candidate-5fe43485eb3d",
+      "severity": "undetermined",
+      "error_types": [],
+      "rationale": "原文が韓国語で不明瞭なため、日本語の意味が完全に判断できない。",
+      "semantic_signature": "なぜケン アススレナーハ ゲームイ"
+    },
+    {
+      "candidate_id": "candidate-09974a4524ba",
+      "severity": "major",
+      "error_types": ["omission", "negation"],
+      "rationale": "「ケア修理する」は原文の意味と無関係。疑問形は保持しているが、主語と目的が完全に崩れている。",
+      "semantic_signature": "なぜケア修理するのかゲームが"
+    }
+  ],
+  "response_metadata": {
+    "done_reason": "stop",
+    "total_duration": 2949380300,
+    "load_duration": 2595300,
+    "prompt_eval_count": 509,
+    "eval_count": 347
+  }
+}

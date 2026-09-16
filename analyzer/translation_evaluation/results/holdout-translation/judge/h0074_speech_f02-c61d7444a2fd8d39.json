@@ -1,0 +1,112 @@
+{
+  "job_sha256": "c61d7444a2fd8d394afbc6f3f03cf69d0b7af4668d7e306b1f8ded76e6a8db9f",
+  "identity": {
+    "judge_model": "qwen3:8b",
+    "judge_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "model_info": {
+      "general.architecture": "qwen3",
+      "general.basename": "Qwen3",
+      "general.file_type": 15,
+      "general.license": "apache-2.0",
+      "general.parameter_count": 8190735360,
+      "general.quantization_version": 2,
+      "general.size_label": "8B",
+      "general.type": "model",
+      "qwen3.attention.head_count": 32,
+      "qwen3.attention.head_count_kv": 8,
+      "qwen3.attention.key_length": 128,
+      "qwen3.attention.layer_norm_rms_epsilon": 1e-6,
+      "qwen3.attention.value_length": 128,
+      "qwen3.block_count": 36,
+      "qwen3.context_length": 40960,
+      "qwen3.embedding_length": 4096,
+      "qwen3.feed_forward_length": 12288,
+      "qwen3.rope.freq_base": 1000000,
+      "tokenizer.ggml.add_bos_token": false,
+      "tokenizer.ggml.bos_token_id": 151643,
+      "tokenizer.ggml.eos_token_id": 151645,
+      "tokenizer.ggml.merges": [],
+      "tokenizer.ggml.model": "gpt2",
+      "tokenizer.ggml.padding_token_id": 151643,
+      "tokenizer.ggml.pre": "qwen2",
+      "tokenizer.ggml.token_type": [],
+      "tokenizer.ggml.tokens": []
+    },
+    "system_sha256": "52bf7878cb20dc9b7d1a16b4c9f7800778e2ac21e945532520f2e35411fbe708",
+    "schema_sha256": "d6705d886ad4fe8c7f442b5698dc845eee307550957fee096affd5db4ecd013c",
+    "outputs_sha256": "2bb37a4d43486eccc5c930c475542ce61270172a3855f31365f3835d3a0bce50",
+    "dataset_sha256": "97db0c108d76862f66aee7d8963342df1112d0d9a812acb0b3315d74cce8a5d7",
+    "targets_sha256": "924c9dbda90794f54c46822b745d3aa3055ec88d4236cb470b1fdef3d99fd62d",
+    "settings": {
+      "temperature": 0,
+      "seed": 93271,
+      "num_predict": 1024,
+      "think": false
+    },
+    "runner_schema": 2,
+    "runner_sha256": "4a1f5791e647927d0069fb2a31333810fb9a3bf4a552d4dacfd59bc8f6182e16"
+  },
+  "job": {
+    "sample_id": "h0074_speech_f02",
+    "group_id": "h0074",
+    "source_ko": "아니 너무 크뻔뻔이야",
+    "reference_ja": "いや、あまりにもク・サンテらしく図々しい",
+    "must_preserve": ["ク・サンテの言葉遊び", "図々しい"],
+    "reference_status": "ai_provisional",
+    "candidates": [
+      {
+        "candidate_id": "candidate-c5b1ce9db6e8",
+        "ja": "あんにすぎないほど大きいやつだよ"
+      },
+      {
+        "candidate_id": "candidate-09bdc9efc222",
+        "ja": "いや、それほど大きくわざわざね"
+      },
+      {
+        "candidate_id": "candidate-c402d030a328",
+        "ja": "いや、本当に大きすぎるよ"
+      },
+      {
+        "candidate_id": "candidate-75ad604a713d",
+        "ja": "いや、あまり大きくないよ"
+      }
+    ]
+  },
+  "judgements": [
+    {
+      "candidate_id": "candidate-c5b1ce9db6e8",
+      "severity": "major",
+      "error_types": ["omission", "negation"],
+      "rationale": "「ク・サンテの言葉遊び」と「図々しい」が完全に欠如。否定のニュアンスも失われている。",
+      "semantic_signature": "大きさの否定 + 言葉遊び + 図々しい"
+    },
+    {
+      "candidate_id": "candidate-09bdc9efc222",
+      "severity": "major",
+      "error_types": ["omission", "negation"],
+      "rationale": "「ク・サンテの言葉遊び」と「図々しい」が完全に欠如。否定のニュアンスも失われている。",
+      "semantic_signature": "大きさの否定 + 言葉遊び + 図々しい"
+    },
+    {
+      "candidate_id": "candidate-c402d030a328",
+      "severity": "major",
+      "error_types": ["omission"],
+      "rationale": "「ク・サンテの言葉遊び」と「図々しい」が完全に欠如。",
+      "semantic_signature": "大きさの否定 + 言葉遊び + 図々しい"
+    },
+    {
+      "candidate_id": "candidate-75ad604a713d",
+      "severity": "major",
+      "error_types": ["omission", "negation"],
+      "rationale": "「ク・サンテの言葉遊び」と「図々しい」が完全に欠如。否定のニュアンスも失われている。",
+      "semantic_signature": "大きさの否定 + 言葉遊び + 図々しい"
+    }
+  ],
+  "response_metadata": {
+    "done_reason": "stop",
+    "total_duration": 6143914200,
+    "load_duration": 2586400,
+    "prompt_eval_count": 513,
+    "eval_count": 373
+  }
+}

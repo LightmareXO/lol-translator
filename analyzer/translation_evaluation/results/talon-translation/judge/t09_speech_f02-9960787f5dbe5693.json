@@ -1,0 +1,112 @@
+{
+  "job_sha256": "9960787f5dbe56939aa9c9bad6c6412f05810549aeacc257c353b41775d1338f",
+  "identity": {
+    "judge_model": "qwen3:8b",
+    "judge_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "model_info": {
+      "general.architecture": "qwen3",
+      "general.basename": "Qwen3",
+      "general.file_type": 15,
+      "general.license": "apache-2.0",
+      "general.parameter_count": 8190735360,
+      "general.quantization_version": 2,
+      "general.size_label": "8B",
+      "general.type": "model",
+      "qwen3.attention.head_count": 32,
+      "qwen3.attention.head_count_kv": 8,
+      "qwen3.attention.key_length": 128,
+      "qwen3.attention.layer_norm_rms_epsilon": 1e-6,
+      "qwen3.attention.value_length": 128,
+      "qwen3.block_count": 36,
+      "qwen3.context_length": 40960,
+      "qwen3.embedding_length": 4096,
+      "qwen3.feed_forward_length": 12288,
+      "qwen3.rope.freq_base": 1000000,
+      "tokenizer.ggml.add_bos_token": false,
+      "tokenizer.ggml.bos_token_id": 151643,
+      "tokenizer.ggml.eos_token_id": 151645,
+      "tokenizer.ggml.merges": [],
+      "tokenizer.ggml.model": "gpt2",
+      "tokenizer.ggml.padding_token_id": 151643,
+      "tokenizer.ggml.pre": "qwen2",
+      "tokenizer.ggml.token_type": [],
+      "tokenizer.ggml.tokens": []
+    },
+    "system_sha256": "52bf7878cb20dc9b7d1a16b4c9f7800778e2ac21e945532520f2e35411fbe708",
+    "schema_sha256": "d6705d886ad4fe8c7f442b5698dc845eee307550957fee096affd5db4ecd013c",
+    "outputs_sha256": "ed09fbf01dff4bcfb72b40dee8be602a347cb2025794909d11d0b8bfe5878871",
+    "dataset_sha256": "f350b25fdbc5372ef3a0a4d28cc3660ac73fbed38f06fe6f9cc98f3356171207",
+    "targets_sha256": "9c1dac6541ae1240f77755e139024d4d4e9a68d263ddcfa95bc9644f0ec1f539",
+    "settings": {
+      "temperature": 0,
+      "seed": 93271,
+      "num_predict": 1024,
+      "think": false
+    },
+    "runner_schema": 2,
+    "runner_sha256": "4a1f5791e647927d0069fb2a31333810fb9a3bf4a552d4dacfd59bc8f6182e16"
+  },
+  "job": {
+    "sample_id": "t09_speech_f02",
+    "group_id": "t09",
+    "source_ko": "카이사한테도 쨍하고 해뜰날 돌아온다잉",
+    "reference_ja": "カイ＝サにも、ぱっと日が差す日が戻ってくるよ",
+    "must_preserve": ["カイ＝サ", "良い日が戻る"],
+    "reference_status": "ai_provisional",
+    "candidates": [
+      {
+        "candidate_id": "candidate-8597024956bc",
+        "ja": "カイサにだって、明るい日に戻ってくる"
+      },
+      {
+        "candidate_id": "candidate-f4d82c653b0d",
+        "ja": "カイサにも「쨍ゴ」と「あけた日のとき」に帰ってくるダイニング"
+      },
+      {
+        "candidate_id": "candidate-d7c477400a43",
+        "ja": "カイサにも、しっかりと朝焼けの時に戻ってくるんだying"
+      },
+      {
+        "candidate_id": "candidate-272127e88b6a",
+        "ja": "カイサにも、昇りて朝が差すまで帰ってくる"
+      }
+    ]
+  },
+  "judgements": [
+    {
+      "candidate_id": "candidate-8597024956bc",
+      "severity": "none",
+      "error_types": [],
+      "rationale": "「カイ＝サ」および「良い日が戻る」を保持。文脈的に「明るい日に戻ってくる」は原文の「해뜰날 돌아온다잉」に合致。",
+      "semantic_signature": "カイ＝サ, 明るい日, 戻る"
+    },
+    {
+      "candidate_id": "candidate-f4d82c653b0d",
+      "severity": "major",
+      "error_types": ["hallucination", "omission"],
+      "rationale": "「カイ＝サ」は保持しているが、「良い日が戻る」は完全に失われており、「ダイニング」という不関連な要素が追加されているため誤り。",
+      "semantic_signature": "カイ＝サ, ダイニング, 良い日が戻る"
+    },
+    {
+      "candidate_id": "candidate-d7c477400a43",
+      "severity": "major",
+      "error_types": ["hallucination", "omission"],
+      "rationale": "「カイ＝サ」は保持しているが、「良い日が戻る」は完全に失われており、「ying」という不関連な要素が追加されているため誤り。",
+      "semantic_signature": "カイ＝サ, ying, 朝焼け"
+    },
+    {
+      "candidate_id": "candidate-272127e88b6a",
+      "severity": "major",
+      "error_types": ["hallucination", "omission"],
+      "rationale": "「カイ＝サ」は保持しているが、「良い日が戻る」は完全に失われており、「昇りて朝が差すまで帰ってくる」という不自然な表現が追加されているため誤り。",
+      "semantic_signature": "カイ＝サ, 昇りて朝が差す, 帰ってくる"
+    }
+  ],
+  "response_metadata": {
+    "done_reason": "stop",
+    "total_duration": 8410837300,
+    "load_duration": 3127500,
+    "prompt_eval_count": 555,
+    "eval_count": 477
+  }
+}

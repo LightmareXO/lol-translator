@@ -1,0 +1,112 @@
+{
+  "job_sha256": "7a26bc84d048f67de48aaa83a690306e3ee87021f11c29f5491eacae9aecfcb2",
+  "identity": {
+    "judge_model": "qwen3:8b",
+    "judge_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "model_info": {
+      "general.architecture": "qwen3",
+      "general.basename": "Qwen3",
+      "general.file_type": 15,
+      "general.license": "apache-2.0",
+      "general.parameter_count": 8190735360,
+      "general.quantization_version": 2,
+      "general.size_label": "8B",
+      "general.type": "model",
+      "qwen3.attention.head_count": 32,
+      "qwen3.attention.head_count_kv": 8,
+      "qwen3.attention.key_length": 128,
+      "qwen3.attention.layer_norm_rms_epsilon": 1e-6,
+      "qwen3.attention.value_length": 128,
+      "qwen3.block_count": 36,
+      "qwen3.context_length": 40960,
+      "qwen3.embedding_length": 4096,
+      "qwen3.feed_forward_length": 12288,
+      "qwen3.rope.freq_base": 1000000,
+      "tokenizer.ggml.add_bos_token": false,
+      "tokenizer.ggml.bos_token_id": 151643,
+      "tokenizer.ggml.eos_token_id": 151645,
+      "tokenizer.ggml.merges": [],
+      "tokenizer.ggml.model": "gpt2",
+      "tokenizer.ggml.padding_token_id": 151643,
+      "tokenizer.ggml.pre": "qwen2",
+      "tokenizer.ggml.token_type": [],
+      "tokenizer.ggml.tokens": []
+    },
+    "system_sha256": "52bf7878cb20dc9b7d1a16b4c9f7800778e2ac21e945532520f2e35411fbe708",
+    "schema_sha256": "d6705d886ad4fe8c7f442b5698dc845eee307550957fee096affd5db4ecd013c",
+    "outputs_sha256": "ed09fbf01dff4bcfb72b40dee8be602a347cb2025794909d11d0b8bfe5878871",
+    "dataset_sha256": "f350b25fdbc5372ef3a0a4d28cc3660ac73fbed38f06fe6f9cc98f3356171207",
+    "targets_sha256": "9c1dac6541ae1240f77755e139024d4d4e9a68d263ddcfa95bc9644f0ec1f539",
+    "settings": {
+      "temperature": 0,
+      "seed": 93271,
+      "num_predict": 1024,
+      "think": false
+    },
+    "runner_schema": 2,
+    "runner_sha256": "4a1f5791e647927d0069fb2a31333810fb9a3bf4a552d4dacfd59bc8f6182e16"
+  },
+  "job": {
+    "sample_id": "t18_speech_f02",
+    "group_id": "t18",
+    "source_ko": "나 이번 한타 때 죽무가 없는 게 좀 아쉽다",
+    "reference_ja": "今回の集団戦でデスダンスがないのが少し惜しい",
+    "must_preserve": ["今回の集団戦", "デスダンスがない", "惜しい"],
+    "reference_status": "ai_provisional",
+    "candidates": [
+      {
+        "candidate_id": "candidate-fc6fa3287591",
+        "ja": "今このハントで死ぬのがないのがちょっと悔しい"
+      },
+      {
+        "candidate_id": "candidate-67d3b07ca29c",
+        "ja": "今度のハントで死ぬのがないのがちょっともったいない"
+      },
+      {
+        "candidate_id": "candidate-42fb75571ea0",
+        "ja": "今回ランタ時、ズムがいないのはちょっと悔しい"
+      },
+      {
+        "candidate_id": "candidate-30fb8f494d52",
+        "ja": "このバトルで死ぬのがないのがちょっと惜しいだ。"
+      }
+    ]
+  },
+  "judgements": [
+    {
+      "candidate_id": "candidate-fc6fa3287591",
+      "severity": "major",
+      "error_types": ["terminology", "omission"],
+      "rationale": "「ハント」は「ランタ」の誤訳で、語彙が不一致。また「死ぬのがない」は文法的に不自然。",
+      "semantic_signature": "ハント/死ぬのがない/悔しい"
+    },
+    {
+      "candidate_id": "candidate-67d3b07ca29c",
+      "severity": "major",
+      "error_types": ["terminology", "omission"],
+      "rationale": "「ハント」は「ランタ」の誤訳で、語彙が不一致。また「死ぬのがない」は文法的に不自然。",
+      "semantic_signature": "ハント/死ぬのがない/もったいない"
+    },
+    {
+      "candidate_id": "candidate-42fb75571ea0",
+      "severity": "major",
+      "error_types": ["terminology", "omission"],
+      "rationale": "「ランタ時」は「ハント時」の誤訳で、語彙が不一致。「ズム」は「デスダンス」の誤訳。",
+      "semantic_signature": "ランタ時/ズム/悔しい"
+    },
+    {
+      "candidate_id": "candidate-30fb8f494d52",
+      "severity": "undetermined",
+      "error_types": [],
+      "rationale": "「このバトル」は「今回の集団戦」の誤訳で、語彙が不一致。ただし「死ぬのがない」は「デスダンスがない」の誤訳で、語彙が不一致。",
+      "semantic_signature": "バトル/死ぬのがない/惜しい"
+    }
+  ],
+  "response_metadata": {
+    "done_reason": "stop",
+    "total_duration": 6416211300,
+    "load_duration": 3614500,
+    "prompt_eval_count": 545,
+    "eval_count": 400
+  }
+}

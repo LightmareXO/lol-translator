@@ -1,0 +1,1512 @@
+{
+  "conditions": [
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "model": "qwen3:4b-instruct-2507-q4_K_M",
+      "split": "independent_holdout",
+      "condition": "A",
+      "primary": true,
+      "requests": 60,
+      "subtitle_groups": 60,
+      "request_failures": 0,
+      "wall_ms_median": 182.54789999627974,
+      "wall_ms_p95": 267.858814997453,
+      "generated_tokens": 561,
+      "all_generated_tokens_including_failures": 561,
+      "all_wall_ms_median": 182.54789999627974,
+      "truncated_outputs": 0,
+      "thinking_outputs": 0,
+      "human_confirmed": {
+        "reviewed_units": 0,
+        "determined_units": 0,
+        "undetermined_units": 0,
+        "fully_determined_groups": 0,
+        "major_fully_determined_groups": 0,
+        "major_units": 0,
+        "major_groups": 0,
+        "error_types": {
+          "terminology": 0,
+          "omission": 0,
+          "hallucination": 0,
+          "format": 0,
+          "negation": 0,
+          "number": 0,
+          "actor": 0,
+          "sequence": 0
+        }
+      },
+      "ai_provisional": {
+        "reviewed_units": 60,
+        "determined_units": 60,
+        "undetermined_units": 0,
+        "fully_determined_groups": 60,
+        "major_fully_determined_groups": 37,
+        "major_units": 37,
+        "major_groups": 37,
+        "error_types": {
+          "terminology": 5,
+          "omission": 25,
+          "hallucination": 0,
+          "format": 2,
+          "negation": 20,
+          "number": 0,
+          "actor": 3,
+          "sequence": 1
+        }
+      },
+      "unreviewed_units": 0
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "model": "qwen3:4b-instruct-2507-q4_K_M",
+      "split": "independent_holdout",
+      "condition": "B",
+      "primary": true,
+      "requests": 60,
+      "subtitle_groups": 60,
+      "request_failures": 0,
+      "wall_ms_median": 151.5675500049838,
+      "wall_ms_p95": 277.87811500747915,
+      "generated_tokens": 943,
+      "all_generated_tokens_including_failures": 943,
+      "all_wall_ms_median": 151.5675500049838,
+      "truncated_outputs": 1,
+      "thinking_outputs": 0,
+      "human_confirmed": {
+        "reviewed_units": 0,
+        "determined_units": 0,
+        "undetermined_units": 0,
+        "fully_determined_groups": 0,
+        "major_fully_determined_groups": 0,
+        "major_units": 0,
+        "major_groups": 0,
+        "error_types": {
+          "terminology": 0,
+          "omission": 0,
+          "hallucination": 0,
+          "format": 0,
+          "negation": 0,
+          "number": 0,
+          "actor": 0,
+          "sequence": 0
+        }
+      },
+      "ai_provisional": {
+        "reviewed_units": 60,
+        "determined_units": 54,
+        "undetermined_units": 6,
+        "fully_determined_groups": 54,
+        "major_fully_determined_groups": 50,
+        "major_units": 50,
+        "major_groups": 50,
+        "error_types": {
+          "terminology": 5,
+          "omission": 33,
+          "hallucination": 12,
+          "format": 2,
+          "negation": 14,
+          "number": 0,
+          "actor": 4,
+          "sequence": 3
+        }
+      },
+      "unreviewed_units": 0
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "model": "qwen3:4b-instruct-2507-q4_K_M",
+      "split": "independent_holdout",
+      "condition": "C",
+      "primary": true,
+      "requests": 60,
+      "subtitle_groups": 60,
+      "request_failures": 0,
+      "wall_ms_median": 239.49875000107568,
+      "wall_ms_p95": 360.43150999903435,
+      "generated_tokens": 609,
+      "all_generated_tokens_including_failures": 609,
+      "all_wall_ms_median": 239.49875000107568,
+      "truncated_outputs": 0,
+      "thinking_outputs": 0,
+      "human_confirmed": {
+        "reviewed_units": 0,
+        "determined_units": 0,
+        "undetermined_units": 0,
+        "fully_determined_groups": 0,
+        "major_fully_determined_groups": 0,
+        "major_units": 0,
+        "major_groups": 0,
+        "error_types": {
+          "terminology": 0,
+          "omission": 0,
+          "hallucination": 0,
+          "format": 0,
+          "negation": 0,
+          "number": 0,
+          "actor": 0,
+          "sequence": 0
+        }
+      },
+      "ai_provisional": {
+        "reviewed_units": 60,
+        "determined_units": 60,
+        "undetermined_units": 0,
+        "fully_determined_groups": 60,
+        "major_fully_determined_groups": 32,
+        "major_units": 32,
+        "major_groups": 32,
+        "error_types": {
+          "terminology": 8,
+          "omission": 21,
+          "hallucination": 3,
+          "format": 2,
+          "negation": 17,
+          "number": 0,
+          "actor": 3,
+          "sequence": 1
+        }
+      },
+      "unreviewed_units": 0
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "model": "qwen3:4b-instruct-2507-q4_K_M",
+      "split": "independent_holdout",
+      "condition": "D",
+      "primary": true,
+      "requests": 60,
+      "subtitle_groups": 60,
+      "request_failures": 0,
+      "wall_ms_median": 171.0501000052318,
+      "wall_ms_p95": 305.9662099942215,
+      "generated_tokens": 1315,
+      "all_generated_tokens_including_failures": 1315,
+      "all_wall_ms_median": 171.0501000052318,
+      "truncated_outputs": 2,
+      "thinking_outputs": 0,
+      "human_confirmed": {
+        "reviewed_units": 0,
+        "determined_units": 0,
+        "undetermined_units": 0,
+        "fully_determined_groups": 0,
+        "major_fully_determined_groups": 0,
+        "major_units": 0,
+        "major_groups": 0,
+        "error_types": {
+          "terminology": 0,
+          "omission": 0,
+          "hallucination": 0,
+          "format": 0,
+          "negation": 0,
+          "number": 0,
+          "actor": 0,
+          "sequence": 0
+        }
+      },
+      "ai_provisional": {
+        "reviewed_units": 60,
+        "determined_units": 54,
+        "undetermined_units": 6,
+        "fully_determined_groups": 54,
+        "major_fully_determined_groups": 49,
+        "major_units": 49,
+        "major_groups": 49,
+        "error_types": {
+          "terminology": 7,
+          "omission": 29,
+          "hallucination": 16,
+          "format": 2,
+          "negation": 14,
+          "number": 0,
+          "actor": 3,
+          "sequence": 3
+        }
+      },
+      "unreviewed_units": 0
+    }
+  ],
+  "paired_judgements": [
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0057_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0057_speech_f02",
+      "pair": "CD",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0057_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0031_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0031_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0031_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0123_speech_f02",
+      "pair": "AB",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0123_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0123_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0044_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0044_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0044_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0003_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0003_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0003_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0052_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0052_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0052_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0078_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0078_speech_f02",
+      "pair": "CD",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0078_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0074_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0074_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0074_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0069_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0069_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0069_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0089_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0089_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0089_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0004_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0004_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0004_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0054_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0054_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0054_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0103_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0103_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0103_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0050_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0050_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0050_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0005_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0005_speech_f02",
+      "pair": "CD",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0005_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0040_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0030_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0030_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0030_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0036_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0036_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0036_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0119_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "none",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0119_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0119_speech_f02",
+      "pair": "BD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0061_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "minor",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0061_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0061_speech_f02",
+      "pair": "BD",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0002_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0002_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0002_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0009_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0009_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "minor",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0009_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "minor",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0073_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0073_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0073_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0055_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0079_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0079_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0079_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0104_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0104_speech_f02",
+      "pair": "CD",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0104_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0032_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0032_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0032_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0084_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0084_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0084_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0105_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0105_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0105_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0001_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0118_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0118_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0118_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0043_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0043_speech_f02",
+      "pair": "CD",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0043_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0029_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0029_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0029_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0042_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0099_speech_f02",
+      "pair": "AB",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0099_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0099_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0008_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0008_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0008_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0080_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0080_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0080_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0046_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0046_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0046_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0007_speech_f02",
+      "pair": "AB",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0007_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0007_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0082_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0082_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0082_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0051_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0051_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "minor",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0051_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "minor",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0053_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0053_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0053_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0086_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0086_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0086_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0090_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0090_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0090_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0006_speech_f02",
+      "pair": "AB",
+      "left": "minor",
+      "right": "minor",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0006_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "none",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0006_speech_f02",
+      "pair": "BD",
+      "left": "minor",
+      "right": "none",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0092_speech_f02",
+      "pair": "AB",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0092_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0092_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0096_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0096_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0096_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0000_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0000_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0000_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0049_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "none",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0049_speech_f02",
+      "pair": "CD",
+      "left": "minor",
+      "right": "minor",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0049_speech_f02",
+      "pair": "BD",
+      "left": "none",
+      "right": "minor",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0114_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0114_speech_f02",
+      "pair": "CD",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0114_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0113_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0113_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "none",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0113_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "none",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0097_speech_f02",
+      "pair": "AB",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0097_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0097_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0041_speech_f02",
+      "pair": "AB",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0041_speech_f02",
+      "pair": "CD",
+      "left": "none",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0041_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0062_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0062_speech_f02",
+      "pair": "CD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0062_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0072_speech_f02",
+      "pair": "AB",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0072_speech_f02",
+      "pair": "CD",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0072_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0081_speech_f02",
+      "pair": "AB",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0081_speech_f02",
+      "pair": "CD",
+      "left": "minor",
+      "right": "major",
+      "review_status": "ai_provisional"
+    },
+    {
+      "experiment": "41fe286349c81a9d3b8eeb54c67e42c88ee228c85309650d71a00223a179151d",
+      "sample_id": "h0081_speech_f02",
+      "pair": "BD",
+      "left": "major",
+      "right": "major",
+      "review_status": "ai_provisional"
+    }
+  ],
+  "adjacent_judgements": [],
+  "note": "Adjacent frames are auxiliary. AI judgements are provisional. No general error rate is inferred."
+}

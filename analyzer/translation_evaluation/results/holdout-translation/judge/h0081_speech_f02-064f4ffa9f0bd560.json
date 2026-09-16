@@ -1,0 +1,112 @@
+{
+  "job_sha256": "064f4ffa9f0bd5609c7e137e109cfdfc06e6bc6163a0f30dd4b99cf54f831d20",
+  "identity": {
+    "judge_model": "qwen3:8b",
+    "judge_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "model_info": {
+      "general.architecture": "qwen3",
+      "general.basename": "Qwen3",
+      "general.file_type": 15,
+      "general.license": "apache-2.0",
+      "general.parameter_count": 8190735360,
+      "general.quantization_version": 2,
+      "general.size_label": "8B",
+      "general.type": "model",
+      "qwen3.attention.head_count": 32,
+      "qwen3.attention.head_count_kv": 8,
+      "qwen3.attention.key_length": 128,
+      "qwen3.attention.layer_norm_rms_epsilon": 1e-6,
+      "qwen3.attention.value_length": 128,
+      "qwen3.block_count": 36,
+      "qwen3.context_length": 40960,
+      "qwen3.embedding_length": 4096,
+      "qwen3.feed_forward_length": 12288,
+      "qwen3.rope.freq_base": 1000000,
+      "tokenizer.ggml.add_bos_token": false,
+      "tokenizer.ggml.bos_token_id": 151643,
+      "tokenizer.ggml.eos_token_id": 151645,
+      "tokenizer.ggml.merges": [],
+      "tokenizer.ggml.model": "gpt2",
+      "tokenizer.ggml.padding_token_id": 151643,
+      "tokenizer.ggml.pre": "qwen2",
+      "tokenizer.ggml.token_type": [],
+      "tokenizer.ggml.tokens": []
+    },
+    "system_sha256": "52bf7878cb20dc9b7d1a16b4c9f7800778e2ac21e945532520f2e35411fbe708",
+    "schema_sha256": "d6705d886ad4fe8c7f442b5698dc845eee307550957fee096affd5db4ecd013c",
+    "outputs_sha256": "2bb37a4d43486eccc5c930c475542ce61270172a3855f31365f3835d3a0bce50",
+    "dataset_sha256": "97db0c108d76862f66aee7d8963342df1112d0d9a812acb0b3315d74cce8a5d7",
+    "targets_sha256": "924c9dbda90794f54c46822b745d3aa3055ec88d4236cb470b1fdef3d99fd62d",
+    "settings": {
+      "temperature": 0,
+      "seed": 93271,
+      "num_predict": 1024,
+      "think": false
+    },
+    "runner_schema": 2,
+    "runner_sha256": "4a1f5791e647927d0069fb2a31333810fb9a3bf4a552d4dacfd59bc8f6182e16"
+  },
+  "job": {
+    "sample_id": "h0081_speech_f02",
+    "group_id": "h0081",
+    "source_ko": "덤조 없잖아",
+    "reference_ja": "ブランブルベストがないじゃん",
+    "must_preserve": ["ブランブルベスト", "ない"],
+    "reference_status": "ai_provisional",
+    "candidates": [
+      {
+        "candidate_id": "candidate-f40aafd3bf59",
+        "ja": "ダンジョはねんしょだよ"
+      },
+      {
+        "candidate_id": "candidate-93d55c316a4a",
+        "ja": "メックジョ なしジャア"
+      },
+      {
+        "candidate_id": "candidate-d994317f9ffd",
+        "ja": "ダンプゾーはないじゃない"
+      },
+      {
+        "candidate_id": "candidate-bed8c9d6d2ab",
+        "ja": "エイジンなし"
+      }
+    ]
+  },
+  "judgements": [
+    {
+      "candidate_id": "candidate-f40aafd3bf59",
+      "severity": "major",
+      "error_types": ["omission", "negation"],
+      "rationale": "「ブランブルベスト」が完全に省略され、否定表現も変化しているため、ゲーム内判断を保持していない。",
+      "semantic_signature": "ブランブルベスト ない"
+    },
+    {
+      "candidate_id": "candidate-93d55c316a4a",
+      "severity": "major",
+      "error_types": ["hallucination", "format"],
+      "rationale": "「メックジョ なしジャア」は原文の語順や表現が完全に異なるため、ゲーム内判断を保持していない。",
+      "semantic_signature": "ブランブルベスト ない"
+    },
+    {
+      "candidate_id": "candidate-d994317f9ffd",
+      "severity": "minor",
+      "error_types": ["negation"],
+      "rationale": "「ダンプゾー」は「ブランブルベスト」の誤訳で、否定表現は保持しているが、語彙が不正確なため軽微な不自然さあり。",
+      "semantic_signature": "ブランブルベスト ない"
+    },
+    {
+      "candidate_id": "candidate-bed8c9d6d2ab",
+      "severity": "major",
+      "error_types": ["omission"],
+      "rationale": "「ブランブルベスト」が完全に省略され、ゲーム内判断を保持していない。",
+      "semantic_signature": "ブランブルベスト ない"
+    }
+  ],
+  "response_metadata": {
+    "done_reason": "stop",
+    "total_duration": 6125577100,
+    "load_duration": 3935400,
+    "prompt_eval_count": 485,
+    "eval_count": 368
+  }
+}

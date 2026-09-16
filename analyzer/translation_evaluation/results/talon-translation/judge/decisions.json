@@ -1,0 +1,1547 @@
+[
+  {
+    "sample_id": "t01_speech_f02",
+    "group_id": "t01",
+    "output": "それほど長い間ではないし、最近でもやっていたような気がするんだがこれ",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「久しぶりではない」および「最近もやった」を正確に保持。",
+    "semantic_signature": "久しぶりではない_最近もやった_これ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t01",
+      "judge-result:t01_speech_f02-6d7ab897ef189628.json"
+    ]
+  },
+  {
+    "sample_id": "t01_speech_f02",
+    "group_id": "t01",
+    "output": "久しぶりじゃないけど、最近にもやったような気がするんだよね",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「久しぶりではない」および「最近もやった」を保持。",
+    "semantic_signature": "久しぶりじゃない_最近もやった_これ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t01",
+      "judge-result:t01_speech_f02-6d7ab897ef189628.json"
+    ]
+  },
+  {
+    "sample_id": "t01_speech_f02",
+    "group_id": "t01",
+    "output": "昔はあまりなかったけど、最近はやったことあるよ",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「久しぶりではない」が省略されており、重要要素を欠落。",
+    "semantic_signature": "昔はあまりなかった_最近はやった",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t01",
+      "judge-result:t01_speech_f02-6d7ab897ef189628.json"
+    ]
+  },
+  {
+    "sample_id": "t01_speech_f02",
+    "group_id": "t01",
+    "output": "久しぶりじゃないけど、最近にもやったような気がするだよね",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「久しぶりではない」および「最近もやった」を保持。",
+    "semantic_signature": "久しぶりじゃない_最近もやった_これ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t01",
+      "judge-result:t01_speech_f02-6d7ab897ef189628.json"
+    ]
+  },
+  {
+    "sample_id": "t02_speech_f02",
+    "group_id": "t02",
+    "output": "なんでこんなにセンデ",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「センデ」は文法的に不自然で、意味を完全に壊す。",
+    "semantic_signature": "なんでこんなに強いんだ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t02",
+      "judge-result:t02_speech_f02-68c46b654d6c082f.json"
+    ]
+  },
+  {
+    "sample_id": "t02_speech_f02",
+    "group_id": "t02",
+    "output": "なぜこんなにセンデ",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「センデ」は文法的に不自然で、意味を完全に壊す。",
+    "semantic_signature": "なんでこんなに強いんだ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t02",
+      "judge-result:t02_speech_f02-68c46b654d6c082f.json"
+    ]
+  },
+  {
+    "sample_id": "t02_speech_f02",
+    "group_id": "t02",
+    "output": "なぜこんなにも",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「強い」が省略されており、疑問・驚きの意図が失われる。",
+    "semantic_signature": "なんでこんなにも",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t02",
+      "judge-result:t02_speech_f02-68c46b654d6c082f.json"
+    ]
+  },
+  {
+    "sample_id": "t03_speech_f02",
+    "group_id": "t03",
+    "output": "赤ちゃん、どこに行ったの？",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「先制攻撃」が完全に省略され、文脈が大きくずれるため",
+    "semantic_signature": "赤ちゃんどこ行った",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t03",
+      "judge-result:t03_speech_f02-890af2492e025183.json"
+    ]
+  },
+  {
+    "sample_id": "t03_speech_f02",
+    "group_id": "t03",
+    "output": "あ、きはつどこにいったの",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「先制攻撃」が完全に省略され、文脈が大きくずれるため",
+    "semantic_signature": "きはつどこいった",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t03",
+      "judge-result:t03_speech_f02-890af2492e025183.json"
+    ]
+  },
+  {
+    "sample_id": "t03_speech_f02",
+    "group_id": "t03",
+    "output": "あ、いきなりどこへ行ったの？",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「先制攻撃」が完全に省略され、文脈が大きくずれるため",
+    "semantic_signature": "いきなりどこ行った",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t03",
+      "judge-result:t03_speech_f02-890af2492e025183.json"
+    ]
+  },
+  {
+    "sample_id": "t03_speech_f02",
+    "group_id": "t03",
+    "output": "お子さんがどこにいったの？",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「先制攻撃」が完全に省略され、文脈が大きくずれるため",
+    "semantic_signature": "お子さんどこいった",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t03",
+      "judge-result:t03_speech_f02-890af2492e025183.json"
+    ]
+  },
+  {
+    "sample_id": "t04_speech_f02",
+    "group_id": "t04",
+    "output": "けどロクだけが足りないなら、簡単そうだよね",
+    "severity": "minor",
+    "error_types": ["omission"],
+    "rationale": "「育たなければ」が「足りないなら」に置き換えられ、意味が若干変化している。",
+    "semantic_signature": "ロク（指示対象未確認）+ 足りない + 簡単",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t04",
+      "judge-result:t04_speech_f02-ff30d116dd13fa3c.json"
+    ]
+  },
+  {
+    "sample_id": "t04_speech_f02",
+    "group_id": "t04",
+    "output": "でもロクだけが成長しないなら、簡単なはずだ",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「育たなければ」が「成長しないなら」に置き換えられ、意味は保持されている。",
+    "semantic_signature": "ロク（指示対象未確認）+ 成長しない + 簡単",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t04",
+      "judge-result:t04_speech_f02-ff30d116dd13fa3c.json"
+    ]
+  },
+  {
+    "sample_id": "t04_speech_f02",
+    "group_id": "t04",
+    "output": "でも、ロンがフランクでなければ、簡単そうだよね",
+    "severity": "major",
+    "error_types": ["hallucination", "omission"],
+    "rationale": "「ロク」が「ロン」に誤っており、また「フランク」は原文にない誤った要素が追加されている。",
+    "semantic_signature": "ロン + フランク + 簡単",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t04",
+      "judge-result:t04_speech_f02-ff30d116dd13fa3c.json"
+    ]
+  },
+  {
+    "sample_id": "t04_speech_f02",
+    "group_id": "t04",
+    "output": "でも、クランがダメなら、簡単そうだけど",
+    "severity": "major",
+    "error_types": ["hallucination"],
+    "rationale": "「ロク」が「クラン」に誤っており、意味が完全に崩れている。",
+    "semantic_signature": "クラン + ダメ + 簡単",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t04",
+      "judge-result:t04_speech_f02-ff30d116dd13fa3c.json"
+    ]
+  },
+  {
+    "sample_id": "t05_speech_f02",
+    "group_id": "t05",
+    "output": "ハ…大丈夫ですね",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「ハ…大丈夫ですね」は肯定的評価を保持し、感情の緩和を表現している。",
+    "semantic_signature": "ハ…大丈夫ですね",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t05",
+      "judge-result:t05_speech_f02-4bf11bd747fc210c.json"
+    ]
+  },
+  {
+    "sample_id": "t05_speech_f02",
+    "group_id": "t05",
+    "output": "いいや、大丈夫ですね",
+    "severity": "minor",
+    "error_types": ["negation"],
+    "rationale": "「いいや」は否定的なニュアンスを含み、肯定的評価を弱めている。",
+    "semantic_signature": "いいや、大丈夫ですね",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t05",
+      "judge-result:t05_speech_f02-4bf11bd747fc210c.json"
+    ]
+  },
+  {
+    "sample_id": "t05_speech_f02",
+    "group_id": "t05",
+    "output": "いいですね…",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「いいですね…」は肯定的評価を保持し、感情の緩和を表現している。",
+    "semantic_signature": "いいですね…",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t05",
+      "judge-result:t05_speech_f02-4bf11bd747fc210c.json"
+    ]
+  },
+  {
+    "sample_id": "t06_speech_f02",
+    "group_id": "t06",
+    "output": "俺がいるじゃないか、俺は本当に悲しいんだ、カイサは俺だ",
+    "severity": "major",
+    "error_types": ["actor", "sequence"],
+    "rationale": "「カイサは俺だ」という主張は原文の呼びかけと矛盾し、主体の誤りが生じる。",
+    "semantic_signature": "俺がいるじゃないか、俺は本当に悲しいんだ、カイサは俺だ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t06",
+      "judge-result:t06_speech_f02-791e9676faf92462.json"
+    ]
+  },
+  {
+    "sample_id": "t06_speech_f02",
+    "group_id": "t06",
+    "output": "俺がいるんだよ、カイサ、俺はすごく悲しいんだ",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「カイサ」への呼びかけと「自分が悲しい」の意味を保持している。",
+    "semantic_signature": "俺がいるんだよ、カイサ、俺はすごく悲しいんだ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t06",
+      "judge-result:t06_speech_f02-791e9676faf92462.json"
+    ]
+  },
+  {
+    "sample_id": "t06_speech_f02",
+    "group_id": "t06",
+    "output": "俺がいるんだよ、カイサ。俺は本当に悲しいんだ。",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「カイサ」への呼びかけと「自分が悲しい」の意味を保持している。",
+    "semantic_signature": "俺がいるんだよ、カイサ。俺は本当に悲しいんだ。",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t06",
+      "judge-result:t06_speech_f02-791e9676faf92462.json"
+    ]
+  },
+  {
+    "sample_id": "t07_speech_f02",
+    "group_id": "t07",
+    "output": "まずは6レベルを早めに取得しましょう",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「6レベル」および「早く到達」を保持。",
+    "semantic_signature": "6レベル, 早く到達",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t07",
+      "judge-result:t07_speech_f02-e177ff6509995b2b.json"
+    ]
+  },
+  {
+    "sample_id": "t07_speech_f02",
+    "group_id": "t07",
+    "output": "まず6レベルを早く上げましょう",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「6レベル」および「早く到達」を保持。",
+    "semantic_signature": "6レベル, 早く到達",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t07",
+      "judge-result:t07_speech_f02-e177ff6509995b2b.json"
+    ]
+  },
+  {
+    "sample_id": "t07_speech_f02",
+    "group_id": "t07",
+    "output": "まずは6リップ…を早く打ちましょう",
+    "severity": "major",
+    "error_types": ["hallucination"],
+    "rationale": "「6リップ」は誤った用語。",
+    "semantic_signature": "6リップ, 早く打ち",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t07",
+      "judge-result:t07_speech_f02-e177ff6509995b2b.json"
+    ]
+  },
+  {
+    "sample_id": "t07_speech_f02",
+    "group_id": "t07",
+    "output": "まずは6ループを早くクリックしてください",
+    "severity": "major",
+    "error_types": ["hallucination"],
+    "rationale": "「6ループ」は誤った用語。",
+    "semantic_signature": "6ループ, 早くクリック",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t07",
+      "judge-result:t07_speech_f02-e177ff6509995b2b.json"
+    ]
+  },
+  {
+    "sample_id": "t08_speech_f02",
+    "group_id": "t08",
+    "output": "次は、私ができる限りを尽くしてみます",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「次」および「最善を尽くす」を保持。",
+    "semantic_signature": "次_最善を尽くす",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t08",
+      "judge-result:t08_speech_f02-d615897ba964ebbf.json"
+    ]
+  },
+  {
+    "sample_id": "t08_speech_f02",
+    "group_id": "t08",
+    "output": "それから、私ができる限りを尽くしてみましょう",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「次」および「最善を尽くす」を保持。",
+    "semantic_signature": "次_最善を尽くす",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t08",
+      "judge-result:t08_speech_f02-d615897ba964ebbf.json"
+    ]
+  },
+  {
+    "sample_id": "t08_speech_f02",
+    "group_id": "t08",
+    "output": "次は、私ができる限りのことをやってみます。",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「次」および「最善を尽くす」を保持。",
+    "semantic_signature": "次_最善を尽くす",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t08",
+      "judge-result:t08_speech_f02-d615897ba964ebbf.json"
+    ]
+  },
+  {
+    "sample_id": "t08_speech_f02",
+    "group_id": "t08",
+    "output": "それから私はできる限り、全力を尽くしてみましょう。",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「次」および「最善を尽くす」を保持。",
+    "semantic_signature": "次_最善を尽くす",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t08",
+      "judge-result:t08_speech_f02-d615897ba964ebbf.json"
+    ]
+  },
+  {
+    "sample_id": "t09_speech_f02",
+    "group_id": "t09",
+    "output": "カイサにだって、明るい日に戻ってくる",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「カイ＝サ」および「良い日が戻る」を保持。文脈的に「明るい日に戻ってくる」は原文の「해뜰날 돌아온다잉」に合致。",
+    "semantic_signature": "カイ＝サ, 明るい日, 戻る",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t09",
+      "judge-result:t09_speech_f02-9960787f5dbe5693.json"
+    ]
+  },
+  {
+    "sample_id": "t09_speech_f02",
+    "group_id": "t09",
+    "output": "カイサにも「쨍ゴ」と「あけた日のとき」に帰ってくるダイニング",
+    "severity": "major",
+    "error_types": ["hallucination", "omission"],
+    "rationale": "「カイ＝サ」は保持しているが、「良い日が戻る」は完全に失われており、「ダイニング」という不関連な要素が追加されているため誤り。",
+    "semantic_signature": "カイ＝サ, ダイニング, 良い日が戻る",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t09",
+      "judge-result:t09_speech_f02-9960787f5dbe5693.json"
+    ]
+  },
+  {
+    "sample_id": "t09_speech_f02",
+    "group_id": "t09",
+    "output": "カイサにも、しっかりと朝焼けの時に戻ってくるんだying",
+    "severity": "major",
+    "error_types": ["hallucination", "omission"],
+    "rationale": "「カイ＝サ」は保持しているが、「良い日が戻る」は完全に失われており、「ying」という不関連な要素が追加されているため誤り。",
+    "semantic_signature": "カイ＝サ, ying, 朝焼け",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t09",
+      "judge-result:t09_speech_f02-9960787f5dbe5693.json"
+    ]
+  },
+  {
+    "sample_id": "t09_speech_f02",
+    "group_id": "t09",
+    "output": "カイサにも、昇りて朝が差すまで帰ってくる",
+    "severity": "major",
+    "error_types": ["hallucination", "omission"],
+    "rationale": "「カイ＝サ」は保持しているが、「良い日が戻る」は完全に失われており、「昇りて朝が差すまで帰ってくる」という不自然な表現が追加されているため誤り。",
+    "semantic_signature": "カイ＝サ, 昇りて朝が差す, 帰ってくる",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t09",
+      "judge-result:t09_speech_f02-9960787f5dbe5693.json"
+    ]
+  },
+  {
+    "sample_id": "t10_speech_f02",
+    "group_id": "t10",
+    "output": "あ、オケ、おじゅう",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「認める」が完全に欠如し、意味が大きく崩れている。",
+    "semantic_signature": "あ、オケ、おじゅう",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t10",
+      "judge-result:t10_speech_f02-5546f5369e63bd62.json"
+    ]
+  },
+  {
+    "sample_id": "t10_speech_f02",
+    "group_id": "t10",
+    "output": "あ、大丈夫？",
+    "severity": "minor",
+    "error_types": ["omission"],
+    "rationale": "「了承」が欠如し、文脈に応じて意味が曖昧になる可能性がある。",
+    "semantic_signature": "あ、大丈夫？",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t10",
+      "judge-result:t10_speech_f02-5546f5369e63bd62.json"
+    ]
+  },
+  {
+    "sample_id": "t10_speech_f02",
+    "group_id": "t10",
+    "output": "アオケウズ",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "「アオケウズ」は原文の意味と無関係で、判定不能。",
+    "semantic_signature": "アオケウズ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t10",
+      "judge-result:t10_speech_f02-5546f5369e63bd62.json"
+    ]
+  },
+  {
+    "sample_id": "t11_speech_f02",
+    "group_id": "t11",
+    "output": "誰様？",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「누구셔」は敬語で「誰様」に直接翻訳可能。疑問形を保持し、人物への疑問を明確に表現している。",
+    "semantic_signature": "誰様？",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t11",
+      "judge-result:t11_speech_f02-02f0c8ce07cb2dae.json"
+    ]
+  },
+  {
+    "sample_id": "t11_speech_f02",
+    "group_id": "t11",
+    "output": "誰様ですか？",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「누구셔」は敬語で「誰様ですか」に直接翻訳可能。疑問形を保持し、人物への疑問を明確に表現している。",
+    "semantic_signature": "誰様ですか？",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t11",
+      "judge-result:t11_speech_f02-02f0c8ce07cb2dae.json"
+    ]
+  },
+  {
+    "sample_id": "t12_speech_f02",
+    "group_id": "t12",
+    "output": "ねぇ、たべる？",
+    "severity": "major",
+    "error_types": ["negation", "omission"],
+    "rationale": "「ねぇ、たべる？」は相手に取らせるという意図を完全に失っている。",
+    "semantic_signature": "相手に取らせる_否定_疑問形",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t12",
+      "judge-result:t12_speech_f02-a13ec63fe0f54b8e.json"
+    ]
+  },
+  {
+    "sample_id": "t12_speech_f02",
+    "group_id": "t12",
+    "output": "君に食べさせる",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「君に食べさせる」は「相手に取らせる」を正確に保持している。",
+    "semantic_signature": "相手に取らせる_命令形_直接的",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t12",
+      "judge-result:t12_speech_f02-a13ec63fe0f54b8e.json"
+    ]
+  },
+  {
+    "sample_id": "t12_speech_f02",
+    "group_id": "t12",
+    "output": "君に食べさせた",
+    "severity": "major",
+    "error_types": ["sequence"],
+    "rationale": "「君に食べさせた」は過去形で、原文の命令形の意図を失っている。",
+    "semantic_signature": "相手に取らせる_過去形_完了形",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t12",
+      "judge-result:t12_speech_f02-a13ec63fe0f54b8e.json"
+    ]
+  },
+  {
+    "sample_id": "t12_speech_f02",
+    "group_id": "t12",
+    "output": "君を食べる",
+    "severity": "major",
+    "error_types": ["actor"],
+    "rationale": "「君を食べる」は主語が逆転し、相手に取らせるという意図を完全に逆転させている。",
+    "semantic_signature": "主語逆転_相手を食べる_逆転",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t12",
+      "judge-result:t12_speech_f02-a13ec63fe0f54b8e.json"
+    ]
+  },
+  {
+    "sample_id": "t13_speech_f02",
+    "group_id": "t13",
+    "output": "子供だな、月食だいね～",
+    "severity": "major",
+    "error_types": ["terminology", "negation"],
+    "rationale": "「エクリプス」を「月食」に誤訳し、主語の「俺」を「子供だな」に誤っており、重要な要素を壊している。",
+    "semantic_signature": "月食/子供だな/エクリプス/俺",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t13",
+      "judge-result:t13_speech_f02-74f03c58694a8518.json"
+    ]
+  },
+  {
+    "sample_id": "t13_speech_f02",
+    "group_id": "t13",
+    "output": "お前は、悪くないね～",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「エクリプス」や「自分のビルド・状態」を完全に省略しており、重要な要素を欠いている。",
+    "semantic_signature": "悪くない/お前/エクリプス/ビルド・状態",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t13",
+      "judge-result:t13_speech_f02-74f03c58694a8518.json"
+    ]
+  },
+  {
+    "sample_id": "t13_speech_f02",
+    "group_id": "t13",
+    "output": "息子よ、俺は月食だいん～",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「エクリプス」を「月食」に誤訳し、重要な要素を壊している。",
+    "semantic_signature": "月食/息子/エクリプス/俺",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t13",
+      "judge-result:t13_speech_f02-74f03c58694a8518.json"
+    ]
+  },
+  {
+    "sample_id": "t13_speech_f02",
+    "group_id": "t13",
+    "output": "息子、俺は月食だいん~",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「エクリプス」を「月食」に誤訳し、重要な要素を壊している。",
+    "semantic_signature": "月食/息子/エクリプス/俺",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t13",
+      "judge-result:t13_speech_f02-74f03c58694a8518.json"
+    ]
+  },
+  {
+    "sample_id": "t14_speech_f02",
+    "group_id": "t14",
+    "output": "ロク…フィンの反応を奪い、しっかり抑えてしまった",
+    "severity": "major",
+    "error_types": ["actor"],
+    "rationale": "「フィン」は原文の「플」（フラッシュ）と一致せず、主体の誤り。",
+    "semantic_signature": "ロク…フィンの反応を奪い、しっかり抑えてしまった",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t14",
+      "judge-result:t14_speech_f02-b759729beada7fec.json"
+    ]
+  },
+  {
+    "sample_id": "t14_speech_f02",
+    "group_id": "t14",
+    "output": "ロク…フの反応を取れなくして、きれいでしっかりと捕らえた",
+    "severity": "major",
+    "error_types": ["actor"],
+    "rationale": "「フ」は原文の「플」（フラッシュ）と一致せず、主体の誤り。",
+    "semantic_signature": "ロク…フの反応を取れなくして、きれいでしっかりと捕らえた",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t14",
+      "judge-result:t14_speech_f02-b759729beada7fec.json"
+    ]
+  },
+  {
+    "sample_id": "t14_speech_f02",
+    "group_id": "t14",
+    "output": "ロク…フラッシュ反応をさせないよう、しっかり捕らえた",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「フラッシュ反応をさせないよう、しっかり捕らえた」は原文の「フラッシュ反応不能」「倒した」を保持。",
+    "semantic_signature": "ロク…フラッシュ反応をさせないよう、しっかり捕らえた",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t14",
+      "judge-result:t14_speech_f02-b759729beada7fec.json"
+    ]
+  },
+  {
+    "sample_id": "t14_speech_f02",
+    "group_id": "t14",
+    "output": "ロク…フラッシュの反応を取れなくなるようにしっかり抑えてしまった",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「フラッシュの反応を取れなくなるようにしっかり抑えてしまった」は「フラッシュ反応不能」「倒した」を保持。",
+    "semantic_signature": "ロク…フラッシュの反応を取れなくなるようにしっかり抑えてしまった",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t14",
+      "judge-result:t14_speech_f02-b759729beada7fec.json"
+    ]
+  },
+  {
+    "sample_id": "t15_annotation_f02",
+    "group_id": "t15",
+    "output": "カイサの戦績を検索中",
+    "severity": "minor",
+    "error_types": ["omission"],
+    "rationale": "「カイ＝サ」が「カイサ」に変更されているため、名称の不一致が生じる。",
+    "semantic_signature": "カイサ 戦績 検索中",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t15",
+      "judge-result:t15_annotation_f02-4638cf2af5d71a64.json"
+    ]
+  },
+  {
+    "sample_id": "t15_annotation_f02",
+    "group_id": "t15",
+    "output": "カイサの前検索中1",
+    "severity": "major",
+    "error_types": ["hallucination", "omission"],
+    "rationale": "「前検索中」は原文に存在しない表現であり、意味を大きく変更している。",
+    "semantic_signature": "カイサ 前検索中",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t15",
+      "judge-result:t15_annotation_f02-4638cf2af5d71a64.json"
+    ]
+  },
+  {
+    "sample_id": "t15_annotation_f02",
+    "group_id": "t15",
+    "output": "カイサの予備検索中1",
+    "severity": "major",
+    "error_types": ["hallucination", "omission"],
+    "rationale": "「予備検索中」は原文に存在しない表現であり、意味を大きく変更している。",
+    "semantic_signature": "カイサ 予備検索中",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t15",
+      "judge-result:t15_annotation_f02-4638cf2af5d71a64.json"
+    ]
+  },
+  {
+    "sample_id": "t15_annotation_f02",
+    "group_id": "t15",
+    "output": "カイサの戦績検索中",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「カイサ」および「戦績検索中」の表現は原文と完全に一致している。",
+    "semantic_signature": "カイサ 戦績 検索中",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t15",
+      "judge-result:t15_annotation_f02-4638cf2af5d71a64.json"
+    ]
+  },
+  {
+    "sample_id": "t15_speech_f02",
+    "group_id": "t15",
+    "output": "タルンをやっている友達ね",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "タロンをやる人を「タルンをやっている友達」と表現し、主体を保持している。",
+    "semantic_signature": "タロンをやる人/友達",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t15",
+      "judge-result:t15_speech_f02-aa41356cd88f97aa.json"
+    ]
+  },
+  {
+    "sample_id": "t15_speech_f02",
+    "group_id": "t15",
+    "output": "タロンしている友達ねN",
+    "severity": "major",
+    "error_types": ["format"],
+    "rationale": "「N」は不適切な表記で、意味を歪める。",
+    "semantic_signature": "タロンしている友達N",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t15",
+      "judge-result:t15_speech_f02-aa41356cd88f97aa.json"
+    ]
+  },
+  {
+    "sample_id": "t15_speech_f02",
+    "group_id": "t15",
+    "output": "タロンをやる友達ね",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「タロンをやる友達」は「タロンをやる人」を保持し、意味が一致している。",
+    "semantic_signature": "タロンをやる人/友達",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t15",
+      "judge-result:t15_speech_f02-aa41356cd88f97aa.json"
+    ]
+  },
+  {
+    "sample_id": "t15_speech_f02",
+    "group_id": "t15",
+    "output": "タロンをする友達のN",
+    "severity": "major",
+    "error_types": ["format"],
+    "rationale": "「のN」は不適切な表記で、意味を歪める。",
+    "semantic_signature": "タロンをする友達のN",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t15",
+      "judge-result:t15_speech_f02-aa41356cd88f97aa.json"
+    ]
+  },
+  {
+    "sample_id": "t16_speech_f02",
+    "group_id": "t16",
+    "output": "よく見ると、このチャンピオン、前に見たことある気がする",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「チャンピオンプール」を省略し、意味が大きく変わる。",
+    "semantic_signature": "よく見ると、このチャンピオン、前に見たことある気がする",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t16",
+      "judge-result:t16_speech_f02-5c7421ccd23655da.json"
+    ]
+  },
+  {
+    "sample_id": "t16_speech_f02",
+    "group_id": "t16",
+    "output": "見たことある感じのチャンプフォールみたいだ",
+    "severity": "major",
+    "error_types": ["hallucination"],
+    "rationale": "「チャンプフォール」は存在しない用語で、誤った表現。",
+    "semantic_signature": "見たことある感じのチャンプフォールみたいだ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t16",
+      "judge-result:t16_speech_f02-5c7421ccd23655da.json"
+    ]
+  },
+  {
+    "sample_id": "t16_speech_f02",
+    "group_id": "t16",
+    "output": "あのキャラ、よく見かけるな、ポッキリキャラみたいだ",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「チャンピオンプール」を省略し、意味が大きく変わる。",
+    "semantic_signature": "あのキャラ、よく見かけるな、ポッキリキャラみたいだ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t16",
+      "judge-result:t16_speech_f02-5c7421ccd23655da.json"
+    ]
+  },
+  {
+    "sample_id": "t16_speech_f02",
+    "group_id": "t16",
+    "output": "あのキャラ、よく見かけるな、チャンプっぽい感じだ",
+    "severity": "minor",
+    "error_types": ["omission"],
+    "rationale": "「チャンピオンプール」を省略し、意味が若干変わるが、主体は保持。",
+    "semantic_signature": "あのキャラ、よく見かけるな、チャンプっぽい感じだ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t16",
+      "judge-result:t16_speech_f02-5c7421ccd23655da.json"
+    ]
+  },
+  {
+    "sample_id": "t17_speech_f02",
+    "group_id": "t17",
+    "output": "私は元からすべて持っています元から",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「元からすべて持っています」は「元からすべてを受け止めて進む」の意図を失っている。",
+    "semantic_signature": "元から/全部を受け止める/進む",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t17",
+      "judge-result:t17_speech_f02-3d164da674c797c7.json"
+    ]
+  },
+  {
+    "sample_id": "t17_speech_f02",
+    "group_id": "t17",
+    "output": "私は元来だていごかします元来",
+    "severity": "major",
+    "error_types": ["hallucination", "format"],
+    "rationale": "「だていごかします」は文法的に不自然で、意味が不明瞭。",
+    "semantic_signature": "元来/全部を受け止める/進む",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t17",
+      "judge-result:t17_speech_f02-3d164da674c797c7.json"
+    ]
+  },
+  {
+    "sample_id": "t17_speech_f02",
+    "group_id": "t17",
+    "output": "私は元来だていこうしました元来",
+    "severity": "major",
+    "error_types": ["hallucination", "sequence"],
+    "rationale": "「だていこうしました」は文法的に不自然で、意味が不明瞭。",
+    "semantic_signature": "元来/全部を受け止める/進む",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t17",
+      "judge-result:t17_speech_f02-3d164da674c797c7.json"
+    ]
+  },
+  {
+    "sample_id": "t17_speech_f02",
+    "group_id": "t17",
+    "output": "私は元からすべてを抱えます 元から",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「元からすべてを抱えます」は「全部を受け止める」を保持し、文法的にも自然。",
+    "semantic_signature": "元から/全部を受け止める/進む",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t17",
+      "judge-result:t17_speech_f02-3d164da674c797c7.json"
+    ]
+  },
+  {
+    "sample_id": "t18_speech_f02",
+    "group_id": "t18",
+    "output": "今このハントで死ぬのがないのがちょっと悔しい",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "「ハント」は「ランタ」の誤訳で、語彙が不一致。また「死ぬのがない」は文法的に不自然。",
+    "semantic_signature": "ハント/死ぬのがない/悔しい",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t18",
+      "judge-result:t18_speech_f02-7a26bc84d048f67d.json"
+    ]
+  },
+  {
+    "sample_id": "t18_speech_f02",
+    "group_id": "t18",
+    "output": "今度のハントで死ぬのがないのがちょっともったいない",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "「ハント」は「ランタ」の誤訳で、語彙が不一致。また「死ぬのがない」は文法的に不自然。",
+    "semantic_signature": "ハント/死ぬのがない/もったいない",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t18",
+      "judge-result:t18_speech_f02-7a26bc84d048f67d.json"
+    ]
+  },
+  {
+    "sample_id": "t18_speech_f02",
+    "group_id": "t18",
+    "output": "今回ランタ時、ズムがいないのはちょっと悔しい",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "「ランタ時」は「ハント時」の誤訳で、語彙が不一致。「ズム」は「デスダンス」の誤訳。",
+    "semantic_signature": "ランタ時/ズム/悔しい",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t18",
+      "judge-result:t18_speech_f02-7a26bc84d048f67d.json"
+    ]
+  },
+  {
+    "sample_id": "t18_speech_f02",
+    "group_id": "t18",
+    "output": "このバトルで死ぬのがないのがちょっと惜しいだ。",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "「このバトル」は「今回の集団戦」の誤訳で、語彙が不一致。ただし「死ぬのがない」は「デスダンスがない」の誤訳で、語彙が不一致。",
+    "semantic_signature": "バトル/死ぬのがない/惜しい",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t18",
+      "judge-result:t18_speech_f02-7a26bc84d048f67d.json"
+    ]
+  },
+  {
+    "sample_id": "t19_speech_f02",
+    "group_id": "t19",
+    "output": "お前、誰ですか？",
+    "severity": "major",
+    "error_types": ["actor"],
+    "rationale": "「お前」は相手を指すが、原文の「저분」は相手を指す疑問形で、主語が不明なままの疑問文であるため、主体が誤っている。",
+    "semantic_signature": "誰かを指して疑問をかける文",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t19",
+      "judge-result:t19_speech_f02-4b006854df06ea5d.json"
+    ]
+  },
+  {
+    "sample_id": "t19_speech_f02",
+    "group_id": "t19",
+    "output": "お前は何者？",
+    "severity": "major",
+    "error_types": ["actor"],
+    "rationale": "「お前」は相手を指すが、原文の「저분」は相手を指す疑問形で、主語が不明なままの疑問文であるため、主体が誤っている。",
+    "semantic_signature": "誰かを指して疑問をかける文",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t19",
+      "judge-result:t19_speech_f02-4b006854df06ea5d.json"
+    ]
+  },
+  {
+    "sample_id": "t19_speech_f02",
+    "group_id": "t19",
+    "output": "誰ですか？",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「誰ですか？」は原文の「저분 누구셔?」の意味を保持し、人物への疑問を問う文として適切。",
+    "semantic_signature": "誰かを指して疑問をかける文",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t19",
+      "judge-result:t19_speech_f02-4b006854df06ea5d.json"
+    ]
+  },
+  {
+    "sample_id": "t20_speech_f02",
+    "group_id": "t20",
+    "output": "自分が本当にアイテムを手に入れられるだろうか",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「アイテム」は原文の「품」に該当せず、意図を完全に外している。",
+    "semantic_signature": "アイテム/手に入れられる/疑問",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t20",
+      "judge-result:t20_speech_f02-78ad1b3e0b775285.json"
+    ]
+  },
+  {
+    "sample_id": "t20_speech_f02",
+    "group_id": "t20",
+    "output": "本当に私はその力を手に入れられるのか",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「力」は原文の「품」に該当せず、意図を完全に外している。",
+    "semantic_signature": "力/手に入れられる/疑問",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t20",
+      "judge-result:t20_speech_f02-78ad1b3e0b775285.json"
+    ]
+  },
+  {
+    "sample_id": "t20_speech_f02",
+    "group_id": "t20",
+    "output": "俺が本当にその力を持てるのか",
+    "severity": "minor",
+    "error_types": ["omission"],
+    "rationale": "「力」は原文の「품」に該当せず、意図を一部外しているが、主体は保持している。",
+    "semantic_signature": "力/持てる/疑問",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t20",
+      "judge-result:t20_speech_f02-78ad1b3e0b775285.json"
+    ]
+  },
+  {
+    "sample_id": "t20_speech_f02",
+    "group_id": "t20",
+    "output": "本当に私はその力を備えているのか？",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「力」は原文の「품」に該当せず、意図を完全に外している。",
+    "semantic_signature": "力/備えている/疑問",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t20",
+      "judge-result:t20_speech_f02-78ad1b3e0b775285.json"
+    ]
+  },
+  {
+    "sample_id": "t21_speech_f02",
+    "group_id": "t21",
+    "output": "何が間違ってるのだろうか？",
+    "severity": "minor",
+    "error_types": ["negation"],
+    "rationale": "否定のニュアンスが強すぎて原文の疑問のニュアンスを壊す",
+    "semantic_signature": "異常・誤りへの疑問",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t21",
+      "judge-result:t21_speech_f02-50baf18b3e4a9279.json"
+    ]
+  },
+  {
+    "sample_id": "t21_speech_f02",
+    "group_id": "t21",
+    "output": "間違ってるわけじゃないよね？",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "疑問のニュアンスを保持し、異常・誤りへの疑問を明確に表現",
+    "semantic_signature": "異常・誤りへの疑問",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t21",
+      "judge-result:t21_speech_f02-50baf18b3e4a9279.json"
+    ]
+  },
+  {
+    "sample_id": "t21_speech_f02",
+    "group_id": "t21",
+    "output": "何が間違ってるの？",
+    "severity": "minor",
+    "error_types": ["negation"],
+    "rationale": "疑問のニュアンスが弱く、否定のニュアンスが強すぎて原文の疑問のニュアンスを壊す",
+    "semantic_signature": "異常・誤りへの疑問",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t21",
+      "judge-result:t21_speech_f02-50baf18b3e4a9279.json"
+    ]
+  },
+  {
+    "sample_id": "t22_speech_f02",
+    "group_id": "t22",
+    "output": "なぜケアを修復するのかゲームが",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「ケアを修復する」は原文の意味と無関係。疑問形は保持しているが、主語と目的が完全に崩れている。",
+    "semantic_signature": "なぜケアを修復するのかゲームが",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t22",
+      "judge-result:t22_speech_f02-014cd238be2d0ab3.json"
+    ]
+  },
+  {
+    "sample_id": "t22_speech_f02",
+    "group_id": "t22",
+    "output": "なぜこんなにごちゃごちゃしているのゲームだ",
+    "severity": "minor",
+    "error_types": ["format"],
+    "rationale": "「ごちゃごちゃしている」は「落ち着かない」の意を間接的に表現しているが、文法的に不自然。",
+    "semantic_signature": "なぜこんなにごちゃごちゃしているのゲームだ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t22",
+      "judge-result:t22_speech_f02-014cd238be2d0ab3.json"
+    ]
+  },
+  {
+    "sample_id": "t22_speech_f02",
+    "group_id": "t22",
+    "output": "なぜケン アススレナーハ ゲームイ",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "原文が韓国語で不明瞭なため、日本語の意味が完全に判断できない。",
+    "semantic_signature": "なぜケン アススレナーハ ゲームイ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t22",
+      "judge-result:t22_speech_f02-014cd238be2d0ab3.json"
+    ]
+  },
+  {
+    "sample_id": "t22_speech_f02",
+    "group_id": "t22",
+    "output": "なぜケア修理するのかゲームが",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「ケア修理する」は原文の意味と無関係。疑問形は保持しているが、主語と目的が完全に崩れている。",
+    "semantic_signature": "なぜケア修理するのかゲームが",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t22",
+      "judge-result:t22_speech_f02-014cd238be2d0ab3.json"
+    ]
+  },
+  {
+    "sample_id": "t23_speech_f02",
+    "group_id": "t23",
+    "output": "あ、これ！はぁ…",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「これへの反応」と「ため息」を保持。語調も自然。",
+    "semantic_signature": "あ、これ！はぁ…",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t23",
+      "judge-result:t23_speech_f02-0821dfe3632fdcee.json"
+    ]
+  },
+  {
+    "sample_id": "t23_speech_f02",
+    "group_id": "t23",
+    "output": "ア、これ！ハ…",
+    "severity": "minor",
+    "error_types": ["negation"],
+    "rationale": "「ア」は「あ」の変体で自然だが、「ハ」は「はぁ」の変体で語調が弱い。",
+    "semantic_signature": "ア、これ！ハ…",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t23",
+      "judge-result:t23_speech_f02-0821dfe3632fdcee.json"
+    ]
+  },
+  {
+    "sample_id": "t23_speech_f02",
+    "group_id": "t23",
+    "output": "アイハ",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「これへの反応」と「ため息」が完全に欠如。",
+    "semantic_signature": "アイハ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t23",
+      "judge-result:t23_speech_f02-0821dfe3632fdcee.json"
+    ]
+  },
+  {
+    "sample_id": "t24_speech_f02",
+    "group_id": "t24",
+    "output": "このゲームは本当に正しく、脱線したのが神の一手だった",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「정정탈」を「正しく、脱線した」に誤訳し、意味が大きく崩れている。",
+    "semantic_signature": "正しく脱線した / 神の一手",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t24",
+      "judge-result:t24_speech_f02-71c39bf72f365efe.json"
+    ]
+  },
+  {
+    "sample_id": "t24_speech_f02",
+    "group_id": "t24",
+    "output": "イパンはジンジャージンテートラハンゲシシンのハンシュウダ",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "文法的に不自然で、意味が不明確。",
+    "semantic_signature": "イパン / 神の一手",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t24",
+      "judge-result:t24_speech_f02-71c39bf72f365efe.json"
+    ]
+  },
+  {
+    "sample_id": "t24_speech_f02",
+    "group_id": "t24",
+    "output": "この盤は本当に真っ正に脱한が神の一手だ",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「정정탈」を「真っ正に脱han」に誤訳し、意味が大きく崩れている。",
+    "semantic_signature": "真っ正に脱han / 神の一手",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t24",
+      "judge-result:t24_speech_f02-71c39bf72f365efe.json"
+    ]
+  },
+  {
+    "sample_id": "t24_speech_f02",
+    "group_id": "t24",
+    "output": "このゲームは本当に正義を失ったのが神の一手だ",
+    "severity": "minor",
+    "error_types": ["negation"],
+    "rationale": "「정정탈」を「正義を失った」に誤訳し、意味が多少崩れているが、主な意図は保持されている。",
+    "semantic_signature": "正義を失った / 神の一手",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t24",
+      "judge-result:t24_speech_f02-71c39bf72f365efe.json"
+    ]
+  },
+  {
+    "sample_id": "t25_speech_f02",
+    "group_id": "t25",
+    "output": "飛んでいったら拍手したんだけど",
+    "severity": "minor",
+    "error_types": ["sequence"],
+    "rationale": "「飛んでいったら」は過去形で、「拍手したんだけど」は現在形で時系列が不自然。",
+    "semantic_signature": "飛んでいった_過去形_拍手した_現在形",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t25",
+      "judge-result:t25_speech_f02-459f8451a8b6a320.json"
+    ]
+  },
+  {
+    "sample_id": "t25_speech_f02",
+    "group_id": "t25",
+    "output": "飛んでいったら拍手をしたんだけど",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「飛んでいったら」は過去形で、「拍手をしたんだけど」も過去形で時系列が自然。",
+    "semantic_signature": "飛んでいった_過去形_拍手をした_過去形",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t25",
+      "judge-result:t25_speech_f02-459f8451a8b6a320.json"
+    ]
+  },
+  {
+    "sample_id": "t26_speech_f02",
+    "group_id": "t26",
+    "output": "どうして、なぜですか",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「どうして、なぜですか」は「なぜですか」に加えて「どうして」で相手の理由を尋ねる表現を追加し、相手の理由を問う意図を明確に保持している。",
+    "semantic_signature": "どうして、なぜですか",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t26",
+      "judge-result:t26_speech_f02-c1bb8a8616ca01d6.json"
+    ]
+  },
+  {
+    "sample_id": "t26_speech_f02",
+    "group_id": "t26",
+    "output": "なぜですか",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「なぜですか」は「自分が対象の理由を問う」意図を保持している。",
+    "semantic_signature": "なぜですか",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t26",
+      "judge-result:t26_speech_f02-c1bb8a8616ca01d6.json"
+    ]
+  },
+  {
+    "sample_id": "t26_speech_f02",
+    "group_id": "t26",
+    "output": "前 why yo",
+    "severity": "undetermined",
+    "error_types": ["format"],
+    "rationale": "「前 why yo」は英語の表現を直接使用しており、日本語として意味が不明確。",
+    "semantic_signature": "前 why yo",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t26",
+      "judge-result:t26_speech_f02-c1bb8a8616ca01d6.json"
+    ]
+  },
+  {
+    "sample_id": "t27_speech_f02",
+    "group_id": "t27",
+    "output": "お願いだから死なないで",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「お願い、死なないで」に忠実に翻訳し、懇願の意を保持している。",
+    "semantic_signature": "お願い死なないで",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t27",
+      "judge-result:t27_speech_f02-874ac1eaa958a2bb.json"
+    ]
+  },
+  {
+    "sample_id": "t27_speech_f02",
+    "group_id": "t27",
+    "output": "お願いします、死なないで",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「お願いします、死なないで」は丁寧な表現で、懇願の意を保持している。",
+    "semantic_signature": "お願いします死なないで",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t27",
+      "judge-result:t27_speech_f02-874ac1eaa958a2bb.json"
+    ]
+  },
+  {
+    "sample_id": "t27_speech_f02",
+    "group_id": "t27",
+    "output": "お願いします、死なないでください",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「お願いします、死なないでください」はより丁寧な表現だが、懇願の意を保持している。",
+    "semantic_signature": "お願いします死なないでください",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t27",
+      "judge-result:t27_speech_f02-874ac1eaa958a2bb.json"
+    ]
+  },
+  {
+    "sample_id": "t28_speech_f02",
+    "group_id": "t28",
+    "output": "実際にはトリーンが15死以上だった",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「相手のトリンダメア」や「逆接」が完全に欠如し、文意が大きくずれる",
+    "semantic_signature": "実際にはトリーンが15死以上だった",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t28",
+      "judge-result:t28_speech_f02-36b10bf223775d26.json"
+    ]
+  },
+  {
+    "sample_id": "t28_speech_f02",
+    "group_id": "t28",
+    "output": "あの、それって実は対戦相手のトリンドが15デスかってことだ",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「相手のトリンダメア」「15デス」「逆接」をすべて保持し、文意も一致",
+    "semantic_signature": "あの、それって実は対戦相手のトリンドが15デスかってことだ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t28",
+      "judge-result:t28_speech_f02-36b10bf223775d26.json"
+    ]
+  },
+  {
+    "sample_id": "t28_speech_f02",
+    "group_id": "t28",
+    "output": "まあ、実際には相手のトリンドは15デスだったんだ",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「相手のトリンダメア」が欠如し、文意がずれる",
+    "semantic_signature": "まあ、実際には相手のトリンドは15デスだったんだ",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t28",
+      "judge-result:t28_speech_f02-36b10bf223775d26.json"
+    ]
+  },
+  {
+    "sample_id": "t28_speech_f02",
+    "group_id": "t28",
+    "output": "実際にはトリーンも15死でいる",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「相手のトリンダメア」が欠如し、文意がずれる",
+    "semantic_signature": "実際にはトリーンも15死でいる",
+    "review_status": "ai_provisional",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:t28",
+      "judge-result:t28_speech_f02-36b10bf223775d26.json"
+    ]
+  }
+]
