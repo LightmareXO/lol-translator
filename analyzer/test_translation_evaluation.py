@@ -218,8 +218,11 @@ class CollectionTests(unittest.TestCase):
                         "condition": "A", "experiment": "exp", "status": "ok", "wall_ms": 1}]
             render(records, outputs, root, root / "report.html", {})
             result = (root / "report.html").read_text(encoding="utf-8")
-            self.assertNotIn("<script>", result)
+            self.assertNotIn("<script>alert(1)</script>", result)
             self.assertIn("&lt;script&gt;", result)
+            self.assertIn('data-review-id="x"', result)
+            self.assertIn("localStorage.setItem", result)
+            self.assertIn("loltranslator-human-review.json", result)
 
 
 if __name__ == "__main__":
