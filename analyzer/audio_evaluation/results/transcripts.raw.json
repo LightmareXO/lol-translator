@@ -1,0 +1,646 @@
+{
+  "schema_version": 1,
+  "raw_output_note": "No reference subtitle, OCR output, hotword, prefix, or initial prompt was supplied to ASR.",
+  "manifest_sha256": "c191504046b1f948c39dff76b4e563b5283b0ed4c4ab3959d037a31e82070f12",
+  "extraction_sha256": "3d710ce3899f1460776abfbffb6bb0fec9a89bef2fbc87961f777be0c67bc8dd",
+  "model": {
+    "name": "large-v3-turbo",
+    "runtime": "faster-whisper",
+    "faster_whisper_version": "1.2.1",
+    "ctranslate2_version": "4.8.2",
+    "device": "cpu",
+    "compute_type": "int8",
+    "cpu_threads": 8,
+    "num_workers": 1,
+    "model_directory_bytes": 1621667203
+  },
+  "settings": {
+    "language": "ko",
+    "task": "transcribe",
+    "beam_size": 5,
+    "word_timestamps": true,
+    "vad_filter": false,
+    "condition_on_previous_text": false,
+    "initial_prompt": null
+  },
+  "environment": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]",
+    "processor": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+    "logical_cpu_count": 16,
+    "physical_cpu_count": 8,
+    "total_memory_bytes": 33933414400,
+    "ffmpeg": "ffmpeg version 8.1.1-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers"
+  },
+  "measurements": {
+    "initialization_seconds": 26.045114499997,
+    "total_process_seconds": 56.50418519999948,
+    "rss_sample_interval_seconds": 0.05,
+    "baseline_process_tree_rss_bytes": 60874752,
+    "peak_process_tree_rss_bytes": 1813381120
+  },
+  "rows": [
+    {
+      "sample_id": "g01",
+      "video_id": "QK95uTvf7ks",
+      "audio_start_seconds": 7.75,
+      "audio_end_seconds": 15.5,
+      "inference_seconds": 2.747499799996149,
+      "language": "ko",
+      "language_probability": 1,
+      "duration_seconds": 7.75,
+      "duration_after_vad_seconds": 7.75,
+      "raw_text": " 한 발씩 쌓아야 돼.",
+      "segments": [
+        {
+          "clip_start_seconds": 5.36,
+          "clip_end_seconds": 7.6,
+          "source_start_seconds": 13.11,
+          "source_end_seconds": 15.35,
+          "text": " 한 발씩 쌓아야 돼.",
+          "avg_logprob": -0.964828610420227,
+          "no_speech_prob": 1.5475178083423913e-10,
+          "temperature": 0.0,
+          "words": [
+            {
+              "clip_start_seconds": 5.36,
+              "clip_end_seconds": 6.24,
+              "source_start_seconds": 13.11,
+              "source_end_seconds": 13.99,
+              "word": " 한",
+              "probability": 0.03117007575929165
+            },
+            {
+              "clip_start_seconds": 6.24,
+              "clip_end_seconds": 7.06,
+              "source_start_seconds": 13.99,
+              "source_end_seconds": 14.81,
+              "word": " 발씩",
+              "probability": 0.6611296683549881
+            },
+            {
+              "clip_start_seconds": 7.06,
+              "clip_end_seconds": 7.5,
+              "source_start_seconds": 14.81,
+              "source_end_seconds": 15.25,
+              "word": " 쌓아야",
+              "probability": 0.42347804456949234
+            },
+            {
+              "clip_start_seconds": 7.5,
+              "clip_end_seconds": 7.6,
+              "source_start_seconds": 15.25,
+              "source_end_seconds": 15.35,
+              "word": " 돼.",
+              "probability": 0.2458188682794571
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "g02",
+      "video_id": "QK95uTvf7ks",
+      "audio_start_seconds": 16.0,
+      "audio_end_seconds": 23.5,
+      "inference_seconds": 2.6644457999937003,
+      "language": "ko",
+      "language_probability": 1,
+      "duration_seconds": 7.5,
+      "duration_after_vad_seconds": 7.5,
+      "raw_text": " 다음 영상에서 만나요.",
+      "segments": [
+        {
+          "clip_start_seconds": 5.6,
+          "clip_end_seconds": 7.48,
+          "source_start_seconds": 21.6,
+          "source_end_seconds": 23.48,
+          "text": " 다음 영상에서 만나요.",
+          "avg_logprob": -0.5081106291876899,
+          "no_speech_prob": 7.337365437454224e-11,
+          "temperature": 0.0,
+          "words": [
+            {
+              "clip_start_seconds": 5.6,
+              "clip_end_seconds": 7.0,
+              "source_start_seconds": 21.6,
+              "source_end_seconds": 23.0,
+              "word": " 다음",
+              "probability": 0.0432966873049736
+            },
+            {
+              "clip_start_seconds": 7.0,
+              "clip_end_seconds": 7.48,
+              "source_start_seconds": 23.0,
+              "source_end_seconds": 23.48,
+              "word": " 영상에서",
+              "probability": 0.7724941968917847
+            },
+            {
+              "clip_start_seconds": 7.48,
+              "clip_end_seconds": 7.48,
+              "source_start_seconds": 23.48,
+              "source_end_seconds": 23.48,
+              "word": " 만나요.",
+              "probability": 0.9913666248321533
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "g03",
+      "video_id": "QK95uTvf7ks",
+      "audio_start_seconds": 90.75,
+      "audio_end_seconds": 98.75,
+      "inference_seconds": 2.9591707999934442,
+      "language": "ko",
+      "language_probability": 1,
+      "duration_seconds": 8.0,
+      "duration_after_vad_seconds": 8.0,
+      "raw_text": " 아.. 멈추지 않는다 흠 흠 흠",
+      "segments": [
+        {
+          "clip_start_seconds": 0.0,
+          "clip_end_seconds": 1.68,
+          "source_start_seconds": 90.75,
+          "source_end_seconds": 92.43,
+          "text": " 아.. 멈추지 않는다",
+          "avg_logprob": -0.9735366261523702,
+          "no_speech_prob": 5.415850060086491e-11,
+          "temperature": 0.2,
+          "words": [
+            {
+              "clip_start_seconds": 0.0,
+              "clip_end_seconds": 0.64,
+              "source_start_seconds": 90.75,
+              "source_end_seconds": 91.39,
+              "word": " 아..",
+              "probability": 0.02902458142489195
+            },
+            {
+              "clip_start_seconds": 0.64,
+              "clip_end_seconds": 1.26,
+              "source_start_seconds": 91.39,
+              "source_end_seconds": 92.01,
+              "word": " 멈추지",
+              "probability": 0.7576812133193016
+            },
+            {
+              "clip_start_seconds": 1.26,
+              "clip_end_seconds": 1.68,
+              "source_start_seconds": 92.01,
+              "source_end_seconds": 92.43,
+              "word": " 않는다",
+              "probability": 0.5671813189983368
+            }
+          ]
+        },
+        {
+          "clip_start_seconds": 1.68,
+          "clip_end_seconds": 3.02,
+          "source_start_seconds": 92.43,
+          "source_end_seconds": 93.77,
+          "text": " 흠",
+          "avg_logprob": -0.9735366261523702,
+          "no_speech_prob": 5.415850060086491e-11,
+          "temperature": 0.2,
+          "words": [
+            {
+              "clip_start_seconds": 1.68,
+              "clip_end_seconds": 3.02,
+              "source_start_seconds": 92.43,
+              "source_end_seconds": 93.77,
+              "word": " 흠",
+              "probability": 0.18780444338335656
+            }
+          ]
+        },
+        {
+          "clip_start_seconds": 4.0,
+          "clip_end_seconds": 4.6,
+          "source_start_seconds": 94.75,
+          "source_end_seconds": 95.35,
+          "text": " 흠",
+          "avg_logprob": -0.9735366261523702,
+          "no_speech_prob": 5.415850060086491e-11,
+          "temperature": 0.2,
+          "words": [
+            {
+              "clip_start_seconds": 3.9,
+              "clip_end_seconds": 4.6,
+              "source_start_seconds": 94.65,
+              "source_end_seconds": 95.35,
+              "word": " 흠",
+              "probability": 0.40120447240769863
+            }
+          ]
+        },
+        {
+          "clip_start_seconds": 4.6,
+          "clip_end_seconds": 5.5,
+          "source_start_seconds": 95.35,
+          "source_end_seconds": 96.25,
+          "text": " 흠",
+          "avg_logprob": -0.9735366261523702,
+          "no_speech_prob": 5.415850060086491e-11,
+          "temperature": 0.2,
+          "words": [
+            {
+              "clip_start_seconds": 4.6,
+              "clip_end_seconds": 5.5,
+              "source_start_seconds": 95.35,
+              "source_end_seconds": 96.25,
+              "word": " 흠",
+              "probability": 0.7257164716720581
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "g04",
+      "video_id": "QK95uTvf7ks",
+      "audio_start_seconds": 127.75,
+      "audio_end_seconds": 134.75,
+      "inference_seconds": 2.7168562000006204,
+      "language": "ko",
+      "language_probability": 1,
+      "duration_seconds": 7.0,
+      "duration_after_vad_seconds": 7.0,
+      "raw_text": " 다음 영상에서 만나요.",
+      "segments": [
+        {
+          "clip_start_seconds": 0.0,
+          "clip_end_seconds": 5.24,
+          "source_start_seconds": 127.75,
+          "source_end_seconds": 132.99,
+          "text": " 다음 영상에서 만나요.",
+          "avg_logprob": -0.9710843827989366,
+          "no_speech_prob": 1.6343408570929085e-10,
+          "temperature": 0.0,
+          "words": [
+            {
+              "clip_start_seconds": 0.0,
+              "clip_end_seconds": 2.36,
+              "source_start_seconds": 127.75,
+              "source_end_seconds": 130.11,
+              "word": " 다음",
+              "probability": 0.021943841129541397
+            },
+            {
+              "clip_start_seconds": 2.36,
+              "clip_end_seconds": 5.14,
+              "source_start_seconds": 130.11,
+              "source_end_seconds": 132.89,
+              "word": " 영상에서",
+              "probability": 0.5839987546205521
+            },
+            {
+              "clip_start_seconds": 5.14,
+              "clip_end_seconds": 5.24,
+              "source_start_seconds": 132.89,
+              "source_end_seconds": 132.99,
+              "word": " 만나요.",
+              "probability": 0.9666376411914825
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "g05",
+      "video_id": "QK95uTvf7ks",
+      "audio_start_seconds": 216.25,
+      "audio_end_seconds": 223.0,
+      "inference_seconds": 6.990993399987929,
+      "language": "ko",
+      "language_probability": 1,
+      "duration_seconds": 6.75,
+      "duration_after_vad_seconds": 6.75,
+      "raw_text": " 다음 영상에서 만나요!",
+      "segments": [
+        {
+          "clip_start_seconds": 2.2,
+          "clip_end_seconds": 5.04,
+          "source_start_seconds": 218.45,
+          "source_end_seconds": 221.29,
+          "text": " 다음 영상에서 만나요!",
+          "avg_logprob": -1.120067172580295,
+          "no_speech_prob": 9.064744788123136e-11,
+          "temperature": 1.0,
+          "words": [
+            {
+              "clip_start_seconds": 2.2,
+              "clip_end_seconds": 3.6,
+              "source_start_seconds": 218.45,
+              "source_end_seconds": 219.85,
+              "word": " 다음",
+              "probability": 0.009355132468044758
+            },
+            {
+              "clip_start_seconds": 3.6,
+              "clip_end_seconds": 5.0,
+              "source_start_seconds": 219.85,
+              "source_end_seconds": 221.25,
+              "word": " 영상에서",
+              "probability": 0.5283848717808723
+            },
+            {
+              "clip_start_seconds": 5.0,
+              "clip_end_seconds": 5.04,
+              "source_start_seconds": 221.25,
+              "source_end_seconds": 221.29,
+              "word": " 만나요!",
+              "probability": 0.9621571898460388
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "g06",
+      "video_id": "QK95uTvf7ks",
+      "audio_start_seconds": 245.25,
+      "audio_end_seconds": 252.0,
+      "inference_seconds": 4.372923000002629,
+      "language": "ko",
+      "language_probability": 1,
+      "duration_seconds": 6.75,
+      "duration_after_vad_seconds": 6.75,
+      "raw_text": " 다음 영상에서 만나요!",
+      "segments": [
+        {
+          "clip_start_seconds": 0.0,
+          "clip_end_seconds": 5.2,
+          "source_start_seconds": 245.25,
+          "source_end_seconds": 250.45,
+          "text": " 다음 영상에서 만나요!",
+          "avg_logprob": -1.1697508494059246,
+          "no_speech_prob": 1.209534694623926e-10,
+          "temperature": 1.0,
+          "words": [
+            {
+              "clip_start_seconds": 0.0,
+              "clip_end_seconds": 1.06,
+              "source_start_seconds": 245.25,
+              "source_end_seconds": 246.31,
+              "word": " 다음",
+              "probability": 0.017474927008152008
+            },
+            {
+              "clip_start_seconds": 1.06,
+              "clip_end_seconds": 3.48,
+              "source_start_seconds": 246.31,
+              "source_end_seconds": 248.73,
+              "word": " 영상에서",
+              "probability": 0.4928589202463627
+            },
+            {
+              "clip_start_seconds": 3.48,
+              "clip_end_seconds": 5.2,
+              "source_start_seconds": 248.73,
+              "source_end_seconds": 250.45,
+              "word": " 만나요!",
+              "probability": 0.9516439735889435
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "g07",
+      "video_id": "QK95uTvf7ks",
+      "audio_start_seconds": 351.5,
+      "audio_end_seconds": 357.75,
+      "inference_seconds": 2.596225900007994,
+      "language": "ko",
+      "language_probability": 1,
+      "duration_seconds": 6.25,
+      "duration_after_vad_seconds": 6.25,
+      "raw_text": " 다음 영상에서 만나요.",
+      "segments": [
+        {
+          "clip_start_seconds": 0.0,
+          "clip_end_seconds": 5.84,
+          "source_start_seconds": 351.5,
+          "source_end_seconds": 357.34,
+          "text": " 다음 영상에서 만나요.",
+          "avg_logprob": -0.5450221167670356,
+          "no_speech_prob": 1.61738358817054e-10,
+          "temperature": 0.0,
+          "words": [
+            {
+              "clip_start_seconds": 0.0,
+              "clip_end_seconds": 1.04,
+              "source_start_seconds": 351.5,
+              "source_end_seconds": 352.54,
+              "word": " 다음",
+              "probability": 0.07244305312633514
+            },
+            {
+              "clip_start_seconds": 1.04,
+              "clip_end_seconds": 5.84,
+              "source_start_seconds": 352.54,
+              "source_end_seconds": 357.34,
+              "word": " 영상에서",
+              "probability": 0.7532216608524323
+            },
+            {
+              "clip_start_seconds": 5.84,
+              "clip_end_seconds": 5.84,
+              "source_start_seconds": 357.34,
+              "source_end_seconds": 357.34,
+              "word": " 만나요.",
+              "probability": 0.9934259355068207
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "g08",
+      "video_id": "QK95uTvf7ks",
+      "audio_start_seconds": 417.5,
+      "audio_end_seconds": 424.75,
+      "inference_seconds": 2.5465293000015663,
+      "language": "ko",
+      "language_probability": 1,
+      "duration_seconds": 7.25,
+      "duration_after_vad_seconds": 7.25,
+      "raw_text": " 다음 영상에서 만나요.",
+      "segments": [
+        {
+          "clip_start_seconds": 0.0,
+          "clip_end_seconds": 7.02,
+          "source_start_seconds": 417.5,
+          "source_end_seconds": 424.52,
+          "text": " 다음 영상에서 만나요.",
+          "avg_logprob": -0.8306204477945963,
+          "no_speech_prob": 1.2983850106174089e-10,
+          "temperature": 0.0,
+          "words": [
+            {
+              "clip_start_seconds": 0.0,
+              "clip_end_seconds": 2.54,
+              "source_start_seconds": 417.5,
+              "source_end_seconds": 420.04,
+              "word": " 다음",
+              "probability": 0.02054906077682972
+            },
+            {
+              "clip_start_seconds": 2.54,
+              "clip_end_seconds": 7.0,
+              "source_start_seconds": 420.04,
+              "source_end_seconds": 424.5,
+              "word": " 영상에서",
+              "probability": 0.6819884032011032
+            },
+            {
+              "clip_start_seconds": 7.0,
+              "clip_end_seconds": 7.02,
+              "source_start_seconds": 424.5,
+              "source_end_seconds": 424.52,
+              "word": " 만나요.",
+              "probability": 0.9848973155021667
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "t15",
+      "video_id": "Ns8VQexyJes",
+      "audio_start_seconds": 366.25,
+      "audio_end_seconds": 372.75,
+      "inference_seconds": 2.8510003999981564,
+      "language": "ko",
+      "language_probability": 1,
+      "duration_seconds": 6.5,
+      "duration_after_vad_seconds": 6.5,
+      "raw_text": " 탈론이 문젠가? 탈론하는 친구야? 잠깐만 상특씨구나 저거 챔프 포기",
+      "segments": [
+        {
+          "clip_start_seconds": 1.78,
+          "clip_end_seconds": 2.96,
+          "source_start_seconds": 368.03,
+          "source_end_seconds": 369.21,
+          "text": " 탈론이 문젠가?",
+          "avg_logprob": -0.44681208149382945,
+          "no_speech_prob": 1.675456821892407e-11,
+          "temperature": 0.0,
+          "words": [
+            {
+              "clip_start_seconds": 1.78,
+              "clip_end_seconds": 2.54,
+              "source_start_seconds": 368.03,
+              "source_end_seconds": 368.79,
+              "word": " 탈론이",
+              "probability": 0.8271487802267075
+            },
+            {
+              "clip_start_seconds": 2.54,
+              "clip_end_seconds": 2.96,
+              "source_start_seconds": 368.79,
+              "source_end_seconds": 369.21,
+              "word": " 문젠가?",
+              "probability": 0.8768703043460846
+            }
+          ]
+        },
+        {
+          "clip_start_seconds": 3.0,
+          "clip_end_seconds": 3.94,
+          "source_start_seconds": 369.25,
+          "source_end_seconds": 370.19,
+          "text": " 탈론하는 친구야?",
+          "avg_logprob": -0.44681208149382945,
+          "no_speech_prob": 1.675456821892407e-11,
+          "temperature": 0.0,
+          "words": [
+            {
+              "clip_start_seconds": 3.0,
+              "clip_end_seconds": 3.48,
+              "source_start_seconds": 369.25,
+              "source_end_seconds": 369.73,
+              "word": " 탈론하는",
+              "probability": 0.9278258234262466
+            },
+            {
+              "clip_start_seconds": 3.48,
+              "clip_end_seconds": 3.94,
+              "source_start_seconds": 369.73,
+              "source_end_seconds": 370.19,
+              "word": " 친구야?",
+              "probability": 0.45635925978422165
+            }
+          ]
+        },
+        {
+          "clip_start_seconds": 4.08,
+          "clip_end_seconds": 5.5,
+          "source_start_seconds": 370.33,
+          "source_end_seconds": 371.75,
+          "text": " 잠깐만 상특씨구나 저거",
+          "avg_logprob": -0.44681208149382945,
+          "no_speech_prob": 1.675456821892407e-11,
+          "temperature": 0.0,
+          "words": [
+            {
+              "clip_start_seconds": 4.08,
+              "clip_end_seconds": 4.44,
+              "source_start_seconds": 370.33,
+              "source_end_seconds": 370.69,
+              "word": " 잠깐만",
+              "probability": 0.7068981528282166
+            },
+            {
+              "clip_start_seconds": 4.44,
+              "clip_end_seconds": 5.28,
+              "source_start_seconds": 370.69,
+              "source_end_seconds": 371.53,
+              "word": " 상특씨구나",
+              "probability": 0.7322269916534424
+            },
+            {
+              "clip_start_seconds": 5.28,
+              "clip_end_seconds": 5.5,
+              "source_start_seconds": 371.53,
+              "source_end_seconds": 371.75,
+              "word": " 저거",
+              "probability": 0.719171017408371
+            }
+          ]
+        },
+        {
+          "clip_start_seconds": 5.5,
+          "clip_end_seconds": 6.18,
+          "source_start_seconds": 371.75,
+          "source_end_seconds": 372.43,
+          "text": " 챔프 포기",
+          "avg_logprob": -0.44681208149382945,
+          "no_speech_prob": 1.675456821892407e-11,
+          "temperature": 0.0,
+          "words": [
+            {
+              "clip_start_seconds": 5.5,
+              "clip_end_seconds": 5.88,
+              "source_start_seconds": 371.75,
+              "source_end_seconds": 372.13,
+              "word": " 챔프",
+              "probability": 0.48858651518821716
+            },
+            {
+              "clip_start_seconds": 5.88,
+              "clip_end_seconds": 6.18,
+              "source_start_seconds": 372.13,
+              "source_end_seconds": 372.43,
+              "word": " 포기",
+              "probability": 0.7891157865524292
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
