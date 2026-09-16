@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "timebase": "seconds from start of source video",
+  "display_interval_method": {
+    "method": "manual inspection of 4 fps contact sheets",
+    "resolution_seconds": 0.25,
+    "boundary_semantics": "inclusive observed frames; true transition lies within one sampling interval"
+  },
+  "audio_padding_seconds": 2.0,
+  "sources": {
+    "QK95uTvf7ks": {
+      "sha256": "41bae7253acff6cd403cd63990bb97938168141bbf24cf800e1cd14d24e2d26a",
+      "duration_seconds": 499.716644,
+      "width": 1920,
+      "height": 1080,
+      "audio": {"codec": "aac", "sample_rate": 44100, "channels": 2},
+      "origin": "analyzer/ocr_evaluation/manifest.json"
+    },
+    "Ns8VQexyJes": {
+      "sha256": "f28de79e9b96a8fa38d210b9dee2fea1f53a3cd3bd24859c68604d39a0638d3a",
+      "duration_seconds": 786.808163,
+      "width": 1920,
+      "height": 1080,
+      "audio": {"codec": "aac", "sample_rate": 44100, "channels": 2},
+      "origin": "origin/codex/ollama-translation-evaluation:analyzer/translation_evaluation/talon_development.json"
+    }
+  },
+  "samples": [
+    {
+      "id": "g01",
+      "video_id": "QK95uTvf7ks",
+      "display_start_seconds": 9.75,
+      "display_end_seconds": 13.5,
+      "audio_start_seconds": 7.75,
+      "audio_end_seconds": 15.5,
+      "lines": [{"subtitle_id": "g01_f02", "role": "speech", "color": "white", "text_ko": "바로 빙결다리서폿인데", "reference_status": "verified"}]
+    },
+    {
+      "id": "g02",
+      "video_id": "QK95uTvf7ks",
+      "display_start_seconds": 18.0,
+      "display_end_seconds": 21.5,
+      "audio_start_seconds": 16.0,
+      "audio_end_seconds": 23.5,
+      "lines": [{"subtitle_id": "g02_f02", "role": "speech", "color": "white", "text_ko": "1렙 e를 예상 못하는데", "reference_status": "verified"}]
+    },
+    {
+      "id": "g03",
+      "video_id": "QK95uTvf7ks",
+      "display_start_seconds": 92.75,
+      "display_end_seconds": 96.75,
+      "audio_start_seconds": 90.75,
+      "audio_end_seconds": 98.75,
+      "lines": [{"subtitle_id": "g03_f02", "role": "speech", "color": "white", "text_ko": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다", "reference_status": "verified"}]
+    },
+    {
+      "id": "g04",
+      "video_id": "QK95uTvf7ks",
+      "display_start_seconds": 129.75,
+      "display_end_seconds": 132.75,
+      "audio_start_seconds": 127.75,
+      "audio_end_seconds": 134.75,
+      "lines": [{"subtitle_id": "g04_f02", "role": "speech", "color": "white", "text_ko": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림", "reference_status": "verified"}]
+    },
+    {
+      "id": "g05",
+      "video_id": "QK95uTvf7ks",
+      "display_start_seconds": 218.25,
+      "display_end_seconds": 221.0,
+      "audio_start_seconds": 216.25,
+      "audio_end_seconds": 223.0,
+      "lines": [{"subtitle_id": "g05_f02", "role": "speech", "color": "white", "text_ko": "달려잇", "reference_status": "verified"}]
+    },
+    {
+      "id": "g06",
+      "video_id": "QK95uTvf7ks",
+      "display_start_seconds": 247.25,
+      "display_end_seconds": 250.0,
+      "audio_start_seconds": 245.25,
+      "audio_end_seconds": 252.0,
+      "lines": [{"subtitle_id": "g06_f02", "role": "speech", "color": "white", "text_ko": "플 빼고 다음 턴에 잡으면 되죠", "reference_status": "verified"}]
+    },
+    {
+      "id": "g07",
+      "video_id": "QK95uTvf7ks",
+      "display_start_seconds": 353.5,
+      "display_end_seconds": 355.75,
+      "audio_start_seconds": 351.5,
+      "audio_end_seconds": 357.75,
+      "lines": [{"subtitle_id": "g07_f02", "role": "speech", "color": "white", "text_ko": "여기서 디테일이 좀 있는데", "reference_status": "verified"}]
+    },
+    {
+      "id": "g08",
+      "video_id": "QK95uTvf7ks",
+      "display_start_seconds": 419.5,
+      "display_end_seconds": 422.75,
+      "audio_start_seconds": 417.5,
+      "audio_end_seconds": 424.75,
+      "lines": [{"subtitle_id": "g08_f02", "role": "speech", "color": "white", "text_ko": "방마저스탯으로 다재다능도 완성시켜줌", "reference_status": "verified"}]
+    },
+    {
+      "id": "t15",
+      "video_id": "Ns8VQexyJes",
+      "display_start_seconds": 368.25,
+      "display_end_seconds": 370.75,
+      "audio_start_seconds": 366.25,
+      "audio_end_seconds": 372.75,
+      "lines": [
+        {"subtitle_id": "t15_annotation_f02", "role": "annotation", "color": "yellow", "text_ko": "카이사 전적 검색 중", "reference_status": "ai_visual_transcription_provisional", "display_start_seconds": 368.25, "display_end_seconds": 370.75},
+        {"subtitle_id": "t15_speech_f02", "role": "speech", "color": "white", "text_ko": "탈론 하는 친구네", "reference_status": "ai_visual_transcription_provisional", "display_start_seconds": 369.25, "display_end_seconds": 370.5}
+      ]
+    }
+  ]
+}

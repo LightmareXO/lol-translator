@@ -1,0 +1,11 @@
+# Reproducible local artifacts that may contain source paths, media, or models.
+.venv/
+work/
+models/
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.m4a
+*.mp4
+__pycache__/
