@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "manifest_sha256": "f82f0a25d1d2f0ca13c64e03a3c031f238bd4beb3b5ea632368133f4105fe8fb",
+  "dataset": {
+    "image_count": 24,
+    "subtitle_group_count": 8,
+    "verified_ground_truth_count": 24,
+    "conditions": {
+      "combat_background": {
+        "image_count": 9,
+        "subtitle_group_count": 3
+      },
+      "dark_background": {
+        "image_count": 9,
+        "subtitle_group_count": 3
+      },
+      "jamo": {
+        "image_count": 6,
+        "subtitle_group_count": 2
+      },
+      "latin": {
+        "image_count": 3,
+        "subtitle_group_count": 1
+      },
+      "light_background": {
+        "image_count": 15,
+        "subtitle_group_count": 5
+      },
+      "long": {
+        "image_count": 3,
+        "subtitle_group_count": 1
+      },
+      "medium": {
+        "image_count": 12,
+        "subtitle_group_count": 4
+      },
+      "moving_background": {
+        "image_count": 15,
+        "subtitle_group_count": 5
+      },
+      "one_line": {
+        "image_count": 24,
+        "subtitle_group_count": 8
+      },
+      "short": {
+        "image_count": 9,
+        "subtitle_group_count": 3
+      }
+    }
+  },
+  "evaluation": {
+    "primary_metric": "corpus CER after Unicode NFC; whitespace, punctuation and newlines preserved",
+    "character_unit": "Unicode code point after NFC (precomposed Hangul syllables remain one code point)",
+    "auxiliary_metric": "CER with all Unicode whitespace removed",
+    "percentile_method": "linear interpolation at (n - 1) * p",
+    "failed_inferences": "included as empty predictions in accuracy metrics"
+  },
+  "configurations": [
+    {
+      "image_count": 24,
+      "failure_count": 0,
+      "reference_characters": 399,
+      "edit_distance": 45,
+      "cer": 0.11278195488721804,
+      "exact_matches": 3,
+      "whitespace_free_cer": 0.06422018348623854,
+      "inference_ms_median": 23.764349996781675,
+      "inference_ms_p95": 32.18619499784836,
+      "total_ms_median": 25.771699998585973,
+      "total_ms_p95": 35.351689996241475,
+      "stability": {
+        "groups": [
+          {
+            "group_id": "g01",
+            "adjacent_pairs": 2,
+            "changed_pairs": 1,
+            "change_rate": 0.5,
+            "mean_normalized_edit_distance": 0.045454545454545456,
+            "exact_matches": 0
+          },
+          {
+            "group_id": "g02",
+            "adjacent_pairs": 2,
+            "changed_pairs": 0,
+            "change_rate": 0.0,
+            "mean_normalized_edit_distance": 0.0,
+            "exact_matches": 0
+          },
+          {
+            "group_id": "g03",
+            "adjacent_pairs": 2,
+            "changed_pairs": 0,
+            "change_rate": 0.0,
+            "mean_normalized_edit_distance": 0.0,
+            "exact_matches": 0
+          },
+          {
+            "group_id": "g04",
+            "adjacent_pairs": 2,
+            "changed_pairs": 2,
+            "change_rate": 1.0,
+            "mean_normalized_edit_distance": 0.14215686274509803,
+            "exact_matches": 0
+          },
+          {
+            "group_id": "g05",
+            "adjacent_pairs": 2,
+            "changed_pairs": 0,
+            "change_rate": 0.0,
+            "mean_normalized_edit_distance": 0.0,
+            "exact_matches": 3
+          },
+          {
+            "group_id": "g06",
+            "adjacent_pairs": 2,
+            "changed_pairs": 0,
+            "change_rate": 0.0,
+            "mean_normalized_edit_distance": 0.0,
+            "exact_matches": 0
+          },
+          {
+            "group_id": "g07",
+            "adjacent_pairs": 2,
+            "changed_pairs": 0,
+            "change_rate": 0.0,
+            "mean_normalized_edit_distance": 0.0,
+            "exact_matches": 0
+          },
+          {
+            "group_id": "g08",
+            "adjacent_pairs": 2,
+            "changed_pairs": 0,
+            "change_rate": 0.0,
+            "mean_normalized_edit_distance": 0.0,
+            "exact_matches": 0
+          }
+        ],
+        "group_mean_change_rate": 0.1875,
+        "group_mean_normalized_edit_distance": 0.023451426024955438
+      },
+      "by_tag": {
+        "combat_background": {
+          "image_count": 9,
+          "failure_count": 0,
+          "reference_characters": 126,
+          "edit_distance": 17,
+          "cer": 0.1349206349206349,
+          "exact_matches": 3,
+          "whitespace_free_cer": 0.08333333333333333
+        },
+        "dark_background": {
+          "image_count": 9,
+          "failure_count": 0,
+          "reference_characters": 159,
+          "edit_distance": 26,
+          "cer": 0.16352201257861634,
+          "exact_matches": 0,
+          "whitespace_free_cer": 0.06818181818181818
+        },
+        "jamo": {
+          "image_count": 6,
+          "failure_count": 0,
+          "reference_characters": 168,
+          "edit_distance": 20,
+          "cer": 0.11904761904761904,
+          "exact_matches": 0,
+          "whitespace_free_cer": 0.08695652173913043
+        },
+        "latin": {
+          "image_count": 3,
+          "failure_count": 0,
+          "reference_characters": 39,
+          "edit_distance": 6,
+          "cer": 0.15384615384615385,
+          "exact_matches": 0,
+          "whitespace_free_cer": 0.1
+        },
+        "light_background": {
+          "image_count": 15,
+          "failure_count": 0,
+          "reference_characters": 240,
+          "edit_distance": 19,
+          "cer": 0.07916666666666666,
+          "exact_matches": 3,
+          "whitespace_free_cer": 0.06153846153846154
+        },
+        "long": {
+          "image_count": 3,
+          "failure_count": 0,
+          "reference_characters": 108,
+          "edit_distance": 6,
+          "cer": 0.05555555555555555,
+          "exact_matches": 0,
+          "whitespace_free_cer": 0.06666666666666667
+        },
+        "medium": {
+          "image_count": 12,
+          "failure_count": 0,
+          "reference_characters": 210,
+          "edit_distance": 29,
+          "cer": 0.1380952380952381,
+          "exact_matches": 0,
+          "whitespace_free_cer": 0.05357142857142857
+        },
+        "moving_background": {
+          "image_count": 15,
+          "failure_count": 0,
+          "reference_characters": 273,
+          "edit_distance": 28,
+          "cer": 0.10256410256410256,
+          "exact_matches": 0,
+          "whitespace_free_cer": 0.0547945205479452
+        },
+        "one_line": {
+          "image_count": 24,
+          "failure_count": 0,
+          "reference_characters": 399,
+          "edit_distance": 45,
+          "cer": 0.11278195488721804,
+          "exact_matches": 3,
+          "whitespace_free_cer": 0.06422018348623854
+        },
+        "short": {
+          "image_count": 9,
+          "failure_count": 0,
+          "reference_characters": 81,
+          "edit_distance": 10,
+          "cer": 0.12345679012345678,
+          "exact_matches": 3,
+          "whitespace_free_cer": 0.08695652173913043
+        }
+      },
+      "engine": "paddleocr",
+      "engine_version": "3.7.0",
+      "model_id": "korean_PP-OCRv5_mobile_rec",
+      "preprocessing": "contrast",
+      "initialization_ms": 1260.7812999995076,
+      "first_warmup_prediction_ms": 108.13320000306703,
+      "script_entry_to_first_prediction_ms": 2639.873500003887,
+      "peak_parent_rss_bytes": 385253376,
+      "peak_process_tree_rss_bytes": 385253376,
+      "model_directory_bytes": 13658639,
+      "python_environment_bytes": 833329602,
+      "threads": 4,
+      "warmup_count": 3
+    }
+  ]
+}
