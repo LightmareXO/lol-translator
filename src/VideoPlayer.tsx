@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { AnalysisRequestPanel } from "./AnalysisRequestPanel";
 import { SubtitleRegionOverlay } from "./SubtitleRegionOverlay";
 import {
   getVideoContentRect,
@@ -119,6 +120,11 @@ export function VideoPlayer({ path, url, onRegionChange }: VideoPlayerProps) {
         )}
       </div>
       {region && <p className="selection-help">字幕範囲を選択済み</p>}
+      <AnalysisRequestPanel
+        key={JSON.stringify(region)}
+        path={path}
+        region={region}
+      />
       {status === "loading" && <p role="status">動画を読み込んでいます…</p>}
       {status === "error" && (
         <p className="error" role="alert">
