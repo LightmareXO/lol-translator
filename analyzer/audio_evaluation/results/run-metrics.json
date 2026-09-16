@@ -1,0 +1,25 @@
+{
+  "run_kind": "first_run_including_model_download_and_initialization",
+  "source_audio_seconds": 63.75,
+  "sample_count": 9,
+  "subtitle_line_count": 10,
+  "initialization_seconds": 26.045114499997,
+  "inference_seconds_sum": 30.445644599982188,
+  "inference_seconds_median_per_clip": 2.747499799996149,
+  "total_process_seconds": 56.50418519999948,
+  "inference_real_time_factor": 0.4775787388232508,
+  "rss_sample_interval_seconds": 0.05,
+  "baseline_process_tree_rss_bytes": 60874752,
+  "peak_process_tree_rss_bytes": 1813381120,
+  "model_cache_bytes": 1621667203,
+  "model_snapshot_bytes": 1621665983,
+  "model_weights_bytes": 1617884929,
+  "virtual_environment_bytes": 336142901,
+  "model_repository": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+  "model_revision": "0a363e9161cbc7ed1431c9597a8ceaf0c4f78fcf",
+  "notes": [
+    "The first initialization includes network download and model loading and does not represent a warm-cache startup.",
+    "Peak RSS is the sampled sum of the Python process and live child processes at 50 ms intervals.",
+    "Model cache size includes metadata; model snapshot and weights are reported separately."
+  ]
+}
