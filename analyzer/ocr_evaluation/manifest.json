@@ -9,11 +9,11 @@
     "fps": "60/1",
     "subtitle_region": {
       "x": 0.019791666666666666,
-      "y": 0.7703703703703704,
+      "y": 0.7981481481481482,
       "width": 0.9604166666666667,
-      "height": 0.12037037037037036
+      "height": 0.08888888888888889
     },
-    "region_note": "Issue #3の指定範囲と同じ字幕帯を使い、長文を切らないよう左右を実映像に合わせて拡張した。1920x1080ではx=38,y=832,width=1844,height=130。"
+    "region_note": "Issue #3で指定した縦位置を保ち、最長字幕を切らないよう左右だけを実映像に合わせて拡張した。1920x1080ではx=38,y=862,width=1844,height=96。右端のミニマップも一部含む固定範囲である。"
   },
   "extraction": {
     "tool": "ffmpeg",
@@ -60,7 +60,13 @@
       "ground_truth": "1렙 e를 예상 못하는데",
       "ground_truth_status": "verified",
       "line_count": 1,
-      "tags": ["short", "one_line", "light_background", "moving_background", "latin"]
+      "tags": [
+        "short",
+        "one_line",
+        "light_background",
+        "moving_background",
+        "latin"
+      ]
     },
     {
       "id": "g02_f02",
@@ -70,7 +76,13 @@
       "ground_truth": "1렙 e를 예상 못하는데",
       "ground_truth_status": "verified",
       "line_count": 1,
-      "tags": ["short", "one_line", "light_background", "moving_background", "latin"]
+      "tags": [
+        "short",
+        "one_line",
+        "light_background",
+        "moving_background",
+        "latin"
+      ]
     },
     {
       "id": "g02_f03",
@@ -80,7 +92,13 @@
       "ground_truth": "1렙 e를 예상 못하는데",
       "ground_truth_status": "verified",
       "line_count": 1,
-      "tags": ["short", "one_line", "light_background", "moving_background", "latin"]
+      "tags": [
+        "short",
+        "one_line",
+        "light_background",
+        "moving_background",
+        "latin"
+      ]
     },
     {
       "id": "g03_f01",
@@ -90,7 +108,13 @@
       "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
       "ground_truth_status": "verified",
       "line_count": 1,
-      "tags": ["long", "one_line", "light_background", "moving_background", "jamo"]
+      "tags": [
+        "long",
+        "one_line",
+        "light_background",
+        "moving_background",
+        "jamo"
+      ]
     },
     {
       "id": "g03_f02",
@@ -100,7 +124,13 @@
       "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
       "ground_truth_status": "verified",
       "line_count": 1,
-      "tags": ["long", "one_line", "light_background", "moving_background", "jamo"]
+      "tags": [
+        "long",
+        "one_line",
+        "light_background",
+        "moving_background",
+        "jamo"
+      ]
     },
     {
       "id": "g03_f03",
@@ -110,7 +140,13 @@
       "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
       "ground_truth_status": "verified",
       "line_count": 1,
-      "tags": ["long", "one_line", "light_background", "moving_background", "jamo"]
+      "tags": [
+        "long",
+        "one_line",
+        "light_background",
+        "moving_background",
+        "jamo"
+      ]
     },
     {
       "id": "g04_f01",
@@ -120,7 +156,13 @@
       "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
       "ground_truth_status": "verified",
       "line_count": 1,
-      "tags": ["medium", "one_line", "dark_background", "combat_background", "jamo"]
+      "tags": [
+        "medium",
+        "one_line",
+        "dark_background",
+        "combat_background",
+        "jamo"
+      ]
     },
     {
       "id": "g04_f02",
@@ -130,7 +172,13 @@
       "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
       "ground_truth_status": "verified",
       "line_count": 1,
-      "tags": ["medium", "one_line", "dark_background", "combat_background", "jamo"]
+      "tags": [
+        "medium",
+        "one_line",
+        "dark_background",
+        "combat_background",
+        "jamo"
+      ]
     },
     {
       "id": "g04_f03",
@@ -140,7 +188,13 @@
       "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
       "ground_truth_status": "verified",
       "line_count": 1,
-      "tags": ["medium", "one_line", "dark_background", "combat_background", "jamo"]
+      "tags": [
+        "medium",
+        "one_line",
+        "dark_background",
+        "combat_background",
+        "jamo"
+      ]
     },
     {
       "id": "g05_f01",

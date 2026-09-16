@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "measured_on": "2026-09-16",
+  "units": "bytes",
+  "python": {
+    "version": "3.10.11",
+    "windows_x64_embeddable_zip": 8629277,
+    "windows_x64_embeddable_expanded": 16676478,
+    "source": "https://www.python.org/ftp/python/3.10.11/python-3.10.11-embed-amd64.zip"
+  },
+  "paddleocr": {
+    "virtual_environment_expanded": 833329602,
+    "site_packages_expanded": 829629200,
+    "model_expanded": 13658639,
+    "unpruned_distribution_estimate_expanded": 863664719
+  },
+  "easyocr": {
+    "virtual_environment_expanded": 983525784,
+    "site_packages_expanded": 980624099,
+    "model_expanded": 16081533,
+    "unpruned_distribution_estimate_expanded": 1016283795
+  },
+  "method": "PowerShell recursive file-length sum. Distribution estimate is virtual environment + model + expanded embeddable Python.",
+  "compressed_distribution": null,
+  "notes": [
+    "The virtual environments include pip, metadata and development-time installation overhead and have not been pruned.",
+    "The embeddable Python size is measured separately because a Windows venv references its base interpreter.",
+    "The compressed application installer size was not measured because Issue #7 has not built the bundled runtime yet."
+  ]
+}

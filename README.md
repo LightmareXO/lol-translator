@@ -3,7 +3,9 @@
 A desktop app for working with Korean subtitles embedded in League of Legends videos.
 Currently supports selecting and playing a local video, and choosing one subtitle
 region, and passing a JSON request to Python for input validation.
-OCR and translation are not implemented yet.
+The app runtime does not perform OCR or translation yet. Issue #8's reproducible
+OCR evaluation is complete under `analyzer/ocr_evaluation`; it selects PaddleOCR
+PP-OCRv5 Korean recognition for the later runtime integration.
 
 ## Development
 

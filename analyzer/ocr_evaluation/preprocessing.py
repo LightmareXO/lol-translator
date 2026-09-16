@@ -30,7 +30,8 @@ def preprocess(image: Any, mode: str) -> Any:
     if mode == "scale2x":
         return cv2.resize(image, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
     if mode == "grayscale":
-        return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        return cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
     # Keep the midpoint fixed and increase contrast by 1.5x. This is applied to
     # every image, never selected per image based on its recognition result.
     return np.clip((image.astype(np.float32) - 127.5) * 1.5 + 127.5, 0, 255).astype(
@@ -41,7 +42,6 @@ def preprocess(image: Any, mode: str) -> Any:
 PREPROCESSING_DESCRIPTION = {
     "raw": "OpenCV BGR decode only",
     "scale2x": "2x cubic interpolation (OpenCV INTER_CUBIC)",
-    "grayscale": "OpenCV BGR to 8-bit grayscale",
+    "grayscale": "OpenCV BGR to 8-bit grayscale, then equal-value 3-channel BGR",
     "contrast": "1.5x linear contrast around midpoint 127.5 with clipping",
 }
-
