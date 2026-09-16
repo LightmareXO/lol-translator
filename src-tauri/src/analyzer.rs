@@ -9,11 +9,11 @@ use tauri::Manager;
 
 #[cfg(windows)]
 const PYTHON_NAME: &str = "python.exe";
-#[cfg(windows)]
+#[cfg(all(windows, debug_assertions))]
 const VENV_BIN_DIRECTORY: &str = "Scripts";
 #[cfg(not(windows))]
 const PYTHON_NAME: &str = "python";
-#[cfg(not(windows))]
+#[cfg(all(not(windows), debug_assertions))]
 const VENV_BIN_DIRECTORY: &str = "bin";
 
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
