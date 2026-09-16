@@ -1,0 +1,38 @@
+{
+  "version": "lol-ko-ja-v1",
+  "frozen_before_translation": true,
+  "date": "2026-09-16",
+  "naming_patch": "16.18.1",
+  "note": "正式名称はRiot Data Dragonの同一IDを言語間で照合。動画のパッチは未確認。略称は非公式。原文の一律置換には使わない。",
+  "sources": {
+    "items_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/item.json",
+    "items_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/item.json",
+    "runes_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/runesReforged.json",
+    "runes_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/runesReforged.json",
+    "champions_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/champion.json",
+    "champions_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/champion.json",
+    "spells_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/summoner.json",
+    "spells_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/summoner.json",
+    "flash_alias": "https://www.inven.co.kr/board/lol/3369/1978586",
+    "support_alias": "https://talk.op.gg/s/lol/tip/6107935",
+    "cleaver_youmu_alias": "https://m.inven.co.kr/site/lol/manualtool.php?champnum=83&idx=117738&p=6&pg=328&season=7&vtype=mobile",
+    "hexflash_alias": "https://m.inven.co.kr/site/lol/manualtool.php?c=122258&cp=1&idx=143140&p=80",
+    "darius_alias": "https://d.namu.moe/w/다리(동음이의어)",
+    "jamo": "https://korean.go.kr/common/download.do%3Bfront%3DB273103B1F431031CE40385C45AA1DDB?c_file_name=3f292972-4353-45f8-9cc8-5580ed2ce8db.pdf&file_path=reportData&o_file_name=2021%EB%85%84+%EB%A7%9E%EC%B6%A4%EB%B2%95+%EA%B5%90%EC%A0%95+%EB%A7%90%EB%AD%89%EC%B9%98+%EC%97%B0%EA%B5%AC+%EB%B6%84%EC%84%9D.pdf"
+  },
+  "entries": [
+    {"ko":"점멸", "aliases":["플","플래쉬"], "ja":"フラッシュ", "kind":"summoner_spell", "meaning":"短距離の瞬間移動を行うサモナースペル", "id":"SummonerFlash", "status":"source_checked", "sources":["spells_ko","spells_ja","flash_alias"]},
+    {"ko":"서포터", "aliases":["서폿"], "ja":"サポート", "kind":"role", "meaning":"味方を支援するロール", "status":"community_source_checked", "sources":["support_alias"]},
+    {"ko":"칠흑의 양날 도끼", "aliases":["블클"], "ja":"ブラック クリーバー", "kind":"item", "meaning":"アイテム名。黒斧とも呼ぶ", "id":"3071", "status":"source_checked", "sources":["items_ko","items_ja","cleaver_youmu_alias"]},
+    {"ko":"요우무의 유령검", "aliases":["요우무"], "ja":"妖夢の霊剣", "kind":"item", "meaning":"アイテム名。ヨウムとも呼ぶ", "id":"3142", "status":"source_checked", "sources":["items_ko","items_ja","cleaver_youmu_alias"]},
+    {"ko":"마법공학 점멸기", "aliases":["마공점"], "ja":"ヘクステックフラッシュネイター", "kind":"rune", "meaning":"ルーン名。ヘクスフラッシュとも呼ぶ", "id":"8306", "status":"source_checked", "sources":["runes_ko","runes_ja","hexflash_alias"]},
+    {"ko":"빙결 강화", "aliases":["빙결"], "ja":"グレイシャルオーグメント", "kind":"rune", "meaning":"ルーン文脈での氷結。一般語の凍結の可能性もある", "id":"8351", "status":"source_checked_context_required", "sources":["runes_ko","runes_ja"]},
+    {"ko":"다재다능", "aliases":[], "ja":"なんでも屋", "kind":"rune", "meaning":"ルーン文脈では固有名詞。一般語としては多才", "id":"8316", "status":"source_checked_context_required", "sources":["runes_ko","runes_ja"]},
+    {"ko":"다리우스", "aliases":["다리"], "ja":"ダリウス", "kind":"champion", "meaning":"チャンピオン名。다리は一般語では脚や橋でもある", "id":"Darius", "status":"source_checked_context_required", "sources":["champions_ko","champions_ja","darius_alias"]},
+    {"ko":"탈론", "aliases":[], "ja":"タロン", "kind":"champion", "meaning":"チャンピオン名", "id":"Talon", "status":"source_checked", "sources":["champions_ko","champions_ja"]},
+    {"ko":"카이사", "aliases":[], "ja":"カイ＝サ", "kind":"champion", "meaning":"チャンピオン名", "id":"Kaisa", "status":"source_checked", "sources":["champions_ko","champions_ja"]},
+    {"ko":"볼리베어", "aliases":[], "ja":"ボリベア", "kind":"champion", "meaning":"チャンピオン名", "id":"Volibear", "status":"source_checked", "sources":["champions_ko","champions_ja"]},
+    {"ko":"ㄱㅊ", "aliases":[], "ja":"大丈夫／悪くない", "kind":"internet_abbreviation", "meaning":"괜찮다の子音略記。文脈で訳し分ける", "status":"source_checked", "sources":["jamo"]},
+    {"ko":"ㄹㅇ", "aliases":[], "ja":"本当に／マジで", "kind":"internet_abbreviation", "meaning":"레알／리얼の子音略記", "status":"source_checked", "sources":["jamo"]}
+  ]
+}

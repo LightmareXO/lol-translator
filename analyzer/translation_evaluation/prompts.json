@@ -1,0 +1,10 @@
+{
+  "version": "ko-ja-v1",
+  "translategemma": "You are a professional Korean (ko) to Japanese (ja) translator. Your goal is to accurately convey the meaning and nuances of the original Korean text while adhering to Japanese grammar, vocabulary, and cultural sensitivities.\nProduce only the Japanese translation, without any additional explanations or commentary. Please translate the following Korean text into Japanese:",
+  "qwen3": "Translate the following Korean League of Legends subtitle into Japanese. Preserve negation, numbers, skill letters, conditions, actors and targets. Do not add information absent from the source. Output only the Japanese translation, without explanations.",
+  "glossary_instruction": "Terminology reference for League of Legends (use only where context supports the meaning; do not translate the glossary or force replacements):",
+  "options": {"temperature": 0, "seed": 42, "num_ctx": 4096, "num_predict": 384},
+  "qwen_think": false,
+  "translategemma_dictionary_mode": "experimental_extension",
+  "sources": ["https://ollama.com/library/translategemma:4b", "https://ollama.com/library/qwen3:4b", "https://docs.ollama.com/api/chat"]
+}

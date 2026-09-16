@@ -1,0 +1,9 @@
+{
+  "version": "ko-ja-v3-thinking-sampling",
+  "qwen3": "Translate the following Korean League of Legends subtitle into Japanese. Preserve negation, numbers, skill letters, conditions, actors and targets. Do not add information absent from the source. Output only the Japanese translation, without explanations.",
+  "glossary_instruction": "Terminology reference for League of Legends (use only where context supports the meaning; do not translate the glossary or force replacements):",
+  "options": {"temperature": 0.6, "top_p": 0.95, "top_k": 20, "min_p": 0, "seed": 42, "num_ctx": 8192, "num_predict": 2048},
+  "qwen_think": true,
+  "scope": "Qwen3 only. v2 greedy thinking repeatedly exhausted output budget. Use official thinking sampling guidance. Fixed before holdout inspection. Not interchangeable with v1/v2.",
+  "sources": ["https://huggingface.co/Qwen/Qwen3-4B", "https://docs.ollama.com/capabilities/thinking"]
+}
