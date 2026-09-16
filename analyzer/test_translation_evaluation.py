@@ -7,10 +7,14 @@ from unittest.mock import Mock
 from urllib.error import HTTPError
 
 from translation_evaluation.evaluate import (
-    cached_result, chat_with_retry, digest, initial_dataset, jobs_for,
-    make_payload, read_json, save_json,
+    cached_result, chat_with_retry, digest, initial_dataset, jobs_for, stored_identity,
+    make_payload, read_json, save_json, validate_thinking,
 )
 from translation_evaluation.collect import export, summarise
+from translation_evaluation.apply_reviews import apply
+from translation_evaluation.review_page import render
+from translation_evaluation.holdout_candidates import candidate_timestamp
+from translation_evaluation.provisional_judge import validate as validate_judge
 
 BASE = Path(__file__).parent / "translation_evaluation"
 
@@ -49,6 +53,13 @@ class TranslationTests(unittest.TestCase):
         payload = make_payload("translategemma:4b", "한글", False, self.prompts, self.glossary)
         self.assertNotIn("think", payload)
         self.assertTrue(payload["messages"][0]["content"].endswith(":\n\n\n한글"))
+
+    def test_thinking_only_variant_cannot_be_mislabeled_as_nonthinking(self):
+        with self.assertRaisesRegex(ValueError, "thinking-only"):
+            validate_thinking({"model_info": {"general.finetune": "Thinking"}}, {"qwen_think": False})
+        validate_thinking({"model_info": {"general.finetune": "Thinking"}}, {"qwen_think": True})
+        with self.assertRaisesRegex(ValueError, "instruct-only"):
+            validate_thinking({"model_info": {"general.finetune": "Instruct"}}, {"qwen_think": True})
 
     def test_timeout_is_bounded_and_recorded(self):
         client = Mock()
@@ -106,6 +117,26 @@ class TranslationTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "checksum"):
                 cached_result(path, job, identity)
 
+    def test_stored_identity_is_stable_for_resume(self):
+        identity = {"model": "m", "dataset_sha256": "abc"}
+
+        saved = stored_identity(identity)
+
+        self.assertEqual(saved, stored_identity(identity))
+        self.assertEqual(saved["identity_sha256"], digest(identity))
+        self.assertNotIn("identity_sha256", identity)
+
+    def test_fixed_interval_timestamp_is_center_of_fps_bucket(self):
+        self.assertEqual(candidate_timestamp(3, 3, 0), 4.5)
+        self.assertEqual(candidate_timestamp(3, 3, 1), 7.5)
+
+    def test_judge_response_requires_every_candidate(self):
+        valid = json.dumps({"judgements": [{"candidate_id": "c1", "severity": "none",
+            "error_types": [], "rationale": "保持", "semantic_signature": "同じ"}]})
+        self.assertEqual(validate_judge(valid, {"c1": "訳"})[0]["severity"], "none")
+        with self.assertRaisesRegex(ValueError, "correspondence"):
+            validate_judge(valid, {"c1": "訳", "c2": "別訳"})
+
 
 class CollectionTests(unittest.TestCase):
     def row(self, identifier="r1", sample="g_speech_f02"):
@@ -158,6 +189,37 @@ class CollectionTests(unittest.TestCase):
             preserved = next(r for r in scoring if r["blind_id"] == first)
             self.assertEqual(preserved["rationale"], "preserve my draft")
             self.assertEqual(len(scoring), 2)
+
+    def test_explicit_reviews_match_group_and_text_and_preserve_human(self):
+        packet = [{"sample_id": "g_f02", "output": "same", "review_status": "unreviewed"},
+                  {"sample_id": "other_f02", "output": "same", "review_status": "unreviewed"},
+                  {"sample_id": "g_f01", "output": "same", "review_status": "human_confirmed"}]
+        self.assertEqual(apply(packet, [{"group_id": "g", "output": "same", "severity": "major"}]), 1)
+        self.assertNotIn("severity", packet[1])
+        self.assertNotIn("severity", packet[2])
+
+    def test_explicit_reviews_can_distinguish_two_lines_in_one_group(self):
+        packet = [{"sample_id": "g_annotation_f02", "output": "same", "review_status": "unreviewed"},
+                  {"sample_id": "g_speech_f02", "output": "same", "review_status": "unreviewed"}]
+        decisions = [{"sample_id": "g_annotation_f02", "group_id": "g", "output": "same",
+                      "severity": "major"}]
+
+        self.assertEqual(apply(packet, decisions), 1)
+        self.assertEqual(packet[0]["severity"], "major")
+        self.assertNotIn("severity", packet[1])
+
+    def test_review_html_escapes_model_output(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "x.png").write_bytes(b"placeholder")
+            records = [{"id": "x", "group_id": "g", "primary": True, "source_ko": "<text>",
+                        "ocr_ko": "ocr", "timestamp_seconds": 1}]
+            outputs = [{"sample_id": "x", "output": "<script>alert(1)</script>", "model": "m",
+                        "condition": "A", "experiment": "exp", "status": "ok", "wall_ms": 1}]
+            render(records, outputs, root, root / "report.html", {})
+            result = (root / "report.html").read_text(encoding="utf-8")
+            self.assertNotIn("<script>", result)
+            self.assertIn("&lt;script&gt;", result)
 
 
 if __name__ == "__main__":

@@ -24,7 +24,8 @@ def extract(video, specification, destination):
     rows = []
     for sample in specification["samples"]:
         for index, offset in enumerate((-1, 0, 1), 1):
-            timestamp = sample["time"] + offset / specification["fps"]
+            timestamp = (sample["time"] + specification.get("timestamp_correction_seconds", 0)
+                         + offset / specification["fps"])
             frame = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-ss", str(timestamp),
                 "-i", str(video), "-frames:v", "1", "-f", "image2pipe", "-vcodec", "png", "pipe:1"],
                 check=True, capture_output=True).stdout

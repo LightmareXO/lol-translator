@@ -1,0 +1,119 @@
+{
+  "status": "ai_provisional",
+  "human_verified": false,
+  "note": "採点補助資料。完全一致の参考訳としては使わない。用語の出典はglossary.jsonを参照。判断が曖昧ならundeterminedとする。翻訳モデルへの入力は禁止。",
+  "groups": {
+    "g01": {
+      "ko": "바로 빙결다리서폿인데",
+      "must_preserve": [
+        "サポートのダリウスについての説明",
+        "빙결はこのルーン文脈でグレイシャルオーグメント"
+      ],
+      "must_not_add": ["氷の橋や脚についての説明"],
+      "reference_ja_provisional": "グレイシャルのダリウスサポートなんだけど",
+      "evidence": [
+        "glossary.json: Darius, Glacial Augment, support",
+        "ocr_evaluation/manifest.json:g01"
+      ],
+      "uncertainty": "発言の続きの接続語は前後文脈で変わりうる"
+    },
+    "g02": {
+      "ko": "1렙 e를 예상 못하는데",
+      "must_preserve": [
+        "レベル1",
+        "Eスキル",
+        "予想できない、または予想していないという否定"
+      ],
+      "must_not_add": ["Eを相手、ラブ、フラッシュへ変更"],
+      "reference_ja_provisional": "レベル1のEは予想してないんだよね",
+      "evidence": ["ocr_evaluation/manifest.json:g02"],
+      "uncertainty": "明示されない主語を勝手に固定しない"
+    },
+    "g03": {
+      "ko": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+      "must_preserve": [
+        "初手の妖夢も悪くない",
+        "相手の構成次第",
+        "硬さが必要そうならブラック クリーバーを選ぶ"
+      ],
+      "must_not_add": ["別のゲームになる", "固有名詞ソヨウムド"],
+      "reference_ja_provisional": "初手妖夢もありだけど、相手の構成を見て硬さが必要そうなら黒斧にします",
+      "evidence": [
+        "glossary.json: Youmuu, Black Cleaver, ㄱㅊ",
+        "ocr_evaluation/manifest.json:g03"
+      ],
+      "uncertainty": "口語の딴딴は硬さを指すというAI暫定解釈"
+    },
+    "g04": {
+      "ko": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+      "must_preserve": [
+        "グレイシャルとヘクスフラッシュ",
+        "ロームへの影響が強いという強調"
+      ],
+      "must_not_add": ["周囲へ広がる氷結魔法", "ジリムという対象"],
+      "reference_ja_provisional": "グレイシャルとヘクスフラッシュ、マジでロームへの影響がすごい",
+      "evidence": [
+        "glossary.json: Glacial Augment, Hexflash, ㄹㅇ",
+        "ocr_evaluation/manifest.json:g04"
+      ],
+      "uncertainty": "지림の強さと語調は口語的"
+    },
+    "g05": {
+      "ko": "달려잇",
+      "must_preserve": ["走る、行く方向の掛け声とみられる表現"],
+      "reference_ja_provisional": "行けー！／走れー！",
+      "evidence": ["ocr_evaluation/manifest.json:g05"],
+      "uncertainty": "掛け声か状態説明かを人が未確認。『走っている』を重大誤訳と断定しない"
+    },
+    "g06": {
+      "ko": "플 빼고 다음 턴에 잡으면 되죠",
+      "must_preserve": [
+        "相手のフラッシュを使わせる",
+        "その後、次の機会に倒せばよいという行動順序"
+      ],
+      "must_not_add": ["カード", "フラッシュを倒す", "除外するだけの話"],
+      "reference_ja_provisional": "フラッシュを吐かせて、次の機会に倒せばいいよね",
+      "evidence": ["glossary.json: Flash", "ocr_evaluation/manifest.json:g06"],
+      "uncertainty": "잡다の対象は省略されている。具体的な敵名や確定キルを補わない"
+    },
+    "g07": {
+      "ko": "여기서 디테일이 좀 있는데",
+      "must_preserve": ["ここに細かい点、工夫、注意点があるという導入"],
+      "reference_ja_provisional": "ここ、ちょっと細かいポイントがあるんだけど",
+      "evidence": ["ocr_evaluation/manifest.json:g07"],
+      "uncertainty": "『注意が必要』は語調のずれと扱える。後続の具体的内容は補わない"
+    },
+    "g08": {
+      "ko": "방마저스탯으로 다재다능도 완성시켜줌",
+      "must_preserve": [
+        "物理防御と魔法防御のステータス",
+        "なんでも屋の完成にもつながる"
+      ],
+      "must_not_add": ["防潮堤", "防犯対策", "一般的な多才さへの置換"],
+      "reference_ja_provisional": "物理防御と魔法防御のステータスで、なんでも屋も完成させる",
+      "evidence": [
+        "glossary.json: Jack of All Trades",
+        "ocr_evaluation/manifest.json:g08",
+        "https://lol.ps/community/champ-build/15934"
+      ],
+      "uncertainty": "방마저の略称解釈はコミュニティ用例と文脈に基づく。動画当時の発動条件は未確認で、段階数などを追加しない"
+    }
+  },
+  "additional_open_questions": [
+    {
+      "group": "t04/t14",
+      "ko": "로크",
+      "question": "人物名、チャンピオン名、呼び方のどれか。原文表記を残し、正式名称へ推測変換しない。"
+    },
+    {
+      "group": "t24",
+      "ko": "정정탈",
+      "question": "動画タイトルから征服者ジャングルタロンの略と推測できるが、人による意味確認が必要。"
+    },
+    {
+      "group": "t15",
+      "ko": "카이사 전적 검색 중 / 탈론 하는 친구네",
+      "question": "黄色が戦績検索中の注釈、白色が発言という役割分離の確認。"
+    }
+  ]
+}

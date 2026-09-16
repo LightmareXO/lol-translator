@@ -1,0 +1,222 @@
+[
+  {
+    "group_id": "g01",
+    "output": "それは「바로빙결だり」という言葉の意訳です",
+    "severity": "major",
+    "error_types": ["terminology", "omission", "hallucination"],
+    "rationale": "ダリウスサポートとルーンの説明が消え、『意訳です』という原文にない説明に変わった。",
+    "semantic_signature": "意訳というメタ説明",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g01", "ocr_evaluation/manifest.json:g01"]
+  },
+  {
+    "group_id": "g01",
+    "output": "それは、氷の橋をサポートする役割ですね。",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "ダリウスを橋と解釈し、チャンピオンと役割の意味を壊している。",
+    "semantic_signature": "氷の橋の支援",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g01", "ocr_evaluation/manifest.json:g01"]
+  },
+  {
+    "group_id": "g02",
+    "output": "「1ラブを予想できなかった」",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "レベル1とEスキルが『1ラブ』になり、対象を識別できない。",
+    "semantic_signature": "1ラブの予想",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g02", "ocr_evaluation/manifest.json:g02"]
+  },
+  {
+    "group_id": "g02",
+    "output": "1レベルの相手を予想できなかったの",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "数字と否定は残るが、Eスキルを相手へ変更している。",
+    "semantic_signature": "レベル1の相手の予想",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g02", "ocr_evaluation/manifest.json:g02"]
+  },
+  {
+    "group_id": "g03",
+    "output": "ソヨウムドも良い選択ですが、対戦相手の組み合わせによっては、別の戦略を取る方が良い場合もあります。",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "初手妖夢、硬さが必要という条件、黒斧を選ぶ行動が保持されていない。",
+    "semantic_signature": "不明名称と別戦略",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g03", "ocr_evaluation/manifest.json:g03"]
+  },
+  {
+    "group_id": "g03",
+    "output": "「ソヨウムドも、相手の組み合わせによって全く異なる戦略が必要になる場合、それはまるで別のゲームのようなものです。」",
+    "severity": "major",
+    "error_types": ["terminology", "omission", "hallucination"],
+    "rationale": "アイテム選択と硬さの条件が欠落し、『別のゲーム』を追加した。",
+    "semantic_signature": "別ゲームの比喩",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g03", "ocr_evaluation/manifest.json:g03"]
+  },
+  {
+    "group_id": "g04",
+    "output": "氷結魔法が周囲に広がり、影響を与える。",
+    "severity": "major",
+    "error_types": ["terminology", "omission", "hallucination"],
+    "rationale": "ルーン構成のロームへの強い影響を、魔法が広がる描写へ変更した。",
+    "semantic_signature": "周囲に広がる氷結",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g04", "ocr_evaluation/manifest.json:g04"]
+  },
+  {
+    "group_id": "g04",
+    "output": "「빙결マゴウポイント」は、本当にロミングの影響が非常に大きい。",
+    "severity": "terminology",
+    "error_types": ["terminology"],
+    "rationale": "ロームへの強い影響は残るが、ルーン名を日本語の名称として読めない。",
+    "semantic_signature": "不明ルーンの強いローム影響",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g04", "ocr_evaluation/manifest.json:g04"]
+  },
+  {
+    "group_id": "g04",
+    "output": "氷結魔法が、敵を凍らせる効果を発揮する。",
+    "severity": "major",
+    "error_types": ["terminology", "omission", "hallucination"],
+    "rationale": "ロームへの影響が欠落し、敵を凍らせる効果の説明になった。",
+    "semantic_signature": "敵を凍らせる",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g04", "ocr_evaluation/manifest.json:g04"]
+  },
+  {
+    "group_id": "g04",
+    "output": "氷結魔法攻撃がジリムに影響を与える",
+    "severity": "major",
+    "error_types": ["terminology", "omission", "hallucination"],
+    "rationale": "強調表現지림を対象名とみなしたと考えられ、ロームの意味が消えた。",
+    "semantic_signature": "ジリムへの魔法攻撃",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g04", "ocr_evaluation/manifest.json:g04"]
+  },
+  {
+    "group_id": "g05",
+    "output": "走っている",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "走るという語義は合うが、原文が掛け声か状態説明かを未確認。人の確認まで重大度を確定しない。",
+    "semantic_signature": "走行状態",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g05", "ocr_evaluation/manifest.json:g05"]
+  },
+  {
+    "group_id": "g06",
+    "output": "「プラ以外のカードは、次のターンで回収できるはずです。」",
+    "severity": "major",
+    "error_types": ["terminology", "hallucination", "sequence"],
+    "rationale": "カードは原文にない。フラッシュを使わせて次に倒す行動がカード回収へ変わった。",
+    "semantic_signature": "カード回収",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g06", "ocr_evaluation/manifest.json:g06"]
+  },
+  {
+    "group_id": "g06",
+    "output": "「플を倒したら、次のターンで倒せば良い」",
+    "severity": "major",
+    "error_types": ["terminology", "sequence"],
+    "rationale": "フラッシュを使わせる段階が『플を倒す』へ変わった。",
+    "semantic_signature": "プルを倒してまた倒す",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g06", "ocr_evaluation/manifest.json:g06"]
+  },
+  {
+    "group_id": "g07",
+    "output": "ここで、細かい点に注目していただきたいです。",
+    "severity": "minor",
+    "error_types": [],
+    "rationale": "細かい点への導入は保持。依頼調への変更はあるが、具体的な攻略内容を足していない。",
+    "semantic_signature": "細部への注意",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g07", "ocr_evaluation/manifest.json:g07"]
+  },
+  {
+    "group_id": "g07",
+    "output": "この部分には、もう少し注意が必要です。",
+    "severity": "minor",
+    "error_types": [],
+    "rationale": "『細かい点がある』を注意喚起へ意訳している。重大なゲーム内行動の変更はないという暫定判断。",
+    "semantic_signature": "細部への注意",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g07", "ocr_evaluation/manifest.json:g07"]
+  },
+  {
+    "group_id": "g07",
+    "output": "細かい部分に注意が必要です。",
+    "severity": "minor",
+    "error_types": [],
+    "rationale": "細部を示す導入として許容可能だが、注意が必要という語調の変更がある。",
+    "semantic_signature": "細部への注意",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g07", "ocr_evaluation/manifest.json:g07"]
+  },
+  {
+    "group_id": "g08",
+    "output": "防衛能力を向上させることで、総合的な能力を完成させます。",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "なんでも屋というルーンと物理防御、魔法防御の区別が消え、一般的能力の説明になった。",
+    "semantic_signature": "一般的防衛能力の完成",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g08", "ocr_evaluation/manifest.json:g08"]
+  },
+  {
+    "group_id": "g08",
+    "output": "防衛能力を総合的に向上させる",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "ルーンの完成という結果が欠落し、一般的な防衛能力上昇だけになった。",
+    "semantic_signature": "一般的防衛能力上昇",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g08", "ocr_evaluation/manifest.json:g08"]
+  },
+  {
+    "group_id": "g08",
+    "output": "また、防犯対策についても、様々な方法を検討し、実現可能なものを具体的に検討を進める。",
+    "severity": "major",
+    "error_types": ["hallucination", "omission", "terminology"],
+    "rationale": "ゲームのステータスとルーンの話が、原文にない防犯対策の検討へ変わった。",
+    "semantic_signature": "防犯対策",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g08", "ocr_evaluation/manifest.json:g08"]
+  },
+  {
+    "group_id": "g08",
+    "output": "また、防潮堤の建設も完了させる。",
+    "severity": "major",
+    "error_types": ["hallucination", "omission", "terminology"],
+    "rationale": "原文にない防潮堤の建設へ変わった。",
+    "semantic_signature": "防潮堤建設",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex: independent of evaluated Ollama models; model/condition hidden",
+    "evidence": ["meaning_targets.json:g08", "ocr_evaluation/manifest.json:g08"]
+  }
+]

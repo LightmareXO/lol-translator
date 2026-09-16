@@ -104,7 +104,7 @@ def summarise(rows, scoring, mapping):
         item = {"experiment": experiment, "model": items[0]["model"], "split": split,
                 "condition": condition, "primary": primary, "requests": len(items),
                 "subtitle_groups": len({r["group_id"] for r in items}),
-                "api_failures": len(items)-len(ok), "wall_ms_median": statistics.median(times) if times else None,
+                "request_failures": len(items)-len(ok), "wall_ms_median": statistics.median(times) if times else None,
                 "wall_ms_p95": percentile(times) if times else None,
                 "generated_tokens": sum(r["response"].get("eval_count", 0) for r in ok),
                 "all_generated_tokens_including_failures": sum(r["response"].get("eval_count", 0) for r in items),
@@ -167,6 +167,29 @@ def summarise(rows, scoring, mapping):
             "note": "Adjacent frames are auxiliary. AI judgements are provisional. No general error rate is inferred."}
 
 
+def report_markdown(summary):
+    lines = ["# 翻訳比較の集計", "", "主評価のみを表示します。隣接フレームは分母へ追加しません。",
+             "人による確認とAI暫定採点は別集計です。判定不能と未採点を正解に含めません。", "",
+             "| モデル／実験 | 条件 | 字幕数 | 人が確定した重大誤訳／確認済み | AI暫定の重大誤訳／判定済み | 未採点の出力数 | 上限到達 | 成功応答の中央値／p95 (ms) |",
+             "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+    for item in summary["conditions"]:
+        if not item["primary"]:
+            continue
+        human, provisional = item["human_confirmed"], item["ai_provisional"]
+        def ratio(data):
+            denominator = data["fully_determined_groups"]
+            return f'{data["major_fully_determined_groups"]}/{denominator}' if denominator else "判定済みなし"
+        latency = "未測定" if item["wall_ms_median"] is None else f'{item["wall_ms_median"]:.1f} / {item["wall_ms_p95"]:.1f}'
+        lines.append(f'| {item["model"]} / {item["experiment"][:10]} | {item["condition"]} | {item["subtitle_groups"]} | '
+                     f'{ratio(human)} | {ratio(provisional)} | {item["unreviewed_units"]} | {item["truncated_outputs"]} | {latency} |')
+    lines.extend(["", "APIが応答しても、訳文が空、途中で切れる、辞書や思考文を出力するといった失敗はありえます。",
+                  "上限到達件数、出力形式の検査結果、意味の重大度を合わせて判断してください。",
+                  "形式検査だけ済んだ出力は、意味について判定済みの分母に含めません。",
+                  "誤りの種類、判定不能件数、対応条件の比較、隣接フレームの比較はsummary.jsonに保存しています。",
+                  "この小標本の件数やp95を、一般的な誤訳率や性能へ外挿しません。"])
+    return "\n".join(lines) + "\n"
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--runs", type=Path, required=True)
@@ -175,6 +198,7 @@ def main():
     rows = export(args.runs, args.output)
     summary = summarise(rows, read_json(args.output / "scoring.json"), read_json(args.output / "blind_mapping.json"))
     save_json(args.output / "summary.json", summary)
+    (args.output / "report.md").write_text(report_markdown(summary), encoding="utf-8")
 
 
 if __name__ == "__main__":

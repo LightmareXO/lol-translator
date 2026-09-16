@@ -208,6 +208,19 @@ def cached_result(path, job, identity):
     return result if result["status"] == "ok" else None
 
 
+def validate_thinking(show, prompts):
+    info = show.get("model_info", {})
+    variant = info.get("general.finetune", "").lower()
+    if variant == "thinking" and prompts.get("qwen_think") is False:
+        raise ValueError("thinking-only model cannot be evaluated as non-thinking")
+    if variant == "instruct" and prompts.get("qwen_think") is True:
+        raise ValueError("instruct-only model cannot be evaluated as thinking")
+
+
+def stored_identity(identity):
+    return {**identity, "identity_sha256": digest(identity)}
+
+
 def run(client, model, records, prompts, glossary, destination):
     models = client.request("tags")["models"]
     info = next((item for item in models if item["name"] == model), None)
@@ -216,20 +229,27 @@ def run(client, model, records, prompts, glossary, destination):
     show = client.request("show", {"model": model})
     if show.get("remote_host") or show.get("remote_model"):
         raise ValueError("remote model is forbidden")
+    validate_thinking(show, prompts)
     identity = {"model": model, "digest": info["digest"], "details": info["details"],
                 "model_disk_bytes": info["size"], "ollama": client.request("version"),
                 "template": show.get("template"), "model_parameters": show.get("parameters"),
+                "model_info": show.get("model_info"), "capabilities": show.get("capabilities"),
                 "prompts": prompts, "glossary": glossary, "dataset_sha256": digest(records),
                 "runner_schema": 2, "runner_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
-    directory = destination / digest(identity)
+    identity_digest = digest(identity)
+    directory = destination / identity_digest[:24]
     directory.mkdir(parents=True, exist_ok=True)
     lock = directory / "running.lock"
     descriptor = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
     os.close(descriptor)
     try:
-        save_json(directory / "identity.json", identity)
+        existing_identity = directory / "identity.json"
+        saved_identity = stored_identity(identity)
+        if existing_identity.exists() and read_json(existing_identity) != saved_identity:
+            raise ValueError("short experiment ID collision")
+        save_json(existing_identity, saved_identity)
         jobs = list(jobs_for(records, model, prompts, glossary))
-        pending = [(job, directory / (digest(job) + ".json")) for job in jobs]
+        pending = [(job, directory / (digest(job)[:32] + ".json")) for job in jobs]
         pending = [(job, path) for job, path in pending if cached_result(path, job, identity) is None]
         if not pending:
             return directory
@@ -259,9 +279,10 @@ def run(client, model, records, prompts, glossary, destination):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--model", required=True, choices=["translategemma:4b", "qwen3:4b", "qwen3:8b"])
+    parser.add_argument("--model", required=True, choices=["translategemma:4b", "qwen3:4b", "qwen3:8b", "qwen3:4b-instruct-2507-q4_K_M"])
     parser.add_argument("--dataset", type=Path)
     parser.add_argument("--prompts", type=Path)
+    parser.add_argument("--primary-only", action="store_true", help="Evaluate central frames only; keep auxiliary OCR data separately")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--port", type=int, default=11434)
     parser.add_argument("--timeout", type=float, default=180)
@@ -271,6 +292,10 @@ def main():
         read_json(base.parent / "ocr_evaluation/manifest.json"), base.parent / "ocr_evaluation/results/details.csv")
     if len({r['id'] for r in records}) != len(records):
         raise ValueError("duplicate dataset ID")
+    if args.primary_only:
+        records = [row for row in records if row["primary"]]
+    if not records:
+        raise ValueError("empty dataset")
     print(run(LocalClient(args.port, args.timeout), args.model, records,
               read_json(args.prompts or base / "prompts.json"), read_json(base / "glossary.json"), args.output))
 
