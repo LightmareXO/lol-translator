@@ -7,6 +7,7 @@ import {
   screen,
 } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import type { AnalysisProject } from "./analysisProject";
 import { getVideoContentRect } from "./subtitleRegion";
 import { VideoPlayer } from "./VideoPlayer";
 
@@ -74,7 +75,9 @@ function loadVideo() {
   Object.defineProperties(video, {
     videoWidth: { configurable: true, value: 1920 },
     videoHeight: { configurable: true, value: 1080 },
+    duration: { configurable: true, value: 120 },
   });
+  fireEvent.loadedMetadata(video);
   fireEvent.loadedData(video);
   return video;
 }
@@ -94,6 +97,61 @@ function setup() {
     ...rendered,
     video,
     surface: screen.getByRole("button", { name: "字幕範囲をドラッグして指定" }),
+  };
+}
+
+function savedProject(): AnalysisProject {
+  return {
+    schema_version: 1,
+    kind: "lol-translator-project",
+    source_video: {
+      path: "C:/test.mp4",
+      name: "test.mp4",
+      size_bytes: 1,
+      modified_unix_ms: 1,
+      sha256: "abc",
+      duration_seconds: 120,
+      width: 1920,
+      height: 1080,
+    },
+    analysis: {
+      mode: "range",
+      start_seconds: 1,
+      end_seconds: 4,
+      subtitle_region: { x: 0.1, y: 0.7, width: 0.8, height: 0.2 },
+      sample_interval_ms: 200,
+      line_split_ratio: null,
+    },
+    configuration: { ocr: {}, translation: {} },
+    subtitles: [
+      {
+        id: "subtitle-00001",
+        start_seconds: 1,
+        end_seconds: 2,
+        image_png_base64: null,
+        ocr: {
+          status: "completed",
+          raw_text: "안녕",
+          raw_lines: ["안녕"],
+          confidence: 0.9,
+          error: null,
+        },
+        corrected_ko: null,
+        translation: {
+          status: "completed",
+          source_ko: "안녕",
+          generated_ja: "こんにちは",
+          user_ja: null,
+          error: null,
+        },
+      },
+    ],
+    processing: {
+      state: "completed",
+      sample_count: 15,
+      subtitle_count: 1,
+      errors: [],
+    },
   };
 }
 
@@ -121,24 +179,56 @@ function drag(
 }
 
 describe("subtitle selection and playback integration", () => {
-  it("passes the selected coordinates to Python and resets results when cleared", async () => {
-    vi.mocked(invoke).mockResolvedValue("C:/cache/request.json");
+  it("shows subtitles by video time and clears them at the end boundary", () => {
+    render(
+      <VideoPlayer
+        path="C:/test.mp4"
+        url="asset://first"
+        initialProject={savedProject()}
+      />,
+    );
+    const video = loadVideo();
+    video.currentTime = 1.5;
+    fireEvent.timeUpdate(video);
+    expect(
+      screen.getByText("こんにちは", { selector: ".translated-caption" }),
+    ).toBeInTheDocument();
+    video.currentTime = 2;
+    fireEvent.seeked(video);
+    expect(
+      screen.queryByText("こんにちは", { selector: ".translated-caption" }),
+    ).not.toBeInTheDocument();
+  });
+
+  it("passes the selected coordinates and time range to the analysis job", async () => {
+    vi.mocked(invoke).mockImplementation((command) => {
+      if (command === "start_analysis")
+        return Promise.resolve({ job_id: "job-1" });
+      return new Promise(() => {});
+    });
     const { surface } = setup();
-    const submit = () =>
-      screen.getByRole("button", { name: "Pythonへ渡して入力を検証" });
+    const submit = () => screen.getByRole("button", { name: "解析を開始" });
     expect(submit()).toBeDisabled();
     drag(surface, [300, 500], [700, 725]);
+    expect(submit()).toBeEnabled();
     fireEvent.click(submit());
-    expect(invoke).toHaveBeenCalledWith("validate_analysis_request", {
+    expect(invoke).toHaveBeenCalledWith("start_analysis", {
       request: {
+        schema_version: 1,
         video_path: "C:/test.mp4",
         subtitle_region: { x: 0.25, y: 0.5, width: 0.5, height: 0.5 },
+        analysis_range: {
+          mode: "range",
+          start_seconds: 0,
+          end_seconds: 60,
+        },
+        settings: { sample_interval_ms: 200, line_split_ratio: null },
       },
     });
-    expect(await screen.findByRole("status")).toHaveTextContent("request.json");
     fireEvent.click(screen.getByRole("button", { name: "範囲をクリア" }));
-    expect(screen.queryByRole("status")).not.toBeInTheDocument();
-    expect(submit()).toBeDisabled();
+    expect(
+      screen.getByText("先に字幕範囲を指定してください。"),
+    ).toBeInTheDocument();
   });
 
   it("waits for video dimensions and preserves playback controls outside selection mode", () => {

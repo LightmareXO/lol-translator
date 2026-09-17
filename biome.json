@@ -6,7 +6,13 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!!public", "!!src-tauri/target", "!!dist"]
+    "includes": [
+      "**",
+      "!!public",
+      "!!src-tauri/target",
+      "!!dist",
+      "!!analyzer/translation_evaluation/human_review_partial.json"
+    ]
   },
   "formatter": {
     "enabled": true,
