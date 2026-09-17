@@ -70,11 +70,15 @@ def executable(name: str, environment_name: str) -> str:
     if configured:
         path = Path(configured)
         if not path.is_absolute() or not path.is_file():
-            raise RuntimeError(f"{environment_name} must be an existing absolute executable path")
+            raise RuntimeError(
+                f"{environment_name}には、存在する実行ファイルの絶対パスを指定してください。"
+            )
         return str(path)
     resolved = shutil.which(name)
     if not resolved:
-        raise RuntimeError(f"{name} was not found on PATH")
+        raise RuntimeError(
+            f"{name}が見つかりません。PATHへ追加するか、対応する環境変数で絶対パスを指定してください。"
+        )
     return resolved
 
 
@@ -101,7 +105,9 @@ def probe_video(video: Path) -> dict[str, Any]:
         creationflags=CREATE_NO_WINDOW,
     )
     if result.returncode != 0:
-        raise RuntimeError(f"ffprobe could not read the video: {result.stderr.strip()}")
+        raise RuntimeError(
+            f"ffprobeで動画を読み込めませんでした。動画が破損していないか確認してください: {result.stderr.strip()}"
+        )
     try:
         payload = json.loads(result.stdout)
         stream = payload["streams"][0]
@@ -109,9 +115,9 @@ def probe_video(video: Path) -> dict[str, Any]:
         width = int(stream["width"])
         height = int(stream["height"])
     except (KeyError, IndexError, TypeError, ValueError) as error:
-        raise RuntimeError("ffprobe did not return video dimensions and duration") from error
+        raise RuntimeError("動画の幅、高さ、再生時間を取得できませんでした。") from error
     if not math.isfinite(duration) or duration <= 0 or width <= 0 or height <= 0:
-        raise RuntimeError("the video has invalid dimensions or duration")
+        raise RuntimeError("動画の幅、高さ、または再生時間が不正です。")
     return {"duration_seconds": duration, "width": width, "height": height}
 
 
@@ -200,14 +206,16 @@ def extract_frames(
                 time.sleep(0.05)
         stderr = process.stderr.read() if process.stderr else ""
         if process.returncode != 0:
-            raise RuntimeError(f"ffmpeg could not extract frames: {stderr.strip()}")
+            raise RuntimeError(
+                f"ffmpegで指定区間の画像を抽出できませんでした: {stderr.strip()}"
+            )
     finally:
         if process.poll() is None:
             process.kill()
             process.wait(timeout=5)
     frames = sorted(destination.glob("frame-*.png"))
     if not frames:
-        raise RuntimeError("ffmpeg extracted no frames from the selected range")
+        raise RuntimeError("指定区間から画像を1枚も抽出できませんでした。")
     progress(1.0, f"{len(frames)}枚のフレームを抽出")
     return frames
 
@@ -216,7 +224,7 @@ class PaddleRecognizer:
     def __init__(self, model_directory: Path):
         if not model_directory.is_dir() or not any(model_directory.rglob("*")):
             raise RuntimeError(
-                "PaddleOCR model was not found. Set LOL_TRANSLATOR_PADDLE_MODEL_DIR to the existing model directory."
+                "PaddleOCRモデルが見つかりません。LOL_TRANSLATOR_PADDLE_MODEL_DIRにモデルディレクトリの絶対パスを指定してください。"
             )
         os.environ["PADDLE_PDX_CACHE_HOME"] = str(model_directory.resolve())
         os.environ["PADDLE_PDX_MODEL_SOURCE"] = "bos"
@@ -227,7 +235,7 @@ class PaddleRecognizer:
             from paddleocr import TextRecognition
         except ImportError as error:
             raise RuntimeError(
-                "PaddleOCR is not installed in the selected Python environment."
+                "選択したPython環境にPaddleOCRがありません。READMEの依存関係を導入してください。"
             ) from error
         self.model = TextRecognition(
             model_name=PADDLE_MODEL_ID,
@@ -241,7 +249,9 @@ class PaddleRecognizer:
     def _one(self, image: Any) -> tuple[str, float | None]:
         results = list(self.model.predict(input=image, batch_size=1))
         if len(results) != 1:
-            raise RuntimeError(f"PaddleOCR returned {len(results)} results for one image")
+            raise RuntimeError(
+                f"PaddleOCRが1枚の画像に対して{len(results)}件の結果を返しました。"
+            )
         return result_text_and_score(results[0])
 
     def recognize(self, path: Path, line_split_ratio: float | None) -> tuple[str, tuple[str, ...], float | None]:
@@ -267,11 +277,11 @@ class Translator:
             info = next((item for item in models if item.get("name") == self.model), None)
             if info is None:
                 raise RuntimeError(
-                    f"Ollama model {self.model} is not installed. Run: ollama pull {self.model}"
+                    f"Ollamaモデル「{self.model}」がありません。ollama pull {self.model}を実行してください。"
                 )
             show = self.client.request("show", {"model": self.model})
             if show.get("remote_host") or show.get("remote_model"):
-                raise RuntimeError("A remote Ollama model cannot be used by this application.")
+                raise RuntimeError("このアプリではリモートのOllamaモデルを使用できません。")
             validate_thinking(show, self.prompts)
             self.identity = {
                 "model": self.model,
@@ -284,7 +294,7 @@ class Translator:
             raise
         except (HTTPError, URLError, TimeoutError, socket.timeout, ValueError, KeyError) as error:
             raise RuntimeError(
-                "Ollama is not available at 127.0.0.1:11434. Start Ollama and try again."
+                "Ollamaへ接続できません。Ollamaを起動してから、もう一度お試しください。"
             ) from error
 
     def translate(self, text: str) -> str:
@@ -292,7 +302,9 @@ class Translator:
         result = chat_with_retry(self.client, payload, attempts=2)
         if result["status"] != "ok":
             error_types = ", ".join(item["type"] for item in result["errors"])
-            raise RuntimeError(f"Ollama translation failed: {error_types or 'unknown error'}")
+            raise RuntimeError(
+                f"Ollamaで翻訳できませんでした: {error_types or '原因不明'}"
+            )
         return result["response"]["message"]["content"].strip()
 
     def configuration(self) -> dict[str, Any]:

@@ -56,6 +56,14 @@ it("keeps raw OCR and marks translation stale after a Korean correction", () => 
   expect(corrected.translation.status).toBe("stale");
 });
 
+it("restores the completed state when a Korean correction is reverted", () => {
+  const original = subtitle("a", 1, 2);
+  const corrected = updateCorrectedKorean(original, "수정문");
+  const reverted = updateCorrectedKorean(corrected, "");
+  expect(reverted.corrected_ko).toBeNull();
+  expect(reverted.translation.status).toBe("completed");
+});
+
 it("prefers a user Japanese edit and restores generated text when cleared", () => {
   const original = subtitle("a", 1, 2);
   const edited = updateUserJapanese(original, "ユーザー訳");

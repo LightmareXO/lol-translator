@@ -75,11 +75,20 @@ export function AnalysisWorkspace({
   setProject,
   onSeek,
 }: Props) {
-  const [wholeVideo, setWholeVideo] = useState(false);
-  const [startSeconds, setStartSeconds] = useState(0);
-  const [endSeconds, setEndSeconds] = useState(0);
-  const [twoLines, setTwoLines] = useState(false);
-  const [splitPercent, setSplitPercent] = useState(50);
+  const savedSplit = project?.analysis.line_split_ratio;
+  const [wholeVideo, setWholeVideo] = useState(
+    project?.analysis.mode === "whole",
+  );
+  const [startSeconds, setStartSeconds] = useState(
+    project?.analysis.start_seconds ?? 0,
+  );
+  const [endSeconds, setEndSeconds] = useState(
+    project?.analysis.end_seconds ?? 0,
+  );
+  const [twoLines, setTwoLines] = useState(savedSplit != null);
+  const [splitPercent, setSplitPercent] = useState(
+    savedSplit == null ? 50 : Math.round(savedSplit * 100),
+  );
   const [activeJob, setActiveJob] = useState<ActiveJob | null>(null);
   const [progress, setProgress] = useState<Progress | null>(null);
   const [error, setError] = useState<string | null>(null);

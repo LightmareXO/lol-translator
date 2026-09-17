@@ -145,6 +145,16 @@ it("sends null timestamps when whole-video analysis is selected", async () => {
   );
 });
 
+it("restores the saved analysis range and manual line split", () => {
+  const value = project();
+  value.analysis.line_split_ratio = 0.42;
+  render(<Harness initial={value} />);
+  expect(screen.getByLabelText("開始（秒）")).toHaveValue(60);
+  expect(screen.getByLabelText("終了（秒）")).toHaveValue(180);
+  expect(screen.getByLabelText("ROIを2行に分割する")).toBeChecked();
+  expect(screen.getByLabelText("上段の高さ：42%")).toHaveValue("42");
+});
+
 it("keeps raw OCR immutable and sends corrected Korean for selected retranslation", async () => {
   vi.mocked(invoke).mockImplementation((command) => {
     if (command === "start_retranslation")

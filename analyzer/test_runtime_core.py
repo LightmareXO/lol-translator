@@ -119,6 +119,16 @@ class TimelineTests(unittest.TestCase):
         self.assertEqual(subtitle["translation"]["generated_ja"], "再翻訳")
         self.assertEqual(subtitle["translation"]["user_ja"], "ユーザー訳")
 
+    def test_reverting_korean_correction_restores_completed_translation(self):
+        subtitle = merge_samples(
+            [Sample(1, "subtitle", "원문")], interval_seconds=0.2, range_end_seconds=2
+        )[0][0]
+        apply_translation(subtitle, "自動訳")
+        mark_translation_stale(subtitle, "수정문")
+        mark_translation_stale(subtitle, None)
+        self.assertEqual(subtitle["corrected_ko"], None)
+        self.assertEqual(subtitle["translation"]["status"], "completed")
+
     def test_project_validation_rejects_overlapping_or_duplicate_subtitles(self):
         subtitles = merge_samples(
             [Sample(1, "subtitle", "A"), Sample(1.2, "subtitle", "B")],

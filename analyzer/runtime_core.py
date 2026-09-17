@@ -260,8 +260,11 @@ def apply_translation(
 
 def mark_translation_stale(subtitle: dict[str, Any], corrected_ko: str | None) -> None:
     subtitle["corrected_ko"] = corrected_ko if corrected_ko and corrected_ko.strip() else None
-    if subtitle["translation"].get("source_ko") != effective_korean(subtitle):
-        subtitle["translation"]["status"] = "stale"
+    translation = subtitle["translation"]
+    if translation.get("source_ko") != effective_korean(subtitle):
+        translation["status"] = "stale"
+    elif translation.get("status") == "stale":
+        translation["status"] = "completed" if translation.get("generated_ja") else "pending"
 
 
 def validate_project(value: Any) -> dict[str, Any]:

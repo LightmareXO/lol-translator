@@ -96,15 +96,20 @@ export function updateCorrectedKorean(
 ): SubtitleRecord {
   const corrected = value.trim() ? value : null;
   const effective = corrected ?? subtitle.ocr.raw_text;
+  const sourceMatches = subtitle.translation.source_ko === effective;
+  const status = sourceMatches
+    ? subtitle.translation.status === "stale"
+      ? subtitle.translation.generated_ja
+        ? "completed"
+        : "pending"
+      : subtitle.translation.status
+    : "stale";
   return {
     ...subtitle,
     corrected_ko: corrected,
     translation: {
       ...subtitle.translation,
-      status:
-        subtitle.translation.source_ko === effective
-          ? subtitle.translation.status
-          : "stale",
+      status,
     },
   };
 }
