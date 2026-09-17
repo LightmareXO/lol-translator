@@ -506,6 +506,28 @@ export function AnalysisWorkspace({
                   <dt>OCR生出力（不変）</dt>
                   <dd className="raw-output">{selected.ocr.raw_text}</dd>
                 </dl>
+                {selected.ocr.variants && selected.ocr.variants.length > 1 && (
+                  <details className="ocr-variants">
+                    <summary>
+                      統合したOCR候補（{selected.ocr.variants.length}件）
+                    </summary>
+                    <ol>
+                      {selected.ocr.variants.map((variant) => (
+                        <li
+                          key={`${variant.start_seconds}-${variant.end_seconds}-${variant.raw_text}`}
+                        >
+                          <span>
+                            {formatTime(variant.start_seconds)}・信頼度
+                            {variant.confidence == null
+                              ? "不明"
+                              : variant.confidence.toFixed(2)}
+                          </span>
+                          <code>{variant.raw_text}</code>
+                        </li>
+                      ))}
+                    </ol>
+                  </details>
+                )}
                 <label>
                   修正後の韓国語
                   <textarea

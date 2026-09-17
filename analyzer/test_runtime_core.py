@@ -11,11 +11,14 @@ from runtime_core import (
     SCHEMA_VERSION,
     Sample,
     apply_translation,
+    are_conservative_ocr_variants,
     atomic_write_json,
+    is_low_information_ocr,
     mark_translation_stale,
     merge_samples,
     normalize_for_comparison,
     resolve_analysis_range,
+    stabilize_subtitles,
     validate_project,
     validate_request,
 )
@@ -128,6 +131,43 @@ class TimelineTests(unittest.TestCase):
         self.assertEqual(normalize_for_comparison("가 \n 나"), normalize_for_comparison("가나"))
         self.assertNotEqual(normalize_for_comparison("스킬 Q"), normalize_for_comparison("스킬 E"))
         self.assertNotEqual(normalize_for_comparison("2명"), normalize_for_comparison("3명"))
+
+    def test_low_information_filter_rejects_uncertain_non_korean_noise(self):
+        self.assertTrue(is_low_information_ocr("S", 0.9))
+        self.assertTrue(is_low_information_ocr("SZHT", 0.33))
+        self.assertTrue(is_low_information_ocr("?", 0.95))
+        self.assertFalse(is_low_information_ocr("GG", 0.9))
+        self.assertTrue(is_low_information_ocr("가", 0.2))
+        self.assertFalse(is_low_information_ocr("가", 0.8))
+
+    def test_conservative_variants_protect_numbers_and_latin_skill_letters(self):
+        self.assertTrue(
+            are_conservative_ocr_variants("책프폭이상득 씬데?", "책프폭이상들씬데?")
+        )
+        self.assertFalse(are_conservative_ocr_variants("스킬 Q 사용", "스킬 E 사용"))
+        self.assertFalse(are_conservative_ocr_variants("적 2명", "적 3명"))
+
+    def test_stabilization_keeps_variants_and_uses_the_highest_confidence_text(self):
+        subtitles = merge_samples(
+            [
+                Sample(1.0, "subtitle", "책프폭이상득 씬데?", confidence=0.7),
+                Sample(1.2, "subtitle", "책프폭이상들씬데?", confidence=0.9),
+                Sample(1.4, "subtitle", "스킬 Q 사용", confidence=0.8),
+                Sample(1.6, "subtitle", "스킬 E 사용", confidence=0.8),
+            ],
+            interval_seconds=0.2,
+            range_end_seconds=1.8,
+        )[0]
+        stabilized = stabilize_subtitles(subtitles, maximum_gap_seconds=0)
+        self.assertEqual(len(stabilized), 3)
+        self.assertEqual(stabilized[0]["start_seconds"], 1.0)
+        self.assertEqual(stabilized[0]["end_seconds"], 1.4)
+        self.assertEqual(stabilized[0]["ocr"]["raw_text"], "책프폭이상들씬데?")
+        self.assertEqual(len(stabilized[0]["ocr"]["variants"]), 2)
+        self.assertEqual(
+            [item["id"] for item in stabilized],
+            ["subtitle-00001", "subtitle-00002", "subtitle-00003"],
+        )
 
     def test_corrections_mark_stale_and_retranslation_preserves_user_japanese(self):
         subtitle = merge_samples(

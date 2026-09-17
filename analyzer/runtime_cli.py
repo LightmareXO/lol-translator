@@ -34,6 +34,8 @@ from analyzer.runtime_core import (
     merge_samples,
     read_json,
     resolve_analysis_range,
+    is_low_information_ocr,
+    stabilize_subtitles,
     validate_project,
     validate_request,
 )
@@ -261,8 +263,13 @@ class PaddleRecognizer:
             split = max(1, min(image.shape[0] - 1, round(image.shape[0] * line_split_ratio)))
             images = [image[:split, :], image[split:, :]]
         outputs = [self._one(part) for part in images]
-        lines = tuple(text.strip() for text, _ in outputs if text.strip())
-        scores = [score for text, score in outputs if text.strip() and score is not None]
+        accepted = [
+            (text.strip(), score)
+            for text, score in outputs
+            if text.strip() and not is_low_information_ocr(text, score)
+        ]
+        lines = tuple(text for text, _ in accepted)
+        scores = [score for _, score in accepted if score is not None]
         return "\n".join(lines), lines, sum(scores) / len(scores) if scores else None
 
 
@@ -398,6 +405,7 @@ def analyze(
     subtitles, errors = merge_samples(
         samples, interval_seconds=interval_seconds, range_end_seconds=end
     )
+    subtitles = stabilize_subtitles(subtitles, maximum_gap_seconds=0)
     for index, subtitle in enumerate(subtitles):
         if cancelled():
             raise Cancelled()
@@ -440,6 +448,17 @@ def analyze(
                 "device": "cpu",
                 "threads": OCR_THREADS,
                 "preprocessing": OCR_PREPROCESSING,
+                "low_information_filter": {
+                    "version": "ocr-confidence-v1",
+                    "minimum_confidence": 0.5,
+                    "minimum_non_korean_confidence": 0.6,
+                    "minimum_non_korean_alphanumeric_length": 2,
+                },
+                "timeline_stabilization": {
+                    "version": "conservative-adjacent-ocr-v1",
+                    "maximum_edit_ratio": 0.2,
+                    "protect_ascii_and_numbers": True,
+                },
             },
             "translation": translator.configuration(),
         },

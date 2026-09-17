@@ -18,6 +18,11 @@ PROJECT_KIND = "lol-translator-project"
 DEFAULT_SAMPLE_INTERVAL_MS = 200
 MIN_SAMPLE_INTERVAL_MS = 50
 MAX_SAMPLE_INTERVAL_MS = 5_000
+MAX_STABILIZATION_EDIT_RATIO = 0.2
+MIN_OCR_CONFIDENCE = 0.5
+MIN_NON_KOREAN_OCR_CONFIDENCE = 0.6
+HANGUL_PATTERN = re.compile(r"[가-힣]")
+PROTECTED_TOKEN_PATTERN = re.compile(r"[A-Za-z]+|\d+(?:[.:]\d+)?")
 
 
 def atomic_write_json(path: Path, value: Any) -> None:
@@ -52,6 +57,54 @@ def normalize_for_comparison(text: str) -> str:
     """Ignore Unicode form and whitespace only; preserve every other character."""
     normalized = unicodedata.normalize("NFC", text)
     return re.sub(r"\s+", "", normalized)
+
+
+def is_low_information_ocr(text: str, confidence: float | None) -> bool:
+    """Reject uncertain OCR and apply a stricter rule to non-Korean text."""
+    normalized = normalize_for_comparison(text)
+    if confidence is None or confidence < MIN_OCR_CONFIDENCE:
+        return True
+    if HANGUL_PATTERN.search(normalized):
+        return False
+    alphanumeric = re.sub(r"[^0-9A-Za-z]", "", normalized)
+    return len(alphanumeric) < 2 or confidence < MIN_NON_KOREAN_OCR_CONFIDENCE
+
+
+def _edit_distance(left: str, right: str) -> int:
+    if len(left) < len(right):
+        left, right = right, left
+    previous = list(range(len(right) + 1))
+    for left_index, left_character in enumerate(left, start=1):
+        current = [left_index]
+        for right_index, right_character in enumerate(right, start=1):
+            current.append(
+                min(
+                    current[-1] + 1,
+                    previous[right_index] + 1,
+                    previous[right_index - 1] + (left_character != right_character),
+                )
+            )
+        previous = current
+    return previous[-1]
+
+
+def are_conservative_ocr_variants(left: str, right: str) -> bool:
+    """Match likely OCR jitter while protecting numbers and Latin skill tokens."""
+    left_normalized = normalize_for_comparison(left)
+    right_normalized = normalize_for_comparison(right)
+    if left_normalized == right_normalized:
+        return True
+    if not HANGUL_PATTERN.search(left_normalized) or not HANGUL_PATTERN.search(right_normalized):
+        return False
+    if PROTECTED_TOKEN_PATTERN.findall(left_normalized) != PROTECTED_TOKEN_PATTERN.findall(
+        right_normalized
+    ):
+        return False
+    maximum_length = max(len(left_normalized), len(right_normalized))
+    if maximum_length < 4:
+        return False
+    allowed_edits = max(1, math.floor(maximum_length * MAX_STABILIZATION_EDIT_RATIO))
+    return _edit_distance(left_normalized, right_normalized) <= allowed_edits
 
 
 def validate_region(region: Any) -> dict[str, float]:
@@ -252,6 +305,58 @@ def merge_samples(
         subtitle.pop("comparison_text", None)
         subtitle.pop("last_sample_seconds", None)
     return subtitles, errors
+
+
+def stabilize_subtitles(
+    subtitles: list[dict[str, Any]], *, maximum_gap_seconds: float
+) -> list[dict[str, Any]]:
+    """Merge only adjacent conservative OCR variants and retain every raw variant."""
+    if maximum_gap_seconds < 0:
+        raise ValueError("maximum_gap_seconds must not be negative")
+    stabilized: list[dict[str, Any]] = []
+
+    def variant(subtitle: dict[str, Any]) -> dict[str, Any]:
+        return {
+            "start_seconds": subtitle["start_seconds"],
+            "end_seconds": subtitle["end_seconds"],
+            "raw_text": subtitle["ocr"]["raw_text"],
+            "raw_lines": subtitle["ocr"]["raw_lines"],
+            "confidence": subtitle["ocr"]["confidence"],
+        }
+
+    for subtitle in subtitles:
+        if not stabilized:
+            stabilized.append(subtitle)
+            continue
+        previous = stabilized[-1]
+        gap = subtitle["start_seconds"] - previous["end_seconds"]
+        if gap > maximum_gap_seconds + 1e-9 or not are_conservative_ocr_variants(
+            previous["ocr"]["raw_text"], subtitle["ocr"]["raw_text"]
+        ):
+            stabilized.append(subtitle)
+            continue
+
+        variants = previous["ocr"].setdefault("variants", [variant(previous)])
+        variants.extend(subtitle["ocr"].get("variants", [variant(subtitle)]))
+        previous["end_seconds"] = subtitle["end_seconds"]
+        previous_confidence = previous["ocr"].get("confidence")
+        candidate_confidence = subtitle["ocr"].get("confidence")
+        if candidate_confidence is not None and (
+            previous_confidence is None or candidate_confidence > previous_confidence
+        ):
+            previous["image_png_base64"] = subtitle["image_png_base64"]
+            previous["ocr"].update(
+                {
+                    "raw_text": subtitle["ocr"]["raw_text"],
+                    "raw_lines": subtitle["ocr"]["raw_lines"],
+                    "confidence": candidate_confidence,
+                }
+            )
+            previous["translation"]["source_ko"] = subtitle["ocr"]["raw_text"]
+
+    for index, subtitle in enumerate(stabilized, start=1):
+        subtitle["id"] = f"subtitle-{index:05d}"
+    return stabilized
 
 
 def effective_korean(subtitle: dict[str, Any]) -> str:

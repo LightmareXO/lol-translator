@@ -19,6 +19,13 @@ export interface SubtitleRecord {
     raw_lines: string[];
     confidence: number | null;
     error: string | null;
+    variants?: Array<{
+      start_seconds: number;
+      end_seconds: number;
+      raw_text: string;
+      raw_lines: string[];
+      confidence: number | null;
+    }>;
   };
   corrected_ko: string | null;
   translation: TranslationRecord;

@@ -353,6 +353,35 @@ textarea:read-only {
 .raw-output {
   white-space: pre-line;
 }
+.ocr-variants {
+  padding: 10px 12px;
+  border: 1px solid #40516a;
+  border-radius: 6px;
+  background: #0c1119;
+}
+.ocr-variants summary {
+  cursor: pointer;
+  color: #c7d6eb;
+}
+.ocr-variants ol {
+  margin: 10px 0 0;
+  padding-left: 24px;
+}
+.ocr-variants li {
+  margin: 8px 0;
+}
+.ocr-variants li span,
+.ocr-variants li code {
+  display: block;
+}
+.ocr-variants li span {
+  color: #8fa3bd;
+  font-size: 12px;
+}
+.ocr-variants li code {
+  margin-top: 2px;
+  white-space: pre-wrap;
+}
 @media (max-width: 480px) {
   .container {
     padding: 16px;

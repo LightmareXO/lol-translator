@@ -157,6 +157,29 @@ it("restores the saved analysis range and manual line split", () => {
   expect(screen.getByLabelText("上段の高さ：42%")).toHaveValue("42");
 });
 
+it("shows every raw OCR variant retained by timeline stabilization", () => {
+  const value = project();
+  value.subtitles[0].ocr.variants = [
+    {
+      start_seconds: 60,
+      end_seconds: 60.2,
+      raw_text: "원문",
+      raw_lines: ["원문"],
+      confidence: 0.7,
+    },
+    {
+      start_seconds: 60.2,
+      end_seconds: 60.4,
+      raw_text: "윈문",
+      raw_lines: ["윈문"],
+      confidence: 0.9,
+    },
+  ];
+  render(<Harness initial={value} />);
+  expect(screen.getByText("統合したOCR候補（2件）")).toBeInTheDocument();
+  expect(screen.getByText("윈문")).toBeInTheDocument();
+});
+
 it("keeps raw OCR immutable and sends corrected Korean for selected retranslation", async () => {
   vi.mocked(invoke).mockImplementation((command) => {
     if (command === "start_retranslation")
