@@ -224,6 +224,17 @@ class CollectionTests(unittest.TestCase):
             self.assertIn("localStorage.setItem", result)
             self.assertIn("loltranslator-human-review.json", result)
 
+    def test_partial_human_review_keeps_completed_and_unfinished_counts(self):
+        reviews = read_json(BASE / "human_review_partial.json")["reviews"].values()
+        source_checked = [row for row in reviews if row["source_status"] == "ok"]
+        fully_rated = [
+            row for row in source_checked
+            if all(row[f"condition_{condition}"] for condition in "ABCD")
+        ]
+        self.assertEqual(len(source_checked), 21)
+        self.assertEqual(len(fully_rated), 20)
+        self.assertEqual(sum(row["source_status"] == "" for row in reviews), 39)
+
 
 if __name__ == "__main__":
     unittest.main()
