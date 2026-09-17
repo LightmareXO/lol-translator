@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "purpose": "development_only_multiframe_ocr",
+  "reference_status": "ai_visual_transcription_provisional",
+  "frame_counts": [3, 7, 15],
+  "fixed_count_for_span_comparison": 7,
+  "fixed_spans_seconds": [0.1, 0.5],
+  "stable_interval_evidence_step_seconds": 0.25,
+  "sources": {
+    "QK95uTvf7ks": {
+      "sha256": "41bae7253acff6cd403cd63990bb97938168141bbf24cf800e1cd14d24e2d26a",
+      "width": 1920,
+      "height": 1080,
+      "fps": "60/1",
+      "split": "development_original"
+    },
+    "Ns8VQexyJes": {
+      "sha256": "f28de79e9b96a8fa38d210b9dee2fea1f53a3cd3bd24859c68604d39a0638d3a",
+      "width": 1920,
+      "height": 1080,
+      "fps": "60/1",
+      "split": "development_additional"
+    }
+  },
+  "samples": [
+    {
+      "id": "mf_q_g02",
+      "video_id": "QK95uTvf7ks",
+      "stable_start_seconds": 19.1,
+      "stable_end_seconds": 20.65,
+      "crop_xywh": [38, 862, 1844, 96],
+      "source_ko": "1렙 e를 예상 못하는데",
+      "line_role": "speech",
+      "color": "white",
+      "tags": ["short", "english", "moving_background"]
+    },
+    {
+      "id": "mf_q_g03",
+      "video_id": "QK95uTvf7ks",
+      "stable_start_seconds": 93.1,
+      "stable_end_seconds": 94.65,
+      "crop_xywh": [38, 862, 1844, 96],
+      "source_ko": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+      "line_role": "speech",
+      "color": "white",
+      "tags": ["long", "term", "jamo", "light_background"]
+    },
+    {
+      "id": "mf_q_g04",
+      "video_id": "QK95uTvf7ks",
+      "stable_start_seconds": 129.85,
+      "stable_end_seconds": 130.65,
+      "crop_xywh": [38, 862, 1844, 96],
+      "source_ko": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+      "line_role": "speech",
+      "color": "white",
+      "tags": ["medium", "term", "jamo", "combat_background"]
+    },
+    {
+      "id": "mf_q_g08",
+      "video_id": "QK95uTvf7ks",
+      "stable_start_seconds": 419.6,
+      "stable_end_seconds": 420.65,
+      "crop_xywh": [38, 862, 1844, 96],
+      "source_ko": "방마저스탯으로 다재다능도 완성시켜줌",
+      "line_role": "speech",
+      "color": "white",
+      "tags": ["medium", "rune", "dark_background"]
+    },
+    {
+      "id": "mf_t_t01",
+      "video_id": "Ns8VQexyJes",
+      "stable_start_seconds": 24.35,
+      "stable_end_seconds": 25.65,
+      "crop_xywh": [38, 860, 1844, 80],
+      "source_ko": "오랜만까진 아니고 최근에도 했던 거 같은데 이거",
+      "line_role": "speech",
+      "color": "white",
+      "tags": ["long", "negation", "dark_background"]
+    },
+    {
+      "id": "mf_t_t07",
+      "video_id": "Ns8VQexyJes",
+      "stable_start_seconds": 114.1,
+      "stable_end_seconds": 115.65,
+      "crop_xywh": [38, 860, 1844, 80],
+      "source_ko": "일단 6렙..을 빨리 찍읍시다",
+      "line_role": "speech",
+      "color": "white",
+      "tags": ["number", "level", "dark_background"]
+    },
+    {
+      "id": "mf_t_t10",
+      "video_id": "Ns8VQexyJes",
+      "stable_start_seconds": 204.85,
+      "stable_end_seconds": 205.65,
+      "crop_xywh": [38, 860, 1844, 80],
+      "source_ko": "아 오케 ㅇㅈ",
+      "line_role": "speech",
+      "color": "white",
+      "tags": ["short", "jamo", "moving_background"]
+    },
+    {
+      "id": "mf_t_t15_annotation",
+      "video_id": "Ns8VQexyJes",
+      "stable_start_seconds": 369.35,
+      "stable_end_seconds": 369.9,
+      "crop_xywh": [38, 800, 1844, 60],
+      "source_ko": "카이사 전적 검색 중",
+      "line_role": "annotation",
+      "color": "yellow",
+      "tags": ["short_stable_interval", "two_line", "annotation", "yellow"]
+    },
+    {
+      "id": "mf_t_t15_speech",
+      "video_id": "Ns8VQexyJes",
+      "stable_start_seconds": 369.35,
+      "stable_end_seconds": 369.9,
+      "crop_xywh": [38, 860, 1844, 80],
+      "source_ko": "탈론 하는 친구네",
+      "line_role": "speech",
+      "color": "white",
+      "tags": ["short_stable_interval", "two_line", "champion", "white"]
+    }
+  ]
+}
