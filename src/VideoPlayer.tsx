@@ -17,6 +17,7 @@ interface VideoPlayerProps {
   url: string;
   initialProject?: AnalysisProject | null;
   onRegionChange?: (region: SubtitleRegion | null) => void;
+  onBusyChange?: (busy: boolean) => void;
 }
 
 export function VideoPlayer({
@@ -24,6 +25,7 @@ export function VideoPlayer({
   url,
   initialProject,
   onRegionChange,
+  onBusyChange,
 }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [bounds, setBounds] = useState<Rectangle | null>(null);
@@ -36,6 +38,7 @@ export function VideoPlayer({
   const [project, setProject] = useState<AnalysisProject | null>(
     initialProject ?? null,
   );
+  const [processing, setProcessing] = useState(false);
   const [status, setStatus] = useState<"loading" | "ready" | "error">(
     "loading",
   );
@@ -43,6 +46,27 @@ export function VideoPlayer({
   const subtitle = project
     ? activeSubtitle(project.subtitles, currentTime)
     : null;
+
+  const updateProcessing = useCallback(
+    (busy: boolean) => {
+      setProcessing(busy);
+      onBusyChange?.(busy);
+    },
+    [onBusyChange],
+  );
+
+  useEffect(() => {
+    if (!processing) return;
+    videoRef.current?.pause();
+    setEditing(false);
+  }, [processing]);
+
+  useEffect(
+    () => () => {
+      onBusyChange?.(false);
+    },
+    [onBusyChange],
+  );
 
   const measureVideo = useCallback(() => {
     const video = videoRef.current;
@@ -93,7 +117,7 @@ export function VideoPlayer({
       <div className="region-toolbar">
         <button
           type="button"
-          disabled={status !== "ready" || !bounds}
+          disabled={processing || status !== "ready" || !bounds}
           aria-pressed={editing}
           onClick={() => {
             if (!editing) videoRef.current?.pause();
@@ -104,7 +128,7 @@ export function VideoPlayer({
         </button>
         <button
           type="button"
-          disabled={!region}
+          disabled={processing || !region}
           onClick={() => updateRegion(null)}
         >
           範囲をクリア
@@ -174,6 +198,7 @@ export function VideoPlayer({
         project={project}
         setProject={setProject}
         onSeek={seek}
+        onBusyChange={updateProcessing}
       />
       {status === "loading" && <p role="status">動画を読み込んでいます…</p>}
       {status === "error" && (

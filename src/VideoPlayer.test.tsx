@@ -5,6 +5,7 @@ import {
   fireEvent,
   render,
   screen,
+  waitFor,
 } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { AnalysisProject } from "./analysisProject";
@@ -14,11 +15,13 @@ import { VideoPlayer } from "./VideoPlayer";
 let viewport = { x: 100, y: 200, width: 800, height: 600 };
 let notifyResize = () => {};
 const onChange = vi.fn();
+const onBusyChange = vi.fn();
 vi.mock("@tauri-apps/api/core", () => ({ invoke: vi.fn() }));
 
 beforeEach(() => {
   viewport = { x: 100, y: 200, width: 800, height: 600 };
   onChange.mockReset();
+  onBusyChange.mockReset();
   vi.mocked(invoke).mockReset();
   vi.stubGlobal(
     "ResizeObserver",
@@ -89,6 +92,7 @@ function setup() {
       path="C:/test.mp4"
       url="asset://first"
       onRegionChange={onChange}
+      onBusyChange={onBusyChange}
     />,
   );
   const video = loadVideo();
@@ -212,23 +216,29 @@ describe("subtitle selection and playback integration", () => {
     drag(surface, [300, 500], [700, 725]);
     expect(submit()).toBeEnabled();
     fireEvent.click(submit());
-    expect(invoke).toHaveBeenCalledWith("start_analysis", {
-      request: {
-        schema_version: 1,
-        video_path: "C:/test.mp4",
-        subtitle_region: { x: 0.25, y: 0.5, width: 0.5, height: 0.5 },
-        analysis_range: {
-          mode: "range",
-          start_seconds: 0,
-          end_seconds: 60,
+    await waitFor(() =>
+      expect(invoke).toHaveBeenCalledWith("start_analysis", {
+        request: {
+          schema_version: 1,
+          video_path: "C:/test.mp4",
+          subtitle_region: { x: 0.25, y: 0.5, width: 0.5, height: 0.5 },
+          analysis_range: {
+            mode: "range",
+            start_seconds: 0,
+            end_seconds: 60,
+          },
+          settings: { sample_interval_ms: 200, line_split_ratio: null },
         },
-        settings: { sample_interval_ms: 200, line_split_ratio: null },
-      },
-    });
-    fireEvent.click(screen.getByRole("button", { name: "範囲をクリア" }));
-    expect(
-      screen.getByText("先に字幕範囲を指定してください。"),
-    ).toBeInTheDocument();
+      }),
+    );
+    await waitFor(() =>
+      expect(
+        screen.getByRole("button", { name: "字幕範囲を指定" }),
+      ).toBeDisabled(),
+    );
+    expect(screen.getByRole("button", { name: "範囲をクリア" })).toBeDisabled();
+    expect(screen.getByText("字幕範囲を選択済み")).toBeInTheDocument();
+    expect(onBusyChange).toHaveBeenLastCalledWith(true);
   });
 
   it("waits for video dimensions and preserves playback controls outside selection mode", () => {

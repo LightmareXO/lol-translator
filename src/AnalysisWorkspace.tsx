@@ -48,6 +48,7 @@ interface Props {
   project: AnalysisProject | null;
   setProject: Dispatch<SetStateAction<AnalysisProject | null>>;
   onSeek: (seconds: number) => void;
+  onBusyChange?: (busy: boolean) => void;
 }
 
 const INITIAL_PROGRESS: Progress = {
@@ -74,6 +75,7 @@ export function AnalysisWorkspace({
   project,
   setProject,
   onSeek,
+  onBusyChange,
 }: Props) {
   const savedSplit = project?.analysis.line_split_ratio;
   const [wholeVideo, setWholeVideo] = useState(
@@ -98,6 +100,10 @@ export function AnalysisWorkspace({
   );
   const polling = useRef(false);
   const launching = useRef(false);
+
+  useEffect(() => {
+    onBusyChange?.(Boolean(activeJob));
+  }, [activeJob, onBusyChange]);
 
   useEffect(() => {
     if (duration > 0 && endSeconds === 0) {

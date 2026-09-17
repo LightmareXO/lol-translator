@@ -8,6 +8,7 @@ import math
 import os
 from pathlib import Path
 import re
+import time
 import unicodedata
 from typing import Any, Iterable
 
@@ -23,11 +24,24 @@ def atomic_write_json(path: Path, value: Any) -> None:
     """Write UTF-8 JSON without exposing a partially-written destination."""
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".tmp")
-    temporary.write_text(
-        json.dumps(value, ensure_ascii=False, allow_nan=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
-    os.replace(temporary, path)
+    try:
+        temporary.write_text(
+            json.dumps(value, ensure_ascii=False, allow_nan=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        deadline = time.monotonic() + 2
+        while True:
+            try:
+                os.replace(temporary, path)
+                return
+            except PermissionError:
+                # Windows can briefly deny replacement while the Tauri poller
+                # has the previous progress file open.
+                if time.monotonic() >= deadline:
+                    raise
+                time.sleep(0.01)
+    finally:
+        temporary.unlink(missing_ok=True)
 
 
 def read_json(path: Path) -> Any:

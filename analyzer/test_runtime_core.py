@@ -1,8 +1,10 @@
 import copy
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from runtime_core import (
     PROJECT_KIND,
@@ -69,6 +71,26 @@ class RuntimeContractTests(unittest.TestCase):
             {"ko": "안녕", "ja": "こんにちは"},
         )
         self.assertFalse(destination.with_suffix(".json.tmp").exists())
+
+    def test_atomic_write_retries_a_transient_windows_replace_conflict(self):
+        destination = self.root / "progress.json"
+        real_replace = os.replace
+        attempts = 0
+
+        def replace_after_conflicts(source, target):
+            nonlocal attempts
+            attempts += 1
+            if attempts < 3:
+                raise PermissionError("temporarily locked")
+            real_replace(source, target)
+
+        with patch("runtime_core.os.replace", side_effect=replace_after_conflicts):
+            atomic_write_json(destination, {"state": "running", "current": 44})
+
+        self.assertEqual(attempts, 3)
+        self.assertEqual(
+            json.loads(destination.read_text(encoding="utf-8"))["current"], 44
+        )
 
 
 class TimelineTests(unittest.TestCase):

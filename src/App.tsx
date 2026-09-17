@@ -18,6 +18,7 @@ function App() {
   const [video, setVideo] = useState<SelectedVideo | null>(null);
   const [selecting, setSelecting] = useState(false);
   const [selectionError, setSelectionError] = useState<string | null>(null);
+  const [processing, setProcessing] = useState(false);
 
   async function selectVideo() {
     setSelecting(true);
@@ -92,14 +93,18 @@ function App() {
       <section className="workspace" aria-label="動画プレーヤー">
         <div className="toolbar">
           <div className="button-row">
-            <button type="button" onClick={selectVideo} disabled={selecting}>
+            <button
+              type="button"
+              onClick={selectVideo}
+              disabled={selecting || processing}
+            >
               {selecting ? "選択中…" : video ? "別の動画を選択" : "動画を選択"}
             </button>
             <button
               type="button"
               className="secondary"
               onClick={loadProject}
-              disabled={selecting}
+              disabled={selecting || processing}
             >
               保存済みJSONを開く
             </button>
@@ -117,6 +122,7 @@ function App() {
             path={video.path}
             url={video.url}
             initialProject={video.project}
+            onBusyChange={setProcessing}
           />
         ) : (
           <div className="empty-state">

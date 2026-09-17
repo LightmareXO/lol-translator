@@ -249,6 +249,32 @@ fn read_json(path: &Path) -> Result<Value, String> {
     serde_json::from_slice(&bytes).map_err(|error| format!("JSONの形式が不正です: {error}"))
 }
 
+fn reconcile_progress(
+    stored: Option<Value>,
+    exit_description: Option<String>,
+    result_exists: bool,
+    stderr: &str,
+) -> Value {
+    match (stored, exit_description) {
+        (Some(progress), Some(status))
+            if progress.get("state").and_then(Value::as_str) == Some("running") =>
+        {
+            if result_exists {
+                json!({"state":"completed","phase":"completed","current":1,"total":1,"message":"解析結果を読み込みました","error":null})
+            } else {
+                json!({"state":"failed","phase":"failed","current":0,"total":0,"message":"解析プロセスが終了しました","error":format!("Pythonが{status}で終了しました。{}", stderr.trim())})
+            }
+        }
+        (Some(progress), _) => progress,
+        (None, Some(status)) => {
+            json!({"state":"failed","phase":"failed","current":0,"total":0,"message":"解析プロセスが終了しました","error":format!("Pythonが{status}で終了しました。{}", stderr.trim())})
+        }
+        (None, None) => {
+            json!({"state":"running","phase":"starting","current":0,"total":0,"message":"Python解析プロセスを起動中","error":null})
+        }
+    }
+}
+
 fn validate_project(project: &Value) -> Result<(), String> {
     if project.get("schema_version").and_then(Value::as_u64) != Some(SCHEMA_VERSION.into())
         || project.get("kind").and_then(Value::as_str) != Some(PROJECT_KIND)
@@ -481,14 +507,22 @@ pub fn analysis_job_status(
         .get_mut(&job_id)
         .ok_or_else(|| "解析ジョブが見つかりません。".to_string())?;
     let exit = job.child.try_wait().map_err(|error| error.to_string())?;
-    let progress = if job.progress_path.is_file() {
-        read_json(&job.progress_path)?
-    } else if let Some(status) = exit {
-        let detail = fs::read_to_string(&job.stderr_path).unwrap_or_default();
-        json!({"state":"failed","phase":"failed","current":0,"total":0,"message":"解析プロセスが終了しました","error":format!("Pythonが{status}で終了しました。{}", detail.trim())})
+    let stored = if job.progress_path.is_file() {
+        Some(read_json(&job.progress_path)?)
     } else {
-        json!({"state":"running","phase":"starting","current":0,"total":0,"message":"Python解析プロセスを起動中","error":null})
+        None
     };
+    let detail = if exit.is_some() {
+        fs::read_to_string(&job.stderr_path).unwrap_or_default()
+    } else {
+        String::new()
+    };
+    let progress = reconcile_progress(
+        stored,
+        exit.map(|status| status.to_string()),
+        job.result_path.is_file(),
+        &detail,
+    );
     let project = if progress.get("state").and_then(Value::as_str) == Some("completed")
         && job.result_path.is_file()
     {
@@ -686,5 +720,26 @@ mod tests {
             },
         };
         assert!(legacy.validate().is_ok());
+    }
+
+    #[test]
+    fn replaces_stale_running_progress_after_the_process_exits() {
+        let running = json!({"state":"running","phase":"recognizing","current":44,"total":300});
+        let failed = reconcile_progress(
+            Some(running.clone()),
+            Some("exit code: 1".into()),
+            false,
+            "PermissionError",
+        );
+        assert_eq!(failed["state"], "failed");
+        assert!(failed["error"].as_str().unwrap().contains("PermissionError"));
+
+        let recovered = reconcile_progress(
+            Some(running),
+            Some("exit code: 1".into()),
+            true,
+            "progress write failed",
+        );
+        assert_eq!(recovered["state"], "completed");
     }
 }
