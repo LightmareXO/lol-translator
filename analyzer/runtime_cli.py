@@ -305,7 +305,14 @@ class Translator:
             ) from error
 
     def translate(self, text: str) -> str:
-        payload = make_payload(self.model, text, True, self.prompts, self.glossary)
+        payload = make_payload(
+            self.model,
+            text,
+            True,
+            self.prompts,
+            self.glossary,
+            glossary_filter_text=text,
+        )
         result = chat_with_retry(self.client, payload, attempts=2)
         if result["status"] != "ok":
             error_types = ", ".join(item["type"] for item in result["errors"])
@@ -323,6 +330,7 @@ class Translator:
             "think": self.prompts["qwen_think"],
             "glossary_version": self.glossary["version"],
             "glossary_enabled": True,
+            "glossary_mode": "relevant-source-terms-v1",
         }
 
 
