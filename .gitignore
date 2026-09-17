@@ -24,6 +24,10 @@ analyzer/translation_evaluation/work/
 analyzer/translation_evaluation/models/
 analyzer/translation_evaluation/.venv*/
 
+# Local runtime jobs and saved projects
+.lol-translator/
+analyzer/runtime-work/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
