@@ -49,6 +49,7 @@ interface Props {
   setProject: Dispatch<SetStateAction<AnalysisProject | null>>;
   onSeek: (seconds: number) => void;
   onBusyChange?: (busy: boolean) => void;
+  onLineSplitChange?: (ratio: number | null) => void;
 }
 
 const INITIAL_PROGRESS: Progress = {
@@ -76,6 +77,7 @@ export function AnalysisWorkspace({
   setProject,
   onSeek,
   onBusyChange,
+  onLineSplitChange,
 }: Props) {
   const savedSplit = project?.analysis.line_split_ratio;
   const [wholeVideo, setWholeVideo] = useState(
@@ -104,6 +106,10 @@ export function AnalysisWorkspace({
   useEffect(() => {
     onBusyChange?.(Boolean(activeJob));
   }, [activeJob, onBusyChange]);
+
+  useEffect(() => {
+    onLineSplitChange?.(twoLines ? splitPercent / 100 : null);
+  }, [onLineSplitChange, splitPercent, twoLines]);
 
   useEffect(() => {
     if (duration > 0 && endSeconds === 0) {
@@ -369,22 +375,27 @@ export function AnalysisWorkspace({
             disabled={Boolean(activeJob)}
             onChange={(event) => setTwoLines(event.currentTarget.checked)}
           />
-          ROIを2行に分割する
+          1つのROIを上下2領域としてOCRする
         </label>
         {twoLines && (
-          <label>
-            上段の高さ：{splitPercent}%
-            <input
-              type="range"
-              min="10"
-              max="90"
-              value={splitPercent}
-              disabled={Boolean(activeJob)}
-              onChange={(event) =>
-                setSplitPercent(event.currentTarget.valueAsNumber)
-              }
-            />
-          </label>
+          <>
+            <label>
+              上段の高さ：{splitPercent}%
+              <input
+                type="range"
+                min="10"
+                max="90"
+                value={splitPercent}
+                disabled={Boolean(activeJob)}
+                onChange={(event) =>
+                  setSplitPercent(event.currentTarget.valueAsNumber)
+                }
+              />
+            </label>
+            <p className="selection-help">
+              水色の線より上と下を別々にOCRし、上段→下段の順で1つの字幕として翻訳します。
+            </p>
+          </>
         )}
         {!rangeValid && !wholeVideo && duration > 0 && (
           <p className="error">

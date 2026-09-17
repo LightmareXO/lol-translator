@@ -241,6 +241,24 @@ describe("subtitle selection and playback integration", () => {
     expect(onBusyChange).toHaveBeenLastCalledWith(true);
   });
 
+  it("visualizes the manual two-line OCR split inside the selected ROI", async () => {
+    const { surface } = setup();
+    drag(surface, [300, 500], [700, 725]);
+    fireEvent.click(screen.getByLabelText("1つのROIを上下2領域としてOCRする"));
+
+    const separator = await screen.findByRole("separator", {
+      name: "上下段のOCR分割位置",
+    });
+    expect(separator).toHaveStyle({ top: "50%" });
+    expect(screen.getByText("上段OCR")).toBeInTheDocument();
+    expect(screen.getByText("下段OCR")).toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText("上段の高さ：50%"), {
+      target: { value: "42" },
+    });
+    await waitFor(() => expect(separator).toHaveStyle({ top: "42%" }));
+  });
+
   it("waits for video dimensions and preserves playback controls outside selection mode", () => {
     render(<VideoPlayer path="C:/test.mp4" url="asset://first" />);
     expect(

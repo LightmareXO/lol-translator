@@ -11,6 +11,7 @@ interface Props {
   bounds: Rectangle;
   editing: boolean;
   region: SubtitleRegion | null;
+  lineSplitRatio: number | null;
   onChange: (region: SubtitleRegion) => void;
   onExit: () => void;
 }
@@ -25,6 +26,7 @@ export function SubtitleRegionOverlay({
   bounds,
   editing,
   region,
+  lineSplitRatio,
   onChange,
   onExit,
 }: Props) {
@@ -123,7 +125,23 @@ export function SubtitleRegionOverlay({
             width: `${displayed.width * 100}%`,
             height: `${displayed.height * 100}%`,
           }}
-        />
+        >
+          {lineSplitRatio != null && (
+            <>
+              <hr
+                aria-label="上下段のOCR分割位置"
+                className="region-split-line"
+                style={{ top: `${lineSplitRatio * 100}%` }}
+              />
+              <span className="region-split-label region-split-label-top">
+                上段OCR
+              </span>
+              <span className="region-split-label region-split-label-bottom">
+                下段OCR
+              </span>
+            </>
+          )}
+        </div>
       )}
     </div>
   );

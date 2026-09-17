@@ -151,7 +151,9 @@ it("restores the saved analysis range and manual line split", () => {
   render(<Harness initial={value} />);
   expect(screen.getByLabelText("開始（秒）")).toHaveValue(60);
   expect(screen.getByLabelText("終了（秒）")).toHaveValue(180);
-  expect(screen.getByLabelText("ROIを2行に分割する")).toBeChecked();
+  expect(
+    screen.getByLabelText("1つのROIを上下2領域としてOCRする"),
+  ).toBeChecked();
   expect(screen.getByLabelText("上段の高さ：42%")).toHaveValue("42");
 });
 

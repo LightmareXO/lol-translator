@@ -39,6 +39,9 @@ export function VideoPlayer({
     initialProject ?? null,
   );
   const [processing, setProcessing] = useState(false);
+  const [lineSplitRatio, setLineSplitRatio] = useState<number | null>(
+    initialProject?.analysis.line_split_ratio ?? null,
+  );
   const [status, setStatus] = useState<"loading" | "ready" | "error">(
     "loading",
   );
@@ -180,6 +183,7 @@ export function VideoPlayer({
             bounds={bounds}
             editing={editing}
             region={region}
+            lineSplitRatio={lineSplitRatio}
             onChange={updateRegion}
             onExit={() => setEditing(false)}
           />
@@ -199,6 +203,7 @@ export function VideoPlayer({
         setProject={setProject}
         onSeek={seek}
         onBusyChange={updateProcessing}
+        onLineSplitChange={setLineSplitRatio}
       />
       {status === "loading" && <p role="status">動画を読み込んでいます…</p>}
       {status === "error" && (
