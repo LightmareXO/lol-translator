@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "source": {
+    "video_id": "QK95uTvf7ks",
+    "sha256": "41bae7253acff6cd403cd63990bb97938168141bbf24cf800e1cd14d24e2d26a",
+    "duration_seconds": 499.716644,
+    "width": 1920,
+    "height": 1080,
+    "fps": "60/1",
+    "subtitle_region": {
+      "x": 0.019791666666666666,
+      "y": 0.7981481481481482,
+      "width": 0.9604166666666667,
+      "height": 0.08888888888888889
+    },
+    "region_note": "Issue #3で指定した縦位置を保ち、最長字幕を切らないよう左右だけを実映像に合わせて拡張した。1920x1080ではx=38,y=862,width=1844,height=96。右端のミニマップも一部含む固定範囲である。"
+  },
+  "extraction": {
+    "tool": "ffmpeg",
+    "seek_mode": "input -ss followed by one decoded frame",
+    "format": "PNG",
+    "adjacent_frame_offsets_seconds": [-0.016667, 0, 0.016667]
+  },
+  "images": [
+    {
+      "id": "g01_f01",
+      "group_id": "g01",
+      "timestamp_seconds": 9.983333,
+      "image_file": "g01_f01.png",
+      "ground_truth": "바로 빙결다리서폿인데",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["short", "one_line", "light_background", "moving_background"]
+    },
+    {
+      "id": "g01_f02",
+      "group_id": "g01",
+      "timestamp_seconds": 10.0,
+      "image_file": "g01_f02.png",
+      "ground_truth": "바로 빙결다리서폿인데",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["short", "one_line", "light_background", "moving_background"]
+    },
+    {
+      "id": "g01_f03",
+      "group_id": "g01",
+      "timestamp_seconds": 10.016667,
+      "image_file": "g01_f03.png",
+      "ground_truth": "바로 빙결다리서폿인데",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["short", "one_line", "light_background", "moving_background"]
+    },
+    {
+      "id": "g02_f01",
+      "group_id": "g02",
+      "timestamp_seconds": 19.983333,
+      "image_file": "g02_f01.png",
+      "ground_truth": "1렙 e를 예상 못하는데",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": [
+        "short",
+        "one_line",
+        "light_background",
+        "moving_background",
+        "latin"
+      ]
+    },
+    {
+      "id": "g02_f02",
+      "group_id": "g02",
+      "timestamp_seconds": 20.0,
+      "image_file": "g02_f02.png",
+      "ground_truth": "1렙 e를 예상 못하는데",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": [
+        "short",
+        "one_line",
+        "light_background",
+        "moving_background",
+        "latin"
+      ]
+    },
+    {
+      "id": "g02_f03",
+      "group_id": "g02",
+      "timestamp_seconds": 20.016667,
+      "image_file": "g02_f03.png",
+      "ground_truth": "1렙 e를 예상 못하는데",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": [
+        "short",
+        "one_line",
+        "light_background",
+        "moving_background",
+        "latin"
+      ]
+    },
+    {
+      "id": "g03_f01",
+      "group_id": "g03",
+      "timestamp_seconds": 93.983333,
+      "image_file": "g03_f01.png",
+      "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": [
+        "long",
+        "one_line",
+        "light_background",
+        "moving_background",
+        "jamo"
+      ]
+    },
+    {
+      "id": "g03_f02",
+      "group_id": "g03",
+      "timestamp_seconds": 94.0,
+      "image_file": "g03_f02.png",
+      "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": [
+        "long",
+        "one_line",
+        "light_background",
+        "moving_background",
+        "jamo"
+      ]
+    },
+    {
+      "id": "g03_f03",
+      "group_id": "g03",
+      "timestamp_seconds": 94.016667,
+      "image_file": "g03_f03.png",
+      "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": [
+        "long",
+        "one_line",
+        "light_background",
+        "moving_background",
+        "jamo"
+      ]
+    },
+    {
+      "id": "g04_f01",
+      "group_id": "g04",
+      "timestamp_seconds": 129.983333,
+      "image_file": "g04_f01.png",
+      "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": [
+        "medium",
+        "one_line",
+        "dark_background",
+        "combat_background",
+        "jamo"
+      ]
+    },
+    {
+      "id": "g04_f02",
+      "group_id": "g04",
+      "timestamp_seconds": 130.0,
+      "image_file": "g04_f02.png",
+      "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": [
+        "medium",
+        "one_line",
+        "dark_background",
+        "combat_background",
+        "jamo"
+      ]
+    },
+    {
+      "id": "g04_f03",
+      "group_id": "g04",
+      "timestamp_seconds": 130.016667,
+      "image_file": "g04_f03.png",
+      "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": [
+        "medium",
+        "one_line",
+        "dark_background",
+        "combat_background",
+        "jamo"
+      ]
+    },
+    {
+      "id": "g05_f01",
+      "group_id": "g05",
+      "timestamp_seconds": 219.983333,
+      "image_file": "g05_f01.png",
+      "ground_truth": "달려잇",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["short", "one_line", "light_background", "combat_background"]
+    },
+    {
+      "id": "g05_f02",
+      "group_id": "g05",
+      "timestamp_seconds": 220.0,
+      "image_file": "g05_f02.png",
+      "ground_truth": "달려잇",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["short", "one_line", "light_background", "combat_background"]
+    },
+    {
+      "id": "g05_f03",
+      "group_id": "g05",
+      "timestamp_seconds": 220.016667,
+      "image_file": "g05_f03.png",
+      "ground_truth": "달려잇",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["short", "one_line", "light_background", "combat_background"]
+    },
+    {
+      "id": "g06_f01",
+      "group_id": "g06",
+      "timestamp_seconds": 249.983333,
+      "image_file": "g06_f01.png",
+      "ground_truth": "플 빼고 다음 턴에 잡으면 되죠",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["medium", "one_line", "light_background", "moving_background"]
+    },
+    {
+      "id": "g06_f02",
+      "group_id": "g06",
+      "timestamp_seconds": 250.0,
+      "image_file": "g06_f02.png",
+      "ground_truth": "플 빼고 다음 턴에 잡으면 되죠",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["medium", "one_line", "light_background", "moving_background"]
+    },
+    {
+      "id": "g06_f03",
+      "group_id": "g06",
+      "timestamp_seconds": 250.016667,
+      "image_file": "g06_f03.png",
+      "ground_truth": "플 빼고 다음 턴에 잡으면 되죠",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["medium", "one_line", "light_background", "moving_background"]
+    },
+    {
+      "id": "g07_f01",
+      "group_id": "g07",
+      "timestamp_seconds": 353.983333,
+      "image_file": "g07_f01.png",
+      "ground_truth": "여기서 디테일이 좀 있는데",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["medium", "one_line", "dark_background", "moving_background"]
+    },
+    {
+      "id": "g07_f02",
+      "group_id": "g07",
+      "timestamp_seconds": 354.0,
+      "image_file": "g07_f02.png",
+      "ground_truth": "여기서 디테일이 좀 있는데",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["medium", "one_line", "dark_background", "moving_background"]
+    },
+    {
+      "id": "g07_f03",
+      "group_id": "g07",
+      "timestamp_seconds": 354.016667,
+      "image_file": "g07_f03.png",
+      "ground_truth": "여기서 디테일이 좀 있는데",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["medium", "one_line", "dark_background", "moving_background"]
+    },
+    {
+      "id": "g08_f01",
+      "group_id": "g08",
+      "timestamp_seconds": 419.983333,
+      "image_file": "g08_f01.png",
+      "ground_truth": "방마저스탯으로 다재다능도 완성시켜줌",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["medium", "one_line", "dark_background", "combat_background"]
+    },
+    {
+      "id": "g08_f02",
+      "group_id": "g08",
+      "timestamp_seconds": 420.0,
+      "image_file": "g08_f02.png",
+      "ground_truth": "방마저스탯으로 다재다능도 완성시켜줌",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["medium", "one_line", "dark_background", "combat_background"]
+    },
+    {
+      "id": "g08_f03",
+      "group_id": "g08",
+      "timestamp_seconds": 420.016667,
+      "image_file": "g08_f03.png",
+      "ground_truth": "방마저스탯으로 다재다능도 완성시켜줌",
+      "ground_truth_status": "verified",
+      "line_count": 1,
+      "tags": ["medium", "one_line", "dark_background", "combat_background"]
+    }
+  ]
+}
