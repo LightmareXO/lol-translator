@@ -11,12 +11,14 @@
       "!!public",
       "!!src-tauri/target",
       "!!dist",
+      "!!analyzer/app_dictionary/*.json",
       "!!analyzer/translation_evaluation/human_review_partial.json"
     ]
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "space"
+    "indentStyle": "space",
+    "lineEnding": "auto"
   },
   "linter": {
     "enabled": true,
