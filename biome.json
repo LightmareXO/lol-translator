@@ -16,7 +16,8 @@
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "space"
+    "indentStyle": "space",
+    "lineEnding": "crlf"
   },
   "linter": {
     "enabled": true,
