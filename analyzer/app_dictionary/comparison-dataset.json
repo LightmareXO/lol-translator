@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "name": "legacy-v1-vs-app-dictionary-development-and-synthetic",
+  "holdout_used": false,
+  "note": "既に調整に使った開発字幕と、辞書挙動を確認する明示的な合成文だけを使用する。独立評価ではない。",
+  "cases": [
+    {
+      "id": "dev-initial-g01",
+      "kind": "development_subtitle",
+      "source": "ocr_evaluation/manifest.json:g01_f02",
+      "source_ko": "바로 빙결다리서폿인데",
+      "expected_target_ids": ["rune:8351", "champion:Darius", "role:support"],
+      "required_ja": [["グレイシャルオーグメント"], ["ダリウス"], ["サポート"]]
+    },
+    {
+      "id": "dev-initial-g03",
+      "kind": "development_subtitle",
+      "source": "ocr_evaluation/manifest.json:g03_f02",
+      "source_ko": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+      "expected_target_ids": ["item:3142", "internet:okay", "item:3071"],
+      "required_ja": [["妖夢", "ヨウム"], ["ブラック クリーバー", "ブラッククリーバー", "黒斧"]]
+    },
+    {
+      "id": "dev-initial-g04",
+      "kind": "development_subtitle",
+      "source": "ocr_evaluation/manifest.json:g04_f02",
+      "source_ko": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+      "expected_target_ids": ["rune:8351", "rune:8306", "internet:real", "game:roam"],
+      "required_ja": [["グレイシャルオーグメント"], ["ヘクステックフラッシュネイター", "ヘクスフラッシュ"], ["ローム", "ローミング"]]
+    },
+    {
+      "id": "dev-initial-g06",
+      "kind": "development_subtitle",
+      "source": "ocr_evaluation/manifest.json:g06_f02",
+      "source_ko": "플 빼고 다음 턴에 잡으면 되죠",
+      "expected_target_ids": ["summoner-spell:SummonerFlash"],
+      "required_ja": [["フラッシュ"]]
+    },
+    {
+      "id": "dev-talon-t14",
+      "kind": "development_subtitle",
+      "source": "translation_evaluation/talon_development.json:t14",
+      "source_ko": "로크.. 플 반응 못 하게 되게 깔끔하게 잡았다",
+      "expected_target_ids": ["summoner-spell:SummonerFlash"],
+      "required_ja": [["フラッシュ"]]
+    },
+    {
+      "id": "synthetic-priority-volibear-nashor",
+      "kind": "synthetic_term_test",
+      "source_ko": "볼베 궁 빠졌으니까 내셔부터 쳐요",
+      "expected_target_ids": ["champion:Volibear", "game:ultimate", "item:3115"],
+      "required_ja": [["ボリベア"], ["アルティメット", "ウルト", "R"], ["ナッシャー"]]
+    },
+    {
+      "id": "synthetic-priority-boots",
+      "kind": "synthetic_term_test",
+      "source_ko": "상대 조합 보고 닌탑이나 헤르메스 가자",
+      "expected_target_ids": ["item:3047", "item:3111"],
+      "required_ja": [["プレート スチールキャップ", "プレートスチールキャップ"], ["マーキュリー ブーツ", "マーキュリーブーツ"]]
+    },
+    {
+      "id": "synthetic-priority-items",
+      "kind": "synthetic_term_test",
+      "source_ko": "구인수 전에 덤불 조끼부터 사세요",
+      "expected_target_ids": ["item:3124", "item:3076"],
+      "required_ja": [["グインソー"], ["ブランブル ベスト", "ブランブルベスト"]]
+    },
+    {
+      "id": "synthetic-contextual-chain",
+      "kind": "synthetic_term_test",
+      "source_ko": "다리 빙결 들고 플 쓴 다음 궁",
+      "expected_target_ids": ["champion:Darius", "rune:8351", "summoner-spell:SummonerFlash", "game:ultimate"],
+      "required_ja": [["ダリウス"], ["グレイシャルオーグメント"], ["フラッシュ"], ["アルティメット", "ウルト", "R"]]
+    },
+    {
+      "id": "synthetic-negative-play",
+      "kind": "synthetic_negative_match",
+      "source_ko": "플레이가 좋아요",
+      "expected_target_ids": [],
+      "forbidden_target_ids": ["summoner-spell:SummonerFlash"],
+      "required_ja": []
+    },
+    {
+      "id": "synthetic-negative-leg",
+      "kind": "synthetic_negative_match",
+      "source_ko": "다리가 아파서 쉬고 싶어요",
+      "expected_target_ids": [],
+      "forbidden_target_ids": ["champion:Darius"],
+      "required_ja": []
+    },
+    {
+      "id": "synthetic-negative-curious-tv",
+      "kind": "synthetic_negative_match",
+      "source_ko": "궁금해서 텔레비전을 봤어요",
+      "expected_target_ids": [],
+      "forbidden_target_ids": ["game:ultimate", "summoner-spell:SummonerTeleport"],
+      "required_ja": []
+    }
+  ]
+}

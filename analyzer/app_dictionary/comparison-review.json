@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "comparison_results_sha256": "298c36419afa3d5337893b75063197167992c478c08ac0b3c0ed13258979a945",
+  "review_status": "ai_provisional",
+  "human_verified": false,
+  "note": "用語保持と明白な意味崩壊だけを暫定判定した。自然さと韓国語解釈の最終判定には人手確認が必要。",
+  "cases": [
+    {"id": "dev-initial-g01", "assessment": "partial_improvement", "note": "新辞書はダリウスとサポートを保持したが、빙결を正式ルーン名にできていない。"},
+    {"id": "dev-initial-g03", "assessment": "no_clear_change", "note": "両条件ともブラック クリーバーは保持したが、요우무とㄱㅊが未翻訳に近い。"},
+    {"id": "dev-initial-g04", "assessment": "no_clear_change", "note": "新辞書はロームを保持したが、主要な連結語二つとㄹㅇを保持できていない。"},
+    {"id": "dev-initial-g06", "assessment": "equivalent_acceptable", "note": "両条件ともフラッシュを保持した。"},
+    {"id": "dev-talon-t14", "assessment": "improved", "note": "旧v1では플が「フ」になったが、新辞書ではフラッシュを保持した。"},
+    {"id": "synthetic-priority-volibear-nashor", "assessment": "improved", "note": "ボリベア、アルティメット、ナッシャーをすべて保持した。"},
+    {"id": "synthetic-priority-boots", "assessment": "no_clear_change", "note": "辞書候補は正しく選択したが、モデルは両方の靴を正式日本語名へ変換しなかった。"},
+    {"id": "synthetic-priority-items", "assessment": "improved", "note": "グインソーとブランブルベストを保持した。"},
+    {"id": "synthetic-contextual-chain", "assessment": "improved", "note": "四つの文脈依存語をすべてLoL用語として保持した。"},
+    {"id": "synthetic-negative-play", "assessment": "equivalent_acceptable", "note": "플をフラッシュへ誤一致させなかった。"},
+    {"id": "synthetic-negative-leg", "assessment": "equivalent_acceptable", "note": "다리をダリウスへ誤一致させなかった。"},
+    {"id": "synthetic-negative-curious-tv", "assessment": "equivalent_acceptable", "note": "궁と텔を一般語の内部で誤一致させなかった。"}
+  ],
+  "summary": {
+    "improved": 4,
+    "partial_improvement": 1,
+    "equivalent_acceptable": 4,
+    "no_clear_change": 3,
+    "regressed": 0,
+    "unconfirmed": [
+      "韓国語話者による意味判定",
+      "日本語字幕としての自然さ",
+      "温度0.7での反復実行時の安定性"
+    ]
+  }
+}

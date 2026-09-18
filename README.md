@@ -89,8 +89,12 @@ OCRの例外は「OCR失敗」として時刻とエラーを保存します。
 上段、下段の順でOCR結果を保存します。
 
 OCRはPaddleOCR 3.7.0、PaddlePaddle 3.4.0、`korean_PP-OCRv5_mobile_rec`、1.5倍の固定コントラスト補正、CPU 4スレッドを基準にしています。
-翻訳は`qwen3:4b-instruct-2507-q4_K_M`、プロンプト版`ko-ja-v4-instruct-nonthinking`、辞書版`lol-ko-ja-v1`を使います。
+翻訳は`qwen3:4b-instruct-2507-q4_K_M`、プロンプト版`ko-ja-v4-instruct-nonthinking`、アプリ辞書版`lol-ko-ja-app-16.18.1-2026-09-19`を使います。
 設定は`think=false`、`temperature=0.7`、`top_p=0.8`、`top_k=20`、`min_p=0`、`seed=42`、`num_ctx=4096`、`num_predict=384`です。
+アプリ辞書はData Dragon 16.18.1の正式名称1,455件と、出典を確認した別名68件をローカルで参照します。
+正式名称の生成データと人が保守する別名は別ファイルで管理し、OCR原文に一致した候補だけを翻訳モデルへ渡します。
+各字幕の保存結果には辞書版、辞書SHA-256、参照先ID、別名ID、一致範囲を記録します。
+旧`lol-ko-ja-v1`は過去の翻訳評価を再現するために凍結し、アプリ実行時には使いません。
 現在のプロンプトは直前字幕を参照しないため、韓国語の修正時に後続字幕を`stale`にする必要はありません。
 
 ## 保存と再翻訳

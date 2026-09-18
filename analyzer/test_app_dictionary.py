@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import json
 from pathlib import Path
 import tempfile
@@ -182,6 +183,22 @@ class AppDictionaryTests(unittest.TestCase):
                 }
                 self.assertTrue(set(case.get("expected_target_ids", [])) <= targets)
                 self.assertFalse(set(case.get("forbidden_target_ids", [])) & targets)
+
+    def test_comparison_artifacts_use_development_data_and_match_review(self):
+        results_path = BASE / "comparison-results.json"
+        results = json.loads(results_path.read_text(encoding="utf-8"))
+        review = json.loads(
+            (BASE / "comparison-review.json").read_text(encoding="utf-8")
+        )
+        self.assertFalse(results["scope"]["holdout_used"])
+        self.assertEqual(
+            results["identity"]["model"], "qwen3:4b-instruct-2507-q4_K_M"
+        )
+        self.assertEqual(
+            review["comparison_results_sha256"],
+            hashlib.sha256(results_path.read_bytes()).hexdigest(),
+        )
+        self.assertFalse(review["human_verified"])
 
     def test_official_diff_reports_id_and_locale_name_changes(self):
         before = {"dictionary_version": "old", "entries": [{"id": "x", "ko": "옛", "ja": "旧"}]}
