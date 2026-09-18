@@ -17,6 +17,7 @@ from runtime_core import (
     is_low_information_ocr,
     mark_translation_stale,
     merge_samples,
+    migrate_project,
     normalize_for_comparison,
     resolve_analysis_range,
     stabilize_subtitles,
@@ -33,11 +34,15 @@ class RuntimeContractTests(unittest.TestCase):
         self.video = self.root / "한국어 動画.mp4"
         self.video.touch()
         self.request = {
-            "schema_version": 1,
+            "schema_version": 2,
             "video_path": str(self.video),
             "subtitle_region": {"x": 0.1, "y": 0.7, "width": 0.8, "height": 0.2},
             "analysis_range": {"mode": "range", "start_seconds": 60, "end_seconds": 960},
-            "settings": {"sample_interval_ms": 200, "line_split_ratio": None},
+            "settings": {
+                "sample_interval_ms": 200,
+                "line_split_ratio": None,
+                "minimum_display_duration_ms": 1200,
+            },
         }
 
     def test_range_has_no_three_minute_limit(self):
@@ -57,8 +62,9 @@ class RuntimeContractTests(unittest.TestCase):
         variants = [
             ("analysis_range", {"mode": "range", "start_seconds": 2, "end_seconds": 1}),
             ("analysis_range", {"mode": "whole", "start_seconds": 0, "end_seconds": None}),
-            ("settings", {"sample_interval_ms": 49, "line_split_ratio": None}),
-            ("settings", {"sample_interval_ms": 200, "line_split_ratio": 0.95}),
+            ("settings", {"sample_interval_ms": 49, "line_split_ratio": None, "minimum_display_duration_ms": 1200}),
+            ("settings", {"sample_interval_ms": 200, "line_split_ratio": 0.95, "minimum_display_duration_ms": 1200}),
+            ("settings", {"sample_interval_ms": 200, "line_split_ratio": None, "minimum_display_duration_ms": -1}),
         ]
         for field, value in variants:
             with self.subTest(field=field, value=value):
@@ -259,11 +265,48 @@ class TimelineTests(unittest.TestCase):
             interval_seconds=0.2,
             range_end_seconds=2,
         )[0]
+        for subtitle in subtitles:
+            subtitle["line_id"] = "line-1"
+            subtitle["line_index"] = 0
         project = {"schema_version": SCHEMA_VERSION, "kind": PROJECT_KIND, "subtitles": subtitles}
         self.assertIs(validate_project(project), project)
         project["subtitles"][1]["id"] = project["subtitles"][0]["id"]
         with self.assertRaises(ValueError):
             validate_project(project)
+
+    def test_project_validation_allows_overlapping_independent_lines(self):
+        subtitles = merge_samples(
+            [Sample(1, "subtitle", "A")], interval_seconds=0.2, range_end_seconds=2
+        )[0]
+        second = copy.deepcopy(subtitles[0])
+        subtitles[0].update({"line_id": "line-1", "line_index": 0})
+        second.update({"id": "subtitle-00002", "line_id": "line-2", "line_index": 1})
+        project = {
+            "schema_version": SCHEMA_VERSION,
+            "kind": PROJECT_KIND,
+            "subtitles": [subtitles[0], second],
+        }
+        self.assertIs(validate_project(project), project)
+
+    def test_migrates_v1_without_rewriting_boundaries_or_user_edits(self):
+        subtitle = merge_samples(
+            [Sample(1, "subtitle", "원문")], interval_seconds=0.2, range_end_seconds=2
+        )[0][0]
+        subtitle["translation"]["user_ja"] = "手直し"
+        legacy = {
+            "schema_version": 1,
+            "kind": PROJECT_KIND,
+            "analysis": {"sample_interval_ms": 200},
+            "configuration": {},
+            "subtitles": [subtitle],
+            "processing": {"sample_count": 5},
+        }
+        migrated = migrate_project(legacy)
+        self.assertEqual(migrated["schema_version"], 2)
+        self.assertEqual(migrated["subtitles"][0]["start_seconds"], 1)
+        self.assertEqual(migrated["subtitles"][0]["translation"]["user_ja"], "手直し")
+        self.assertEqual(migrated["subtitles"][0]["line_id"], "line-1")
+        self.assertEqual(legacy["schema_version"], 1)
 
 
 if __name__ == "__main__":
