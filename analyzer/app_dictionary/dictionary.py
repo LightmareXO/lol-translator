@@ -18,9 +18,10 @@ ACTIVE_STATUSES = (
 KOREAN_PARTICLES = tuple(
     sorted(
         (
-            "이라고", "라고", "에게", "한테", "으로", "에서", "부터", "까지", "처럼",
-            "보다", "하고", "이랑", "이나", "은", "는", "이", "가", "을", "를", "에",
-            "로", "와", "과", "도", "만", "의", "랑", "나",
+            "긴한데", "인데요", "이라고", "이지만", "이라서", "이어서", "라고", "에게",
+            "한테", "으로", "에서", "부터", "까지", "처럼", "보다", "하고", "이랑",
+            "인데", "이나", "이면", "이고", "이야", "이네", "은", "는", "이", "가",
+            "을", "를", "에", "로", "와", "과", "도", "만", "의", "랑", "나", "긴",
         ),
         key=len,
         reverse=True,
@@ -65,6 +66,14 @@ def _find_bounded(value: str, needle: str) -> list[tuple[int, int]]:
     return matches
 
 
+def _find_item_build_prefix(value: str, needle: str) -> list[tuple[int, int]]:
+    prefixed = f"선{needle}"
+    return [
+        (start + 1, end)
+        for start, end in _find_bounded(value, prefixed)
+    ]
+
+
 def _find_space_insensitive(value: str, needle: str) -> list[tuple[int, int]]:
     compact_needle = "".join(character for character in needle if not character.isspace())
     matches: list[tuple[int, int]] = []
@@ -84,6 +93,55 @@ def _find_space_insensitive(value: str, needle: str) -> list[tuple[int, int]]:
         if needle_index == len(compact_needle) and _match_end(value, source_index) is not None:
             matches.append((start, source_index))
     return matches
+
+
+def _compound_alias_spans(
+    value: str, records: list[dict[str, Any]]
+) -> list[tuple[dict[str, Any], int, int]]:
+    aliases_by_term: dict[str, list[dict[str, Any]]] = {}
+    for record in records:
+        if record["source_type"] in ("official_name", "concept_name"):
+            continue
+        term = _normalized(record["term"]).strip()
+        if term and not any(character.isspace() for character in term):
+            aliases_by_term.setdefault(term, []).append(record)
+
+    found: list[tuple[dict[str, Any], int, int]] = []
+    token_start = 0
+    while token_start < len(value):
+        if not value[token_start].isalnum():
+            token_start += 1
+            continue
+        token_end = token_start
+        while token_end < len(value) and value[token_end].isalnum():
+            token_end += 1
+        token = value[token_start:token_end]
+        bodies = [(token, 0)]
+        for particle in KOREAN_PARTICLES:
+            if token.endswith(particle) and len(token) > len(particle):
+                bodies.append((token[: -len(particle)], len(particle)))
+
+        best: list[tuple[str, int, int]] | None = None
+        for body, _ in bodies:
+            paths: dict[int, list[tuple[str, int, int]]] = {0: []}
+            for index in range(len(body) + 1):
+                if index not in paths:
+                    continue
+                for term in aliases_by_term:
+                    if body.startswith(term, index):
+                        candidate = [*paths[index], (term, index, index + len(term))]
+                        current = paths.get(index + len(term))
+                        if current is None or len(candidate) < len(current):
+                            paths[index + len(term)] = candidate
+            candidate = paths.get(len(body))
+            if candidate and len(candidate) >= 2 and (best is None or len(candidate) < len(best)):
+                best = candidate
+        if best:
+            for term, start, end in best:
+                for record in aliases_by_term[term]:
+                    found.append((record, token_start + start, token_start + end))
+        token_start = token_end
+    return found
 
 
 @dataclass(frozen=True)
@@ -171,6 +229,11 @@ class AppDictionary:
                     "source_type": "official_name" if entry["origin"] == "official" else "concept_name",
                     "status": "official" if entry["origin"] == "official" else "curated",
                     "ambiguity": None,
+                    "context_guard": (
+                        "champion_or_slot"
+                        if entry["category"] == "champion_ability"
+                        else None
+                    ),
                     "compact": " " in entry["ko"] and len(entry["ko"].replace(" ", "")) >= 4,
                 }
             )
@@ -184,16 +247,44 @@ class AppDictionary:
                     "status": alias["status"],
                     "ambiguity": alias.get("ambiguity"),
                     "historical": alias.get("historical"),
+                    "context_guard": None,
                     "compact": False,
                 }
             )
         return records
 
+    def _ability_context_matches(self, record: dict[str, Any], source: str) -> bool:
+        if record.get("context_guard") != "champion_or_slot":
+            return True
+        ability = self.entries[record["target_ids"][0]]
+        champion_id = ability["champion_id"]
+        champion = self.entries[f"champion:{champion_id}"]
+        owner_terms = [champion["ko"]]
+        owner_terms.extend(
+            alias["ko"]
+            for alias in self.aliases["aliases"]
+            if f"champion:{champion_id}" in alias["target_ids"]
+        )
+        if any(_find_bounded(source, _normalized(term)) for term in owner_terms):
+            return True
+        slot = ability["slot"].casefold()
+        slot_terms = {
+            "p": ("p", "패시브", "기본 지속 효과"),
+            "q": ("q",),
+            "w": ("w",),
+            "e": ("e",),
+            "r": ("r", "궁", "궁극기"),
+        }[slot]
+        return any(_find_bounded(source, term) for term in slot_terms)
+
     def _matches(self, source_text: str) -> list[dict[str, Any]]:
         source = _normalized(source_text)
         matches: list[dict[str, Any]] = []
-        for record in self._term_records():
+        records = self._term_records()
+        for record in records:
             term = _normalized(record["term"]).strip()
+            if not self._ability_context_matches(record, source):
+                continue
             if record.get("ambiguity") and any(
                 _normalized(cue) in source
                 for cue in record["ambiguity"].get("negative_cues", [])
@@ -201,6 +292,16 @@ class AppDictionary:
                 continue
             spans = _find_bounded(source, term)
             match_type = "exact"
+            if (
+                not spans
+                and record["source_type"] not in ("official_name", "concept_name")
+                and all(
+                    self.entries[target_id]["category"] == "item"
+                    for target_id in record["target_ids"]
+                )
+            ):
+                spans = _find_item_build_prefix(source, term)
+                match_type = "item_build_prefix"
             if not spans and record["compact"]:
                 spans = _find_space_insensitive(source, term)
                 match_type = "space_omitted"
@@ -214,6 +315,23 @@ class AppDictionary:
                         "match_type": match_type,
                     }
                 )
+        existing = {
+            (match["source_id"], match["start"], match["end"])
+            for match in matches
+        }
+        for record, start, end in _compound_alias_spans(source, records):
+            key = (record["source_id"], start, end)
+            if key in existing:
+                continue
+            matches.append(
+                {
+                    **record,
+                    "matched_text": source_text[start:end],
+                    "start": start,
+                    "end": end,
+                    "match_type": "compound_segment",
+                }
+            )
         matches.sort(
             key=lambda match: (
                 match["start"],

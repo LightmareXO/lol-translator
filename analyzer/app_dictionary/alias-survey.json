@@ -27,6 +27,9 @@
     {"term": "짜오", "category": "champion", "decision": "unconfirmed", "reason": "用例は見つかったが対象一覧ソースとの照合を次回へ保留"},
     {"term": "아우솔", "category": "champion", "decision": "unconfirmed", "reason": "今回の調査資料では明示的な対応用例を確保できず保留"},
     {"term": "텔", "category": "summoner_spell", "decision": "confirmed_contextual_active", "target": "summoner-spell:SummonerTeleport"},
-    {"term": "힐", "category": "summoner_spell", "decision": "confirmed_contextual_active", "target": "summoner-spell:SummonerHeal", "conflict": "一般的な回復行為"}
+    {"term": "힐", "category": "summoner_spell", "decision": "confirmed_contextual_active", "target": "summoner-spell:SummonerHeal", "conflict": "一般的な回復行為"},
+    {"term": "마공점", "category": "rune", "decision": "legacy_v1_retained_active", "target": "rune:8306"},
+    {"term": "ㄱㅊ", "category": "internet_abbreviation", "decision": "legacy_v1_retained_active", "target": "internet:okay"},
+    {"term": "ㄹㅇ", "category": "internet_abbreviation", "decision": "legacy_v1_retained_active", "target": "internet:real"}
   ]
 }

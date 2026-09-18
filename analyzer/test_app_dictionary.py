@@ -48,6 +48,27 @@ class AppDictionaryTests(unittest.TestCase):
                 targets = {target for match in selected.trace["matches"] for target in match["target_ids"]}
                 self.assertIn(expected, targets)
 
+    def test_legacy_v1_curated_terms_remain_available(self):
+        selected = self.dictionary.select("빙결마공점이 ㄹㅇ 좋고 요우무도 ㄱㅊ")
+        targets = {
+            target
+            for match in selected.trace["matches"]
+            for target in match["target_ids"]
+        }
+        self.assertTrue(
+            {"rune:8306", "internet:real", "internet:okay", "item:3142"}
+            <= targets
+        )
+        compound_matches = [
+            match
+            for match in selected.trace["matches"]
+            if match["matched_text"] in {"빙결", "마공점"}
+        ]
+        self.assertTrue(compound_matches)
+        self.assertTrue(
+            all(match["match_type"] == "compound_segment" for match in compound_matches)
+        )
+
     def test_contextual_short_aliases_are_registered_and_traced(self):
         selected = self.dictionary.select("다리 빙결 들고 플 쓴 다음 궁")
         targets = {target for match in selected.trace["matches"] for target in match["target_ids"]}
@@ -56,7 +77,13 @@ class AppDictionaryTests(unittest.TestCase):
         self.assertIn("決めつけない", selected.prompt_text)
 
     def test_short_aliases_do_not_match_inside_unrelated_words(self):
-        for text in ("플레이가 좋아요", "다리가 아파요", "궁금한 게 있어요", "텔레비전을 봐요"):
+        for text in (
+            "플레이가 좋아요",
+            "다리가 아파요",
+            "궁금한 게 있어요",
+            "텔레비전을 봐요",
+            "볼베궁금하다",
+        ):
             with self.subTest(text=text):
                 self.assertEqual(self.dictionary.select(text).trace["selected_count"], 0)
 
@@ -69,6 +96,25 @@ class AppDictionaryTests(unittest.TestCase):
         match = next(match for match in compact.trace["matches"] if "rune:8351" in match["target_ids"])
         self.assertEqual(match["match_type"], "space_omitted")
         self.assertEqual(self.dictionary.select("구인소를 샀어").trace["selected_count"], 0)
+        first_item = self.dictionary.select("선요우무도 괜찮아요")
+        match = next(
+            match
+            for match in first_item.trace["matches"]
+            if "item:3142" in match["target_ids"]
+        )
+        self.assertEqual(match["match_type"], "item_build_prefix")
+
+    def test_known_aliases_can_form_an_exact_compound_with_korean_endings(self):
+        selected = self.dictionary.select("바로 빙결다리서폿인데")
+        targets = {
+            target
+            for match in selected.trace["matches"]
+            for target in match["target_ids"]
+        }
+        self.assertTrue({"rune:8351", "champion:Darius", "role:support"} <= targets)
+        self.assertTrue(
+            all(match["match_type"] == "compound_segment" for match in selected.trace["matches"])
+        )
 
     def test_only_source_relevant_entries_are_emitted_and_limits_apply(self):
         selected = self.dictionary.select("볼베가 닌탑을 사고 궁을 썼어")
@@ -76,6 +122,23 @@ class AppDictionaryTests(unittest.TestCase):
         self.assertIn("ボリベア", selected.prompt_text)
         self.assertIn("プレート スチールキャップ", selected.prompt_text)
         self.assertNotIn("グインソー", selected.prompt_text)
+
+    def test_ability_name_requires_champion_or_slot_context(self):
+        self.assertNotIn(
+            "ability:Renata:P",
+            {
+                target
+                for match in self.dictionary.select("로밍 영향력이 좋아요").trace["matches"]
+                for target in match["target_ids"]
+            },
+        )
+        contextual = self.dictionary.select("레나타 영향력 패시브")
+        targets = {
+            target
+            for match in contextual.trace["matches"]
+            for target in match["target_ids"]
+        }
+        self.assertIn("ability:Renata:P", targets)
 
     def test_unconfirmed_alias_or_missing_source_is_rejected(self):
         aliases = copy.deepcopy(self.dictionary.aliases)
@@ -103,6 +166,22 @@ class AppDictionaryTests(unittest.TestCase):
         self.assertTrue(report["legacy_evaluation_glossary"]["unchanged"])
         self.assertEqual(report["survey"]["missing_confirmed"], [])
         self.assertEqual(report["survey"]["forbidden_active"], [])
+
+    def test_comparison_dataset_selection_expectations(self):
+        dataset = json.loads(
+            (BASE / "comparison-dataset.json").read_text(encoding="utf-8")
+        )
+        self.assertFalse(dataset["holdout_used"])
+        for case in dataset["cases"]:
+            with self.subTest(case=case["id"]):
+                selected = self.dictionary.select(case["source_ko"])
+                targets = {
+                    target
+                    for match in selected.trace["matches"]
+                    for target in match["target_ids"]
+                }
+                self.assertTrue(set(case.get("expected_target_ids", [])) <= targets)
+                self.assertFalse(set(case.get("forbidden_target_ids", [])) & targets)
 
     def test_official_diff_reports_id_and_locale_name_changes(self):
         before = {"dictionary_version": "old", "entries": [{"id": "x", "ko": "옛", "ja": "旧"}]}

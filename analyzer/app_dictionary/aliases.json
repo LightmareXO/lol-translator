@@ -100,6 +100,14 @@
       "url": "https://m.inven.co.kr/board/lol/2766/49286?stype=subject&svalue=%EB%9D%BC%EC%9D%B8",
       "kind": "community_usage"
     },
+    "hexflash_abbreviation": {
+      "url": "https://m.inven.co.kr/site/lol/manualtool.php?c=122258&cp=1&idx=143140&p=80",
+      "kind": "community_usage"
+    },
+    "korean_jamo_abbreviations": {
+      "url": "https://korean.go.kr/common/download.do?c_file_name=3f292972-4353-45f8-9cc8-5580ed2ce8db.pdf&file_path=reportData&o_file_name=2021%EB%85%84+%EB%A7%9E%EC%B6%A4%EB%B2%95+%EA%B5%90%EC%A0%95+%EB%A7%90%EB%AD%89%EC%B9%98+%EC%97%B0%EA%B5%AC+%EB%B6%84%EC%84%9D.pdf",
+      "kind": "published_usage"
+    },
     "role_labels": {
       "url": "https://itrc.honam.ac.kr/PublicationsReferenceRoom/download/274/362527",
       "kind": "published_usage"
@@ -125,7 +133,9 @@
     {"id": "game:initiate", "category": "game_term", "ko": "이니시에이팅", "ja": "エンゲージ", "meaning": "戦闘を開始すること"},
     {"id": "game:poke", "category": "game_term", "ko": "포킹", "ja": "ポーク", "meaning": "遠距離から継続的に体力を削ること"},
     {"id": "game:kite", "category": "game_term", "ko": "카이팅", "ja": "カイト", "meaning": "距離を保ちながら攻撃する操作"},
-    {"id": "game:warding", "category": "game_term", "ko": "와딩", "ja": "ワーディング", "meaning": "ワードを設置して視界を取ること"}
+    {"id": "game:warding", "category": "game_term", "ko": "와딩", "ja": "ワーディング", "meaning": "ワードを設置して視界を取ること"},
+    {"id": "internet:okay", "category": "internet_abbreviation", "ko": "괜찮다", "ja": "大丈夫／悪くない", "meaning": "文脈で訳し分ける肯定的な表現"},
+    {"id": "internet:real", "category": "internet_abbreviation", "ko": "레알", "ja": "本当に／マジで", "meaning": "強調を表す口語"}
   ],
   "aliases": [
     {"id": "alias:item:nashor", "ko": "내셔", "target_ids": ["item:3115"], "type": "abbreviation", "status": "community_source_checked", "sources": ["nashor_guinsoo_usage"], "evidence": "내셔+구인수", "matching": {"boundary": "korean_token_or_particle"}},
@@ -178,6 +188,7 @@
     {"id": "alias:rune:first-strike", "ko": "선공", "target_ids": ["rune:8369"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["first_strike_abbreviation"], "evidence": "선제공격, 선공", "ambiguity": {"level": "general_word", "other_meanings": ["先攻"], "guidance": "룬과 빌드 문맥에서 퍼스트 스트라이크 후보."}, "matching": {"boundary": "korean_token_or_particle"}},
     {"id": "alias:rune:arcane-comet", "ko": "유성", "target_ids": ["rune:8229"], "type": "short_name", "status": "community_source_checked_context_required", "sources": ["aery_comet_abbreviations"], "evidence": "신비로운 유성, 유성", "ambiguity": {"level": "general_word", "other_meanings": ["流星"], "guidance": "룬 설정 문맥에서秘儀の彗星候補。"}, "matching": {"boundary": "korean_token_or_particle"}},
     {"id": "alias:rune:summon-aery", "ko": "콩콩이", "target_ids": ["rune:8214"], "type": "short_name", "status": "community_source_checked", "sources": ["aery_comet_abbreviations"], "evidence": "콩콩이 소환, 콩콩이", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:rune:hexflash", "ko": "마공점", "target_ids": ["rune:8306"], "type": "abbreviation", "status": "community_source_checked", "sources": ["hexflash_abbreviation"], "evidence": "마법공학 점멸기, 마공점", "matching": {"boundary": "korean_token_or_particle"}},
 
     {"id": "alias:spell:flash-short", "ko": "플", "target_ids": ["summoner-spell:SummonerFlash"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["flash_ultimate_usage"], "evidence": "E -> W -> 플 콤보", "ambiguity": {"level": "short", "other_meanings": ["플레이 등의 접두 부분"], "guidance": "독립 토큰이며 스펠, 콤보, 빠지다 문맥이면 플래시 후보. 단어 내부에서는 일치시키지 않음."}, "matching": {"boundary": "strict_korean_token_or_particle"}},
     {"id": "alias:spell:flash-transliteration", "ko": "플래쉬", "target_ids": ["summoner-spell:SummonerFlash"], "type": "spelling_variant", "status": "community_source_checked", "sources": ["flash_spelling_usage"], "evidence": "플래쉬 사용례", "matching": {"boundary": "korean_token_or_particle"}},
@@ -196,6 +207,8 @@
     {"id": "alias:game:gank", "ko": "갱", "target_ids": ["game:gank"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["game_terms_match_report"], "evidence": "유효 갱킹", "ambiguity": {"level": "short", "other_meanings": ["갱단"], "guidance": "라인, 정글러, 로밍 문맥이면ガンク候補。"}, "matching": {"boundary": "strict_korean_token_or_particle"}},
     {"id": "alias:game:trade", "ko": "딜교", "target_ids": ["game:trade"], "type": "abbreviation", "status": "community_source_checked", "sources": ["game_terms_laning"], "evidence": "라인전 딜교", "matching": {"boundary": "korean_token_or_particle"}},
     {"id": "alias:game:counter-jungle", "ko": "카정", "target_ids": ["game:counter-jungle"], "type": "abbreviation", "status": "community_source_checked", "sources": ["game_terms_match_report"], "evidence": "카운터 정글", "matching": {"boundary": "korean_token_or_particle"}},
-    {"id": "alias:game:waveclear", "ko": "라클", "target_ids": ["game:waveclear"], "type": "abbreviation", "status": "community_source_checked", "sources": ["volibear_abbreviation"], "evidence": "라클 걱정없음", "matching": {"boundary": "korean_token_or_particle"}}
+    {"id": "alias:game:waveclear", "ko": "라클", "target_ids": ["game:waveclear"], "type": "abbreviation", "status": "community_source_checked", "sources": ["volibear_abbreviation"], "evidence": "라클 걱정없음", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:internet:okay", "ko": "ㄱㅊ", "target_ids": ["internet:okay"], "type": "jamo_abbreviation", "status": "source_checked", "sources": ["korean_jamo_abbreviations"], "evidence": "괜찮다の子音略記", "matching": {"boundary": "strict_korean_token_or_particle"}},
+    {"id": "alias:internet:real", "ko": "ㄹㅇ", "target_ids": ["internet:real"], "type": "jamo_abbreviation", "status": "source_checked", "sources": ["korean_jamo_abbreviations"], "evidence": "레알／리얼の子音略記", "matching": {"boundary": "strict_korean_token_or_particle"}}
   ]
 }

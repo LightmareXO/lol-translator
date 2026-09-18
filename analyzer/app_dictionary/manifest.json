@@ -5,7 +5,7 @@
   "official_file": "official-16.18.1.json",
   "official_sha256": "673f297ee04a85ab7439ebe6537ba6b6a6bbdd42fc7977b78a83d3c62331f418",
   "aliases_file": "aliases.json",
-  "aliases_sha256": "e43671722ea9e2f18a2d04bcf27ea129483e9c8cd73a7834f2111b2bec496880",
+  "aliases_sha256": "caa883fda9b3e1ba34d1837ce5fb042edd76bdc79f812097a5ccb28538724653",
   "legacy_evaluation_glossary": "../translation_evaluation/glossary.json",
   "legacy_evaluation_glossary_sha256": "174c7371da7bae3fb5b98e9d707ad949bb108a88e128de2b501a804b28820a1d",
   "expected_official_counts": {

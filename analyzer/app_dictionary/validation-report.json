@@ -2,7 +2,7 @@
   "status": "ok",
   "version": "lol-ko-ja-app-16.18.1-2026-09-19",
   "patch": "16.18.1",
-  "dictionary_sha256": "230453a90fe2744f413459c79acd7b4649ecfa1924f7f7dc8bfbe7452942d9a2",
+  "dictionary_sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
   "official_counts": {
     "champion": 173,
     "champion_ability": 865,
@@ -12,21 +12,22 @@
     "summoner_spell": 34
   },
   "official_total": 1455,
-  "alias_count": 65,
-  "concept_count": 20,
+  "alias_count": 68,
+  "concept_count": 22,
   "alias_categories": {
     "champion": 21,
     "game_term": 5,
+    "internet_abbreviation": 2,
     "item": 20,
     "role": 2,
-    "rune": 7,
+    "rune": 8,
     "summoner_spell": 10
   },
   "alias_statuses": {
-    "community_source_checked": 48,
+    "community_source_checked": 49,
     "community_source_checked_context_required": 14,
     "official_derived": 1,
-    "source_checked": 2
+    "source_checked": 4
   },
   "context_required_aliases": 14,
   "historical_aliases": 2,
@@ -605,13 +606,14 @@
     }
   ],
   "survey": {
-    "candidate_count": 19,
+    "candidate_count": 22,
     "decisions": {
       "confirmed_active": 3,
       "confirmed_canonical_active": 1,
       "confirmed_conflict_active": 1,
       "confirmed_contextual_active": 6,
       "confirmed_historical_active": 1,
+      "legacy_v1_retained_active": 3,
       "official_spacing_variant_active": 1,
       "rejected_ambiguous": 1,
       "rejected_conflict": 1,
