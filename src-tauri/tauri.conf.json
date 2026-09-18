@@ -27,7 +27,18 @@
   },
   "bundle": {
     "resources": {
-      "../analyzer/main.py": "analyzer/main.py"
+      "../analyzer/main.py": "analyzer/main.py",
+      "../analyzer/runtime_cli.py": "analyzer/runtime_cli.py",
+      "../analyzer/runtime_core.py": "analyzer/runtime_core.py",
+      "../analyzer/ocr_evaluation/__init__.py": "analyzer/ocr_evaluation/__init__.py",
+      "../analyzer/ocr_evaluation/core.py": "analyzer/ocr_evaluation/core.py",
+      "../analyzer/ocr_evaluation/preprocessing.py": "analyzer/ocr_evaluation/preprocessing.py",
+      "../analyzer/ocr_evaluation/run_paddle.py": "analyzer/ocr_evaluation/run_paddle.py",
+      "../analyzer/ocr_evaluation/runner_common.py": "analyzer/ocr_evaluation/runner_common.py",
+      "../analyzer/translation_evaluation/__init__.py": "analyzer/translation_evaluation/__init__.py",
+      "../analyzer/translation_evaluation/evaluate.py": "analyzer/translation_evaluation/evaluate.py",
+      "../analyzer/translation_evaluation/prompts-instruct.json": "analyzer/translation_evaluation/prompts-instruct.json",
+      "../analyzer/translation_evaluation/glossary.json": "analyzer/translation_evaluation/glossary.json"
     },
     "active": true,
     "targets": "all",

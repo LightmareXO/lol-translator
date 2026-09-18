@@ -1,24 +1,51 @@
 # LoL Translator
 
-A desktop app for working with Korean subtitles embedded in League of Legends videos.
-Currently supports selecting and playing a local video, and choosing one subtitle
-region, and passing a JSON request to Python for input validation.
-The app runtime does not perform OCR or translation yet. Issue #8's reproducible
-OCR evaluation is complete under `analyzer/ocr_evaluation`; it selects PaddleOCR
-PP-OCRv5 Korean recognition for the later runtime integration.
+League of Legends動画に埋め込まれた韓国語字幕を、ローカル環境でOCRして日本語へ翻訳するデスクトップアプリです。
+
+ユーザーは動画、字幕範囲、解析時間を指定できます。
+アプリは再生前にPaddleOCRとOllamaを実行し、翻訳済み字幕を動画時刻に同期させます。
+OCR原文、修正後の韓国語、自動翻訳、ユーザー修正訳はJSONへ保存し、再読込できます。
 
 ## Development
 
-Install Bun and the [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/)
-(including Rust, Windows build tools, and WebView2 on Windows), then run:
+### アプリの必要条件
 
-```sh
+Bunと[Tauriの必要条件](https://v2.tauri.app/start/prerequisites/)を用意します。
+WindowsではRust、Windowsビルドツール、WebView2が必要です。
+
+Pythonは3.10から3.12を使い、PaddleOCRの評価で固定した依存関係を導入します。
+
+```powershell
+python -m venv analyzer/.venv
+analyzer/.venv/Scripts/python.exe -m pip install --upgrade pip
+analyzer/.venv/Scripts/python.exe -m pip install `
+  -r analyzer/ocr_evaluation/requirements-paddle.txt
+```
+
+PaddleOCRモデル用のディレクトリを用意し、`korean_PP-OCRv5_mobile_rec`を一度取得します。
+既存のモデルディレクトリを`LOL_TRANSLATOR_PADDLE_MODEL_DIR`に指定します。
+
+Ollamaを起動し、固定済みのQwen3 4B Instructを用意します。
+
+```powershell
+ollama serve
+ollama pull qwen3:4b-instruct-2507-q4_K_M
+ollama show qwen3:4b-instruct-2507-q4_K_M
+```
+
+FFmpegとFFprobeは`PATH`から起動できる状態にします。
+必要な場合は`LOL_TRANSLATOR_FFMPEG`と`LOL_TRANSLATOR_FFPROBE`に実行ファイルの絶対パスを指定できます。
+
+### 開発起動
+
+```powershell
+$env:LOL_TRANSLATOR_PYTHON = (Resolve-Path "analyzer/.venv/Scripts/python.exe")
+$env:LOL_TRANSLATOR_PADDLE_MODEL_DIR = "<PaddleOCRモデルディレクトリの絶対パス>"
 bun install --frozen-lockfile
 bun run tauri dev
 ```
 
-Use the desktop app to test file selection. Running only `bun run dev` starts
-the frontend in a browser without the native Tauri dialog and asset protocol.
+`bun run dev`だけを実行した場合、フロントエンドは開きますが、Tauriのネイティブダイアログと解析コマンドは動作しません。
 
 ## Checks
 
@@ -28,55 +55,91 @@ bun run test
 bun run build
 bun run tauri build --no-bundle
 python -m unittest discover -s analyzer -v
-cargo test --manifest-path src-tauri/Cargo.toml --lib -- --include-ignored
+cargo test --manifest-path src-tauri/Cargo.toml
+cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings
 ```
 
-Vitest and React Testing Library cover empty/loading/error states, cancellation,
-replacement, retrying the same file, and preventing concurrent selection dialogs.
-Native dialogs and actual media decoding require a desktop smoke test.
+VitestとReact Testing Libraryは解析リクエスト、時刻判定、字幕の消失、韓国語と日本語の修正、保存コマンド、再読込を検証します。
+Pythonテストは区間統合、空白正規化、数字と文字差の保持、UTF-8 JSON、修正と再翻訳の状態遷移を検証します。
 
-## Python request validation
+## 解析の動作
 
-Install Python 3.10 through 3.12 and create the project-only environment with
-`python -m venv analyzer/.venv`. No third-party Python packages are needed yet.
-Development builds use `analyzer/.venv/Scripts/python.exe` and never fall back to
-the system `python` on PATH. Set `LOL_TRANSLATOR_PYTHON` to an existing Python
-executable's absolute path only when an explicit development override is needed.
-Packaged builds will use `analyzer-runtime/python.exe`; bundling that runtime is
-tracked separately and must be completed before distributing the app.
+解析時間は開始秒と終了秒で指定するか、動画全体を選択します。
+3分の上限は実装していません。
+初回は1〜3分の区間で起動条件と処理時間を確認してください。
 
-After selecting a video and subtitle region, choose **Pythonへ渡して入力を検証**.
-Tauri writes UTF-8 JSON under the user's `.lol-translator/requests` directory,
-then runs `analyzer/main.py <request-path>` without a shell or a visible console.
-On Windows, this is normally `%USERPROFILE%/.lol-translator/requests`. It is kept
-outside `AppData` because Microsoft Store Python redirects that directory and
-otherwise cannot see a request created by Tauri.
-The success message displays the exact saved path. Requests have unique names,
-are not automatically deleted, and include the video's local path; do not publish
-them unintentionally. The video itself is never copied or uploaded.
-If Python fails, an error is shown and the saved JSON remains available for diagnosis.
+FFmpegは指定区間のROI画像を200ms間隔で一時ディレクトリへ抽出します。
+アプリは動画全体をメモリへ読み込みません。
+PaddleOCRの結果はUnicode正規化後に空白だけを除き、まず隣接する完全一致字幕を統合します。
+さらに、時間的に隣接する候補の韓国語部分が近い場合はOCR揺れとして統合します。
+両方で認識できた数字やQ・W・E・R・D・Fが食い違う候補は統合せず、1.2秒未満しか確認できない一過性候補は表示対象外にします。
+1回分の未認識は200msまで橋渡しします。
+代表文には最も信頼度が高い候補を使い、統合対象となった異なるOCR候補と時刻はJSONへ残します。
+両方で認識できた数字やスキル文字が異なる字幕と、200msを超える字幕なし区間は統合しません。
 
-The JSON contract is:
+信頼度0.5未満のOCR結果は低情報ノイズとして翻訳へ渡しません。
+韓国語を含まない場合は、さらに英数字2文字以上かつ信頼度0.6以上を必要とします。
+これは`S`や`SZHT`のような入力から辞書説明を生成する幻覚と、200msごとの表示切替を抑えるためです。
 
-```json
-{
-  "video_path": "C:/path/to/video.mp4",
-  "subtitle_region": { "x": 0.1, "y": 0.7, "width": 0.8, "height": 0.2 }
-}
-```
+OCRが空文字を返したフレームは「字幕なし」として現在の字幕区間を閉じます。
+OCRの例外は「OCR失敗」として時刻とエラーを保存します。
+認識専用OCRは字幕の有無を判定する検出モデルではないため、背景や固定UIを文字として認識する可能性は残ります。
 
-Rust and Python check that the video path is absolute and points to a file,
-and that the rectangle has positive area and fits within normalized image bounds.
-Python also rejects malformed JSON and incorrect field types. This checks file
-existence, not video decoding, OCR quality, or subtitle contents.
-Run a saved request directly with `python analyzer/main.py <request-path>`;
-success prints the validated JSON and exits with 0, while failure writes an error
-to stderr and exits with 1. Quote paths that contain spaces.
+2行字幕は手動分割を有効にし、ROI上端からの分割率を指定します。
+上段、下段の順でOCR結果を保存します。
 
-Changing or clearing the region, or selecting a video again, resets the displayed
-result. An already-started validation still finishes for its original input.
-Rust tests include an opt-in real-Python round trip (`--include-ignored` above);
-the default Rust test run does not require Python.
+OCRはPaddleOCR 3.7.0、PaddlePaddle 3.4.0、`korean_PP-OCRv5_mobile_rec`、1.5倍の固定コントラスト補正、CPU 4スレッドを基準にしています。
+翻訳は`qwen3:4b-instruct-2507-q4_K_M`、プロンプト版`ko-ja-v4-instruct-nonthinking`、辞書版`lol-ko-ja-v1`を使います。
+設定は`think=false`、`temperature=0.7`、`top_p=0.8`、`top_k=20`、`min_p=0`、`seed=42`、`num_ctx=4096`、`num_predict=384`です。
+現在のプロンプトは直前字幕を参照しないため、韓国語の修正時に後続字幕を`stale`にする必要はありません。
+
+## 保存と再翻訳
+
+保存JSONにはスキーマ版、動画のパスとSHA-256、解析区間、ROI、OCRと翻訳の設定、字幕時刻、字幕画像、OCR生出力、修正内容、処理エラーを含みます。
+Tauriは一時ファイルをディスクへ確定してから、保存先を原子的に置き換えます。
+
+韓国語の修正はOCR生出力を上書きせず、対象字幕の翻訳状態を`stale`にします。
+「この字幕を再翻訳」と「翻訳だけ全件再実行」は、保存済みOCRからOllamaだけを実行します。
+ユーザーが修正した日本語は保持し、自動翻訳だけを更新します。
+
+## Issue #13の手動スモークテスト
+
+独立評価用に確保した動画ではなく、観測済みの開発用動画で実施します。
+
+1. アプリを起動し、「動画を選択」からローカル動画を開く。
+2. 「字幕範囲を指定」で字幕を囲み、必要なら手動2行分割を有効にする。
+3. 開始と終了を指定する。初回は60秒程度を使い、「解析を開始」を押す。
+4. 工程と進捗が更新され、完了後に日本語字幕と字幕一覧が表示されることを確認する。
+5. 一覧の字幕を押して該当時刻へ移動し、再生、一時停止、シーク、再生速度変更で字幕が追従することを確認する。
+6. 字幕のない時刻では表示が消えることを確認する。
+7. 韓国語を修正して対象字幕を再翻訳し、OCR生出力とユーザー修正の日本語が上書きされないことを確認する。
+8. JSONを保存し、「保存済みJSONを開く」から再読込する。動画、解析範囲、字幕、韓国語と日本語の修正が復元されることを確認する。
+9. 別の解析を開始してキャンセルし、進捗がキャンセル表示になり、解析プロセスが残らないことを確認する。
+
+Ollama停止、対象モデル不足、存在しないPython環境などの失敗は、画面のエラー文で不足条件を確認します。
+
+## 実測と制約
+
+Windowsの開発PCで、観測済み開発用動画の0〜60秒を実モデルで処理しました。
+300フレームから、低信頼候補の除外と隣接OCR揺れの統合後に34字幕区間を生成し、OCRと翻訳の処理エラーは0件でした。
+保存JSONは字幕画像を含むため、この条件で約7.2MBでした。
+統合前に見られた、1字幕中の細かな訳の切り替わりと、無関係なフラッシュの辞書説明は再現しませんでした。
+
+手動2行分割は、別の開発用動画の480〜600秒を分割位置0.38で実モデル処理しました。
+600フレームから49字幕区間を生成し、OCRと翻訳の処理エラーは0件でした。
+11区間には統合前のOCR候補を保存し、上段と下段の順序も保持しています。
+保存JSONは約17.4MBでした。認識文には行端のノイズが残っています。
+
+翻訳時のLoL辞書は、OCR原文に実際に現れる語だけをモデルへ渡します。
+無関係な辞書説明をOCRノイズから生成する問題を抑えますが、高信頼のOCR誤認や翻訳誤りそのものをなくすものではありません。
+
+15分程度の動画ファイルの選択と再生に上限はありませんが、15分全体のOCRと翻訳は未検証です。
+固定200ms抽出は短い字幕を見逃す場合があり、区間境界に最大200ms程度の誤差が生じます。
+保守的な統合条件を外れるOCR揺れは、同じ字幕でも複数区間へ分かれます。
+これらはIssue #13の操作統合を阻げる不具合とは分けて扱います。
+
+現在のビルドにPythonランタイム、PaddleOCRモデル、Ollama、Qwen3モデルは同梱していません。
+インストーラー配布はIssue #13の対象外です。
 
 ## Subtitle region selection
 

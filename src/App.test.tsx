@@ -1,4 +1,4 @@
-import { convertFileSrc } from "@tauri-apps/api/core";
+import { convertFileSrc, invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
 import {
   act,
@@ -12,7 +12,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import App from "./App";
 
 vi.mock("@tauri-apps/plugin-dialog", () => ({ open: vi.fn() }));
-vi.mock("@tauri-apps/api/core", () => ({ convertFileSrc: vi.fn() }));
+vi.mock("@tauri-apps/api/core", () => ({
+  convertFileSrc: vi.fn(),
+  invoke: vi.fn(),
+}));
 
 const firstPath = "C:/動画/한국어 game #1.mp4";
 const assetUrl = "http://asset.localhost/C%3A%2Fvideo.mp4";
@@ -167,5 +170,51 @@ describe("local video selection and playback", () => {
     await act(async () => cancel(null));
     expect(screen.getByRole("button", { name: "動画を選択" })).toBeEnabled();
     expect(open).toHaveBeenCalledTimes(1);
+  });
+
+  it("loads a saved project and its original video", async () => {
+    vi.mocked(open).mockResolvedValueOnce("C:/saved/result.json");
+    vi.mocked(invoke).mockResolvedValueOnce({
+      schema_version: 1,
+      kind: "lol-translator-project",
+      source_video: {
+        path: firstPath,
+        name: "한국어 game #1.mp4",
+        size_bytes: 1,
+        modified_unix_ms: 1,
+        sha256: "abc",
+        duration_seconds: 120,
+        width: 1920,
+        height: 1080,
+      },
+      analysis: {
+        mode: "range",
+        start_seconds: 0,
+        end_seconds: 60,
+        subtitle_region: { x: 0.1, y: 0.7, width: 0.8, height: 0.2 },
+        sample_interval_ms: 200,
+        line_split_ratio: null,
+      },
+      configuration: { ocr: {}, translation: {} },
+      subtitles: [],
+      processing: {
+        state: "completed",
+        sample_count: 0,
+        subtitle_count: 0,
+        errors: [],
+      },
+    });
+    render(<App />);
+    await userEvent.click(
+      screen.getByRole("button", { name: "保存済みJSONを開く" }),
+    );
+    expect(invoke).toHaveBeenCalledWith("load_analysis_project", {
+      path: "C:/saved/result.json",
+    });
+    expect(convertFileSrc).toHaveBeenCalledWith(firstPath);
+    expect(
+      screen.getByLabelText("動画：한국어 game #1.mp4"),
+    ).toBeInTheDocument();
+    expect(screen.getByText("字幕範囲を選択済み")).toBeInTheDocument();
   });
 });

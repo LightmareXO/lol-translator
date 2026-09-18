@@ -1,5 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { AnalysisRequestPanel } from "./AnalysisRequestPanel";
+import { AnalysisWorkspace } from "./AnalysisWorkspace";
+import {
+  type AnalysisProject,
+  activeSubtitle,
+  effectiveJapanese,
+} from "./analysisProject";
 import { SubtitleRegionOverlay } from "./SubtitleRegionOverlay";
 import {
   getVideoContentRect,
@@ -10,18 +15,61 @@ import {
 interface VideoPlayerProps {
   path: string;
   url: string;
+  initialProject?: AnalysisProject | null;
   onRegionChange?: (region: SubtitleRegion | null) => void;
+  onBusyChange?: (busy: boolean) => void;
 }
 
-export function VideoPlayer({ path, url, onRegionChange }: VideoPlayerProps) {
+export function VideoPlayer({
+  path,
+  url,
+  initialProject,
+  onRegionChange,
+  onBusyChange,
+}: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [bounds, setBounds] = useState<Rectangle | null>(null);
   const [editing, setEditing] = useState(false);
-  const [region, setRegion] = useState<SubtitleRegion | null>(null);
+  const [region, setRegion] = useState<SubtitleRegion | null>(
+    initialProject?.analysis.subtitle_region ?? null,
+  );
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [project, setProject] = useState<AnalysisProject | null>(
+    initialProject ?? null,
+  );
+  const [processing, setProcessing] = useState(false);
+  const [lineSplitRatio, setLineSplitRatio] = useState<number | null>(
+    initialProject?.analysis.line_split_ratio ?? null,
+  );
   const [status, setStatus] = useState<"loading" | "ready" | "error">(
     "loading",
   );
   const name = path.split(/[\\/]/).pop() || path;
+  const subtitle = project
+    ? activeSubtitle(project.subtitles, currentTime)
+    : null;
+
+  const updateProcessing = useCallback(
+    (busy: boolean) => {
+      setProcessing(busy);
+      onBusyChange?.(busy);
+    },
+    [onBusyChange],
+  );
+
+  useEffect(() => {
+    if (!processing) return;
+    videoRef.current?.pause();
+    setEditing(false);
+  }, [processing]);
+
+  useEffect(
+    () => () => {
+      onBusyChange?.(false);
+    },
+    [onBusyChange],
+  );
 
   const measureVideo = useCallback(() => {
     const video = videoRef.current;
@@ -52,6 +100,18 @@ export function VideoPlayer({ path, url, onRegionChange }: VideoPlayerProps) {
     onRegionChange?.(next);
   }
 
+  function syncTime() {
+    const video = videoRef.current;
+    if (video) setCurrentTime(video.currentTime);
+  }
+
+  function seek(seconds: number) {
+    const video = videoRef.current;
+    if (!video) return;
+    video.currentTime = seconds;
+    setCurrentTime(seconds);
+  }
+
   return (
     <div className="selected-video">
       <p className="file-name" title={path}>
@@ -60,7 +120,7 @@ export function VideoPlayer({ path, url, onRegionChange }: VideoPlayerProps) {
       <div className="region-toolbar">
         <button
           type="button"
-          disabled={status !== "ready" || !bounds}
+          disabled={processing || status !== "ready" || !bounds}
           aria-pressed={editing}
           onClick={() => {
             if (!editing) videoRef.current?.pause();
@@ -71,7 +131,7 @@ export function VideoPlayer({ path, url, onRegionChange }: VideoPlayerProps) {
         </button>
         <button
           type="button"
-          disabled={!region}
+          disabled={processing || !region}
           onClick={() => updateRegion(null)}
         >
           範囲をクリア
@@ -84,16 +144,21 @@ export function VideoPlayer({ path, url, onRegionChange }: VideoPlayerProps) {
         </p>
       )}
       <div className="video-stage">
-        {/* biome-ignore lint/a11y/useMediaCaption: Local videos have no separate caption track at this stage. */}
+        {/* biome-ignore lint/a11y/useMediaCaption: Captions are rendered from the local analysis project below. */}
         <video
           ref={videoRef}
           className="video"
           aria-label={`動画：${name}`}
           src={url}
           controls={!editing}
-          preload="auto"
+          preload="metadata"
           playsInline
-          onLoadedMetadata={measureVideo}
+          onLoadedMetadata={() => {
+            measureVideo();
+            const video = videoRef.current;
+            setDuration(video?.duration ?? 0);
+            syncTime();
+          }}
           onLoadedData={() => {
             setStatus("ready");
             measureVideo();
@@ -101,6 +166,10 @@ export function VideoPlayer({ path, url, onRegionChange }: VideoPlayerProps) {
           onPlay={() => {
             if (editing) videoRef.current?.pause();
           }}
+          onTimeUpdate={syncTime}
+          onSeeked={syncTime}
+          onRateChange={syncTime}
+          onPause={syncTime}
           onError={() => {
             setStatus("error");
             setEditing(false);
@@ -114,16 +183,27 @@ export function VideoPlayer({ path, url, onRegionChange }: VideoPlayerProps) {
             bounds={bounds}
             editing={editing}
             region={region}
+            lineSplitRatio={lineSplitRatio}
             onChange={updateRegion}
             onExit={() => setEditing(false)}
           />
         )}
+        {subtitle && effectiveJapanese(subtitle) && (
+          <div className="translated-caption" aria-live="off">
+            {effectiveJapanese(subtitle)}
+          </div>
+        )}
       </div>
       {region && <p className="selection-help">字幕範囲を選択済み</p>}
-      <AnalysisRequestPanel
-        key={JSON.stringify(region)}
+      <AnalysisWorkspace
         path={path}
         region={region}
+        duration={duration}
+        project={project}
+        setProject={setProject}
+        onSeek={seek}
+        onBusyChange={updateProcessing}
+        onLineSplitChange={setLineSplitRatio}
       />
       {status === "loading" && <p role="status">動画を読み込んでいます…</p>}
       {status === "error" && (

@@ -54,6 +54,48 @@ class TranslationTests(unittest.TestCase):
         self.assertNotIn("think", payload)
         self.assertTrue(payload["messages"][0]["content"].endswith(":\n\n\n한글"))
 
+    def test_runtime_glossary_filter_keeps_only_terms_present_in_source(self):
+        payload = make_payload(
+            "qwen3:4b",
+            "점멸은 아직 있어요",
+            True,
+            self.prompts,
+            self.glossary,
+            glossary_filter_text="점멸은 아직 있어요",
+        )
+        content = payload["messages"][0]["content"]
+        self.assertIn("短距離の瞬間移動", content)
+        self.assertNotIn("味方を支援するロール", content)
+
+        evaluation_payload = make_payload(
+            "qwen3:4b", "評価用入力", True, self.prompts, self.glossary
+        )
+        self.assertIn("短距離の瞬間移動", evaluation_payload["messages"][0]["content"])
+
+    def test_runtime_glossary_filter_does_not_feed_unrelated_ocr_noise(self):
+        payload = make_payload(
+            "qwen3:4b",
+            "SZHT",
+            True,
+            self.prompts,
+            self.glossary,
+            glossary_filter_text="SZHT",
+        )
+        content = payload["messages"][0]["content"]
+        self.assertNotIn(self.prompts["glossary_instruction"], content)
+        self.assertNotIn("短距離の瞬間移動", content)
+
+    def test_runtime_glossary_filter_does_not_match_alias_inside_another_word(self):
+        payload = make_payload(
+            "qwen3:4b",
+            "플레이가 좋아요",
+            True,
+            self.prompts,
+            self.glossary,
+            glossary_filter_text="플레이가 좋아요",
+        )
+        self.assertNotIn("短距離の瞬間移動", payload["messages"][0]["content"])
+
     def test_thinking_only_variant_cannot_be_mislabeled_as_nonthinking(self):
         with self.assertRaisesRegex(ValueError, "thinking-only"):
             validate_thinking({"model_info": {"general.finetune": "Thinking"}}, {"qwen_think": False})

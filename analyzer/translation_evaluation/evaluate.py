@@ -12,6 +12,7 @@ import socket
 import subprocess
 import threading
 import time
+import unicodedata
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, build_opener, ProxyHandler, HTTPRedirectHandler
 
@@ -113,19 +114,59 @@ def initial_dataset(manifest, details):
     return records
 
 
-def glossary_text(glossary):
+_KOREAN_PARTICLES = (
+    "은", "는", "이", "가", "을", "를", "에", "에서", "에게", "한테", "으로", "로",
+    "와", "과", "도", "만", "의", "부터", "까지", "처럼", "보다", "하고", "랑", "이나", "나",
+    "라고", "이라고",
+)
+
+
+def _contains_glossary_term(source_text, term):
+    source = unicodedata.normalize("NFC", source_text).casefold()
+    needle = unicodedata.normalize("NFC", term).casefold().strip()
+    if not needle:
+        return False
+    offset = 0
+    while (index := source.find(needle, offset)) >= 0:
+        before_is_boundary = index == 0 or not source[index - 1].isalnum()
+        end = index + len(needle)
+        if before_is_boundary and (end == len(source) or not source[end].isalnum()):
+            return True
+        if before_is_boundary:
+            for particle in _KOREAN_PARTICLES:
+                particle_end = end + len(particle)
+                if source.startswith(particle, end) and (
+                    particle_end == len(source) or not source[particle_end].isalnum()
+                ):
+                    return True
+        offset = index + 1
+    return False
+
+
+def glossary_text(glossary, source_text=None):
     return "\n".join(
         f"{' / '.join([entry['ko']] + entry['aliases'])} = {entry['ja']} ({entry['meaning']})"
-        for entry in glossary["entries"] if entry["status"].startswith(("source_checked", "community_source_checked")))
+        for entry in glossary["entries"]
+        if entry["status"].startswith(("source_checked", "community_source_checked"))
+        and (
+            source_text is None
+            or any(
+                _contains_glossary_term(source_text, term)
+                for term in [entry["ko"], *entry["aliases"]]
+            )
+        )
+    )
 
 
-def make_payload(model, text, with_glossary, prompts, glossary):
+def make_payload(model, text, with_glossary, prompts, glossary, glossary_filter_text=None):
     family = model.split(":")[0]
     if family not in ("translategemma", "qwen3"):
         raise ValueError("unsupported local model family")
     instruction = prompts[family]
     if with_glossary:
-        instruction += "\n" + prompts["glossary_instruction"] + "\n" + glossary_text(glossary)
+        selected_glossary = glossary_text(glossary, glossary_filter_text)
+        if selected_glossary:
+            instruction += "\n" + prompts["glossary_instruction"] + "\n" + selected_glossary
     payload = {"model": model, "messages": [{"role": "user", "content": instruction + "\n\n\n" + text}],
                "stream": False, "keep_alive": "10m", "options": prompts["options"]}
     if family == "qwen3":
