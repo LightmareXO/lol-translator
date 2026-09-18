@@ -19,7 +19,7 @@ const region = { x: 0.1, y: 0.7, width: 0.8, height: 0.2 };
 
 function project(): AnalysisProject {
   return {
-    schema_version: 1,
+    schema_version: 2,
     kind: "lol-translator-project",
     source_video: {
       path: "C:/video.mp4",
@@ -38,14 +38,23 @@ function project(): AnalysisProject {
       subtitle_region: region,
       sample_interval_ms: 200,
       line_split_ratio: null,
+      minimum_display_duration_ms: 1200,
     },
-    configuration: { ocr: {}, translation: {} },
+    configuration: { detection: {}, ocr: {}, translation: {} },
     subtitles: [
       {
         id: "subtitle-00001",
+        line_id: "line-1",
+        line_index: 0,
         start_seconds: 60,
         end_seconds: 61,
         image_png_base64: null,
+        detection: {
+          status: "confirmed",
+          start_reason: "test",
+          end_reason: "test",
+          needs_review: false,
+        },
         ocr: {
           status: "completed",
           raw_text: "원문",
@@ -63,10 +72,15 @@ function project(): AnalysisProject {
         },
       },
     ],
+    relationships: { simultaneous: [] },
     processing: {
       state: "completed",
       sample_count: 600,
       subtitle_count: 1,
+      detection_count: 1,
+      dropped_intervals: [],
+      ocr_call_count: 1,
+      translation_call_count: 1,
       errors: [],
     },
   };
@@ -106,7 +120,7 @@ it("accepts a range longer than three minutes without adding an upper limit", as
   await waitFor(() =>
     expect(invoke).toHaveBeenCalledWith("start_analysis", {
       request: {
-        schema_version: 1,
+        schema_version: 2,
         video_path: "C:/video.mp4",
         subtitle_region: region,
         analysis_range: {
@@ -114,9 +128,38 @@ it("accepts a range longer than three minutes without adding an upper limit", as
           start_seconds: 60,
           end_seconds: 960,
         },
-        settings: { sample_interval_ms: 200, line_split_ratio: null },
+        settings: {
+          sample_interval_ms: 200,
+          line_split_ratio: null,
+          minimum_display_duration_ms: 1200,
+        },
       },
     }),
+  );
+});
+
+it("allows zero seconds as the minimum display duration", async () => {
+  vi.mocked(invoke).mockImplementation((command) => {
+    if (command === "start_analysis")
+      return Promise.resolve({ job_id: "job-zero-minimum" });
+    return new Promise(() => {});
+  });
+  render(<Harness />);
+  fireEvent.change(screen.getByLabelText("最小表示時間（秒）"), {
+    target: { value: "0" },
+  });
+  fireEvent.click(screen.getByRole("button", { name: "解析を開始" }));
+  await waitFor(() =>
+    expect(invoke).toHaveBeenCalledWith(
+      "start_analysis",
+      expect.objectContaining({
+        request: expect.objectContaining({
+          settings: expect.objectContaining({
+            minimum_display_duration_ms: 0,
+          }),
+        }),
+      }),
+    ),
   );
 });
 
