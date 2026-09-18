@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-09-18T22:12:00+09:00",
+  "purpose": "Issue #15 image-only subtitle interval evaluation",
+  "settings": {
+    "sample_interval_ms": 200,
+    "similarity_threshold": 0.68,
+    "confirmation_samples": 2,
+    "minimum_display_duration_ms": 1200,
+    "line_split_ratio": 0.38,
+    "fade_boundary_rule": "first_and_last_readable_sample",
+    "matching": {
+      "one_to_one": true,
+      "minimum_iou": 0.5,
+      "maximum_boundary_error_seconds": 0.6
+    }
+  },
+  "partitions": [
+    {
+      "id": "qk-tuning-000-120",
+      "role": "tuning",
+      "video_id": "QK95uTvf7ks",
+      "start_seconds": 0,
+      "end_seconds": 120,
+      "subtitle_region": {
+        "x": 0.10334788937409024,
+        "y": 0.779556849425845,
+        "width": 0.7583697234352257,
+        "height": 0.14232573184538255
+      },
+      "line_split_ratio": null,
+      "notes": "Implementation output was inspected while choosing the initial mask settings; never report as fixed verification."
+    },
+    {
+      "id": "ns-tuning-360-420",
+      "role": "tuning",
+      "video_id": "Ns8VQexyJes",
+      "start_seconds": 360,
+      "end_seconds": 420,
+      "subtitle_region": {
+        "x": 0.06259097525473072,
+        "y": 0.7122755943716642,
+        "width": 0.9199417758369723,
+        "height": 0.20960698689956336
+      },
+      "line_split_ratio": 0.38,
+      "notes": "Includes the separate two-line check around 06:10 and was already observed during development."
+    },
+    {
+      "id": "qk-verification-120-180",
+      "role": "verification",
+      "video_id": "QK95uTvf7ks",
+      "start_seconds": 120,
+      "end_seconds": 180,
+      "subtitle_region": {
+        "x": 0.10334788937409024,
+        "y": 0.779556849425845,
+        "width": 0.7583697234352257,
+        "height": 0.14232573184538255
+      },
+      "line_split_ratio": null,
+      "notes": "Frozen before detector output or frames from this interval were inspected."
+    },
+    {
+      "id": "ns-verification-600-660",
+      "role": "verification",
+      "video_id": "Ns8VQexyJes",
+      "start_seconds": 600,
+      "end_seconds": 660,
+      "subtitle_region": {
+        "x": 0.06259097525473072,
+        "y": 0.7122755943716642,
+        "width": 0.9199417758369723,
+        "height": 0.20960698689956336
+      },
+      "line_split_ratio": 0.38,
+      "notes": "Frozen before detector output or frames from this interval were inspected."
+    }
+  ]
+}

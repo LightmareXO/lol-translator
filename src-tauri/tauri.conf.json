@@ -30,6 +30,7 @@
       "../analyzer/main.py": "analyzer/main.py",
       "../analyzer/runtime_cli.py": "analyzer/runtime_cli.py",
       "../analyzer/runtime_core.py": "analyzer/runtime_core.py",
+      "../analyzer/subtitle_detection.py": "analyzer/subtitle_detection.py",
       "../analyzer/ocr_evaluation/__init__.py": "analyzer/ocr_evaluation/__init__.py",
       "../analyzer/ocr_evaluation/core.py": "analyzer/ocr_evaluation/core.py",
       "../analyzer/ocr_evaluation/preprocessing.py": "analyzer/ocr_evaluation/preprocessing.py",

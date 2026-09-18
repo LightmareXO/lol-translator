@@ -106,7 +106,7 @@ function setup() {
 
 function savedProject(): AnalysisProject {
   return {
-    schema_version: 1,
+    schema_version: 2,
     kind: "lol-translator-project",
     source_video: {
       path: "C:/test.mp4",
@@ -125,14 +125,23 @@ function savedProject(): AnalysisProject {
       subtitle_region: { x: 0.1, y: 0.7, width: 0.8, height: 0.2 },
       sample_interval_ms: 200,
       line_split_ratio: null,
+      minimum_display_duration_ms: 1200,
     },
-    configuration: { ocr: {}, translation: {} },
+    configuration: { detection: {}, ocr: {}, translation: {} },
     subtitles: [
       {
         id: "subtitle-00001",
+        line_id: "line-1",
+        line_index: 0,
         start_seconds: 1,
         end_seconds: 2,
         image_png_base64: null,
+        detection: {
+          status: "confirmed",
+          start_reason: "test",
+          end_reason: "test",
+          needs_review: false,
+        },
         ocr: {
           status: "completed",
           raw_text: "안녕",
@@ -150,10 +159,15 @@ function savedProject(): AnalysisProject {
         },
       },
     ],
+    relationships: { simultaneous: [] },
     processing: {
       state: "completed",
       sample_count: 15,
       subtitle_count: 1,
+      detection_count: 1,
+      dropped_intervals: [],
+      ocr_call_count: 1,
+      translation_call_count: 1,
       errors: [],
     },
   };
@@ -195,13 +209,46 @@ describe("subtitle selection and playback integration", () => {
     video.currentTime = 1.5;
     fireEvent.timeUpdate(video);
     expect(
-      screen.getByText("こんにちは", { selector: ".translated-caption" }),
+      screen.getByText("こんにちは", { selector: ".translated-caption-line" }),
     ).toBeInTheDocument();
     video.currentTime = 2;
     fireEvent.seeked(video);
     expect(
-      screen.queryByText("こんにちは", { selector: ".translated-caption" }),
+      screen.queryByText("こんにちは", {
+        selector: ".translated-caption-line",
+      }),
     ).not.toBeInTheDocument();
+  });
+
+  it("shows overlapping upper and lower line subtitles together", () => {
+    const value = savedProject();
+    value.subtitles.push({
+      ...value.subtitles[0],
+      id: "subtitle-00002",
+      line_id: "line-2",
+      line_index: 1,
+      start_seconds: 1.2,
+      end_seconds: 2.5,
+      translation: {
+        ...value.subtitles[0].translation,
+        generated_ja: "下段の訳",
+      },
+    });
+    render(
+      <VideoPlayer
+        path="C:/test.mp4"
+        url="asset://first"
+        initialProject={value}
+      />,
+    );
+    const video = loadVideo();
+    video.currentTime = 1.5;
+    fireEvent.timeUpdate(video);
+    expect(
+      screen.getAllByText(/こんにちは|下段の訳/, {
+        selector: ".translated-caption-line",
+      }),
+    ).toHaveLength(2);
   });
 
   it("passes the selected coordinates and time range to the analysis job", async () => {
@@ -219,7 +266,7 @@ describe("subtitle selection and playback integration", () => {
     await waitFor(() =>
       expect(invoke).toHaveBeenCalledWith("start_analysis", {
         request: {
-          schema_version: 1,
+          schema_version: 2,
           video_path: "C:/test.mp4",
           subtitle_region: { x: 0.25, y: 0.5, width: 0.5, height: 0.5 },
           analysis_range: {
@@ -227,7 +274,11 @@ describe("subtitle selection and playback integration", () => {
             start_seconds: 0,
             end_seconds: 60,
           },
-          settings: { sample_interval_ms: 200, line_split_ratio: null },
+          settings: {
+            sample_interval_ms: 200,
+            line_split_ratio: null,
+            minimum_display_duration_ms: 1200,
+          },
         },
       }),
     );

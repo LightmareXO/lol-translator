@@ -139,6 +139,9 @@ button.secondary:hover {
   white-space: pre-line;
   pointer-events: none;
 }
+.translated-caption-line {
+  display: block;
+}
 .region-toolbar {
   display: flex;
   flex-wrap: wrap;
