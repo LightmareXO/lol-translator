@@ -1,0 +1,628 @@
+{
+  "status": "ok",
+  "version": "lol-ko-ja-app-16.18.1-2026-09-19",
+  "patch": "16.18.1",
+  "dictionary_sha256": "230453a90fe2744f413459c79acd7b4649ecfa1924f7f7dc8bfbe7452942d9a2",
+  "official_counts": {
+    "champion": 173,
+    "champion_ability": 865,
+    "item": 316,
+    "rune": 62,
+    "rune_tree": 5,
+    "summoner_spell": 34
+  },
+  "official_total": 1455,
+  "alias_count": 65,
+  "concept_count": 20,
+  "alias_categories": {
+    "champion": 21,
+    "game_term": 5,
+    "item": 20,
+    "role": 2,
+    "rune": 7,
+    "summoner_spell": 10
+  },
+  "alias_statuses": {
+    "community_source_checked": 48,
+    "community_source_checked_context_required": 14,
+    "official_derived": 1,
+    "source_checked": 2
+  },
+  "context_required_aliases": 14,
+  "historical_aliases": 2,
+  "collision_count": 51,
+  "collisions": [
+    {
+      "term": "가시 갑옷",
+      "target_ids": [
+        "item:3075",
+        "item:323075"
+      ],
+      "source_ids": [
+        "item:3075",
+        "item:323075"
+      ]
+    },
+    {
+      "term": "강철의 솔라리 펜던트",
+      "target_ids": [
+        "item:3190",
+        "item:323190"
+      ],
+      "source_ids": [
+        "item:3190",
+        "item:323190"
+      ]
+    },
+    {
+      "term": "강타",
+      "target_ids": [
+        "summoner-spell:SummonerSmite",
+        "summoner-spell:SummonerSmite_Jade"
+      ],
+      "source_ids": [
+        "summoner-spell:SummonerSmite",
+        "summoner-spell:SummonerSmite_Jade"
+      ]
+    },
+    {
+      "term": "개척자",
+      "target_ids": [
+        "item:3002",
+        "item:323002"
+      ],
+      "source_ids": [
+        "item:3002",
+        "item:323002"
+      ]
+    },
+    {
+      "term": "과잉성장",
+      "target_ids": [
+        "item:1524",
+        "rune:8451"
+      ],
+      "source_ids": [
+        "item:1524",
+        "rune:8451"
+      ]
+    },
+    {
+      "term": "과충전",
+      "target_ids": [
+        "item:1507",
+        "item:1523"
+      ],
+      "source_ids": [
+        "item:1507",
+        "item:1523"
+      ]
+    },
+    {
+      "term": "구원",
+      "target_ids": [
+        "ability:Soraka:P",
+        "item:3107",
+        "item:323107"
+      ],
+      "source_ids": [
+        "ability:Soraka:P",
+        "item:3107",
+        "item:323107"
+      ]
+    },
+    {
+      "term": "구조물 현상금",
+      "target_ids": [
+        "item:1516",
+        "item:1517",
+        "item:1518",
+        "item:1519"
+      ],
+      "source_ids": [
+        "item:1516",
+        "item:1517",
+        "item:1518",
+        "item:1519"
+      ]
+    },
+    {
+      "term": "기사의 맹세",
+      "target_ids": [
+        "item:3109",
+        "item:323109"
+      ],
+      "source_ids": [
+        "item:3109",
+        "item:323109"
+      ]
+    },
+    {
+      "term": "대천사의 지팡이",
+      "target_ids": [
+        "item:3003",
+        "item:323003"
+      ],
+      "source_ids": [
+        "item:3003",
+        "item:323003"
+      ]
+    },
+    {
+      "term": "대천사의 포옹",
+      "target_ids": [
+        "item:3040",
+        "item:323040"
+      ],
+      "source_ids": [
+        "item:3040",
+        "item:323040"
+      ]
+    },
+    {
+      "term": "동상",
+      "target_ids": [
+        "ability:Anivia:E",
+        "ability:Braum:Q"
+      ],
+      "source_ids": [
+        "ability:Anivia:E",
+        "ability:Braum:Q"
+      ]
+    },
+    {
+      "term": "마나무네",
+      "target_ids": [
+        "item:3004",
+        "item:323004"
+      ],
+      "source_ids": [
+        "item:3004",
+        "item:323004"
+      ]
+    },
+    {
+      "term": "마법공학 총검",
+      "target_ids": [
+        "item:3146",
+        "item:663146"
+      ],
+      "source_ids": [
+        "item:3146",
+        "item:663146"
+      ]
+    },
+    {
+      "term": "몰락한 왕의 검",
+      "target_ids": [
+        "ability:Viego:Q",
+        "item:3153"
+      ],
+      "source_ids": [
+        "ability:Viego:Q",
+        "item:3153"
+      ]
+    },
+    {
+      "term": "무라마나",
+      "target_ids": [
+        "item:3042",
+        "item:323042"
+      ],
+      "source_ids": [
+        "item:3042",
+        "item:323042"
+      ]
+    },
+    {
+      "term": "미카엘의 축복",
+      "target_ids": [
+        "item:3222",
+        "item:323222"
+      ],
+      "source_ids": [
+        "item:3222",
+        "item:323222"
+      ]
+    },
+    {
+      "term": "방어막",
+      "target_ids": [
+        "summoner-spell:SummonerBarrier",
+        "summoner-spell:SummonerBarrier_Jade"
+      ],
+      "source_ids": [
+        "summoner-spell:SummonerBarrier",
+        "summoner-spell:SummonerBarrier_Jade"
+      ]
+    },
+    {
+      "term": "불타는 향로",
+      "target_ids": [
+        "item:323504",
+        "item:3504"
+      ],
+      "source_ids": [
+        "item:323504",
+        "item:3504"
+      ]
+    },
+    {
+      "term": "새끼 바람돌이",
+      "target_ids": [
+        "item:1102",
+        "item:1106"
+      ],
+      "source_ids": [
+        "item:1102",
+        "item:1106"
+      ]
+    },
+    {
+      "term": "새끼 이끼쿵쿵이",
+      "target_ids": [
+        "item:1103",
+        "item:1105"
+      ],
+      "source_ids": [
+        "item:1103",
+        "item:1105"
+      ]
+    },
+    {
+      "term": "새끼 화염발톱",
+      "target_ids": [
+        "item:1101",
+        "item:1107"
+      ],
+      "source_ids": [
+        "item:1101",
+        "item:1107"
+      ]
+    },
+    {
+      "term": "새벽심장",
+      "target_ids": [
+        "item:326621",
+        "item:6621"
+      ],
+      "source_ids": [
+        "item:326621",
+        "item:6621"
+      ]
+    },
+    {
+      "term": "서풍",
+      "target_ids": [
+        "ability:Janna:W",
+        "item:663172"
+      ],
+      "source_ids": [
+        "ability:Janna:W",
+        "item:663172"
+      ]
+    },
+    {
+      "term": "속삭이는 머리띠",
+      "target_ids": [
+        "item:2526",
+        "item:322526"
+      ],
+      "source_ids": [
+        "item:2526",
+        "item:322526"
+      ]
+    },
+    {
+      "term": "순간이동",
+      "target_ids": [
+        "summoner-spell:SummonerTeleport",
+        "summoner-spell:SummonerTeleport_Jade"
+      ],
+      "source_ids": [
+        "summoner-spell:SummonerTeleport",
+        "summoner-spell:SummonerTeleport_Jade"
+      ]
+    },
+    {
+      "term": "슈렐리아의 군가",
+      "target_ids": [
+        "item:2065",
+        "item:322065"
+      ],
+      "source_ids": [
+        "item:2065",
+        "item:322065"
+      ]
+    },
+    {
+      "term": "심연의 가면",
+      "target_ids": [
+        "item:328020",
+        "item:8020"
+      ],
+      "source_ids": [
+        "item:328020",
+        "item:8020"
+      ]
+    },
+    {
+      "term": "악곡의 왕관",
+      "target_ids": [
+        "item:2530",
+        "item:322530"
+      ],
+      "source_ids": [
+        "item:2530",
+        "item:322530"
+      ]
+    },
+    {
+      "term": "얼어붙은 심장",
+      "target_ids": [
+        "item:3110",
+        "item:323110"
+      ],
+      "source_ids": [
+        "item:3110",
+        "item:323110"
+      ]
+    },
+    {
+      "term": "여신의 눈물",
+      "target_ids": [
+        "item:3070",
+        "item:323070"
+      ],
+      "source_ids": [
+        "item:3070",
+        "item:323070"
+      ]
+    },
+    {
+      "term": "영겁의 지팡이",
+      "target_ids": [
+        "item:326657",
+        "item:6657"
+      ],
+      "source_ids": [
+        "item:326657",
+        "item:6657"
+      ]
+    },
+    {
+      "term": "요새화",
+      "target_ids": [
+        "item:1501",
+        "item:1521"
+      ],
+      "source_ids": [
+        "item:1501",
+        "item:1521"
+      ]
+    },
+    {
+      "term": "월석 재생기",
+      "target_ids": [
+        "item:326617",
+        "item:6617"
+      ],
+      "source_ids": [
+        "item:326617",
+        "item:6617"
+      ]
+    },
+    {
+      "term": "유체화",
+      "target_ids": [
+        "summoner-spell:SummonerHaste",
+        "summoner-spell:SummonerHaste_Jade"
+      ],
+      "source_ids": [
+        "summoner-spell:SummonerHaste",
+        "summoner-spell:SummonerHaste_Jade"
+      ]
+    },
+    {
+      "term": "이중 갑옷",
+      "target_ids": [
+        "item:1502",
+        "item:1505",
+        "item:1506"
+      ],
+      "source_ids": [
+        "item:1502",
+        "item:1505",
+        "item:1506"
+      ]
+    },
+    {
+      "term": "점멸",
+      "target_ids": [
+        "summoner-spell:SummonerCherryFlash",
+        "summoner-spell:SummonerFlash",
+        "summoner-spell:SummonerFlash_Jade"
+      ],
+      "source_ids": [
+        "summoner-spell:SummonerCherryFlash",
+        "summoner-spell:SummonerFlash",
+        "summoner-spell:SummonerFlash_Jade"
+      ]
+    },
+    {
+      "term": "점화",
+      "target_ids": [
+        "summoner-spell:SummonerDot",
+        "summoner-spell:SummonerDot_Jade"
+      ],
+      "source_ids": [
+        "summoner-spell:SummonerDot",
+        "summoner-spell:SummonerDot_Jade"
+      ]
+    },
+    {
+      "term": "정화",
+      "target_ids": [
+        "summoner-spell:SummonerBoost",
+        "summoner-spell:SummonerBoost_Jade"
+      ],
+      "source_ids": [
+        "summoner-spell:SummonerBoost",
+        "summoner-spell:SummonerBoost_Jade"
+      ]
+    },
+    {
+      "term": "제국의 명령",
+      "target_ids": [
+        "item:324005",
+        "item:4005"
+      ],
+      "source_ids": [
+        "item:324005",
+        "item:4005"
+      ]
+    },
+    {
+      "term": "종말의 겨울",
+      "target_ids": [
+        "item:3121",
+        "item:323121"
+      ],
+      "source_ids": [
+        "item:3121",
+        "item:323121"
+      ]
+    },
+    {
+      "term": "지크의 융합",
+      "target_ids": [
+        "item:3050",
+        "item:323050"
+      ],
+      "source_ids": [
+        "item:3050",
+        "item:323050"
+      ]
+    },
+    {
+      "term": "징수의 총",
+      "target_ids": [
+        "item:6676",
+        "item:667666"
+      ],
+      "source_ids": [
+        "item:6676",
+        "item:667666"
+      ]
+    },
+    {
+      "term": "총명",
+      "target_ids": [
+        "summoner-spell:SummonerMana",
+        "summoner-spell:SummonerMana_Jade"
+      ],
+      "source_ids": [
+        "summoner-spell:SummonerMana",
+        "summoner-spell:SummonerMana_Jade"
+      ]
+    },
+    {
+      "term": "칼리스타의 칠흑의 창",
+      "target_ids": [
+        "item:3599",
+        "item:3600"
+      ],
+      "source_ids": [
+        "item:3599",
+        "item:3600"
+      ]
+    },
+    {
+      "term": "탈진",
+      "target_ids": [
+        "summoner-spell:SummonerExhaust",
+        "summoner-spell:SummonerExhaust_Jade"
+      ],
+      "source_ids": [
+        "summoner-spell:SummonerExhaust",
+        "summoner-spell:SummonerExhaust_Jade"
+      ]
+    },
+    {
+      "term": "표식",
+      "target_ids": [
+        "summoner-spell:SummonerSnowURFSnowball_Mark",
+        "summoner-spell:SummonerSnowball"
+      ],
+      "source_ids": [
+        "summoner-spell:SummonerSnowURFSnowball_Mark",
+        "summoner-spell:SummonerSnowball"
+      ]
+    },
+    {
+      "term": "헬리아의 메아리",
+      "target_ids": [
+        "item:326620",
+        "item:6620"
+      ],
+      "source_ids": [
+        "item:326620",
+        "item:6620"
+      ]
+    },
+    {
+      "term": "혹한의 손길",
+      "target_ids": [
+        "item:3119",
+        "item:323119"
+      ],
+      "source_ids": [
+        "item:3119",
+        "item:323119"
+      ]
+    },
+    {
+      "term": "회복",
+      "target_ids": [
+        "summoner-spell:SummonerHeal",
+        "summoner-spell:SummonerHeal_Jade"
+      ],
+      "source_ids": [
+        "summoner-spell:SummonerHeal",
+        "summoner-spell:SummonerHeal_Jade"
+      ]
+    },
+    {
+      "term": "흐르는 물의 지팡이",
+      "target_ids": [
+        "item:326616",
+        "item:6616"
+      ],
+      "source_ids": [
+        "item:326616",
+        "item:6616"
+      ]
+    }
+  ],
+  "survey": {
+    "candidate_count": 19,
+    "decisions": {
+      "confirmed_active": 3,
+      "confirmed_canonical_active": 1,
+      "confirmed_conflict_active": 1,
+      "confirmed_contextual_active": 6,
+      "confirmed_historical_active": 1,
+      "official_spacing_variant_active": 1,
+      "rejected_ambiguous": 1,
+      "rejected_conflict": 1,
+      "unconfirmed": 4
+    },
+    "missing_confirmed": [],
+    "forbidden_active": []
+  },
+  "legacy_evaluation_glossary": {
+    "path": "..\\translation_evaluation\\glossary.json",
+    "sha256": "174c7371da7bae3fb5b98e9d707ad949bb108a88e128de2b501a804b28820a1d",
+    "unchanged": true
+  }
+}

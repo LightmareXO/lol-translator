@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "version": "lol-ko-ja-aliases-2026-09-19",
+  "checked_at": "2026-09-19",
+  "note": "Community usage is reference information for the translation model, never a mechanical replacement. Context-required aliases remain searchable and carry alternative meanings.",
+  "sources": {
+    "riot_ddragon_16_18_1": {
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/item.json",
+      "kind": "official"
+    },
+    "champion_abbreviations": {
+      "url": "https://www.inven.co.kr/board/lol/4625/2928401",
+      "kind": "community_usage"
+    },
+    "volibear_abbreviation": {
+      "url": "https://www.inven.co.kr/board/lol/3369/1998051",
+      "kind": "community_usage"
+    },
+    "darius_abbreviation": {
+      "url": "https://www.inven.co.kr/board/lol/3369/2058926",
+      "kind": "community_usage"
+    },
+    "adc_item_abbreviations": {
+      "url": "https://www.inven.co.kr/board/lol/3372/568106",
+      "kind": "community_usage"
+    },
+    "item_effect_terms": {
+      "url": "https://www.inven.co.kr/board/lol/2766/42344",
+      "kind": "community_usage"
+    },
+    "nashor_guinsoo_usage": {
+      "url": "https://m.inven.co.kr/site/lol/manualtool.php?idx=132979&view=%EF%BF%BD",
+      "kind": "community_usage"
+    },
+    "ninja_tabi_history": {
+      "url": "https://m.inven.co.kr/site/lol/manualtool.php?champnum=3&idx=124514&p=3&pg=3&vtype=mobile",
+      "kind": "community_usage"
+    },
+    "boots_current_usage": {
+      "url": "https://www.inven.co.kr/board/lol/3369/2516128",
+      "kind": "community_usage"
+    },
+    "boots_terms": {
+      "url": "https://m.inven.co.kr/board/lol/2971/5193?my=con&p=1",
+      "kind": "community_usage"
+    },
+    "rune_abbreviations": {
+      "url": "https://www.inven.co.kr/board/lol/3372/583364",
+      "kind": "community_usage"
+    },
+    "rune_usage_survey": {
+      "url": "https://www.inven.co.kr/board/lol/3369/2513068",
+      "kind": "community_usage"
+    },
+    "glacial_abbreviation": {
+      "url": "https://m.inven.co.kr/site/lol/manualtool.php?idx=139710&vtype=mobile",
+      "kind": "community_usage"
+    },
+    "aery_comet_abbreviations": {
+      "url": "https://www.inven.co.kr/board/lol/2766/49190",
+      "kind": "community_usage"
+    },
+    "first_strike_abbreviation": {
+      "url": "https://www.inven.co.kr/board/lol/3370/569550",
+      "kind": "community_usage"
+    },
+    "flash_ultimate_usage": {
+      "url": "https://www.inven.co.kr/board/lol/2766/47101",
+      "kind": "community_usage"
+    },
+    "flash_spelling_usage": {
+      "url": "https://www.inven.co.kr/board/lol/3369/1978586",
+      "kind": "community_usage"
+    },
+    "flash_standard_spelling_usage": {
+      "url": "https://www.inven.co.kr/board/lol/3338/4180?category=%EB%A0%88%EB%94%A7&p=24",
+      "kind": "community_usage"
+    },
+    "teleport_abbreviation": {
+      "url": "https://lol.inven.co.kr/dataninfo/champion/manualToolView.php?idx=115749&vtype=pc",
+      "kind": "community_usage"
+    },
+    "heal_barrier_abbreviations": {
+      "url": "https://www.inven.co.kr/board/lol/3369/1346474",
+      "kind": "community_usage"
+    },
+    "barrier_variant": {
+      "url": "https://m.inven.co.kr/site/lol/manualtool.php?category=1&champnum=32&filter=memnick&idx=122200&p=4&pg=271",
+      "kind": "community_usage"
+    },
+    "smite_usage": {
+      "url": "https://www.inven.co.kr/board/lol/2766/17736",
+      "kind": "community_usage"
+    },
+    "game_terms_match_report": {
+      "url": "https://www.inven.co.kr/webzine/news/?news=231546&site=lol",
+      "kind": "editorial_usage"
+    },
+    "game_terms_laning": {
+      "url": "https://m.inven.co.kr/board/lol/2766/49286?stype=subject&svalue=%EB%9D%BC%EC%9D%B8",
+      "kind": "community_usage"
+    },
+    "role_labels": {
+      "url": "https://itrc.honam.ac.kr/PublicationsReferenceRoom/download/274/362527",
+      "kind": "published_usage"
+    }
+  },
+  "concepts": [
+    {"id": "role:top", "category": "role", "ko": "탑", "ja": "トップ", "meaning": "上側のソロレーンまたはその担当"},
+    {"id": "role:mid", "category": "role", "ko": "미드", "ja": "ミッド", "meaning": "中央レーンまたはその担当"},
+    {"id": "role:jungle", "category": "role", "ko": "정글", "ja": "ジャングル", "meaning": "中立モンスター区域またはその担当"},
+    {"id": "role:bottom-carry", "category": "role", "ko": "원거리 딜러", "ja": "ADC", "meaning": "主にボットを担当する遠隔キャリー"},
+    {"id": "role:support", "category": "role", "ko": "서포터", "ja": "サポート", "meaning": "味方を支援するロール"},
+    {"id": "game:ultimate", "category": "game_term", "ko": "궁극기", "ja": "アルティメット／R", "meaning": "チャンピオンのRスキル"},
+    {"id": "game:gank", "category": "game_term", "ko": "갱킹", "ja": "ガンク", "meaning": "別のレーンへ奇襲すること"},
+    {"id": "game:roam", "category": "game_term", "ko": "로밍", "ja": "ローム", "meaning": "担当レーンを離れて他所へ影響を出すこと"},
+    {"id": "game:teamfight", "category": "game_term", "ko": "한타", "ja": "集団戦", "meaning": "複数人同士の戦闘"},
+    {"id": "game:laning", "category": "game_term", "ko": "라인전", "ja": "レーン戦", "meaning": "主に序盤のレーンでの対面"},
+    {"id": "game:trade", "category": "game_term", "ko": "딜교환", "ja": "ダメージ交換", "meaning": "短い攻撃の応酬"},
+    {"id": "game:counter-jungle", "category": "game_term", "ko": "카운터 정글", "ja": "カウンタージャングル", "meaning": "敵ジャングルへ侵入して資源を奪うこと"},
+    {"id": "game:waveclear", "category": "game_term", "ko": "라인 클리어", "ja": "ウェーブクリア", "meaning": "ミニオンウェーブを処理すること"},
+    {"id": "game:objective", "category": "game_term", "ko": "오브젝트", "ja": "オブジェクト", "meaning": "ドラゴン、バロン、タワーなどの主要目標"},
+    {"id": "game:cs", "category": "game_term", "ko": "CS", "ja": "CS", "meaning": "ミニオンなどへのラストヒット数"},
+    {"id": "game:core-item", "category": "game_term", "ko": "코어 아이템", "ja": "コアアイテム", "meaning": "ビルドの中核となる完成アイテム"},
+    {"id": "game:initiate", "category": "game_term", "ko": "이니시에이팅", "ja": "エンゲージ", "meaning": "戦闘を開始すること"},
+    {"id": "game:poke", "category": "game_term", "ko": "포킹", "ja": "ポーク", "meaning": "遠距離から継続的に体力を削ること"},
+    {"id": "game:kite", "category": "game_term", "ko": "카이팅", "ja": "カイト", "meaning": "距離を保ちながら攻撃する操作"},
+    {"id": "game:warding", "category": "game_term", "ko": "와딩", "ja": "ワーディング", "meaning": "ワードを設置して視界を取ること"}
+  ],
+  "aliases": [
+    {"id": "alias:item:nashor", "ko": "내셔", "target_ids": ["item:3115"], "type": "abbreviation", "status": "community_source_checked", "sources": ["nashor_guinsoo_usage"], "evidence": "내셔+구인수", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:ninja-tabi", "ko": "닌탑", "target_ids": ["item:3047"], "type": "old_name_abbreviation", "status": "community_source_checked", "sources": ["ninja_tabi_history"], "evidence": "닌탑(닌자타비,닌자신발)", "historical": {"origin_ko": "닌자의 신발", "current_target_since": "10.23", "video_patch_may_be_unknown": true}, "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:mercury-treads", "ko": "헤르메스", "target_ids": ["item:3111"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["boots_current_usage"], "evidence": "닌탑, 헤르메스신", "ambiguity": {"level": "conflict", "other_meanings": ["item:3139"], "guidance": "신발, 강인함, 마법 저항력 문맥이면 머큐리 부츠 후보. 수은, 치명타 문맥이면 헤르메스의 시미터일 수 있음."}, "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:guinsoo", "ko": "구인수", "target_ids": ["item:3124"], "type": "abbreviation", "status": "community_source_checked", "sources": ["nashor_guinsoo_usage"], "evidence": "구인수의 격노검, 흔히 구인수", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:bramble-compact", "ko": "덤불조끼", "target_ids": ["item:3076"], "type": "spacing_variant", "status": "official_derived", "sources": ["riot_ddragon_16_18_1"], "evidence": "덤불 조끼에서 공백 제거", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:infinity-edge", "ko": "인피", "target_ids": ["item:3031"], "type": "abbreviation", "status": "community_source_checked", "sources": ["adc_item_abbreviations"], "evidence": "정수, 인피", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:trinity-force", "ko": "트포", "target_ids": ["item:3078"], "type": "abbreviation", "status": "community_source_checked", "sources": ["adc_item_abbreviations"], "evidence": "트포루난 빌드", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:zhonya", "ko": "존야", "target_ids": ["item:3157"], "type": "abbreviation", "status": "community_source_checked", "sources": ["adc_item_abbreviations"], "evidence": "라바돈, 존야", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:rabadon", "ko": "라바돈", "target_ids": ["item:3089"], "type": "abbreviation", "status": "community_source_checked", "sources": ["adc_item_abbreviations"], "evidence": "라바돈, 존야", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:bork", "ko": "몰왕", "target_ids": ["item:3153"], "type": "abbreviation", "status": "community_source_checked", "sources": ["adc_item_abbreviations"], "evidence": "몰왕, 루난, 구인수", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:frozen-heart", "ko": "얼심", "target_ids": ["item:3110"], "type": "abbreviation", "status": "community_source_checked", "sources": ["ninja_tabi_history"], "evidence": "얼심, 얼어붙은 심장", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:thornmail", "ko": "가갑", "target_ids": ["item:3075"], "type": "abbreviation", "status": "community_source_checked", "sources": ["item_effect_terms"], "evidence": "가갑과 닌탑", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:lucidity-boots", "ko": "쿨감신", "target_ids": ["item:3158"], "type": "legacy_mechanic_abbreviation", "status": "community_source_checked", "sources": ["boots_current_usage"], "evidence": "쿨감신 등 다른 여러 신발", "historical": {"origin_ko": "쿨타임 감소 신발", "video_patch_may_be_unknown": true}, "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:sorcerer-shoes", "ko": "마관신", "target_ids": ["item:3020"], "type": "abbreviation", "status": "community_source_checked", "sources": ["boots_terms"], "evidence": "마관신이라 불리우며", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:runaan", "ko": "루난", "target_ids": ["item:3085"], "type": "abbreviation", "status": "community_source_checked", "sources": ["adc_item_abbreviations"], "evidence": "트포, 루난", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:youmuu", "ko": "요우무", "target_ids": ["item:3142"], "type": "abbreviation", "status": "community_source_checked", "sources": ["adc_item_abbreviations"], "evidence": "2코어 요우무", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:black-cleaver", "ko": "블클", "target_ids": ["item:3071"], "type": "abbreviation", "status": "community_source_checked", "sources": ["item_effect_terms"], "evidence": "블클 몰락", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:guardian-angel", "ko": "가엔", "target_ids": ["item:3026"], "type": "abbreviation", "status": "community_source_checked", "sources": ["adc_item_abbreviations"], "evidence": "가엔, 시미터", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:wits-end", "ko": "마최", "target_ids": ["item:3091"], "type": "abbreviation", "status": "community_source_checked", "sources": ["adc_item_abbreviations"], "evidence": "몰락마최", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:item:essence-reaver", "ko": "정수", "target_ids": ["item:3508"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["adc_item_abbreviations"], "evidence": "정수, 인피", "ambiguity": {"level": "general_word", "other_meanings": ["精髄", "整数"], "guidance": "아이템 빌드와 원딜 문맥에서만 에센스 리버 후보로 사용."}, "matching": {"boundary": "korean_token_or_particle"}},
+
+    {"id": "alias:champion:volibear", "ko": "볼베", "target_ids": ["champion:Volibear"], "type": "abbreviation", "status": "community_source_checked", "sources": ["volibear_abbreviation"], "evidence": "볼베 스킬", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:darius", "ko": "다리", "target_ids": ["champion:Darius"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["darius_abbreviation"], "evidence": "다리 유저들", "ambiguity": {"level": "general_word", "other_meanings": ["脚", "橋"], "guidance": "챔피언, 탑, 스킬, 상대 문맥이면 다리우스 후보. 신체나 구조물 문맥이면 일반어로 해석.", "negative_cues": ["아파", "아픈", "무릎", "발목", "건너", "교량"]}, "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:tristana", "ko": "트타", "target_ids": ["champion:Tristana"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "트리스타나를 줄여 ... 트타", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:miss-fortune", "ko": "미포", "target_ids": ["champion:MissFortune"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "미스포춘 = 미포", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:blitzcrank", "ko": "블츠", "target_ids": ["champion:Blitzcrank"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "블리츠크랭크 = 블츠", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:malphite", "ko": "말파", "target_ids": ["champion:Malphite"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "말파이트 = 말파", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:dr-mundo", "ko": "문도", "target_ids": ["champion:DrMundo"], "type": "short_name", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "문도박사 = 문도", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:gangplank", "ko": "갱플", "target_ids": ["champion:Gangplank"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "갱플랭크 = 갱플", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:katarina", "ko": "카타", "target_ids": ["champion:Katarina"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "카타리나 = 카타", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:ezreal", "ko": "이즈", "target_ids": ["champion:Ezreal"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "이즈리얼 = 이즈", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:irelia", "ko": "이렐", "target_ids": ["champion:Irelia"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "이렐리아 = 이렐", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:cassiopeia", "ko": "카시", "target_ids": ["champion:Cassiopeia"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["champion_abbreviations"], "evidence": "카시오페아 = 카시", "ambiguity": {"level": "name_prefix", "other_meanings": ["카사딘 오인 가능"], "guidance": "독, 쌍독니, 미드 문맥이면 카시오페아 후보."}, "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:maokai", "ko": "마오", "target_ids": ["champion:Maokai"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "마오카이 = 마오", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:orianna", "ko": "오리", "target_ids": ["champion:Orianna"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["champion_abbreviations"], "evidence": "오리아나 = 오리", "ambiguity": {"level": "general_word", "other_meanings": ["오리（鴨）"], "guidance": "챔피언이나 미드 문맥일 때만 오리아나 후보."}, "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:graves", "ko": "그브", "target_ids": ["champion:Graves"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "그레이브즈 = 그브", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:sejuani", "ko": "세주", "target_ids": ["champion:Sejuani"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "세주아니 = 세주", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:nautilus", "ko": "노틸", "target_ids": ["champion:Nautilus"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "노틸러스 = 노틸", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:aatrox", "ko": "아트", "target_ids": ["champion:Aatrox"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "아트록스 = 아트", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:kalista", "ko": "칼리", "target_ids": ["champion:Kalista"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "칼리스타 = 칼리", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:kindred", "ko": "킨드", "target_ids": ["champion:Kindred"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "킨드레드 = 킨드", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:champion:aphelios", "ko": "아펠", "target_ids": ["champion:Aphelios"], "type": "abbreviation", "status": "community_source_checked", "sources": ["champion_abbreviations"], "evidence": "아펠리오스 = 아펠", "matching": {"boundary": "korean_token_or_particle"}},
+
+    {"id": "alias:rune:glacial", "ko": "빙결", "target_ids": ["rune:8351"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["glacial_abbreviation"], "evidence": "빙결강화, 빙결", "ambiguity": {"level": "general_word", "other_meanings": ["凍結", "氷結"], "guidance": "룬, 세팅, 들어 같은 문맥이면 글레이셜 오그먼트 후보. 상태 설명이면 일반어 가능."}, "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:rune:lethal-tempo", "ko": "치속", "target_ids": ["rune:8008"], "type": "abbreviation", "status": "community_source_checked", "sources": ["rune_abbreviations"], "evidence": "치속 정복자 집공", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:rune:press-the-attack", "ko": "집공", "target_ids": ["rune:8005"], "type": "abbreviation", "status": "community_source_checked", "sources": ["rune_abbreviations"], "evidence": "치속 정복자 집공", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:rune:grasp", "ko": "착취", "target_ids": ["rune:8437"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["rune_usage_survey"], "evidence": "정복자 vs 착취", "ambiguity": {"level": "general_word", "other_meanings": ["搾取"], "guidance": "룬 선택 문맥에서는不死者の握撃候補。一般文では搾取の意味を優先可能。"}, "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:rune:first-strike", "ko": "선공", "target_ids": ["rune:8369"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["first_strike_abbreviation"], "evidence": "선제공격, 선공", "ambiguity": {"level": "general_word", "other_meanings": ["先攻"], "guidance": "룬과 빌드 문맥에서 퍼스트 스트라이크 후보."}, "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:rune:arcane-comet", "ko": "유성", "target_ids": ["rune:8229"], "type": "short_name", "status": "community_source_checked_context_required", "sources": ["aery_comet_abbreviations"], "evidence": "신비로운 유성, 유성", "ambiguity": {"level": "general_word", "other_meanings": ["流星"], "guidance": "룬 설정 문맥에서秘儀の彗星候補。"}, "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:rune:summon-aery", "ko": "콩콩이", "target_ids": ["rune:8214"], "type": "short_name", "status": "community_source_checked", "sources": ["aery_comet_abbreviations"], "evidence": "콩콩이 소환, 콩콩이", "matching": {"boundary": "korean_token_or_particle"}},
+
+    {"id": "alias:spell:flash-short", "ko": "플", "target_ids": ["summoner-spell:SummonerFlash"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["flash_ultimate_usage"], "evidence": "E -> W -> 플 콤보", "ambiguity": {"level": "short", "other_meanings": ["플레이 등의 접두 부분"], "guidance": "독립 토큰이며 스펠, 콤보, 빠지다 문맥이면 플래시 후보. 단어 내부에서는 일치시키지 않음."}, "matching": {"boundary": "strict_korean_token_or_particle"}},
+    {"id": "alias:spell:flash-transliteration", "ko": "플래쉬", "target_ids": ["summoner-spell:SummonerFlash"], "type": "spelling_variant", "status": "community_source_checked", "sources": ["flash_spelling_usage"], "evidence": "플래쉬 사용례", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:spell:flash-transliteration-standard", "ko": "플래시", "target_ids": ["summoner-spell:SummonerFlash"], "type": "spelling_variant", "status": "community_source_checked", "sources": ["flash_standard_spelling_usage"], "evidence": "점멸, 플래시", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:spell:teleport-short", "ko": "텔", "target_ids": ["summoner-spell:SummonerTeleport"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["teleport_abbreviation"], "evidence": "텔로 봇 로밍", "ambiguity": {"level": "short", "other_meanings": ["텔레포트以外の略語"], "guidance": "스펠 조합 문맥에서만 텔레포트 후보."}, "matching": {"boundary": "strict_korean_token_or_particle"}},
+    {"id": "alias:spell:teleport", "ko": "텔포", "target_ids": ["summoner-spell:SummonerTeleport"], "type": "abbreviation", "status": "community_source_checked", "sources": ["teleport_abbreviation"], "evidence": "순간이동, 텔포", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:spell:heal", "ko": "힐", "target_ids": ["summoner-spell:SummonerHeal"], "type": "english_short_name", "status": "community_source_checked_context_required", "sources": ["heal_barrier_abbreviations"], "evidence": "힐/탈진 스펠", "ambiguity": {"level": "mechanic", "other_meanings": ["一般的な回復"], "guidance": "스펠 선택이면 힐, 회복 행위 문맥이면 일반적인 회복."}, "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:spell:barrier", "ko": "배리어", "target_ids": ["summoner-spell:SummonerBarrier"], "type": "spelling_variant", "status": "community_source_checked", "sources": ["heal_barrier_abbreviations"], "evidence": "배리어 스펠", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:spell:barrier-variant", "ko": "베리어", "target_ids": ["summoner-spell:SummonerBarrier"], "type": "spelling_variant", "status": "community_source_checked", "sources": ["barrier_variant"], "evidence": "방어막, 베리어", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:spell:smite", "ko": "스마", "target_ids": ["summoner-spell:SummonerSmite"], "type": "abbreviation", "status": "community_source_checked", "sources": ["smite_usage"], "evidence": "강타(스마이트)", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:spell:smite-full", "ko": "스마이트", "target_ids": ["summoner-spell:SummonerSmite"], "type": "english_name", "status": "community_source_checked", "sources": ["smite_usage"], "evidence": "강타(스마이트)", "matching": {"boundary": "korean_token_or_particle"}},
+
+    {"id": "alias:game:ultimate", "ko": "궁", "target_ids": ["game:ultimate"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["flash_ultimate_usage"], "evidence": "궁극기의 범위, 궁", "ambiguity": {"level": "general_word", "other_meanings": ["宮", "弓"], "guidance": "Q/W/E/R, 스킬, 쿨타임, 사용 문맥이면アルティメット候補。根拠不足なら宮・弓を含む一般語の可能性を残す。"}, "matching": {"boundary": "strict_korean_token_or_particle"}},
+    {"id": "alias:role:adc", "ko": "원딜", "target_ids": ["role:bottom-carry"], "type": "abbreviation", "status": "source_checked", "sources": ["role_labels"], "evidence": "탑, 정글, 미드, 원딜, 서폿", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:role:support", "ko": "서폿", "target_ids": ["role:support"], "type": "abbreviation", "status": "source_checked", "sources": ["role_labels"], "evidence": "탑, 정글, 미드, 원딜, 서폿", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:game:gank", "ko": "갱", "target_ids": ["game:gank"], "type": "abbreviation", "status": "community_source_checked_context_required", "sources": ["game_terms_match_report"], "evidence": "유효 갱킹", "ambiguity": {"level": "short", "other_meanings": ["갱단"], "guidance": "라인, 정글러, 로밍 문맥이면ガンク候補。"}, "matching": {"boundary": "strict_korean_token_or_particle"}},
+    {"id": "alias:game:trade", "ko": "딜교", "target_ids": ["game:trade"], "type": "abbreviation", "status": "community_source_checked", "sources": ["game_terms_laning"], "evidence": "라인전 딜교", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:game:counter-jungle", "ko": "카정", "target_ids": ["game:counter-jungle"], "type": "abbreviation", "status": "community_source_checked", "sources": ["game_terms_match_report"], "evidence": "카운터 정글", "matching": {"boundary": "korean_token_or_particle"}},
+    {"id": "alias:game:waveclear", "ko": "라클", "target_ids": ["game:waveclear"], "type": "abbreviation", "status": "community_source_checked", "sources": ["volibear_abbreviation"], "evidence": "라클 걱정없음", "matching": {"boundary": "korean_token_or_particle"}}
+  ]
+}

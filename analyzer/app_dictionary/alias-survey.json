@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "version": "lol-ko-ja-alias-survey-2026-09-19",
+  "scope": {
+    "champion": "Invenのチャンピオン略称一覧と優先候補を調査",
+    "item": "主要ビルド記事、靴解説、個別アイテム記事で使用例を調査",
+    "rune": "主要キーストーンの比較記事とビルド記事を調査",
+    "summoner_spell": "コンボ、スペル構成、スマイト解説を調査",
+    "game_term": "試合記事とレーン運用記事に現れる実況語を調査"
+  },
+  "candidates": [
+    {"term": "내셔", "category": "item", "decision": "confirmed_active", "target": "item:3115"},
+    {"term": "닌탑", "category": "item", "decision": "confirmed_historical_active", "target": "item:3047"},
+    {"term": "헤르메스", "category": "item", "decision": "confirmed_conflict_active", "target": "item:3111", "conflict": "item:3139"},
+    {"term": "구인수", "category": "item", "decision": "confirmed_active", "target": "item:3124"},
+    {"term": "덤불조끼", "category": "item", "decision": "official_spacing_variant_active", "target": "item:3076"},
+    {"term": "궁", "category": "game_term", "decision": "confirmed_contextual_active", "target": "game:ultimate"},
+    {"term": "궁극기", "category": "game_term", "decision": "confirmed_canonical_active", "target": "game:ultimate"},
+    {"term": "볼베", "category": "champion", "decision": "confirmed_active", "target": "champion:Volibear"},
+    {"term": "다리", "category": "champion", "decision": "confirmed_contextual_active", "target": "champion:Darius", "conflict": "一般語の脚・橋"},
+    {"term": "빙결", "category": "rune", "decision": "confirmed_contextual_active", "target": "rune:8351", "conflict": "一般語の凍結"},
+    {"term": "플", "category": "summoner_spell", "decision": "confirmed_contextual_active", "target": "summoner-spell:SummonerFlash", "conflict": "他語の一部分"},
+    {"term": "나서스", "category": "item", "decision": "rejected_conflict", "target": "item:3115", "reason": "チャンピオンのナサスと一致し、ナッシャーの用例として確認できない"},
+    {"term": "신발", "category": "item", "decision": "rejected_ambiguous", "reason": "複数の靴アイテムを指す一般語"},
+    {"term": "대천사", "category": "item", "decision": "unconfirmed", "reason": "複数の派生・歴史名称との対応確認を保留"},
+    {"term": "고연포", "category": "item", "decision": "unconfirmed", "reason": "今回の固定調査資料では対応を十分に確認できず保留"},
+    {"term": "짜오", "category": "champion", "decision": "unconfirmed", "reason": "用例は見つかったが対象一覧ソースとの照合を次回へ保留"},
+    {"term": "아우솔", "category": "champion", "decision": "unconfirmed", "reason": "今回の調査資料では明示的な対応用例を確保できず保留"},
+    {"term": "텔", "category": "summoner_spell", "decision": "confirmed_contextual_active", "target": "summoner-spell:SummonerTeleport"},
+    {"term": "힐", "category": "summoner_spell", "decision": "confirmed_contextual_active", "target": "summoner-spell:SummonerHeal", "conflict": "一般的な回復行為"}
+  ]
+}
