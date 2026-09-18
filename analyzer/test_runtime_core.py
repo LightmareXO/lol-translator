@@ -12,6 +12,7 @@ from runtime_core import (
     Sample,
     apply_translation,
     are_conservative_ocr_variants,
+    are_temporal_ocr_variants,
     atomic_write_json,
     is_low_information_ocr,
     mark_translation_stale,
@@ -147,6 +148,22 @@ class TimelineTests(unittest.TestCase):
         self.assertFalse(are_conservative_ocr_variants("스킬 Q 사용", "스킬 E 사용"))
         self.assertFalse(are_conservative_ocr_variants("적 2명", "적 3명"))
 
+    def test_temporal_variants_ignore_edge_noise_but_protect_conflicting_tokens(self):
+        self.assertTrue(
+            are_temporal_ocr_variants(
+                "cY바로마공점빛망 준비해습니다",
+                "바로 마공점빛망 준비해습니다",
+            )
+        )
+        self.assertTrue(
+            are_temporal_ocr_variants(
+                "트 진짜 객쩌는 받드 가져온",
+                "브는 진짜 개쩌는 빌드 가져온",
+            )
+        )
+        self.assertFalse(are_temporal_ocr_variants("스킬 Q 사용합니다", "스킬 E 사용합니다"))
+        self.assertFalse(are_temporal_ocr_variants("적이 2명 있어요", "적이 3명 있어요"))
+
     def test_stabilization_keeps_variants_and_uses_the_highest_confidence_text(self):
         subtitles = merge_samples(
             [
@@ -158,7 +175,9 @@ class TimelineTests(unittest.TestCase):
             interval_seconds=0.2,
             range_end_seconds=1.8,
         )[0]
-        stabilized = stabilize_subtitles(subtitles, maximum_gap_seconds=0)
+        stabilized = stabilize_subtitles(
+            subtitles, maximum_gap_seconds=0, minimum_duration_seconds=0
+        )
         self.assertEqual(len(stabilized), 3)
         self.assertEqual(stabilized[0]["start_seconds"], 1.0)
         self.assertEqual(stabilized[0]["end_seconds"], 1.4)
@@ -167,6 +186,49 @@ class TimelineTests(unittest.TestCase):
         self.assertEqual(
             [item["id"] for item in stabilized],
             ["subtitle-00001", "subtitle-00002", "subtitle-00003"],
+        )
+
+    def test_stabilization_bridges_one_missing_sample_and_drops_brief_noise(self):
+        subtitles = merge_samples(
+            [
+                Sample(1.0, "subtitle", "cY바로 마공점 준비합니다", confidence=0.7),
+                Sample(1.2, "subtitle", "바로 마공점 준비합니다", confidence=0.9),
+                Sample(1.4, "no_subtitle"),
+                Sample(1.6, "subtitle", "바로 마공점 준비합니다", confidence=0.8),
+                Sample(1.8, "subtitle", "바로 마공점 준비합니다", confidence=0.8),
+                Sample(2.0, "subtitle", "바로 마공점 준비합니다", confidence=0.8),
+                Sample(2.2, "no_subtitle"),
+                Sample(2.4, "subtitle", "전혀 다른 문장", confidence=0.8),
+            ],
+            interval_seconds=0.2,
+            range_end_seconds=2.6,
+        )[0]
+
+        stabilized = stabilize_subtitles(subtitles, maximum_gap_seconds=0.2)
+
+        self.assertEqual(len(stabilized), 1)
+        self.assertEqual(stabilized[0]["start_seconds"], 1.0)
+        self.assertEqual(stabilized[0]["end_seconds"], 2.2)
+        self.assertEqual(stabilized[0]["ocr"]["raw_text"], "바로 마공점 준비합니다")
+        self.assertEqual(len(stabilized[0]["ocr"]["variants"]), 3)
+
+    def test_stabilization_keeps_stable_captions_with_different_skill_letters(self):
+        samples = [
+            Sample(1.0 + index * 0.2, "subtitle", "스킬 Q 사용합니다", confidence=0.9)
+            for index in range(6)
+        ] + [
+            Sample(2.2 + index * 0.2, "subtitle", "스킬 E 사용합니다", confidence=0.9)
+            for index in range(6)
+        ]
+        subtitles = merge_samples(
+            samples, interval_seconds=0.2, range_end_seconds=3.4
+        )[0]
+
+        stabilized = stabilize_subtitles(subtitles, maximum_gap_seconds=0.2)
+
+        self.assertEqual(
+            [item["ocr"]["raw_text"] for item in stabilized],
+            ["스킬 Q 사용합니다", "스킬 E 사용합니다"],
         )
 
     def test_corrections_mark_stale_and_retranslation_preserves_user_japanese(self):

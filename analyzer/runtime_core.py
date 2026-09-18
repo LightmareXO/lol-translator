@@ -19,10 +19,13 @@ DEFAULT_SAMPLE_INTERVAL_MS = 200
 MIN_SAMPLE_INTERVAL_MS = 50
 MAX_SAMPLE_INTERVAL_MS = 5_000
 MAX_STABILIZATION_EDIT_RATIO = 0.2
+MAX_TEMPORAL_HANGUL_EDIT_RATIO = 0.45
+MIN_STABLE_CAPTION_SECONDS = 1.2
 MIN_OCR_CONFIDENCE = 0.5
 MIN_NON_KOREAN_OCR_CONFIDENCE = 0.6
 HANGUL_PATTERN = re.compile(r"[가-힣]")
 PROTECTED_TOKEN_PATTERN = re.compile(r"[A-Za-z]+|\d+(?:[.:]\d+)?")
+PROTECTED_SKILL_PATTERN = re.compile(r"(?<![A-Za-z])[QWERDF](?![A-Za-z])", re.IGNORECASE)
 
 
 def atomic_write_json(path: Path, value: Any) -> None:
@@ -105,6 +108,38 @@ def are_conservative_ocr_variants(left: str, right: str) -> bool:
         return False
     allowed_edits = max(1, math.floor(maximum_length * MAX_STABILIZATION_EDIT_RATIO))
     return _edit_distance(left_normalized, right_normalized) <= allowed_edits
+
+
+def _temporal_protected_tokens(text: str) -> tuple[tuple[str, ...], tuple[str, ...]]:
+    normalized = unicodedata.normalize("NFC", text)
+    numbers = tuple(re.findall(r"\d+(?:[.:]\d+)?", normalized))
+    skill_letters = tuple(
+        match.group(0).upper() for match in PROTECTED_SKILL_PATTERN.finditer(normalized)
+    )
+    return numbers, skill_letters
+
+
+def are_temporal_ocr_variants(left: str, right: str) -> bool:
+    """Match adjacent Hangul readings while rejecting contradictory LoL tokens."""
+    if are_conservative_ocr_variants(left, right):
+        return True
+    left_hangul = "".join(HANGUL_PATTERN.findall(unicodedata.normalize("NFC", left)))
+    right_hangul = "".join(HANGUL_PATTERN.findall(unicodedata.normalize("NFC", right)))
+    maximum_length = max(len(left_hangul), len(right_hangul))
+    if min(len(left_hangul), len(right_hangul)) < 2:
+        return False
+
+    left_numbers, left_skills = _temporal_protected_tokens(left)
+    right_numbers, right_skills = _temporal_protected_tokens(right)
+    if left_numbers and right_numbers and left_numbers != right_numbers:
+        return False
+    if left_skills and right_skills and left_skills != right_skills:
+        return False
+
+    allowed_edits = max(
+        1, math.floor(maximum_length * MAX_TEMPORAL_HANGUL_EDIT_RATIO)
+    )
+    return _edit_distance(left_hangul, right_hangul) <= allowed_edits
 
 
 def validate_region(region: Any) -> dict[str, float]:
@@ -308,11 +343,14 @@ def merge_samples(
 
 
 def stabilize_subtitles(
-    subtitles: list[dict[str, Any]], *, maximum_gap_seconds: float
+    subtitles: list[dict[str, Any]], *, maximum_gap_seconds: float,
+    minimum_duration_seconds: float = MIN_STABLE_CAPTION_SECONDS,
 ) -> list[dict[str, Any]]:
-    """Merge only adjacent conservative OCR variants and retain every raw variant."""
+    """Merge adjacent temporal OCR variants and discard unconfirmed flashes."""
     if maximum_gap_seconds < 0:
         raise ValueError("maximum_gap_seconds must not be negative")
+    if minimum_duration_seconds < 0:
+        raise ValueError("minimum_duration_seconds must not be negative")
     stabilized: list[dict[str, Any]] = []
 
     def variant(subtitle: dict[str, Any]) -> dict[str, Any]:
@@ -330,7 +368,7 @@ def stabilize_subtitles(
             continue
         previous = stabilized[-1]
         gap = subtitle["start_seconds"] - previous["end_seconds"]
-        if gap > maximum_gap_seconds + 1e-9 or not are_conservative_ocr_variants(
+        if gap > maximum_gap_seconds + 1e-9 or not are_temporal_ocr_variants(
             previous["ocr"]["raw_text"], subtitle["ocr"]["raw_text"]
         ):
             stabilized.append(subtitle)
@@ -354,6 +392,12 @@ def stabilize_subtitles(
             )
             previous["translation"]["source_ko"] = subtitle["ocr"]["raw_text"]
 
+    stabilized = [
+        subtitle
+        for subtitle in stabilized
+        if subtitle["end_seconds"] - subtitle["start_seconds"]
+        >= minimum_duration_seconds - 1e-9
+    ]
     for index, subtitle in enumerate(stabilized, start=1):
         subtitle["id"] = f"subtitle-{index:05d}"
     return stabilized

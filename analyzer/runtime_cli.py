@@ -413,7 +413,10 @@ def analyze(
     subtitles, errors = merge_samples(
         samples, interval_seconds=interval_seconds, range_end_seconds=end
     )
-    subtitles = stabilize_subtitles(subtitles, maximum_gap_seconds=0)
+    subtitles = stabilize_subtitles(
+        subtitles,
+        maximum_gap_seconds=interval_seconds,
+    )
     for index, subtitle in enumerate(subtitles):
         if cancelled():
             raise Cancelled()
@@ -463,9 +466,11 @@ def analyze(
                     "minimum_non_korean_alphanumeric_length": 2,
                 },
                 "timeline_stabilization": {
-                    "version": "conservative-adjacent-ocr-v1",
-                    "maximum_edit_ratio": 0.2,
-                    "protect_ascii_and_numbers": True,
+                    "version": "temporal-hangul-debounce-v2",
+                    "maximum_gap_ms": request["settings"]["sample_interval_ms"],
+                    "maximum_hangul_edit_ratio": 0.45,
+                    "minimum_duration_ms": 1200,
+                    "protect_conflicting_numbers_and_skill_letters": True,
                 },
             },
             "translation": translator.configuration(),
