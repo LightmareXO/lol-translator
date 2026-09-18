@@ -87,6 +87,45 @@ class ImageFeatureTests(unittest.TestCase):
         self.assertTrue(yellow.present)
         self.assertFalse(empty.present)
 
+    def test_gradual_fade_keeps_one_interval_until_text_becomes_unreadable(self):
+        tracker = LineIntervalTracker(
+            line_id="line-1",
+            line_index=0,
+            minimum_duration_seconds=0,
+        )
+        observations = []
+        for index, intensity in enumerate((255, 220, 190, 160, 140)):
+            image = np.full((80, 320, 3), (40, 70, 40), dtype=np.uint8)
+            cv2.putText(
+                image,
+                "TEST",
+                (80, 52),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                1.5,
+                (intensity, intensity, intensity),
+                4,
+            )
+            observations.append(
+                extract_text_feature(
+                    image,
+                    timestamp_seconds=index * 0.2,
+                    source_pts_seconds=index * 0.2,
+                    source_index=index,
+                    line_id="line-1",
+                    line_index=0,
+                )
+            )
+        self.assertEqual(
+            [observation.present for observation in observations],
+            [True, True, True, False, False],
+        )
+        for observation in observations:
+            tracker.add(observation)
+        tracker.finish(1.0)
+        self.assertEqual(len(tracker.intervals), 1)
+        self.assertEqual(tracker.intervals[0].start_seconds, 0.0)
+        self.assertAlmostEqual(tracker.intervals[0].end_seconds, 0.6)
+
 
 class LineTrackerTests(unittest.TestCase):
     def test_single_sample_confirmation_closes_and_reopens_immediately(self):

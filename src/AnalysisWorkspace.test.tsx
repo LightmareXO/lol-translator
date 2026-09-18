@@ -163,6 +163,26 @@ it("allows zero seconds as the minimum display duration", async () => {
   );
 });
 
+it("forwards cancellation to the active analyzer job", async () => {
+  vi.mocked(invoke).mockImplementation((command) => {
+    if (command === "start_analysis")
+      return Promise.resolve({ job_id: "job-cancel" });
+    if (command === "cancel_analysis_job") return Promise.resolve(undefined);
+    return new Promise(() => {});
+  });
+  render(<Harness />);
+  fireEvent.click(screen.getByRole("button", { name: "解析を開始" }));
+  fireEvent.click(await screen.findByRole("button", { name: "キャンセル" }));
+  await waitFor(() =>
+    expect(invoke).toHaveBeenCalledWith("cancel_analysis_job", {
+      jobId: "job-cancel",
+    }),
+  );
+  expect(await screen.findByRole("status")).toHaveTextContent(
+    "解析をキャンセルしました",
+  );
+});
+
 it("sends null timestamps when whole-video analysis is selected", async () => {
   vi.mocked(invoke).mockImplementation((command) => {
     if (command === "start_analysis")
