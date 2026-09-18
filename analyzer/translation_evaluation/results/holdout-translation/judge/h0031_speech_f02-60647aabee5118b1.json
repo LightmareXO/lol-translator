@@ -1,0 +1,112 @@
+{
+  "job_sha256": "60647aabee5118b123ce153b18b4fbe40ac1c61e3ae5d84c800654c5ee3eff15",
+  "identity": {
+    "judge_model": "qwen3:8b",
+    "judge_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "model_info": {
+      "general.architecture": "qwen3",
+      "general.basename": "Qwen3",
+      "general.file_type": 15,
+      "general.license": "apache-2.0",
+      "general.parameter_count": 8190735360,
+      "general.quantization_version": 2,
+      "general.size_label": "8B",
+      "general.type": "model",
+      "qwen3.attention.head_count": 32,
+      "qwen3.attention.head_count_kv": 8,
+      "qwen3.attention.key_length": 128,
+      "qwen3.attention.layer_norm_rms_epsilon": 1e-6,
+      "qwen3.attention.value_length": 128,
+      "qwen3.block_count": 36,
+      "qwen3.context_length": 40960,
+      "qwen3.embedding_length": 4096,
+      "qwen3.feed_forward_length": 12288,
+      "qwen3.rope.freq_base": 1000000,
+      "tokenizer.ggml.add_bos_token": false,
+      "tokenizer.ggml.bos_token_id": 151643,
+      "tokenizer.ggml.eos_token_id": 151645,
+      "tokenizer.ggml.merges": [],
+      "tokenizer.ggml.model": "gpt2",
+      "tokenizer.ggml.padding_token_id": 151643,
+      "tokenizer.ggml.pre": "qwen2",
+      "tokenizer.ggml.token_type": [],
+      "tokenizer.ggml.tokens": []
+    },
+    "system_sha256": "52bf7878cb20dc9b7d1a16b4c9f7800778e2ac21e945532520f2e35411fbe708",
+    "schema_sha256": "d6705d886ad4fe8c7f442b5698dc845eee307550957fee096affd5db4ecd013c",
+    "outputs_sha256": "2bb37a4d43486eccc5c930c475542ce61270172a3855f31365f3835d3a0bce50",
+    "dataset_sha256": "97db0c108d76862f66aee7d8963342df1112d0d9a812acb0b3315d74cce8a5d7",
+    "targets_sha256": "924c9dbda90794f54c46822b745d3aa3055ec88d4236cb470b1fdef3d99fd62d",
+    "settings": {
+      "temperature": 0,
+      "seed": 93271,
+      "num_predict": 1024,
+      "think": false
+    },
+    "runner_schema": 2,
+    "runner_sha256": "4a1f5791e647927d0069fb2a31333810fb9a3bf4a552d4dacfd59bc8f6182e16"
+  },
+  "job": {
+    "sample_id": "h0031_speech_f02",
+    "group_id": "h0031",
+    "source_ko": "아니면 궁을 광클하면",
+    "reference_ja": "またはウルトを連打すれば",
+    "must_preserve": ["ウルト", "連打"],
+    "reference_status": "ai_provisional",
+    "candidates": [
+      {
+        "candidate_id": "candidate-17e7ec09d0a9",
+        "ja": "それなら、宮を関係者にする"
+      },
+      {
+        "candidate_id": "candidate-e4dd4ebbe308",
+        "ja": "または宮をクリックすれば"
+      },
+      {
+        "candidate_id": "candidate-435165b37e80",
+        "ja": "それなら、城をフリックすれば"
+      },
+      {
+        "candidate_id": "candidate-9bf1555d0985",
+        "ja": "または宮を管理すれば"
+      }
+    ]
+  },
+  "judgements": [
+    {
+      "candidate_id": "candidate-17e7ec09d0a9",
+      "severity": "major",
+      "error_types": ["omission", "hallucination"],
+      "rationale": "「宮」を「関係者にする」は文脈に合致せず、意図が完全に崩れている。",
+      "semantic_signature": "宮/関係者にする"
+    },
+    {
+      "candidate_id": "candidate-e4dd4ebbe308",
+      "severity": "major",
+      "error_types": ["omission"],
+      "rationale": "「宮」を「クリック」するのは文脈に合致せず、意図が完全に崩れている。",
+      "semantic_signature": "宮/クリック"
+    },
+    {
+      "candidate_id": "candidate-435165b37e80",
+      "severity": "major",
+      "error_types": ["omission", "hallucination"],
+      "rationale": "「城」は原文の「宮」に該当せず、意図が完全に崩れている。",
+      "semantic_signature": "城/フリック"
+    },
+    {
+      "candidate_id": "candidate-9bf1555d0985",
+      "severity": "major",
+      "error_types": ["omission", "hallucination"],
+      "rationale": "「宮」を「管理」するのは文脈に合致せず、意図が完全に崩れている。",
+      "semantic_signature": "宮/管理する"
+    }
+  ],
+  "response_metadata": {
+    "done_reason": "stop",
+    "total_duration": 2556491200,
+    "load_duration": 2910200,
+    "prompt_eval_count": 499,
+    "eval_count": 315
+  }
+}

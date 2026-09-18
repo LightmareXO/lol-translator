@@ -1,0 +1,231 @@
+{
+  "daa92f70f82a26f8a57d627d8bcd688c8d8f7f04ff837e83cdb3f3ae9b2120fc": {
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen3",
+      "families": ["qwen3"],
+      "parameter_size": "4.0B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 262144,
+      "embedding_length": 2560
+    },
+    "model_disk_bytes": 2497293803,
+    "ollama": {
+      "version": "0.34.1"
+    },
+    "template": "{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0].role == 'system' %}\n        {{- messages[0].content + '\\n\\n' }}\n    {%- endif %}\n    {{- \"# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0].role == 'system' %}\n        {{- '<|im_start|>system\\n' + messages[0].content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for message in messages[::-1] %}\n    {%- set index = (messages|length - 1) - loop.index0 %}\n    {%- if ns.multi_step_tool and message.role == \"user\" and message.content is string and not(message.content.startswith('<tool_response>') and message.content.endswith('</tool_response>')) %}\n        {%- set ns.multi_step_tool = false %}\n        {%- set ns.last_query_index = index %}\n    {%- endif %}\n{%- endfor %}\n{%- for message in messages %}\n    {%- if message.content is string %}\n        {%- set content = message.content %}\n    {%- else %}\n        {%- set content = '' %}\n    {%- endif %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) %}\n        {{- '<|im_start|>' + message.role + '\\n' + content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {%- set reasoning_content = '' %}\n        {%- if message.reasoning_content is string %}\n            {%- set reasoning_content = message.reasoning_content %}\n        {%- else %}\n            {%- if '</think>' in content %}\n                {%- set reasoning_content = content.split('</think>')[0].rstrip('\\n').split('<think>')[-1].lstrip('\\n') %}\n                {%- set content = content.split('</think>')[-1].lstrip('\\n') %}\n            {%- endif %}\n        {%- endif %}\n        {%- if loop.index0 > ns.last_query_index %}\n            {%- if loop.last or (not loop.last and reasoning_content) %}\n                {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content.strip('\\n') + '\\n</think>\\n\\n' + content.lstrip('\\n') }}\n            {%- else %}\n                {{- '<|im_start|>' + message.role + '\\n' + content }}\n            {%- endif %}\n        {%- else %}\n            {{- '<|im_start|>' + message.role + '\\n' + content }}\n        {%- endif %}\n        {%- if message.tool_calls %}\n            {%- for tool_call in message.tool_calls %}\n                {%- if (loop.first and content) or (not loop.first) %}\n                    {{- '\\n' }}\n                {%- endif %}\n                {%- if tool_call.function %}\n                    {%- set tool_call = tool_call.function %}\n                {%- endif %}\n                {{- '<tool_call>\\n{\"name\": \"' }}\n                {{- tool_call.name }}\n                {{- '\", \"arguments\": ' }}\n                {%- if tool_call.arguments is string %}\n                    {{- tool_call.arguments }}\n                {%- else %}\n                    {{- tool_call.arguments | tojson }}\n                {%- endif %}\n                {{- '}\\n</tool_call>' }}\n            {%- endfor %}\n        {%- endif %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.first or (messages[loop.index0 - 1].role != \"tool\") %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n{%- endif %}",
+    "model_parameters": "repeat_penalty                 1\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\ntemperature                    0.7\ntop_k                          20\ntop_p                          0.8",
+    "model_info": {
+      "general.architecture": "qwen3",
+      "general.basename": "Qwen3",
+      "general.file_type": 15,
+      "general.finetune": "Instruct",
+      "general.license": "apache-2.0",
+      "general.license.link": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507/blob/main/LICENSE",
+      "general.parameter_count": 4022468096,
+      "general.quantization_version": 2,
+      "general.size_label": "4B",
+      "general.tags": ["text-generation"],
+      "general.type": "model",
+      "general.version": "2507",
+      "qwen3.attention.head_count": 32,
+      "qwen3.attention.head_count_kv": 8,
+      "qwen3.attention.key_length": 128,
+      "qwen3.attention.layer_norm_rms_epsilon": 1e-6,
+      "qwen3.attention.value_length": 128,
+      "qwen3.block_count": 36,
+      "qwen3.context_length": 262144,
+      "qwen3.embedding_length": 2560,
+      "qwen3.feed_forward_length": 9728,
+      "qwen3.rope.freq_base": 5000000,
+      "tokenizer.ggml.add_bos_token": false,
+      "tokenizer.ggml.bos_token_id": 151643,
+      "tokenizer.ggml.eos_token_id": 151645,
+      "tokenizer.ggml.merges": [],
+      "tokenizer.ggml.model": "gpt2",
+      "tokenizer.ggml.padding_token_id": 151643,
+      "tokenizer.ggml.pre": "qwen2",
+      "tokenizer.ggml.token_type": [],
+      "tokenizer.ggml.tokens": []
+    },
+    "capabilities": ["tools", "thinking", "completion"],
+    "prompts": {
+      "version": "ko-ja-v4-instruct-nonthinking",
+      "qwen3": "Translate the following Korean League of Legends subtitle into Japanese. Preserve negation, numbers, skill letters, conditions, actors and targets. Do not add information absent from the source. Output only the Japanese translation, without explanations.",
+      "glossary_instruction": "Terminology reference for League of Legends (use only where context supports the meaning; do not translate the glossary or force replacements):",
+      "options": {
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
+        "min_p": 0,
+        "seed": 42,
+        "num_ctx": 4096,
+        "num_predict": 384
+      },
+      "qwen_think": false,
+      "scope": "Explicit Instruct-2507 4B variant. qwen3:4b resolved to Thinking-2507 and was unsuitable for the intended non-thinking comparison. Instruction text/glossary unchanged. Not a pure size comparison with hybrid 8B.",
+      "sources": [
+        "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507",
+        "https://ollama.com/library/qwen3:4b-instruct-2507-q4_K_M"
+      ]
+    },
+    "glossary": {
+      "version": "lol-ko-ja-v1",
+      "frozen_before_translation": true,
+      "date": "2026-09-16",
+      "naming_patch": "16.18.1",
+      "note": "正式名称はRiot Data Dragonの同一IDを言語間で照合。動画のパッチは未確認。略称は非公式。原文の一律置換には使わない。",
+      "sources": {
+        "items_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/item.json",
+        "items_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/item.json",
+        "runes_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/runesReforged.json",
+        "runes_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/runesReforged.json",
+        "champions_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/champion.json",
+        "champions_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/champion.json",
+        "spells_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/summoner.json",
+        "spells_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/summoner.json",
+        "flash_alias": "https://www.inven.co.kr/board/lol/3369/1978586",
+        "support_alias": "https://talk.op.gg/s/lol/tip/6107935",
+        "cleaver_youmu_alias": "https://m.inven.co.kr/site/lol/manualtool.php?champnum=83&idx=117738&p=6&pg=328&season=7&vtype=mobile",
+        "hexflash_alias": "https://m.inven.co.kr/site/lol/manualtool.php?c=122258&cp=1&idx=143140&p=80",
+        "darius_alias": "https://d.namu.moe/w/다리(동음이의어)",
+        "jamo": "https://korean.go.kr/common/download.do%3Bfront%3DB273103B1F431031CE40385C45AA1DDB?c_file_name=3f292972-4353-45f8-9cc8-5580ed2ce8db.pdf&file_path=reportData&o_file_name=2021%EB%85%84+%EB%A7%9E%EC%B6%A4%EB%B2%95+%EA%B5%90%EC%A0%95+%EB%A7%90%EB%AD%89%EC%B9%98+%EC%97%B0%EA%B5%AC+%EB%B6%84%EC%84%9D.pdf"
+      },
+      "entries": [
+        {
+          "ko": "점멸",
+          "aliases": ["플", "플래쉬"],
+          "ja": "フラッシュ",
+          "kind": "summoner_spell",
+          "meaning": "短距離の瞬間移動を行うサモナースペル",
+          "id": "SummonerFlash",
+          "status": "source_checked",
+          "sources": ["spells_ko", "spells_ja", "flash_alias"]
+        },
+        {
+          "ko": "서포터",
+          "aliases": ["서폿"],
+          "ja": "サポート",
+          "kind": "role",
+          "meaning": "味方を支援するロール",
+          "status": "community_source_checked",
+          "sources": ["support_alias"]
+        },
+        {
+          "ko": "칠흑의 양날 도끼",
+          "aliases": ["블클"],
+          "ja": "ブラック クリーバー",
+          "kind": "item",
+          "meaning": "アイテム名。黒斧とも呼ぶ",
+          "id": "3071",
+          "status": "source_checked",
+          "sources": ["items_ko", "items_ja", "cleaver_youmu_alias"]
+        },
+        {
+          "ko": "요우무의 유령검",
+          "aliases": ["요우무"],
+          "ja": "妖夢の霊剣",
+          "kind": "item",
+          "meaning": "アイテム名。ヨウムとも呼ぶ",
+          "id": "3142",
+          "status": "source_checked",
+          "sources": ["items_ko", "items_ja", "cleaver_youmu_alias"]
+        },
+        {
+          "ko": "마법공학 점멸기",
+          "aliases": ["마공점"],
+          "ja": "ヘクステックフラッシュネイター",
+          "kind": "rune",
+          "meaning": "ルーン名。ヘクスフラッシュとも呼ぶ",
+          "id": "8306",
+          "status": "source_checked",
+          "sources": ["runes_ko", "runes_ja", "hexflash_alias"]
+        },
+        {
+          "ko": "빙결 강화",
+          "aliases": ["빙결"],
+          "ja": "グレイシャルオーグメント",
+          "kind": "rune",
+          "meaning": "ルーン文脈での氷結。一般語の凍結の可能性もある",
+          "id": "8351",
+          "status": "source_checked_context_required",
+          "sources": ["runes_ko", "runes_ja"]
+        },
+        {
+          "ko": "다재다능",
+          "aliases": [],
+          "ja": "なんでも屋",
+          "kind": "rune",
+          "meaning": "ルーン文脈では固有名詞。一般語としては多才",
+          "id": "8316",
+          "status": "source_checked_context_required",
+          "sources": ["runes_ko", "runes_ja"]
+        },
+        {
+          "ko": "다리우스",
+          "aliases": ["다리"],
+          "ja": "ダリウス",
+          "kind": "champion",
+          "meaning": "チャンピオン名。다리は一般語では脚や橋でもある",
+          "id": "Darius",
+          "status": "source_checked_context_required",
+          "sources": ["champions_ko", "champions_ja", "darius_alias"]
+        },
+        {
+          "ko": "탈론",
+          "aliases": [],
+          "ja": "タロン",
+          "kind": "champion",
+          "meaning": "チャンピオン名",
+          "id": "Talon",
+          "status": "source_checked",
+          "sources": ["champions_ko", "champions_ja"]
+        },
+        {
+          "ko": "카이사",
+          "aliases": [],
+          "ja": "カイ＝サ",
+          "kind": "champion",
+          "meaning": "チャンピオン名",
+          "id": "Kaisa",
+          "status": "source_checked",
+          "sources": ["champions_ko", "champions_ja"]
+        },
+        {
+          "ko": "볼리베어",
+          "aliases": [],
+          "ja": "ボリベア",
+          "kind": "champion",
+          "meaning": "チャンピオン名",
+          "id": "Volibear",
+          "status": "source_checked",
+          "sources": ["champions_ko", "champions_ja"]
+        },
+        {
+          "ko": "ㄱㅊ",
+          "aliases": [],
+          "ja": "大丈夫／悪くない",
+          "kind": "internet_abbreviation",
+          "meaning": "괜찮다の子音略記。文脈で訳し分ける",
+          "status": "source_checked",
+          "sources": ["jamo"]
+        },
+        {
+          "ko": "ㄹㅇ",
+          "aliases": [],
+          "ja": "本当に／マジで",
+          "kind": "internet_abbreviation",
+          "meaning": "레알／리얼の子音略記",
+          "status": "source_checked",
+          "sources": ["jamo"]
+        }
+      ]
+    },
+    "dataset_sha256": "4e76e6c5c570f9cf24671c14bd7e78f5bc5331f716a34da6c6f0955bdba455f0",
+    "runner_schema": 2,
+    "runner_sha256": "45cb451236e0386541c5487844dee1390f5e9d46f1fc6be6c02bf3dc13bcf04d"
+  }
+}

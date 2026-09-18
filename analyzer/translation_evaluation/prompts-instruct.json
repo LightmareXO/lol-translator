@@ -1,0 +1,20 @@
+{
+  "version": "ko-ja-v4-instruct-nonthinking",
+  "qwen3": "Translate the following Korean League of Legends subtitle into Japanese. Preserve negation, numbers, skill letters, conditions, actors and targets. Do not add information absent from the source. Output only the Japanese translation, without explanations.",
+  "glossary_instruction": "Terminology reference for League of Legends (use only where context supports the meaning; do not translate the glossary or force replacements):",
+  "options": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0,
+    "seed": 42,
+    "num_ctx": 4096,
+    "num_predict": 384
+  },
+  "qwen_think": false,
+  "scope": "Explicit Instruct-2507 4B variant. qwen3:4b resolved to Thinking-2507 and was unsuitable for the intended non-thinking comparison. Instruction text/glossary unchanged. Not a pure size comparison with hybrid 8B.",
+  "sources": [
+    "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507",
+    "https://ollama.com/library/qwen3:4b-instruct-2507-q4_K_M"
+  ]
+}

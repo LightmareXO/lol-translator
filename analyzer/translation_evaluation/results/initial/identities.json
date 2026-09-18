@@ -1,0 +1,388 @@
+{
+  "12db5da1a6466f2529e866a0489f3b943bfb5bdaed25e9d0f99a40b78dccbe87": {
+    "model": "qwen3:4b",
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen3",
+      "families": ["qwen3"],
+      "parameter_size": "4.0B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 262144,
+      "embedding_length": 2560
+    },
+    "model_disk_bytes": 2497293931,
+    "ollama": {
+      "version": "0.34.1"
+    },
+    "template": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $lastUserIdx = $idx }}{{ end -}}\n{{- end }}\n{{- if or .System .Tools }}<|im_start|>system\n{{ if .System }}{{ .System }}\n\n{{ end }}\n{{- if .Tools }}# Tools\n\nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{{- range .Tools }}\n{\"type\": \"function\", \"function\": {{ .Function }}}\n{{- end }}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n{{- end -}}\n<|im_end|>\n{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n{{- if eq .Role \"user\" }}<|im_start|>user\n{{ .Content }}<|im_end|>\n{{ else if eq .Role \"assistant\" }}<|im_start|>assistant\n{{ if (and $.IsThinkSet (and .Thinking (or $last (gt $i $lastUserIdx)))) -}}\n<think>{{ .Thinking }}</think>\n{{ end -}}\n{{ if .Content }}{{ .Content }}{{ end }}\n{{- if .ToolCalls }}\n{{- range .ToolCalls }}\n<tool_call>\n{\"name\": \"{{ .Function.Name }}\", \"arguments\": {{ .Function.Arguments }}}\n</tool_call>\n{{- end }}\n{{- end }}{{ if not $last }}<|im_end|>\n{{ end }}\n{{- else if eq .Role \"tool\" }}<|im_start|>user\n<tool_response>\n{{ .Content }}\n</tool_response><|im_end|>\n{{ end }}\n{{- if and (ne .Role \"assistant\") $last }}<|im_start|>assistant\n<think>\n{{ end }}\n{{- end }}",
+    "model_parameters": "stop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\ntemperature                    0.6\ntop_k                          20\ntop_p                          0.95\nrepeat_penalty                 1",
+    "prompts": {
+      "version": "ko-ja-v1",
+      "translategemma": "You are a professional Korean (ko) to Japanese (ja) translator. Your goal is to accurately convey the meaning and nuances of the original Korean text while adhering to Japanese grammar, vocabulary, and cultural sensitivities.\nProduce only the Japanese translation, without any additional explanations or commentary. Please translate the following Korean text into Japanese:",
+      "qwen3": "Translate the following Korean League of Legends subtitle into Japanese. Preserve negation, numbers, skill letters, conditions, actors and targets. Do not add information absent from the source. Output only the Japanese translation, without explanations.",
+      "glossary_instruction": "Terminology reference for League of Legends (use only where context supports the meaning; do not translate the glossary or force replacements):",
+      "options": {
+        "temperature": 0,
+        "seed": 42,
+        "num_ctx": 4096,
+        "num_predict": 384
+      },
+      "qwen_think": false,
+      "translategemma_dictionary_mode": "experimental_extension",
+      "sources": [
+        "https://ollama.com/library/translategemma:4b",
+        "https://ollama.com/library/qwen3:4b",
+        "https://docs.ollama.com/api/chat"
+      ]
+    },
+    "glossary": {
+      "version": "lol-ko-ja-v1",
+      "frozen_before_translation": true,
+      "date": "2026-09-16",
+      "naming_patch": "16.18.1",
+      "note": "正式名称はRiot Data Dragonの同一IDを言語間で照合。動画のパッチは未確認。略称は非公式。原文の一律置換には使わない。",
+      "sources": {
+        "items_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/item.json",
+        "items_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/item.json",
+        "runes_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/runesReforged.json",
+        "runes_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/runesReforged.json",
+        "champions_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/champion.json",
+        "champions_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/champion.json",
+        "spells_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/summoner.json",
+        "spells_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/summoner.json",
+        "flash_alias": "https://www.inven.co.kr/board/lol/3369/1978586",
+        "support_alias": "https://talk.op.gg/s/lol/tip/6107935",
+        "cleaver_youmu_alias": "https://m.inven.co.kr/site/lol/manualtool.php?champnum=83&idx=117738&p=6&pg=328&season=7&vtype=mobile",
+        "hexflash_alias": "https://m.inven.co.kr/site/lol/manualtool.php?c=122258&cp=1&idx=143140&p=80",
+        "darius_alias": "https://d.namu.moe/w/다리(동음이의어)",
+        "jamo": "https://korean.go.kr/common/download.do%3Bfront%3DB273103B1F431031CE40385C45AA1DDB?c_file_name=3f292972-4353-45f8-9cc8-5580ed2ce8db.pdf&file_path=reportData&o_file_name=2021%EB%85%84+%EB%A7%9E%EC%B6%A4%EB%B2%95+%EA%B5%90%EC%A0%95+%EB%A7%90%EB%AD%89%EC%B9%98+%EC%97%B0%EA%B5%AC+%EB%B6%84%EC%84%9D.pdf"
+      },
+      "entries": [
+        {
+          "ko": "점멸",
+          "aliases": ["플", "플래쉬"],
+          "ja": "フラッシュ",
+          "kind": "summoner_spell",
+          "meaning": "短距離の瞬間移動を行うサモナースペル",
+          "id": "SummonerFlash",
+          "status": "source_checked",
+          "sources": ["spells_ko", "spells_ja", "flash_alias"]
+        },
+        {
+          "ko": "서포터",
+          "aliases": ["서폿"],
+          "ja": "サポート",
+          "kind": "role",
+          "meaning": "味方を支援するロール",
+          "status": "community_source_checked",
+          "sources": ["support_alias"]
+        },
+        {
+          "ko": "칠흑의 양날 도끼",
+          "aliases": ["블클"],
+          "ja": "ブラック クリーバー",
+          "kind": "item",
+          "meaning": "アイテム名。黒斧とも呼ぶ",
+          "id": "3071",
+          "status": "source_checked",
+          "sources": ["items_ko", "items_ja", "cleaver_youmu_alias"]
+        },
+        {
+          "ko": "요우무의 유령검",
+          "aliases": ["요우무"],
+          "ja": "妖夢の霊剣",
+          "kind": "item",
+          "meaning": "アイテム名。ヨウムとも呼ぶ",
+          "id": "3142",
+          "status": "source_checked",
+          "sources": ["items_ko", "items_ja", "cleaver_youmu_alias"]
+        },
+        {
+          "ko": "마법공학 점멸기",
+          "aliases": ["마공점"],
+          "ja": "ヘクステックフラッシュネイター",
+          "kind": "rune",
+          "meaning": "ルーン名。ヘクスフラッシュとも呼ぶ",
+          "id": "8306",
+          "status": "source_checked",
+          "sources": ["runes_ko", "runes_ja", "hexflash_alias"]
+        },
+        {
+          "ko": "빙결 강화",
+          "aliases": ["빙결"],
+          "ja": "グレイシャルオーグメント",
+          "kind": "rune",
+          "meaning": "ルーン文脈での氷結。一般語の凍結の可能性もある",
+          "id": "8351",
+          "status": "source_checked_context_required",
+          "sources": ["runes_ko", "runes_ja"]
+        },
+        {
+          "ko": "다재다능",
+          "aliases": [],
+          "ja": "なんでも屋",
+          "kind": "rune",
+          "meaning": "ルーン文脈では固有名詞。一般語としては多才",
+          "id": "8316",
+          "status": "source_checked_context_required",
+          "sources": ["runes_ko", "runes_ja"]
+        },
+        {
+          "ko": "다리우스",
+          "aliases": ["다리"],
+          "ja": "ダリウス",
+          "kind": "champion",
+          "meaning": "チャンピオン名。다리は一般語では脚や橋でもある",
+          "id": "Darius",
+          "status": "source_checked_context_required",
+          "sources": ["champions_ko", "champions_ja", "darius_alias"]
+        },
+        {
+          "ko": "탈론",
+          "aliases": [],
+          "ja": "タロン",
+          "kind": "champion",
+          "meaning": "チャンピオン名",
+          "id": "Talon",
+          "status": "source_checked",
+          "sources": ["champions_ko", "champions_ja"]
+        },
+        {
+          "ko": "카이사",
+          "aliases": [],
+          "ja": "カイ＝サ",
+          "kind": "champion",
+          "meaning": "チャンピオン名",
+          "id": "Kaisa",
+          "status": "source_checked",
+          "sources": ["champions_ko", "champions_ja"]
+        },
+        {
+          "ko": "볼리베어",
+          "aliases": [],
+          "ja": "ボリベア",
+          "kind": "champion",
+          "meaning": "チャンピオン名",
+          "id": "Volibear",
+          "status": "source_checked",
+          "sources": ["champions_ko", "champions_ja"]
+        },
+        {
+          "ko": "ㄱㅊ",
+          "aliases": [],
+          "ja": "大丈夫／悪くない",
+          "kind": "internet_abbreviation",
+          "meaning": "괜찮다の子音略記。文脈で訳し分ける",
+          "status": "source_checked",
+          "sources": ["jamo"]
+        },
+        {
+          "ko": "ㄹㅇ",
+          "aliases": [],
+          "ja": "本当に／マジで",
+          "kind": "internet_abbreviation",
+          "meaning": "레알／리얼の子音略記",
+          "status": "source_checked",
+          "sources": ["jamo"]
+        }
+      ]
+    },
+    "dataset_sha256": "9f692da68b4831ae702834e4182500bbd2e9c97348dfa92764828f30157ad1b4",
+    "runner_schema": 1
+  },
+  "51ec00a7229f06bab29685d6890e401683a03ec0505a37c1d5e1171cc478cc90": {
+    "model": "translategemma:4b",
+    "digest": "c49d986b0764f5881c476eb21435bb62b7abc62347aab3d4a6071e811be510a1",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "gemma3",
+      "families": ["gemma3"],
+      "parameter_size": "4.3B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 131072,
+      "embedding_length": 2560
+    },
+    "model_disk_bytes": 3298875707,
+    "ollama": {
+      "version": "0.34.1"
+    },
+    "template": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Role \"user\") (eq .Role \"system\") }}<start_of_turn>user\n{{ .Content }}<end_of_turn>\n{{ if $last }}<start_of_turn>model\n{{ end }}\n{{- else if eq .Role \"assistant\" }}<start_of_turn>model\n{{ .Content }}{{ if not $last }}<end_of_turn>\n{{ end }}\n{{- end }}\n{{- end }}",
+    "model_parameters": "top_k                          64\ntop_p                          0.95\nstop                           \"<end_of_turn>\"",
+    "prompts": {
+      "version": "ko-ja-v1",
+      "translategemma": "You are a professional Korean (ko) to Japanese (ja) translator. Your goal is to accurately convey the meaning and nuances of the original Korean text while adhering to Japanese grammar, vocabulary, and cultural sensitivities.\nProduce only the Japanese translation, without any additional explanations or commentary. Please translate the following Korean text into Japanese:",
+      "qwen3": "Translate the following Korean League of Legends subtitle into Japanese. Preserve negation, numbers, skill letters, conditions, actors and targets. Do not add information absent from the source. Output only the Japanese translation, without explanations.",
+      "glossary_instruction": "Terminology reference for League of Legends (use only where context supports the meaning; do not translate the glossary or force replacements):",
+      "options": {
+        "temperature": 0,
+        "seed": 42,
+        "num_ctx": 4096,
+        "num_predict": 384
+      },
+      "qwen_think": false,
+      "translategemma_dictionary_mode": "experimental_extension",
+      "sources": [
+        "https://ollama.com/library/translategemma:4b",
+        "https://ollama.com/library/qwen3:4b",
+        "https://docs.ollama.com/api/chat"
+      ]
+    },
+    "glossary": {
+      "version": "lol-ko-ja-v1",
+      "frozen_before_translation": true,
+      "date": "2026-09-16",
+      "naming_patch": "16.18.1",
+      "note": "正式名称はRiot Data Dragonの同一IDを言語間で照合。動画のパッチは未確認。略称は非公式。原文の一律置換には使わない。",
+      "sources": {
+        "items_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/item.json",
+        "items_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/item.json",
+        "runes_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/runesReforged.json",
+        "runes_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/runesReforged.json",
+        "champions_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/champion.json",
+        "champions_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/champion.json",
+        "spells_ko": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/summoner.json",
+        "spells_ja": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ja_JP/summoner.json",
+        "flash_alias": "https://www.inven.co.kr/board/lol/3369/1978586",
+        "support_alias": "https://talk.op.gg/s/lol/tip/6107935",
+        "cleaver_youmu_alias": "https://m.inven.co.kr/site/lol/manualtool.php?champnum=83&idx=117738&p=6&pg=328&season=7&vtype=mobile",
+        "hexflash_alias": "https://m.inven.co.kr/site/lol/manualtool.php?c=122258&cp=1&idx=143140&p=80",
+        "darius_alias": "https://d.namu.moe/w/다리(동음이의어)",
+        "jamo": "https://korean.go.kr/common/download.do%3Bfront%3DB273103B1F431031CE40385C45AA1DDB?c_file_name=3f292972-4353-45f8-9cc8-5580ed2ce8db.pdf&file_path=reportData&o_file_name=2021%EB%85%84+%EB%A7%9E%EC%B6%A4%EB%B2%95+%EA%B5%90%EC%A0%95+%EB%A7%90%EB%AD%89%EC%B9%98+%EC%97%B0%EA%B5%AC+%EB%B6%84%EC%84%9D.pdf"
+      },
+      "entries": [
+        {
+          "ko": "점멸",
+          "aliases": ["플", "플래쉬"],
+          "ja": "フラッシュ",
+          "kind": "summoner_spell",
+          "meaning": "短距離の瞬間移動を行うサモナースペル",
+          "id": "SummonerFlash",
+          "status": "source_checked",
+          "sources": ["spells_ko", "spells_ja", "flash_alias"]
+        },
+        {
+          "ko": "서포터",
+          "aliases": ["서폿"],
+          "ja": "サポート",
+          "kind": "role",
+          "meaning": "味方を支援するロール",
+          "status": "community_source_checked",
+          "sources": ["support_alias"]
+        },
+        {
+          "ko": "칠흑의 양날 도끼",
+          "aliases": ["블클"],
+          "ja": "ブラック クリーバー",
+          "kind": "item",
+          "meaning": "アイテム名。黒斧とも呼ぶ",
+          "id": "3071",
+          "status": "source_checked",
+          "sources": ["items_ko", "items_ja", "cleaver_youmu_alias"]
+        },
+        {
+          "ko": "요우무의 유령검",
+          "aliases": ["요우무"],
+          "ja": "妖夢の霊剣",
+          "kind": "item",
+          "meaning": "アイテム名。ヨウムとも呼ぶ",
+          "id": "3142",
+          "status": "source_checked",
+          "sources": ["items_ko", "items_ja", "cleaver_youmu_alias"]
+        },
+        {
+          "ko": "마법공학 점멸기",
+          "aliases": ["마공점"],
+          "ja": "ヘクステックフラッシュネイター",
+          "kind": "rune",
+          "meaning": "ルーン名。ヘクスフラッシュとも呼ぶ",
+          "id": "8306",
+          "status": "source_checked",
+          "sources": ["runes_ko", "runes_ja", "hexflash_alias"]
+        },
+        {
+          "ko": "빙결 강화",
+          "aliases": ["빙결"],
+          "ja": "グレイシャルオーグメント",
+          "kind": "rune",
+          "meaning": "ルーン文脈での氷結。一般語の凍結の可能性もある",
+          "id": "8351",
+          "status": "source_checked_context_required",
+          "sources": ["runes_ko", "runes_ja"]
+        },
+        {
+          "ko": "다재다능",
+          "aliases": [],
+          "ja": "なんでも屋",
+          "kind": "rune",
+          "meaning": "ルーン文脈では固有名詞。一般語としては多才",
+          "id": "8316",
+          "status": "source_checked_context_required",
+          "sources": ["runes_ko", "runes_ja"]
+        },
+        {
+          "ko": "다리우스",
+          "aliases": ["다리"],
+          "ja": "ダリウス",
+          "kind": "champion",
+          "meaning": "チャンピオン名。다리は一般語では脚や橋でもある",
+          "id": "Darius",
+          "status": "source_checked_context_required",
+          "sources": ["champions_ko", "champions_ja", "darius_alias"]
+        },
+        {
+          "ko": "탈론",
+          "aliases": [],
+          "ja": "タロン",
+          "kind": "champion",
+          "meaning": "チャンピオン名",
+          "id": "Talon",
+          "status": "source_checked",
+          "sources": ["champions_ko", "champions_ja"]
+        },
+        {
+          "ko": "카이사",
+          "aliases": [],
+          "ja": "カイ＝サ",
+          "kind": "champion",
+          "meaning": "チャンピオン名",
+          "id": "Kaisa",
+          "status": "source_checked",
+          "sources": ["champions_ko", "champions_ja"]
+        },
+        {
+          "ko": "볼리베어",
+          "aliases": [],
+          "ja": "ボリベア",
+          "kind": "champion",
+          "meaning": "チャンピオン名",
+          "id": "Volibear",
+          "status": "source_checked",
+          "sources": ["champions_ko", "champions_ja"]
+        },
+        {
+          "ko": "ㄱㅊ",
+          "aliases": [],
+          "ja": "大丈夫／悪くない",
+          "kind": "internet_abbreviation",
+          "meaning": "괜찮다の子音略記。文脈で訳し分ける",
+          "status": "source_checked",
+          "sources": ["jamo"]
+        },
+        {
+          "ko": "ㄹㅇ",
+          "aliases": [],
+          "ja": "本当に／マジで",
+          "kind": "internet_abbreviation",
+          "meaning": "레알／리얼の子音略記",
+          "status": "source_checked",
+          "sources": ["jamo"]
+        }
+      ]
+    },
+    "dataset_sha256": "9f692da68b4831ae702834e4182500bbd2e9c97348dfa92764828f30157ad1b4",
+    "runner_schema": 1
+  }
+}

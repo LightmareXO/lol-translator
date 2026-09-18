@@ -1,0 +1,362 @@
+[
+  {
+    "sample_id": "h0000_speech_f02",
+    "reference_ja": "1コア目にナッシャーを積んで",
+    "must_preserve": ["1コア目", "ナッシャー"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0001_speech_f02",
+    "reference_ja": "スチールキャップかマーキュリーを積んで",
+    "must_preserve": ["二択", "ブーツ"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0002_speech_f02",
+    "reference_ja": "多才多能が10スタックになります",
+    "must_preserve": ["多才多能", "10スタック"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0003_speech_f02",
+    "reference_ja": "そして次のコアにグインソーを積む",
+    "must_preserve": ["次のコア", "グインソー"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0004_speech_f02",
+    "reference_ja": "攻撃速度が2.30になる",
+    "must_preserve": ["攻撃速度", "2.30"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0005_speech_f02",
+    "reference_ja": "フルダメージのボリベアをやるとき、実は",
+    "must_preserve": ["フルダメージ", "ボリベア"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0006_speech_f02",
+    "reference_ja": "反応速度が良くないといけないんです",
+    "must_preserve": ["反応速度が必要"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0007_speech_f02",
+    "reference_ja": "相手の主要スキルなどを",
+    "must_preserve": ["相手", "主要スキル"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0008_speech_f02",
+    "reference_ja": "相手のCCをうまく無効化しないといけない",
+    "must_preserve": ["相手のCC", "うまく防ぐ"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0009_speech_f02",
+    "reference_ja": "入力が速いキーボードがとても良いんだけど",
+    "must_preserve": ["入力が速い", "キーボード"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0029_speech_f02",
+    "reference_ja": "バードのウルトのようなものを受けたとき",
+    "must_preserve": ["バード", "ウルト", "受けたとき"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0030_speech_f02",
+    "reference_ja": "でもラピッドトリガーがあれば",
+    "must_preserve": ["ラピッドトリガー", "条件"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0031_speech_f02",
+    "reference_ja": "またはウルトを連打すれば",
+    "must_preserve": ["ウルト", "連打"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0032_speech_f02",
+    "reference_ja": "ウルトがこんなふうにすぐ出るとか",
+    "must_preserve": ["ウルト", "すぐ発動"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0036_speech_f02",
+    "reference_ja": "今日はフルダメージのボリベアをやってみます",
+    "must_preserve": ["今日", "フルダメージのボリベア"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0040_speech_f02",
+    "reference_ja": "最近の子どもは童謡を歌うのか？",
+    "must_preserve": ["最近の子ども", "童謡", "疑問"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0041_speech_f02",
+    "reference_ja": "この子どもたちの間で",
+    "must_preserve": ["子どもたちの間"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0042_speech_f02",
+    "reference_ja": "Q",
+    "must_preserve": ["Q"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0043_speech_f02",
+    "reference_ja": "え、何だ、Qなの？",
+    "must_preserve": ["Q", "疑問・驚き"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0044_speech_f02",
+    "reference_ja": "ブランブルベストが出れば勝てるという考えなのか？",
+    "must_preserve": ["ブランブルベスト", "勝てるという考え", "疑問"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0045_speech_f02",
+    "reference_ja": "Qを使うように",
+    "must_preserve": ["Qを使う"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0046_speech_f02",
+    "reference_ja": "Qを使いたくなるように",
+    "must_preserve": ["Qを誘う・使いたくなる"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0049_speech_f02",
+    "reference_ja": "うわ、当たっていたらタワーまで行ったのか？",
+    "must_preserve": ["当たった場合", "タワー", "疑問"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0050_speech_f02",
+    "reference_ja": "体力が半分減っていたかも？",
+    "must_preserve": ["体力半分", "推測"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0051_speech_f02",
+    "reference_ja": "これ、Eが当たっていたらフラッシュを切っていたのに",
+    "must_preserve": ["Eが当たる条件", "フラッシュを使う"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0052_speech_f02",
+    "reference_ja": "どうしてこんなに惜しいんだ",
+    "must_preserve": ["惜しい"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0053_speech_f02",
+    "reference_ja": "ダイブがすごくしたいんだけど？",
+    "must_preserve": ["ダイブしたい"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0054_speech_f02",
+    "reference_ja": "おい、無理はやめよう、これは",
+    "must_preserve": ["無理をしない"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0055_speech_f02",
+    "reference_ja": "本当にゲームが終わるまで勝てなくて",
+    "must_preserve": ["ゲーム終了まで", "勝てない"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0057_speech_f02",
+    "reference_ja": "ああ、これが当たらないな",
+    "must_preserve": ["当たらない"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0061_speech_f02",
+    "reference_ja": "当たると思うか？",
+    "must_preserve": ["当たるかという疑問"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0062_speech_f02",
+    "reference_ja": "でもこれならク・サンテはテレポートを無駄にしたけど？",
+    "must_preserve": ["ク・サンテ", "テレポートを無駄にした"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0063_speech_f02",
+    "reference_ja": "めちゃくちゃ得じゃない？",
+    "must_preserve": ["大きな得", "疑問"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0069_speech_f02",
+    "reference_ja": "いや、ク・サンテさん！",
+    "must_preserve": ["ク・サンテへの呼びかけ"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0072_speech_f02",
+    "reference_ja": "何してる人なんだ、これ（笑）",
+    "must_preserve": ["何をしているか", "笑い"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0073_speech_f02",
+    "reference_ja": "今、あまりにもク・サンテらしくやっている",
+    "must_preserve": ["ク・サンテらしい行動", "今"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0074_speech_f02",
+    "reference_ja": "いや、あまりにもク・サンテらしく図々しい",
+    "must_preserve": ["ク・サンテの言葉遊び", "図々しい"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0078_speech_f02",
+    "reference_ja": "いいぞ",
+    "must_preserve": ["肯定"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0079_speech_f02",
+    "reference_ja": "オーケー、3回",
+    "must_preserve": ["オーケー", "3回"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0080_speech_f02",
+    "reference_ja": "いや……",
+    "must_preserve": ["否定・反応"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0081_speech_f02",
+    "reference_ja": "ブランブルベストがないじゃん",
+    "must_preserve": ["ブランブルベスト", "ない"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0082_speech_f02",
+    "reference_ja": "Wを2回噛めば勝てはする",
+    "must_preserve": ["Wを2回", "勝てる"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0084_speech_f02",
+    "reference_ja": "Wを先行入力しさえすればいい",
+    "must_preserve": ["W", "先行入力"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0086_speech_f02",
+    "reference_ja": "いや、シールドを受けられなかった",
+    "must_preserve": ["シールド", "受けられなかった"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0089_speech_f02",
+    "reference_ja": "確かに入力が速い",
+    "must_preserve": ["入力が速い"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0090_speech_f02",
+    "reference_ja": "いや、すごいだろ？",
+    "must_preserve": ["驚き", "疑問"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0092_speech_f02",
+    "reference_ja": "その分、相手を早く倒せるじゃないか",
+    "must_preserve": ["相手を早く倒せる", "因果"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0096_speech_f02",
+    "reference_ja": "意地の張り合いでは最高だね？",
+    "must_preserve": ["意地の張り合い", "最高"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0097_speech_f02",
+    "reference_ja": "いや、少しは意地を張るのか？",
+    "must_preserve": ["意地を張る", "疑問"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0099_speech_f02",
+    "reference_ja": "Qを当てるふりをすればWを使うでしょう？",
+    "must_preserve": ["Qのふり", "Wを使う", "予測"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0101_speech_f02",
+    "reference_ja": "え……",
+    "must_preserve": ["戸惑い"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0103_speech_f02",
+    "reference_ja": "急がなくていい",
+    "must_preserve": ["急ぐ必要がない"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0104_speech_f02",
+    "reference_ja": "え？",
+    "must_preserve": ["疑問・驚き"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0105_speech_f02",
+    "reference_ja": "普通にQフラッシュすればよかったかな？",
+    "must_preserve": ["Qフラッシュ", "すればよかったという疑問"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0109_speech_f02",
+    "reference_ja": "ものすごく簡単に突破できますよね",
+    "must_preserve": ["簡単に突破", "確認"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0113_speech_f02",
+    "reference_ja": "え、何だ？",
+    "must_preserve": ["疑問・驚き"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0114_speech_f02",
+    "reference_ja": "こっちのほうがうまい／良い",
+    "must_preserve": ["こちらを高く評価"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0118_speech_f02",
+    "reference_ja": "兄さんは反応が速い",
+    "must_preserve": ["相手の反応が速い"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0119_speech_f02",
+    "reference_ja": "確かに入力がもう少し速い気がするけど？",
+    "must_preserve": ["入力がより速い", "推測"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "h0123_speech_f02",
+    "reference_ja": "おい、これ（右側）を見てくれ",
+    "must_preserve": ["右側を見るよう依頼"],
+    "reference_status": "ai_provisional"
+  }
+]

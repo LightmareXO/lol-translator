@@ -1,0 +1,357 @@
+{
+  "video_id": "3ZRHyWrYBVk",
+  "split": "independent_holdout",
+  "reference_status": "ai_visual_transcription_provisional",
+  "human_verified": false,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "timestamp_correction_seconds": 1.5,
+  "crop_xywh": [38, 780, 1844, 180],
+  "speech_crop_xywh": [38, 780, 1844, 180],
+  "annotation_crop_xywh": [38, 800, 1844, 60],
+  "selection_rule": "3秒固定間隔の候補を時系列に目視し、広告、歌詞、笑い声だけ、字幕なし、文として未完の断片を除外した最初の60件。OCR出力は選定に使用しない。",
+  "line_crop_note": "OCR前に固定した候補画像そのもの（x=38,y=780,w=1844,h=180）を評価する。初回実装では別動画用の狭い帯を誤適用したため、OCR値を採用せず、候補画像との同一性を優先して修正した。中央フレームを一次評価、前後1フレームを補助評価とする。字幕行数は目視確認で全件1行。",
+  "samples": [
+    {
+      "id": "h0000",
+      "time": 3,
+      "speech": "1코어로 내셔 올리고",
+      "tags": ["number", "item"]
+    },
+    {
+      "id": "h0001",
+      "time": 6,
+      "speech": "닌탑 or 헤르메스 가고",
+      "tags": ["item", "english"]
+    },
+    {
+      "id": "h0002",
+      "time": 9,
+      "speech": "다재다능 10스택이 돼요",
+      "tags": ["number", "rune"]
+    },
+    {
+      "id": "h0003",
+      "time": 12,
+      "speech": "그리고 이제 다음 코어 구인수로 올리는",
+      "tags": ["long", "item"]
+    },
+    {
+      "id": "h0004",
+      "time": 15,
+      "speech": "공격속도 2.30이 찍혀버리는",
+      "tags": ["number", "stat"]
+    },
+    {
+      "id": "h0005",
+      "time": 18,
+      "speech": "극딜 볼베를 할 때 사실",
+      "tags": ["champion", "slang"]
+    },
+    {
+      "id": "h0006",
+      "time": 21,
+      "speech": "반응속도가 좋아야 된단 말이에요",
+      "tags": ["long"]
+    },
+    {
+      "id": "h0007",
+      "time": 24,
+      "speech": "상대 뭐 주요 스킬 같은 거를",
+      "tags": ["skill"]
+    },
+    {
+      "id": "h0008",
+      "time": 27,
+      "speech": "상대 cc기를 잘 씹어야 된단 말이지",
+      "tags": ["abbreviation", "slang"]
+    },
+    {
+      "id": "h0009",
+      "time": 30,
+      "speech": "입력이 빠른 키보드가 되게 좋은데",
+      "tags": ["long"]
+    },
+    {
+      "id": "h0029",
+      "time": 90,
+      "speech": "바드 궁 같은 걸 맞았을 때",
+      "tags": ["champion", "skill"]
+    },
+    {
+      "id": "h0030",
+      "time": 93,
+      "speech": "근데 래피드 트리거가 있으면",
+      "tags": ["loanword"]
+    },
+    {
+      "id": "h0031",
+      "time": 96,
+      "speech": "아니면 궁을 광클하면",
+      "tags": ["skill", "slang"]
+    },
+    {
+      "id": "h0032",
+      "time": 99,
+      "speech": "궁이 이렇게 바로 나간다던가",
+      "tags": ["skill"]
+    },
+    {
+      "id": "h0036",
+      "time": 111,
+      "speech": "오늘 극딜볼베 한번 해보도록 하겠습니다",
+      "tags": ["champion", "slang"]
+    },
+    {
+      "id": "h0040",
+      "time": 123,
+      "speech": "요즘 애들 동요 부르나?",
+      "tags": ["question"]
+    },
+    {
+      "id": "h0041",
+      "time": 126,
+      "speech": "이 잼민이들 사이에서",
+      "tags": ["slang"]
+    },
+    { "id": "h0042", "time": 129, "speech": "Q", "tags": ["short", "skill"] },
+    {
+      "id": "h0043",
+      "time": 132,
+      "speech": "어 뭐야 Q인데?",
+      "tags": ["short", "skill", "question"]
+    },
+    {
+      "id": "h0044",
+      "time": 135,
+      "speech": "덤불 조끼 나오면 이긴다는 마인드 인건가?",
+      "tags": ["item", "question"]
+    },
+    {
+      "id": "h0045",
+      "time": 138,
+      "speech": "Q 쓰도록",
+      "tags": ["short", "skill"]
+    },
+    {
+      "id": "h0046",
+      "time": 141,
+      "speech": "Q 마렵게",
+      "tags": ["short", "skill", "slang"]
+    },
+    {
+      "id": "h0049",
+      "time": 150,
+      "speech": "와 맞았으면 타워 갔냐?",
+      "tags": ["question"]
+    },
+    {
+      "id": "h0050",
+      "time": 153,
+      "speech": "반피 나갔을 듯?",
+      "tags": ["slang", "question"]
+    },
+    {
+      "id": "h0051",
+      "time": 156,
+      "speech": "아 이거 E 맞았으면은 플 지른건데",
+      "tags": ["skill", "abbreviation"]
+    },
+    {
+      "id": "h0052",
+      "time": 159,
+      "speech": "왜 이렇게 아쉬울꼬",
+      "tags": ["short"]
+    },
+    {
+      "id": "h0053",
+      "time": 162,
+      "speech": "다이브가 너무 하고 싶은데?",
+      "tags": ["term", "question"]
+    },
+    {
+      "id": "h0054",
+      "time": 165,
+      "speech": "야.. 무리하지 말자 이거",
+      "tags": ["negation"]
+    },
+    {
+      "id": "h0055",
+      "time": 168,
+      "speech": "진짜 게임 끝날 때 까지 못 이겨서",
+      "tags": ["long", "negation"]
+    },
+    {
+      "id": "h0057",
+      "time": 174,
+      "speech": "아 이게 안맞네",
+      "tags": ["short", "negation"]
+    },
+    {
+      "id": "h0061",
+      "time": 186,
+      "speech": "맞겠냐?",
+      "tags": ["short", "question"]
+    },
+    {
+      "id": "h0062",
+      "time": 189,
+      "speech": "근데 이러면 산테 텔 그냥 날렸는데?",
+      "tags": ["champion", "abbreviation", "question"]
+    },
+    {
+      "id": "h0063",
+      "time": 192,
+      "speech": "개이득인데?",
+      "tags": ["short", "slang", "question"]
+    },
+    {
+      "id": "h0069",
+      "time": 210,
+      "speech": "아니 산테형!",
+      "tags": ["champion", "short"]
+    },
+    {
+      "id": "h0072",
+      "time": 219,
+      "speech": "뭐하는 사람이야 이거 ㅋㅋ",
+      "tags": ["slang"]
+    },
+    {
+      "id": "h0073",
+      "time": 222,
+      "speech": "너무 크산테처럼 한다 지금",
+      "tags": ["champion"]
+    },
+    {
+      "id": "h0074",
+      "time": 225,
+      "speech": "아니 너무 크뻔뻔이야",
+      "tags": ["champion", "wordplay"]
+    },
+    { "id": "h0078", "time": 237, "speech": "좋아", "tags": ["short"] },
+    {
+      "id": "h0079",
+      "time": 240,
+      "speech": "오케이 x3",
+      "tags": ["short", "number"]
+    },
+    { "id": "h0080", "time": 243, "speech": "아니..", "tags": ["short"] },
+    {
+      "id": "h0081",
+      "time": 246,
+      "speech": "덤조 없잖아",
+      "tags": ["item", "abbreviation", "negation"]
+    },
+    {
+      "id": "h0082",
+      "time": 249,
+      "speech": "W 2번 물면 이기긴 해",
+      "tags": ["skill", "number"]
+    },
+    {
+      "id": "h0084",
+      "time": 255,
+      "speech": "W 선 입력만 하면 돼",
+      "tags": ["skill"]
+    },
+    {
+      "id": "h0086",
+      "time": 261,
+      "speech": "아니 실드를 못 받았다",
+      "tags": ["term", "negation"]
+    },
+    {
+      "id": "h0089",
+      "time": 270,
+      "speech": "확실히 입력이 빨라",
+      "tags": ["short"]
+    },
+    {
+      "id": "h0090",
+      "time": 273,
+      "speech": "아니 미쳤지?",
+      "tags": ["short", "question"]
+    },
+    {
+      "id": "h0092",
+      "time": 279,
+      "speech": "그만큼 상대를 빨리 죽일 수 있잖아",
+      "tags": ["long"]
+    },
+    {
+      "id": "h0096",
+      "time": 291,
+      "speech": "기 싸움 GOAT인데?",
+      "tags": ["english", "slang", "question"]
+    },
+    {
+      "id": "h0097",
+      "time": 294,
+      "speech": "아니 기 싸움 좀 하나?",
+      "tags": ["question"]
+    },
+    {
+      "id": "h0099",
+      "time": 300,
+      "speech": "Q 박는 척하면 W를 쓰겠죠?",
+      "tags": ["skill", "question"]
+    },
+    { "id": "h0101", "time": 306, "speech": "어...", "tags": ["short"] },
+    {
+      "id": "h0103",
+      "time": 312,
+      "speech": "안 급해도 돼",
+      "tags": ["short", "negation"]
+    },
+    {
+      "id": "h0104",
+      "time": 315,
+      "speech": "어?",
+      "tags": ["short", "question"]
+    },
+    {
+      "id": "h0105",
+      "time": 318,
+      "speech": "그냥 Q플 할걸 그랬나?",
+      "tags": ["skill", "abbreviation", "question"]
+    },
+    {
+      "id": "h0109",
+      "time": 330,
+      "speech": "겁나 잘 뚫리죠",
+      "tags": ["slang"]
+    },
+    {
+      "id": "h0113",
+      "time": 342,
+      "speech": "어 뭐야?",
+      "tags": ["short", "question"]
+    },
+    {
+      "id": "h0114",
+      "time": 345,
+      "speech": "이게 더 맛있어",
+      "tags": ["slang"]
+    },
+    {
+      "id": "h0118",
+      "time": 357,
+      "speech": "형은 반응이 빨라",
+      "tags": ["short"]
+    },
+    {
+      "id": "h0119",
+      "time": 360,
+      "speech": "확실히 입력이 좀 더 빠른 것 같은데?",
+      "tags": ["long", "question"]
+    },
+    {
+      "id": "h0123",
+      "time": 372,
+      "speech": "야 이거(오른쪽) 봐줘",
+      "tags": ["deictic"]
+    }
+  ]
+}

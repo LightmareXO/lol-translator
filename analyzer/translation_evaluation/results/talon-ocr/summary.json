@@ -1,0 +1,67 @@
+{
+  "primary_lines": {
+    "groups": 28,
+    "units": 29,
+    "cer": 0.2385542168674699,
+    "whitespace_free_cer": 0.03858520900321544,
+    "exact_units": 0,
+    "whitespace_free_exact_units": 21,
+    "median_ocr_ms": 23.76479999657022
+  },
+  "auxiliary_lines": {
+    "groups": 28,
+    "units": 58,
+    "cer": 0.2385542168674699,
+    "whitespace_free_cer": 0.04019292604501608,
+    "exact_units": 0,
+    "whitespace_free_exact_units": 41,
+    "median_ocr_ms": 23.60124999904656
+  },
+  "whole_two_line_diagnostics": [
+    {
+      "group_id": "t15",
+      "line_ids": ["t15_annotation_f02", "t15_speech_f02"],
+      "metrics_for_separate_line_outputs": {
+        "edits": 7,
+        "characters": 21,
+        "cer": 0.3333333333333333,
+        "whitespace_free_edits": 2,
+        "whitespace_free_characters": 15,
+        "whitespace_free_cer": 0.13333333333333333,
+        "exact": false
+      },
+      "whole_crop": {
+        "id": "t15_whole_f02",
+        "group_id": "t15",
+        "video_id": "Ns8VQexyJes",
+        "timestamp_seconds": 370.0,
+        "primary": true,
+        "split": "development_additional",
+        "line_role": "whole",
+        "reading_order": null,
+        "color": "yellow_and_white",
+        "source_ko": "카이사 전적 검색 중\n탈론 하는 친구네",
+        "reference_status": "ai_visual_transcription_provisional",
+        "human_verified": false,
+        "tags": ["two_line", "yellow", "white", "champion"],
+        "image_file": "t15_whole_f02.png",
+        "image_sha256": "598977c0cc24251ee047de1213bbeeb1b363ee4d67a635f165ed9e3267bd53cb",
+        "crop_xywh": [38, 800, 1844, 140],
+        "diagnostic_only": true,
+        "ocr_ko": "탈벌씀떤런루네N2",
+        "ocr_confidence": 0.3121092617511749,
+        "ocr_ms": 38.37020000355551,
+        "metrics": {
+          "edits": 20,
+          "characters": 21,
+          "cer": 0.9523809523809523,
+          "whitespace_free_edits": 15,
+          "whitespace_free_characters": 15,
+          "whitespace_free_cer": 1.0,
+          "exact": false
+        }
+      }
+    }
+  ],
+  "note": "AI provisional transcriptions; line roles are visually annotated, not automatically detected. Adjacent frames are not independent subtitles."
+}

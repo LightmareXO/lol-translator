@@ -1,0 +1,22 @@
+{
+  "primary_lines": {
+    "groups": 60,
+    "units": 60,
+    "cer": 0.26628895184135976,
+    "whitespace_free_cer": 0.20036429872495445,
+    "exact_units": 3,
+    "whitespace_free_exact_units": 7,
+    "median_ocr_ms": 21.276300001773052
+  },
+  "auxiliary_lines": {
+    "groups": 60,
+    "units": 120,
+    "cer": 0.2669971671388102,
+    "whitespace_free_cer": 0.20309653916211293,
+    "exact_units": 6,
+    "whitespace_free_exact_units": 17,
+    "median_ocr_ms": 20.575700007611886
+  },
+  "whole_two_line_diagnostics": [],
+  "note": "AI provisional transcriptions; line roles are visually annotated, not automatically detected. Adjacent frames are not independent subtitles."
+}

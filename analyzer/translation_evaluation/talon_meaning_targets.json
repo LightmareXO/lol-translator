@@ -1,0 +1,176 @@
+[
+  {
+    "sample_id": "t01_speech_f02",
+    "reference_ja": "久しぶりというほどではなく、最近もやった気がするけど、これ",
+    "must_preserve": ["久しぶりではない", "最近もやった"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t02_speech_f02",
+    "reference_ja": "なんでこんなに強いんだ",
+    "must_preserve": ["強い", "疑問・驚き"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t03_speech_f02",
+    "reference_ja": "あれ、先制攻撃はどこに行った",
+    "must_preserve": ["先制攻撃", "どこに行った"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t04_speech_f02",
+    "reference_ja": "でも、ロクだけ育たなければ簡単そうだけど",
+    "must_preserve": ["ロク（指示対象未確認）", "育たなければ", "簡単"],
+    "reference_status": "ambiguous"
+  },
+  {
+    "sample_id": "t05_speech_f02",
+    "reference_ja": "はあ……悪くないですね／大丈夫ですね",
+    "must_preserve": ["肯定的評価"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t06_speech_f02",
+    "reference_ja": "ねえ、俺はすごく悲しいよ、カイ＝サ。俺はさ",
+    "must_preserve": ["自分が悲しい", "カイ＝サへの呼びかけ"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t07_speech_f02",
+    "reference_ja": "ひとまず早くレベル6になりましょう",
+    "must_preserve": ["レベル6", "早く到達"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t08_speech_f02",
+    "reference_ja": "その次は、自分にできる最善を尽くしましょう",
+    "must_preserve": ["次", "最善を尽くす"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t09_speech_f02",
+    "reference_ja": "カイ＝サにも、ぱっと日が差す日が戻ってくるよ",
+    "must_preserve": ["カイ＝サ", "良い日が戻る"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t10_speech_f02",
+    "reference_ja": "ああ、オーケー、認める",
+    "must_preserve": ["了承", "認める"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t11_speech_f02",
+    "reference_ja": "この人はどなた？",
+    "must_preserve": ["人物への疑問"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t12_speech_f02",
+    "reference_ja": "お前が食べて",
+    "must_preserve": ["相手に取らせる"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t13_speech_f02",
+    "reference_ja": "この野郎、俺はエクリプスだぞ",
+    "must_preserve": ["エクリプス", "自分のビルド・状態"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t14_speech_f02",
+    "reference_ja": "ロクを、フラッシュで反応できないように、とてもきれいに倒した",
+    "must_preserve": ["ロク（指示対象未確認）", "フラッシュ反応不能", "倒した"],
+    "reference_status": "ambiguous"
+  },
+  {
+    "sample_id": "t15_annotation_f02",
+    "reference_ja": "カイ＝サの戦績を検索中",
+    "must_preserve": ["カイ＝サ", "戦績検索中"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t15_speech_f02",
+    "reference_ja": "タロンをやる人だね",
+    "must_preserve": ["タロンを使う人物"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t16_speech_f02",
+    "reference_ja": "どこかでよく見たチャンピオンプールみたいだね",
+    "must_preserve": ["見覚え", "チャンピオンプール"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t17_speech_f02",
+    "reference_ja": "俺はもともと全部受け止めて進むんです",
+    "must_preserve": ["全部受け入れる・抱える"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t18_speech_f02",
+    "reference_ja": "今回の集団戦でデスダンスがないのが少し惜しい",
+    "must_preserve": ["今回の集団戦", "デスダンスがない", "惜しい"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t19_speech_f02",
+    "reference_ja": "あの人はどなた？",
+    "must_preserve": ["人物への疑問"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t20_speech_f02",
+    "reference_ja": "果たして俺に受け止められるだろうか",
+    "must_preserve": ["自分に可能かという疑問"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t21_speech_f02",
+    "reference_ja": "何か間違っているんじゃない？",
+    "must_preserve": ["異常・誤りへの疑問"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t22_speech_f02",
+    "reference_ja": "なんでこんなにゲームが落ち着かないんだ",
+    "must_preserve": ["ゲームが混乱している", "疑問"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t23_speech_f02",
+    "reference_ja": "ああ、これ！ はあ……",
+    "must_preserve": ["これへの反応", "ため息"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t24_speech_f02",
+    "reference_ja": "この試合は本当に『정정탈』にしたのが神の一手だ",
+    "must_preserve": ["정정탈（略語未確認）", "神の一手"],
+    "reference_status": "ambiguous"
+  },
+  {
+    "sample_id": "t25_speech_f02",
+    "reference_ja": "飛んでいっていたら拍手していたのに",
+    "must_preserve": ["飛んでいった場合", "拍手した"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t26_speech_f02",
+    "reference_ja": "私はなぜですか／なんで俺？",
+    "must_preserve": ["自分が対象の理由を問う"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t27_speech_f02",
+    "reference_ja": "お願い、死なないで",
+    "must_preserve": ["死なないで", "懇願"],
+    "reference_status": "ai_provisional"
+  },
+  {
+    "sample_id": "t28_speech_f02",
+    "reference_ja": "でも実は相手のトリンダメアも15デスではある",
+    "must_preserve": ["相手のトリンダメア", "15デス", "逆接"],
+    "reference_status": "ai_provisional"
+  }
+]

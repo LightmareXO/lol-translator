@@ -1,0 +1,3842 @@
+[
+  {
+    "blind_id": "review-a1b73eccb6809913",
+    "sample_id": "h0007_speech_f02",
+    "output": "相手の何が主なスキルか",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["sequence"],
+    "rationale": "語順が不自然で意味が不明確",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0007",
+      "judge-result:h0007_speech_f02-16b4cb06dd0c0de0.json"
+    ],
+    "semantic_signature": "相手_何が主なスキルか"
+  },
+  {
+    "blind_id": "review-04d9f7e5d392404b",
+    "sample_id": "h0081_speech_f02",
+    "output": "エイジンなし",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「ブランブルベスト」が完全に省略され、ゲーム内判断を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0081",
+      "judge-result:h0081_speech_f02-064f4ffa9f0bd560.json"
+    ],
+    "semantic_signature": "ブランブルベスト ない"
+  },
+  {
+    "blind_id": "review-b255e63c8d7c1e71",
+    "sample_id": "h0008_speech_f02",
+    "output": "相手cをよく見なければならないんだってこと",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「CC」が「c」に誤っており、意味が不明瞭。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0008",
+      "judge-result:h0008_speech_f02-aae3d6367e447b84.json"
+    ],
+    "semantic_signature": "相手CC_防ぐ_必須"
+  },
+  {
+    "blind_id": "review-55960d2938f0913d",
+    "sample_id": "h0073_speech_f02",
+    "output": "あまりにクレアのようにしているんだ今の@",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「ク・サンテらしい行動」が誤って「クレア」に置き換えられ、文意が大きくずれる",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0073",
+      "judge-result:h0073_speech_f02-244a68b0b2e5c3e9.json"
+    ],
+    "semantic_signature": "クレアのように 今の"
+  },
+  {
+    "blind_id": "review-be88aeb5b3d2f4fb",
+    "sample_id": "h0063_speech_f02",
+    "output": "不利な状況なのに？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation", "omission"],
+    "rationale": "「不利な状況なのに？」は原文の「得」を否定しているが、疑問形を保持している。しかし、意味が完全に逆転しているため重大な誤り。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0063",
+      "judge-result:h0063_speech_f02-bb8500fb2e8f366a.json"
+    ],
+    "semantic_signature": "不利な状況なのに？"
+  },
+  {
+    "blind_id": "review-ea87392ef3c44fe7",
+    "sample_id": "h0113_speech_f02",
+    "output": "何じゃねえ？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "疑問・驚きを保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0113",
+      "judge-result:h0113_speech_f02-da38c801ac113e4f.json"
+    ],
+    "semantic_signature": "疑問・何だ"
+  },
+  {
+    "blind_id": "review-107b81b1b6d3efde",
+    "sample_id": "h0044_speech_f02",
+    "output": "どんぶつじょうきがでてきたら、そのメンタルが勝ちだと考えるのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「どんぶつじょうき」は原文の「덤불 조끼」に該当せず、疑問形でない文末で疑問を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0044",
+      "judge-result:h0044_speech_f02-7cc8ab459cb71b5e.json"
+    ],
+    "semantic_signature": "ブランブルベスト, 勝てるという考え, 疑問"
+  },
+  {
+    "blind_id": "review-81c08f8b552ae675",
+    "sample_id": "h0072_speech_f02",
+    "output": "何してるのやろいっか",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation", "omission"],
+    "rationale": "「何してるのやろいっか」は文法的に不自然で、笑いの要素を完全に欠いている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0072",
+      "judge-result:h0072_speech_f02-2ddbdb01257aecc0.json"
+    ],
+    "semantic_signature": "何してる？+不自然な表現+笑い無し"
+  },
+  {
+    "blind_id": "review-dca2eeaf532adceb",
+    "sample_id": "h0096_speech_f02",
+    "output": "ギシ GOATね？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「ギシ GOATね？」は「意地の張り合い」を完全に省略し、否定形で意味を逆転させている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0096",
+      "judge-result:h0096_speech_f02-e04183a0beaab4da.json"
+    ],
+    "semantic_signature": "ギシ GOAT 否定"
+  },
+  {
+    "blind_id": "review-16bf63e855ce8d6c",
+    "sample_id": "h0092_speech_f02",
+    "output": "そのまんきんサルデを早く死なせられるか",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["hallucination", "omission"],
+    "rationale": "「サルデ」は原文にない誤った用語で、意味が完全に崩れている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0092",
+      "judge-result:h0092_speech_f02-aabb0bb1dd592483.json"
+    ],
+    "semantic_signature": "相手を早く倒せる_因果"
+  },
+  {
+    "blind_id": "review-c4ff9e5a4048a817",
+    "sample_id": "h0105_speech_f02",
+    "output": "ただフラッシュを振るってたの？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "Qフラッシュという重要用語を省略し、意味が大きく崩れる。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0105",
+      "judge-result:h0105_speech_f02-10746c1d63643abb.json"
+    ],
+    "semantic_signature": "フラッシュ_振るってた"
+  },
+  {
+    "blind_id": "review-ea623e67e29adf4d",
+    "sample_id": "h0050_speech_f02",
+    "output": "バンピが出てたような？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「反ピ」が「体力半分」に該当せず、推測の要素も欠如。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0050",
+      "judge-result:h0050_speech_f02-d941efcd31b902a1.json"
+    ],
+    "semantic_signature": "バンピ/体力半分/推測"
+  },
+  {
+    "blind_id": "review-3d0a30fd588cb306",
+    "sample_id": "h0050_speech_f02",
+    "output": "バッフィナをハ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「反ピ」が「体力半分」に該当せず、推測の要素も欠如。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0050",
+      "judge-result:h0050_speech_f02-d941efcd31b902a1.json"
+    ],
+    "semantic_signature": "バンピ/体力半分/推測"
+  },
+  {
+    "blind_id": "review-37b4656d48d2f0fa",
+    "sample_id": "h0062_speech_f02",
+    "output": "でもそのとおりなら、サンテ・テル、ただそのまま放ったんじゃね？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「ク・サンテ」を「サンテ・テル」と誤訳し、重要な情報が欠落。また「テレポートを無駄にした」を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0062",
+      "judge-result:h0062_speech_f02-2e5ad6cc4f00b43d.json"
+    ],
+    "semantic_signature": "ク・サンテ, テレポートを無駄にした"
+  },
+  {
+    "blind_id": "review-00d5f40f444853ef",
+    "sample_id": "h0063_speech_f02",
+    "output": "問題ないんじゃ？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「問題ないんじゃ？」は疑問形を保持しているが、「得」を否定しているため意味が逆転している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0063",
+      "judge-result:h0063_speech_f02-bb8500fb2e8f366a.json"
+    ],
+    "semantic_signature": "問題ないんじゃ？"
+  },
+  {
+    "blind_id": "review-080769bfd901044e",
+    "sample_id": "h0041_speech_f02",
+    "output": "このイムインたちの間で",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「イムインたちの間で」は「子どもたちの間」を保持しており、意味が一致している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0041",
+      "judge-result:h0041_speech_f02-50f5588e87d06ca9.json"
+    ],
+    "semantic_signature": "この[子どもたち]の間で"
+  },
+  {
+    "blind_id": "review-eaac1ef5642298ff",
+    "sample_id": "h0040_speech_f02",
+    "output": "最近、子供たちに騒がせているのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["actor", "sequence"],
+    "rationale": "「子供たち」は「子ども」に該当するが、「騒がせているのか？」は「童謡を歌うのか？」と意味が完全に異なる。疑問形でも主体が異なるため、誤りが大きい。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0040",
+      "judge-result:h0040_speech_f02-2f41289ee855ae5a.json"
+    ],
+    "semantic_signature": "最近の子ども｜童謡｜疑問"
+  },
+  {
+    "blind_id": "review-92dd947e9da1c63d",
+    "sample_id": "h0096_speech_f02",
+    "output": "対戦のGOATなのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「対戦のGOATなのか？」は「意地の張り合い」を完全に省略し、意味を大きく変更している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0096",
+      "judge-result:h0096_speech_f02-e04183a0beaab4da.json"
+    ],
+    "semantic_signature": "対戦 GOAT 質問"
+  },
+  {
+    "blind_id": "review-83effc2b1cbf9b09",
+    "sample_id": "h0003_speech_f02",
+    "output": "そして今度は次のコア求人數にかける",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「求人數」はゲーム用語として不自然で、意味が曖昧化している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0003",
+      "judge-result:h0003_speech_f02-eb4655ca259d89ff.json"
+    ],
+    "semantic_signature": "次のコア_求人_数_行動"
+  },
+  {
+    "blind_id": "review-5b9f09136d6b3006",
+    "sample_id": "h0044_speech_f02",
+    "output": "ダムブクのコートが出たら勝ちだと思っているマインドは人間か？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「ダムブクのコート」は原文の「덤불 조끼」に該当せず、疑問形でない文末で疑問を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0044",
+      "judge-result:h0044_speech_f02-7cc8ab459cb71b5e.json"
+    ],
+    "semantic_signature": "ブランブルベスト, 勝てるという考え, 疑問"
+  },
+  {
+    "blind_id": "review-d0ce6b6af10e0ec9",
+    "sample_id": "h0123_speech_f02",
+    "output": "イオールン、見てやってくれ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["actor"],
+    "rationale": "「イオールン」は「ヤ」の誤訳で、指示の主体が曖昧化している",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0123",
+      "judge-result:h0123_speech_f02-d6c211822ec01405.json"
+    ],
+    "semantic_signature": "指示主体誤り_右側見る依頼"
+  },
+  {
+    "blind_id": "review-1ee9af8227491590",
+    "sample_id": "h0092_speech_f02",
+    "output": "そのまん金サルデを早めに死なせられるか",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["hallucination", "omission"],
+    "rationale": "「サルデ」は原文にない誤った用語で、意味が完全に崩れている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0092",
+      "judge-result:h0092_speech_f02-aabb0bb1dd592483.json"
+    ],
+    "semantic_signature": "相手を早く倒せる_因果"
+  },
+  {
+    "blind_id": "review-4a8994a334c3fdb7",
+    "sample_id": "h0054_speech_f02",
+    "output": "いや…無理しないで、これ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「無理をしない」が保持され、文脈も一致。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0054",
+      "judge-result:h0054_speech_f02-9fc6f63e16899d80.json"
+    ],
+    "semantic_signature": "無理をしない_否定_行動"
+  },
+  {
+    "blind_id": "review-c2d9af2d9e344560",
+    "sample_id": "h0044_speech_f02",
+    "output": "テルブールのツルハギが出たら勝ちだと考えているの？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「テルブールのツルハギ」は原文の「덤불 조끼」に該当せず、疑問形でない文末で疑問を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0044",
+      "judge-result:h0044_speech_f02-7cc8ab459cb71b5e.json"
+    ],
+    "semantic_signature": "ブランブルベスト, 勝てるという考え, 疑問"
+  },
+  {
+    "blind_id": "review-a59ea98a166198bb",
+    "sample_id": "h0062_speech_f02",
+    "output": "大きなことだけど、サンテテル、そのまま放り出したの？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「ク・サンテ」を「サンテテル」と誤訳し、重要な情報が欠落。また「テレポートを無駄にした」を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0062",
+      "judge-result:h0062_speech_f02-2e5ad6cc4f00b43d.json"
+    ],
+    "semantic_signature": "ク・サンテ, テレポートを無駄にした"
+  },
+  {
+    "blind_id": "review-a9c2a91a6cd06477",
+    "sample_id": "h0045_speech_f02",
+    "output": "ド",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "「ド」は意味不明で、原文と無関係。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0045",
+      "judge-result:h0045_speech_f02-5fbf15f1069eb002.json"
+    ],
+    "semantic_signature": "ド"
+  },
+  {
+    "blind_id": "review-57b4a21396df0fe0",
+    "sample_id": "h0051_speech_f02",
+    "output": "あ、これEでよかったらフラッシュを使ったんだけど",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「Eが当たる条件」を無視し、「フラッシュを使った」は誤った表現。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0051",
+      "judge-result:h0051_speech_f02-7a90010322aebab1.json"
+    ],
+    "semantic_signature": "E当たる条件_フラッシュ使う"
+  },
+  {
+    "blind_id": "review-492f544545831069",
+    "sample_id": "h0099_speech_f02",
+    "output": "すぐ使うなら、Wを振るってくださいね？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「すぐ使うなら」は原文の予測要素を失い、文脈を完全に崩している",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0099",
+      "judge-result:h0099_speech_f02-1e7461919ee96950.json"
+    ],
+    "semantic_signature": "Qをふりをかける→Wを使う予測"
+  },
+  {
+    "blind_id": "review-49670c82f0e44263",
+    "sample_id": "h0080_speech_f02",
+    "output": "オーケー",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「オーケー」は肯定的な反応であり、否定・反応を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0080",
+      "judge-result:h0080_speech_f02-f82efc7feb7c3f9b.json"
+    ],
+    "semantic_signature": "否定・反応"
+  },
+  {
+    "blind_id": "review-3c648d03b2996998",
+    "sample_id": "h0030_speech_f02",
+    "output": "でもラピッドトリガーがあれば",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "ラピッドトリガーと条件を保持",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0030",
+      "judge-result:h0030_speech_f02-eaf2f93b99e56d11.json"
+    ],
+    "semantic_signature": "でもラピッドトリガーがあれば"
+  },
+  {
+    "blind_id": "review-8962b1c248af62fb",
+    "sample_id": "h0113_speech_f02",
+    "output": "何でそれなの？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "疑問・驚きを保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0113",
+      "judge-result:h0113_speech_f02-da38c801ac113e4f.json"
+    ],
+    "semantic_signature": "疑命・何だ"
+  },
+  {
+    "blind_id": "review-54e19c8e1f5bdc8e",
+    "sample_id": "h0086_speech_f02",
+    "output": "アーリスティを受けることができなかった",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「アーリスティ」は原文の「シールド」に該当しない。また「受けられる」を「受けることができる」に変更し、文意が大きく変化している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0086",
+      "judge-result:h0086_speech_f02-e504650ebdfae8cc.json"
+    ],
+    "semantic_signature": "シールド_受けられなかった"
+  },
+  {
+    "blind_id": "review-79e8a2fb7c8e5296",
+    "sample_id": "h0084_speech_f02",
+    "output": "Wスキルの入力だけです",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「先行入力」を省略。ゲーム内判断を保持しない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0084",
+      "judge-result:h0084_speech_f02-8d1e8f42f5936f90.json"
+    ],
+    "semantic_signature": "W_先行入力_ゲーム操作"
+  },
+  {
+    "blind_id": "review-c125ac7157d84d3b",
+    "sample_id": "h0009_speech_f02",
+    "output": "入力が速いキーボードになるように",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「なるように」は文脈に合致しない",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0009",
+      "judge-result:h0009_speech_f02-f1f9323104ba39f3.json"
+    ],
+    "semantic_signature": "入力が速い_キーボード_なるように"
+  },
+  {
+    "blind_id": "review-43a28c355d55e939",
+    "sample_id": "h0089_speech_f02",
+    "output": "しっかり入力が速い",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「しっかり」は原文の「확실히」に該当しない用語誤り。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0089",
+      "judge-result:h0089_speech_f02-d7ecf4472864d33d.json"
+    ],
+    "semantic_signature": "入力が速い"
+  },
+  {
+    "blind_id": "review-11b1476a4db93016",
+    "sample_id": "h0029_speech_f02",
+    "output": "バードがぐるようなとき",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「ぐる」は「宮」の誤訳で、また「のようなとき」は「受けたとき」を誤って表現している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0029",
+      "judge-result:h0029_speech_f02-ab1528a23770adca.json"
+    ],
+    "semantic_signature": "バード, ウルト, 受けたとき"
+  },
+  {
+    "blind_id": "review-d667e2aa1b91663c",
+    "sample_id": "h0006_speech_f02",
+    "output": "反応速度が速い必要があるってことですか",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["omission"],
+    "rationale": "「速い必要がある」は「良くないといけない」より弱い表現で、必須要素は保持していますが、ニュアンスがやや異なるため軽微な不自然さがあります。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0006",
+      "judge-result:h0006_speech_f02-00eeb46b5ca701b5.json"
+    ],
+    "semantic_signature": "反応速度, 必要, 速い"
+  },
+  {
+    "blind_id": "review-88f780d7e3d3622f",
+    "sample_id": "h0051_speech_f02",
+    "output": "あの、これEでやればフィールドが終わったのに",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「Eが当たる条件」を無視し、「フラッシュを使う」を誤って「フィールドが終わった」に変更。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0051",
+      "judge-result:h0051_speech_f02-7a90010322aebab1.json"
+    ],
+    "semantic_signature": "E当たる条件_フラッシュ使う"
+  },
+  {
+    "blind_id": "review-31437ab6c51d3f4d",
+    "sample_id": "h0001_speech_f02",
+    "output": "ニンタップかヘルメスが行く",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["actor"],
+    "rationale": "「닌탑」が「ニンタップ」と誤訳され、ゲーム内での「ニンタップ」は存在しない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0001",
+      "judge-result:h0001_speech_f02-80208743822e2699.json"
+    ],
+    "semantic_signature": "ニンタップ,ヘルメス,行く"
+  },
+  {
+    "blind_id": "review-55e7a955a50af48a",
+    "sample_id": "h0043_speech_f02",
+    "output": "それなのに？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation", "omission"],
+    "rationale": "疑問・驚きの感情は保持されていない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0043",
+      "judge-result:h0043_speech_f02-bce747f0170cd74e.json"
+    ],
+    "semantic_signature": "疑問・驚き"
+  },
+  {
+    "blind_id": "review-bd0d95f06faef101",
+    "sample_id": "h0090_speech_f02",
+    "output": "いや、ミツジタ？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "否定表現が不自然で、疑問の意図を失う",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0090",
+      "judge-result:h0090_speech_f02-c4f5058ae4245c35.json"
+    ],
+    "semantic_signature": "いや_否定_疑問"
+  },
+  {
+    "blind_id": "review-fedd3c7cae6456bb",
+    "sample_id": "h0003_speech_f02",
+    "output": "そして今度は次のコア・クエリ数を出す",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「クエリ数」はゲーム用語として不自然で、意味が曖昧化している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0003",
+      "judge-result:h0003_speech_f02-eb4655ca259d89ff.json"
+    ],
+    "semantic_signature": "次のコア_クエリ数_行動"
+  },
+  {
+    "blind_id": "review-d403c3a6a5af5be0",
+    "sample_id": "h0114_speech_f02",
+    "output": "これの方が美味しい",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「これの方が美味しい」は原文の比較を正確に保持し、must_preserveの「こちらを高く評価」も反映している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0114",
+      "judge-result:h0114_speech_f02-90745c33f1c1491c.json"
+    ],
+    "semantic_signature": "このほうが美味い"
+  },
+  {
+    "blind_id": "review-68fdd587d2ec6348",
+    "sample_id": "h0119_speech_f02",
+    "output": "確かに入力が少し速いですか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "疑問形で推測を保持し、意味は保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0119",
+      "judge-result:h0119_speech_f02-74487f79f11eaa3d.json"
+    ],
+    "semantic_signature": "入力が少し速い（推測）"
+  },
+  {
+    "blind_id": "review-8a257edba5190fe4",
+    "sample_id": "h0072_speech_f02",
+    "output": "何してるのやろ、これ ㅋㅋ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["format"],
+    "rationale": "「これ ㅋㅋ」の順序が参考文と異なり、軽微な不自然さがあるが、笑いと「何してるか」は保持している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0072",
+      "judge-result:h0072_speech_f02-2ddbdb01257aecc0.json"
+    ],
+    "semantic_signature": "何してる？+これ+笑い"
+  },
+  {
+    "blind_id": "review-8594dd531c1630c7",
+    "sample_id": "h0005_speech_f02",
+    "output": "実際をさせるときの国物ベール",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["hallucination", "omission"],
+    "rationale": "「国物ベール」は原文にない誤訳で、意味が完全にずれている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0005",
+      "judge-result:h0005_speech_f02-df11d818d259f3d2.json"
+    ],
+    "semantic_signature": "国物ベール 实際"
+  },
+  {
+    "blind_id": "review-3100fe0233b2cc45",
+    "sample_id": "h0051_speech_f02",
+    "output": "ア、これ、当てたならフラッシュを出したんだよね",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["omission"],
+    "rationale": "「Eが当たる条件」を省略し、「当てたなら」で条件を誤って表現。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0051",
+      "judge-result:h0051_speech_f02-7a90010322aebab1.json"
+    ],
+    "semantic_signature": "E当たる条件_フラッシュ使う"
+  },
+  {
+    "blind_id": "review-7b64a72bf4ce9675",
+    "sample_id": "h0097_speech_f02",
+    "output": "敵対意識が低い？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「敵対意識が低い」は原文の意図とは無関係。疑問形も保持していないため、文脈が大きく崩れている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0097",
+      "judge-result:h0097_speech_f02-05e5ec23679554dd.json"
+    ],
+    "semantic_signature": "敵対意識？"
+  },
+  {
+    "blind_id": "review-32c8917be2f2b501",
+    "sample_id": "h0104_speech_f02",
+    "output": "？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "疑問・驚きの意図が完全に失われる。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0104",
+      "judge-result:h0104_speech_f02-f3e9b3128e35834f.json"
+    ],
+    "semantic_signature": "疑問・驚き"
+  },
+  {
+    "blind_id": "review-e131fd2659b5ae2e",
+    "sample_id": "h0103_speech_f02",
+    "output": "急がなくてもいい",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「急がなくてもいい」は「急がなくていい」の直接的な日本語訳で、意味を保持している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0103",
+      "judge-result:h0103_speech_f02-9f566cdbc7435680.json"
+    ],
+    "semantic_signature": "急がなくてもいい"
+  },
+  {
+    "blind_id": "review-e2e7ccea20b0630f",
+    "sample_id": "h0054_speech_f02",
+    "output": "いや…そんなにやるなよこれ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「無理をしない」が「そんなにやるなよ」に置き換えられ、否定の対象が変化。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0054",
+      "judge-result:h0054_speech_f02-9fc6f63e16899d80.json"
+    ],
+    "semantic_signature": "無理をしない_否定_行動"
+  },
+  {
+    "blind_id": "review-e6dd1631acee9700",
+    "sample_id": "h0082_speech_f02",
+    "output": "W 2回の水で勝つのは難しい",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「Wを2回噛めば勝てはする」の主張を否定しているため、主張を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0082",
+      "judge-result:h0082_speech_f02-6367062a5b2f1bdd.json"
+    ],
+    "semantic_signature": "W 2回 勝てる"
+  },
+  {
+    "blind_id": "review-d4e91534fbf18f8d",
+    "sample_id": "h0043_speech_f02",
+    "output": "何じゃねーのQか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["format"],
+    "rationale": "「Q」を保持しているが、疑問・驚きの感情は保持されていない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0043",
+      "judge-result:h0043_speech_f02-bce747f0170cd74e.json"
+    ],
+    "semantic_signature": "疑問・驚き"
+  },
+  {
+    "blind_id": "review-54c506468f4a2026",
+    "sample_id": "h0114_speech_f02",
+    "output": "もっとおいしくなる",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "否定形で「もっとおいしくなる」は文意を逆転させ、元の肯定的な比較を壊す。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0114",
+      "judge-result:h0114_speech_f02-90745c33f1c1491c.json"
+    ],
+    "semantic_signature": "このほうが美味い"
+  },
+  {
+    "blind_id": "review-f286920fa8c82aab",
+    "sample_id": "h0051_speech_f02",
+    "output": "あ、これに当てたなら、それを発動していたんだよ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「Eが当たる条件」を無視し、「それを発動していた」は誤った表現。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0051",
+      "judge-result:h0051_speech_f02-7a90010322aebab1.json"
+    ],
+    "semantic_signature": "E当たる条件_フラッシュ使う"
+  },
+  {
+    "blind_id": "review-7bc0e760a2b0b4e4",
+    "sample_id": "h0096_speech_f02",
+    "output": "ギシがGOATなのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「ギシがGOATなのか？」は「意地の張り合い」を完全に省略し、意味を大きく変更している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0096",
+      "judge-result:h0096_speech_f02-e04183a0beaab4da.json"
+    ],
+    "semantic_signature": "ギシ GOAT 質問"
+  },
+  {
+    "blind_id": "review-75cfc03ea840bf4c",
+    "sample_id": "h0050_speech_f02",
+    "output": "バンピが離れたような？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「反ピ」が「体力半分」に該当せず、推測の要素も欠如。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0050",
+      "judge-result:h0050_speech_f02-d941efcd31b902a1.json"
+    ],
+    "semantic_signature": "バンピ/体力半分/推測"
+  },
+  {
+    "blind_id": "review-d5b4bbfc51bc16cb",
+    "sample_id": "h0080_speech_f02",
+    "output": "いいえ..",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「いいえ..」は否定・反応を保持している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0080",
+      "judge-result:h0080_speech_f02-f82efc7feb7c3f9b.json"
+    ],
+    "semantic_signature": "否定・反応"
+  },
+  {
+    "blind_id": "review-9cab0f9735732fbe",
+    "sample_id": "h0090_speech_f02",
+    "output": "あれ？大丈夫？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "驚きの要素が欠如し、疑問の意図も不明",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0090",
+      "judge-result:h0090_speech_f02-c4f5058ae4245c35.json"
+    ],
+    "semantic_signature": "あれ_疑問"
+  },
+  {
+    "blind_id": "review-5ab2855179ab974f",
+    "sample_id": "h0104_speech_f02",
+    "output": "え？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「え？」は疑問・驚きを完全に保持している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0104",
+      "judge-result:h0104_speech_f02-f3e9b3128e35834f.json"
+    ],
+    "semantic_signature": "疑問・驚き"
+  },
+  {
+    "blind_id": "review-adf562d4d56bbb58",
+    "sample_id": "h0006_speech_f02",
+    "output": "反応速度が良くないとダメなんだよ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「反応速度が良くないとダメなんだよ」は「反応速度が良くないといけないんです」に近い表現で、必須要素を保持しています。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0006",
+      "judge-result:h0006_speech_f02-00eeb46b5ca701b5.json"
+    ],
+    "semantic_signature": "反応速度, 必要, 悪い"
+  },
+  {
+    "blind_id": "review-85c2f195e8bf4ba8",
+    "sample_id": "h0079_speech_f02",
+    "output": "オH x3",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["hallucination"],
+    "rationale": "「オーケー」が「オH」と誤訳されているため、重要な語句が誤っている",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0079",
+      "judge-result:h0079_speech_f02-d375dfad808e0591.json"
+    ],
+    "semantic_signature": "オーケー, 3回"
+  },
+  {
+    "blind_id": "review-6118d57c02cecaac",
+    "sample_id": "h0114_speech_f02",
+    "output": "もっとおいしくなる",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "否定形で「もっとおいしくなる」は文意を逆転させ、元の肯定的な比較を壊す。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0114",
+      "judge-result:h0114_speech_f02-90745c33f1c1491c.json"
+    ],
+    "semantic_signature": "このほうが美味い"
+  },
+  {
+    "blind_id": "review-6ba95e6619d0cb26",
+    "sample_id": "h0062_speech_f02",
+    "output": "でもこうなるとサンテ・テルはただ放たれたんじゃなかったのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「ク・サンテ」を「サンテ・テル」と誤訳し、重要な情報が欠落。また「テレポートを無駄にした」を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0062",
+      "judge-result:h0062_speech_f02-2e5ad6cc4f00b43d.json"
+    ],
+    "semantic_signature": "ク・サンテ, テレポートを無駄にした"
+  },
+  {
+    "blind_id": "review-aa6991a18a1509bf",
+    "sample_id": "h0032_speech_f02",
+    "output": "ゴンギ、こんなにすぐ出ていったが",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["actor"],
+    "rationale": "「宮」を誤って「ゴンギ」で翻訳し、文脈が崩れている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0032",
+      "judge-result:h0032_speech_f02-3cc2fc569293ef39.json"
+    ],
+    "semantic_signature": "ゴンギ/すぐ出ていった/文脈崩壊"
+  },
+  {
+    "blind_id": "review-76dd0b608afa38c6",
+    "sample_id": "h0069_speech_f02",
+    "output": "いいや、サンテヒン！",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "ク・サンテへの呼びかけが完全に欠如しているため、重要な要素を欠落している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0069",
+      "judge-result:h0069_speech_f02-4c65a79d1a1137b0.json"
+    ],
+    "semantic_signature": "ク・サンテへの呼びかけ"
+  },
+  {
+    "blind_id": "review-21c3a9ec79d9f0b3",
+    "sample_id": "h0036_speech_f02",
+    "output": "今日、極デリバルベを一度試してみます",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "「極デリバルベ」はゲーム内用語と一致せず、また「フルダメージのボリベア」が完全に失われているため重要用語の誤り",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0036",
+      "judge-result:h0036_speech_f02-4d84875eae90a8e8.json"
+    ],
+    "semantic_signature": "今日 極デリバルベ 一度試してみます"
+  },
+  {
+    "blind_id": "review-a2c00ba1c30ce95e",
+    "sample_id": "h0041_speech_f02",
+    "output": "このチャムメンテスエリアで",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「チャムメンテスエリア」は原文の意味と一致せず、誤った用語を使用している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0041",
+      "judge-result:h0041_speech_f02-50f5588e87d06ca9.json"
+    ],
+    "semantic_signature": "この[誤用語]エリアで"
+  },
+  {
+    "blind_id": "review-c34edec4d4d3c697",
+    "sample_id": "h0043_speech_f02",
+    "output": "あれ、あっか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "疑問・驚きの感情は保持されていない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0043",
+      "judge-result:h0043_speech_f02-bce747f0170cd74e.json"
+    ],
+    "semantic_signature": "疑問・驚き"
+  },
+  {
+    "blind_id": "review-65776995259ad5a1",
+    "sample_id": "h0086_speech_f02",
+    "output": "いや、シールドを受けられなかった",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「いや」および「シールドを受けられなかった」は原文と完全に一致している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0086",
+      "judge-result:h0086_speech_f02-e504650ebdfae8cc.json"
+    ],
+    "semantic_signature": "シールド_受けられなかった"
+  },
+  {
+    "blind_id": "review-b1554251456c43c6",
+    "sample_id": "h0081_speech_f02",
+    "output": "ダンプゾーはないじゃない",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["negation"],
+    "rationale": "「ダンプゾー」は「ブランブルベスト」の誤訳で、否定表現は保持しているが、語彙が不正確なため軽微な不自然さあり。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0081",
+      "judge-result:h0081_speech_f02-064f4ffa9f0bd560.json"
+    ],
+    "semantic_signature": "ブランブルベスト ない"
+  },
+  {
+    "blind_id": "review-c1d1d17cf9b9a4e4",
+    "sample_id": "h0002_speech_f02",
+    "output": "非常に強力な10スタックになります",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「다재다능」を省略しているため、重要用語が壊れている",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0002",
+      "judge-result:h0002_speech_f02-925d1c19c7898c8b.json"
+    ],
+    "semantic_signature": "다재다능_10스택"
+  },
+  {
+    "blind_id": "review-6734687e2b533c97",
+    "sample_id": "h0055_speech_f02",
+    "output": "ゾンジャのゲームが終わるまでにやめられない",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "「ゾンジャのゲーム」は原文にない追加情報で、意味が曖昧化しているため判定不能。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0055",
+      "judge-result:h0055_speech_f02-a6810678d9f1891d.json"
+    ],
+    "semantic_signature": "ゲーム終了まで_勝てない"
+  },
+  {
+    "blind_id": "review-a3e198be1bbf9b76",
+    "sample_id": "h0053_speech_f02",
+    "output": "ダイブがすごくしたいんだけど？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "文意と表現が完全一致",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0053",
+      "judge-result:h0053_speech_f02-ed92a9eaab655afe.json"
+    ],
+    "semantic_signature": "ダイブがすごくしたいんだけど？"
+  },
+  {
+    "blind_id": "review-e47e3d5eb5c47ff6",
+    "sample_id": "h0118_speech_f02",
+    "output": "ホンは反応が速い",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「ホンは反応が速い」は「兄さんは反応が速い」と意味を保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0118",
+      "judge-result:h0118_speech_f02-2916c7081d2aa72d.json"
+    ],
+    "semantic_signature": "反応が速い"
+  },
+  {
+    "blind_id": "review-6946a94f39b61857",
+    "sample_id": "h0082_speech_f02",
+    "output": "2番のフラッシュがきついんだ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「Wを2回噛めば勝てはする」の主張を完全に無視し、別の情報（フラッシュ）を提示。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0082",
+      "judge-result:h0082_speech_f02-6367062a5b2f1bdd.json"
+    ],
+    "semantic_signature": "W 2回 勝てる"
+  },
+  {
+    "blind_id": "review-1f00408f309a9e82",
+    "sample_id": "h0040_speech_f02",
+    "output": "最近、子供たちに騒がせたのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["actor", "negation"],
+    "rationale": "「子供たち」は「子ども」に該当するが、「騒がせたのか？」は「童謡を歌うのか？」と意味が完全に異なる。疑問形でも主体が異なるため、誤りが大きい。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0040",
+      "judge-result:h0040_speech_f02-2f41289ee855ae5a.json"
+    ],
+    "semantic_signature": "最近の子ども｜童謡｜疑問"
+  },
+  {
+    "blind_id": "review-85a03c3db78b1d9e",
+    "sample_id": "h0119_speech_f02",
+    "output": "確かに入力が少し速いような？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「少し速い」は原文の「좀 더 빠른 것 같은데」に合致し、推測のニュアンスも保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0119",
+      "judge-result:h0119_speech_f02-74487f79f11eaa3d.json"
+    ],
+    "semantic_signature": "入力が少し速い（推測）"
+  },
+  {
+    "blind_id": "review-28d53b49886cbd41",
+    "sample_id": "h0053_speech_f02",
+    "output": "ダイブが本当にしたいの？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "疑問形で意図を逆転",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0053",
+      "judge-result:h0053_speech_f02-ed92a9eaab655afe.json"
+    ],
+    "semantic_signature": "ダイブが本当にしたいの？"
+  },
+  {
+    "blind_id": "review-1ca434e884994780",
+    "sample_id": "h0002_speech_f02",
+    "output": "なんでも屋 10スタックです",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「다재다능」を「なんでも屋」に誤訳しているため、重要用語が壊れている",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0002",
+      "judge-result:h0002_speech_f02-925d1c19c7898c8b.json"
+    ],
+    "semantic_signature": "다재다능_10스택"
+  },
+  {
+    "blind_id": "review-66728972b83b7022",
+    "sample_id": "h0006_speech_f02",
+    "output": "反応速度が良くないとダメなんだよ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「反応速度が良くないとダメなんだよ」は「反応速度が良くないといけないんです」に近い表現で、必須要素を保持しています。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0006",
+      "judge-result:h0006_speech_f02-00eeb46b5ca701b5.json"
+    ],
+    "semantic_signature": "反応速度, 必要, 悪い"
+  },
+  {
+    "blind_id": "review-16ed346c47eba679",
+    "sample_id": "h0042_speech_f02",
+    "output": "そして、そのすべてが、すべての敵を倒すまで、続ける。",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "原文の「Q」の意味を保持していない。文脈が不明確で、ゲーム内判断を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0042",
+      "judge-result:h0042_speech_f02-dd3cbb3590f45d2b.json"
+    ],
+    "semantic_signature": "そして、そのすべてが、すべての敵を倒すまで、続ける。"
+  },
+  {
+    "blind_id": "review-29548e1764cf9f0d",
+    "sample_id": "h0073_speech_f02",
+    "output": "すごくダリウスに似ているね now@",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「ク・サンテらしい行動」が誤って「ダリウス」に置き換えられ、文意が大きくずれる",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0073",
+      "judge-result:h0073_speech_f02-244a68b0b2e5c3e9.json"
+    ],
+    "semantic_signature": "ダリウスに似ている now"
+  },
+  {
+    "blind_id": "review-37f282437bfc1596",
+    "sample_id": "h0045_speech_f02",
+    "output": "Qを出すように",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["terminology"],
+    "rationale": "「出す」はゲーム内では「使う」が標準的な表現。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0045",
+      "judge-result:h0045_speech_f02-5fbf15f1069eb002.json"
+    ],
+    "semantic_signature": "Qを使うように"
+  },
+  {
+    "blind_id": "review-1c56394e20b80c49",
+    "sample_id": "h0061_speech_f02",
+    "output": "やるか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["omission"],
+    "rationale": "「やるか？」は意図を伝えているが、「当たるかという疑問」を完全に保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0061",
+      "judge-result:h0061_speech_f02-bbac10cc4df28f36.json"
+    ],
+    "semantic_signature": "当たるかという疑問"
+  },
+  {
+    "blind_id": "review-caca095937aaaf27",
+    "sample_id": "h0072_speech_f02",
+    "output": "何してるんだよ、これ、ㅋㅋ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["format"],
+    "rationale": "「これ、ㅋㅋ」の順序が参考文と異なり、軽微な不自然さがあるが、笑いと「何してるか」は保持している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0072",
+      "judge-result:h0072_speech_f02-2ddbdb01257aecc0.json"
+    ],
+    "semantic_signature": "何してる？+これ+笑い"
+  },
+  {
+    "blind_id": "review-c973999fc5eed707",
+    "sample_id": "h0036_speech_f02",
+    "output": "今日、極デイルドローブーを一度やります",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "「極デイルドローブー」はゲーム内用語と一致せず、また「フルダメージのボリベア」が完全に失われているため重要用語の誤り",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0036",
+      "judge-result:h0036_speech_f02-4d84875eae90a8e8.json"
+    ],
+    "semantic_signature": "今日 極デイルドローブー 一度やります"
+  },
+  {
+    "blind_id": "review-11471a00e1c90767",
+    "sample_id": "h0073_speech_f02",
+    "output": "今、それほど大きく見える",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「ク・サンテらしい行動」が完全に欠如し、文意が大きくずれる",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0073",
+      "judge-result:h0073_speech_f02-244a68b0b2e5c3e9.json"
+    ],
+    "semantic_signature": "今 大きく見える"
+  },
+  {
+    "blind_id": "review-96caa92eb60e14fb",
+    "sample_id": "h0044_speech_f02",
+    "output": "タールブーンが出てくると勝ちだと考える思考は、それって人間ですか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["actor", "sequence"],
+    "rationale": "「タールブーン」は原文の「덤불 조끼」に該当せず、主体が「人間か？」と変更されており、文脈が大きくずれる。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0044",
+      "judge-result:h0044_speech_f02-7cc8ab459cb71b5e.json"
+    ],
+    "semantic_signature": "ブランブルベスト, 勝てるという考え, 疑問"
+  },
+  {
+    "blind_id": "review-173294c4959d3af8",
+    "sample_id": "h0069_speech_f02",
+    "output": "サンテヒン",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "ク・サンテへの呼びかけが完全に欠如しているため、重要な要素を欠落している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0069",
+      "judge-result:h0069_speech_f02-4c65a79d1a1137b0.json"
+    ],
+    "semantic_signature": "ク・サンテへの呼びかけ"
+  },
+  {
+    "blind_id": "review-0e63c85a924598cc",
+    "sample_id": "h0123_speech_f02",
+    "output": "いや、これ（右）見てよ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["negation"],
+    "rationale": "「いや」は否定を含み、元文の命令調を壊している",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0123",
+      "judge-result:h0123_speech_f02-d6c211822ec01405.json"
+    ],
+    "semantic_signature": "否定含む_右側見る依頼"
+  },
+  {
+    "blind_id": "review-898a0071d7c12b8f",
+    "sample_id": "h0081_speech_f02",
+    "output": "メックジョ なしジャア",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["hallucination", "format"],
+    "rationale": "「メックジョ なしジャア」は原文の語順や表現が完全に異なるため、ゲーム内判断を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0081",
+      "judge-result:h0081_speech_f02-064f4ffa9f0bd560.json"
+    ],
+    "semantic_signature": "ブランブルベスト ない"
+  },
+  {
+    "blind_id": "review-3c826efc31fd1953",
+    "sample_id": "h0049_speech_f02",
+    "output": "あんたに当たったなら、タワーに行ったか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「当たった場合」を「あんたに当たったなら」で保持。疑問形を保持。タワーも保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0049",
+      "judge-result:h0049_speech_f02-259ffe822457a582.json"
+    ],
+    "semantic_signature": "当たった場合_タワー_疑問"
+  },
+  {
+    "blind_id": "review-78cb948cc3b4d0c6",
+    "sample_id": "h0005_speech_f02",
+    "output": "ボリベアが国物を食べるとき、ファイアを実行する",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["hallucination", "omission"],
+    "rationale": "「国物を食べる」や「ファイアを実行する」は原文にない誤訳で、意味が完全にずれている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0005",
+      "judge-result:h0005_speech_f02-df11d818d259f3d2.json"
+    ],
+    "semantic_signature": "国物 ファイア 実行"
+  },
+  {
+    "blind_id": "review-5e5731f5428b19f3",
+    "sample_id": "h0099_speech_f02",
+    "output": "Qを振るふりをすれば、Wを使うのですか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「振るふりをすれば」は「ふりをかける」の意を保持し、予測も明確に保持している",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0099",
+      "judge-result:h0099_speech_f02-1e7461919ee96950.json"
+    ],
+    "semantic_signature": "Qをふりをかける→Wを使う予測"
+  },
+  {
+    "blind_id": "review-4d1be40b2733e171",
+    "sample_id": "h0002_speech_f02",
+    "output": "なんでも屋は10スタックになります",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「다재다능」を「なんでも屋」に誤訳しているため、重要用語が壊れている",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0002",
+      "judge-result:h0002_speech_f02-925d1c19c7898c8b.json"
+    ],
+    "semantic_signature": "다재다능_10스택"
+  },
+  {
+    "blind_id": "review-1b8f58e93639f8d1",
+    "sample_id": "h0089_speech_f02",
+    "output": "確かに入力が速い",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「確かに入力が速い」は原文の意味を完全に保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0089",
+      "judge-result:h0089_speech_f02-d7ecf4472864d33d.json"
+    ],
+    "semantic_signature": "入力が速い"
+  },
+  {
+    "blind_id": "review-97dc45080a4c9f2f",
+    "sample_id": "h0040_speech_f02",
+    "output": "最近、あのたんのドンゴブってあるの？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "「あのたんのドンゴブ」は原文の「童謡」に該当せず、意味が不明確。疑問形は一致するが、全体として曖昧なため判定不能。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0040",
+      "judge-result:h0040_speech_f02-2f41289ee855ae5a.json"
+    ],
+    "semantic_signature": "最近の子ども｜童謡｜疑問"
+  },
+  {
+    "blind_id": "review-58aae1b21c7c2b6b",
+    "sample_id": "h0057_speech_f02",
+    "output": "2アイギーアンマッチネ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["format"],
+    "rationale": "文法的に不自然で、ゲーム内判断を保持していない",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0057",
+      "judge-result:h0057_speech_f02-ca644eb935af8949.json"
+    ],
+    "semantic_signature": "文法不自然・ゲーム内判断喪失"
+  },
+  {
+    "blind_id": "review-9d6c5d9981f0db8b",
+    "sample_id": "h0057_speech_f02",
+    "output": "2アイゲアンマッネ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["format"],
+    "rationale": "文法的に不自然で、ゲーム内判断を保持していない",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0057",
+      "judge-result:h0057_speech_f02-ca644eb935af8949.json"
+    ],
+    "semantic_signature": "文法不自然・ゲーム内判断喪失"
+  },
+  {
+    "blind_id": "review-46d21050ef8436b7",
+    "sample_id": "h0069_speech_f02",
+    "output": "いや、サンテフ！",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「いや」は否定を表し、「サンテフ」はク・サンテへの呼びかけを保持している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0069",
+      "judge-result:h0069_speech_f02-4c65a79d1a1137b0.json"
+    ],
+    "semantic_signature": "否定 + ク・サンテへの呼びかけ"
+  },
+  {
+    "blind_id": "review-d5f25c94df573e8b",
+    "sample_id": "h0082_speech_f02",
+    "output": "ワ 2回水を飲めば勝ちる",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「Wを2回噛めば勝てはする」の主張を完全に無視し、別の情報（水を飲む）を提示。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0082",
+      "judge-result:h0082_speech_f02-6367062a5b2f1bdd.json"
+    ],
+    "semantic_signature": "W 2回 勝てる"
+  },
+  {
+    "blind_id": "review-f3ba16a2824ee60f",
+    "sample_id": "h0030_speech_f02",
+    "output": "大きなデストリガーがあるなら",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "条件が欠如",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0030",
+      "judge-result:h0030_speech_f02-eaf2f93b99e56d11.json"
+    ],
+    "semantic_signature": "大きなデストリガーがあるなら"
+  },
+  {
+    "blind_id": "review-d24a4b5dc5036391",
+    "sample_id": "h0005_speech_f02",
+    "output": "極ディールをボルベで行うとき実際",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「極ディール」は「極딜」の誤訳で、ゲーム用語として不正確。また「ボルベ」は「ボリベア」の誤訳で、語彙が完全に一致しない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0005",
+      "judge-result:h0005_speech_f02-df11d818d259f3d2.json"
+    ],
+    "semantic_signature": "極ディール ボルベ 实際"
+  },
+  {
+    "blind_id": "review-f6d2277636d2b1d1",
+    "sample_id": "h0080_speech_f02",
+    "output": "いいえ..",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「いいえ..」は否定・反応を保持している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0080",
+      "judge-result:h0080_speech_f02-f82efc7feb7c3f9b.json"
+    ],
+    "semantic_signature": "否定・反応"
+  },
+  {
+    "blind_id": "review-42a0ae4c019495a7",
+    "sample_id": "h0029_speech_f02",
+    "output": "バードが宮のようなものを当てるとき",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「宮のようなものを当てるとき」は「バードのウルトのようなものを受けたとき」を誤って表現しており、主語・動作が逆転している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0029",
+      "judge-result:h0029_speech_f02-ab1528a23770adca.json"
+    ],
+    "semantic_signature": "バード, ウルト, 受けたとき"
+  },
+  {
+    "blind_id": "review-e6a0ea0c2517197a",
+    "sample_id": "h0042_speech_f02",
+    "output": "クエスト：敵のサポートがフラッシュを使用した時、3秒間、敵のサポートの範囲内にいるすべての敵にダメージを与える。",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "クエストの説明が不明確で、原文の「Q」の意味を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0042",
+      "judge-result:h0042_speech_f02-dd3cbb3590f45d2b.json"
+    ],
+    "semantic_signature": "クエスト：敵のサポートがフラッシュを使用した時、3秒間、敵のサポートの範囲内にいるすべての敵にダメージを与える。"
+  },
+  {
+    "blind_id": "review-0ad0f3149f6a8446",
+    "sample_id": "h0096_speech_f02",
+    "output": "ギ・サウムGOATじゃないの？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「GOATじゃないの？」は否定形で、原文の肯定的な評価を逆転させている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0096",
+      "judge-result:h0096_speech_f02-e04183a0beaab4da.json"
+    ],
+    "semantic_signature": "ギ・サウム GOAT 否定"
+  },
+  {
+    "blind_id": "review-27c4dd2f566fa859",
+    "sample_id": "h0031_speech_f02",
+    "output": "または宮を管理すれば",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「宮」を「管理」するのは文脈に合致せず、意図が完全に崩れている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0031",
+      "judge-result:h0031_speech_f02-60647aabee5118b1.json"
+    ],
+    "semantic_signature": "宮/管理する"
+  },
+  {
+    "blind_id": "review-dcca0cd790266b30",
+    "sample_id": "h0086_speech_f02",
+    "output": "いや、シールドを受けられなかった",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「いや」および「シールドを受けられなかった」は原文と完全に一致している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0086",
+      "judge-result:h0086_speech_f02-e504650ebdfae8cc.json"
+    ],
+    "semantic_signature": "シールド_受けられなかった"
+  },
+  {
+    "blind_id": "review-a82070189b689c6c",
+    "sample_id": "h0105_speech_f02",
+    "output": "ただQを振るべきだったのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "Qフラッシュという重要用語を省略し、意味が大きく崩れる。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0105",
+      "judge-result:h0105_speech_f02-10746c1d63643abb.json"
+    ],
+    "semantic_signature": "Q_振るべきだった"
+  },
+  {
+    "blind_id": "review-5e683e6ebc057a94",
+    "sample_id": "h0097_speech_f02",
+    "output": "俺に、ちょっとだけ戦いは？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["sequence"],
+    "rationale": "「戦い」は原文の「싸움」を直接翻訳したが、文脈として「意地を張る」を保持していない。また、疑問形を保持していないため、文脈が大きく崩れている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0097",
+      "judge-result:h0097_speech_f02-05e5ec23679554dd.json"
+    ],
+    "semantic_signature": "戦い？意地を張る？"
+  },
+  {
+    "blind_id": "review-85204d4cd68b3e3a",
+    "sample_id": "h0055_speech_f02",
+    "output": "ゲームが終わるまでに諦めたくない",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「諦めたくない」は原文の「勝てない」を完全に置き換えているが、意味が異なる。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0055",
+      "judge-result:h0055_speech_f02-a6810678d9f1891d.json"
+    ],
+    "semantic_signature": "ゲーム終了まで_勝てない"
+  },
+  {
+    "blind_id": "review-77f5f673bcfd70ef",
+    "sample_id": "h0084_speech_f02",
+    "output": "ワーサイズ入力だけでいい",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "「W」を「ワーサイズ」と誤訳し、「先行入力」を省略。ゲーム内判断を保持しない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0084",
+      "judge-result:h0084_speech_f02-8d1e8f42f5936f90.json"
+    ],
+    "semantic_signature": "W_先行入力_ゲーム操作"
+  },
+  {
+    "blind_id": "review-e3ca6e8bcf80d04b",
+    "sample_id": "h0031_speech_f02",
+    "output": "それなら、宮を関係者にする",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「宮」を「関係者にする」は文脈に合致せず、意図が完全に崩れている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0031",
+      "judge-result:h0031_speech_f02-60647aabee5118b1.json"
+    ],
+    "semantic_signature": "宮/関係者にする"
+  },
+  {
+    "blind_id": "review-9d91d136a0d85bb0",
+    "sample_id": "h0074_speech_f02",
+    "output": "いや、あまり大きくないよ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「ク・サンテの言葉遊び」と「図々しい」が完全に欠如。否定のニュアンスも失われている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0074",
+      "judge-result:h0074_speech_f02-c61d7444a2fd8d39.json"
+    ],
+    "semantic_signature": "大きさの否定 + 言葉遊び + 図々しい"
+  },
+  {
+    "blind_id": "review-40e2ab32245b1158",
+    "sample_id": "h0042_speech_f02",
+    "output": "Q",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「Q」は原文と一致し、ゲーム内判断を保持している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0042",
+      "judge-result:h0042_speech_f02-dd3cbb3590f45d2b.json"
+    ],
+    "semantic_signature": "Q"
+  },
+  {
+    "blind_id": "review-cb39826fd704537a",
+    "sample_id": "h0057_speech_f02",
+    "output": "それは違いますね",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「当たらない」の意味を保持していない",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0057",
+      "judge-result:h0057_speech_f02-ca644eb935af8949.json"
+    ],
+    "semantic_signature": "ゲーム内判断喪失"
+  },
+  {
+    "blind_id": "review-dbf44fb2471572e4",
+    "sample_id": "h0097_speech_f02",
+    "output": "アンニキサウム症あるのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["hallucination"],
+    "rationale": "「アンニキサウム症」は原文に存在せず、完全に無関係。疑問形も保持していないため、文脈が大きく崩れている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0097",
+      "judge-result:h0097_speech_f02-05e5ec23679554dd.json"
+    ],
+    "semantic_signature": "病気？"
+  },
+  {
+    "blind_id": "review-891062afa0b6d270",
+    "sample_id": "h0057_speech_f02",
+    "output": "あれ、間違ってるね",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["negation"],
+    "rationale": "「間違ってる」は「当たらない」の意味に近いが、文脈に若干の不一致",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0057",
+      "judge-result:h0057_speech_f02-ca644eb935af8949.json"
+    ],
+    "semantic_signature": "ゲーム内判断部分喪失"
+  },
+  {
+    "blind_id": "review-79e0d9e424c44e71",
+    "sample_id": "h0123_speech_f02",
+    "output": "（イオレン）見てあげる",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「見てあげる」は相手への優しさを示し、元文の命令調を壊している",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0123",
+      "judge-result:h0123_speech_f02-d6c211822ec01405.json"
+    ],
+    "semantic_signature": "命令調喪失_右側見る依頼"
+  },
+  {
+    "blind_id": "review-20ac2cbd45769df0",
+    "sample_id": "h0123_speech_f02",
+    "output": "ヤ、これ（右側）見てよ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「ヤ」は「야」の日本語訳として適切で、指示の主体が明確で命令調も保持している",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0123",
+      "judge-result:h0123_speech_f02-d6c211822ec01405.json"
+    ],
+    "semantic_signature": "命令調保持_右側見る依頼"
+  },
+  {
+    "blind_id": "review-b1ed040670c27200",
+    "sample_id": "h0045_speech_f02",
+    "output": "Qを発動するように",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「発動する」はゲーム内でも使用可能な表現で、意図を保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0045",
+      "judge-result:h0045_speech_f02-5fbf15f1069eb002.json"
+    ],
+    "semantic_signature": "Qを使うように"
+  },
+  {
+    "blind_id": "review-0d946ea3ae63607b",
+    "sample_id": "h0052_speech_f02",
+    "output": "なんでこんなにも悔しいのだろう",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「惜しい」が「悔しい」に置き換えられ、感情表現が誤っており、ゲーム内での判断を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0052",
+      "judge-result:h0052_speech_f02-a1fd9fc55cfe2c53.json"
+    ],
+    "semantic_signature": "なんでこんなにも悔しいのだろう"
+  },
+  {
+    "blind_id": "review-5246774ffa266db4",
+    "sample_id": "h0000_speech_f02",
+    "output": "1コアで内シャリオリゴ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「내셔 올리고」は「ナッシャーを積んで」を意味し、候補は「内シャリオリゴ」という不自然な表現で、意味を壊している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0000",
+      "judge-result:h0000_speech_f02-a3e16af483532a65.json"
+    ],
+    "semantic_signature": "1コア目ナッシャーを積む"
+  },
+  {
+    "blind_id": "review-a3bd58c41a232d4a",
+    "sample_id": "h0008_speech_f02",
+    "output": "相手のCCをしっかり食らわなければならないんだってこと",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「うまく防ぐ」が欠如し、意味が大きく変化。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0008",
+      "judge-result:h0008_speech_f02-aae3d6367e447b84.json"
+    ],
+    "semantic_signature": "相手CC_防ぐ_必須"
+  },
+  {
+    "blind_id": "review-9c82731918d6c20c",
+    "sample_id": "h0113_speech_f02",
+    "output": "何じゃねーか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "疑問・驚きを保持。語順が異なるが意味は同じ。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0113",
+      "judge-result:h0113_speech_f02-da38c801ac113e4f.json"
+    ],
+    "semantic_signature": "疑問・驚き・何だ"
+  },
+  {
+    "blind_id": "review-ea41c18f0d3f5d11",
+    "sample_id": "h0090_speech_f02",
+    "output": "いや、間違えているのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "否定表現が不自然で、疑問の意図を失う",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0090",
+      "judge-result:h0090_speech_f02-c4f5058ae4245c35.json"
+    ],
+    "semantic_signature": "いや_否定_疑問"
+  },
+  {
+    "blind_id": "review-586a0af5777a20c1",
+    "sample_id": "h0082_speech_f02",
+    "output": "2番目は水の状態だから",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「Wを2回噛めば勝てはする」の主張を完全に無視し、別の情報（水の状態）を提示。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0082",
+      "judge-result:h0082_speech_f02-6367062a5b2f1bdd.json"
+    ],
+    "semantic_signature": "W 2回 勝てる"
+  },
+  {
+    "blind_id": "review-a249f2551213d8fe",
+    "sample_id": "h0043_speech_f02",
+    "output": "あんた、Qじゃないの？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "疑問・驚きの感情は保持されていない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0043",
+      "judge-result:h0043_speech_f02-bce747f0170cd74e.json"
+    ],
+    "semantic_signature": "疑問・驚き"
+  },
+  {
+    "blind_id": "review-6869842f4deda0ab",
+    "sample_id": "h0046_speech_f02",
+    "output": "Q マラップに",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「マラップに」はゲーム内用語で、意味を完全に壊している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0046",
+      "judge-result:h0046_speech_f02-7c6bc56bf2ca6cde.json"
+    ],
+    "semantic_signature": "Qを使いたくなるように"
+  },
+  {
+    "blind_id": "review-a553f5d860dd5404",
+    "sample_id": "h0007_speech_f02",
+    "output": "相手の何の主要スキルなど",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["format"],
+    "rationale": "文法的に不自然で意味が不明確",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0007",
+      "judge-result:h0007_speech_f02-16b4cb06dd0c0de0.json"
+    ],
+    "semantic_signature": "相手_何の主要スキルなど"
+  },
+  {
+    "blind_id": "review-7de189208a7f5bdf",
+    "sample_id": "h0109_speech_f02",
+    "output": "凄いに貫かれるよ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation", "omission"],
+    "rationale": "「겁나 잘 뚫리죠」は「簡単に突破できる」という肯定的な意味を含むが、候補は否定的なニュアンスを含み、また「確認」の要素が欠如している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0109",
+      "judge-result:h0109_speech_f02-778300d74f2ea1c7.json"
+    ],
+    "semantic_signature": "簡単突破_肯定_確認"
+  },
+  {
+    "blind_id": "review-b87823c0d6ac30a5",
+    "sample_id": "h0046_speech_f02",
+    "output": "マ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「マ」は意味を完全に失っている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0046",
+      "judge-result:h0046_speech_f02-7c6bc56bf2ca6cde.json"
+    ],
+    "semantic_signature": "Qを使いたくなるように"
+  },
+  {
+    "blind_id": "review-f58d3f2c7d56f171",
+    "sample_id": "h0000_speech_f02",
+    "output": "1コアで内シャリオリゴ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「내셔 올리고」は「ナッシャーを積んで」を意味し、候補は「内シャリオリゴ」という不自然な表現で、意味を壊している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0000",
+      "judge-result:h0000_speech_f02-a3e16af483532a65.json"
+    ],
+    "semantic_signature": "1コア目ナッシャーを積む"
+  },
+  {
+    "blind_id": "review-ab305612c4ca5e22",
+    "sample_id": "h0049_speech_f02",
+    "output": "合わせたなら、タワーに行ったのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["terminology"],
+    "rationale": "「合わせた」は「当たった」を誤って表現。疑問形は保持。タワーも保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0049",
+      "judge-result:h0049_speech_f02-259ffe822457a582.json"
+    ],
+    "semantic_signature": "合わせた_タワー_疑問"
+  },
+  {
+    "blind_id": "review-469f0b6ef00844fd",
+    "sample_id": "h0007_speech_f02",
+    "output": "相手が主要なスキルみたいなもの",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["omission"],
+    "rationale": "「などを」が省略され、文意がやや不完全",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0007",
+      "judge-result:h0007_speech_f02-16b4cb06dd0c0de0.json"
+    ],
+    "semantic_signature": "相手_主要スキル_などを"
+  },
+  {
+    "blind_id": "review-6b624d3ac0b630e7",
+    "sample_id": "h0041_speech_f02",
+    "output": "このイ・ジャムインたちの間で",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「イ・ジャムインたちの間で」は「子どもたちの間」を保持しており、意味が一致している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0041",
+      "judge-result:h0041_speech_f02-50f5588e87d06ca9.json"
+    ],
+    "semantic_signature": "この[子どもたち]の間で"
+  },
+  {
+    "blind_id": "review-936f60c46bbef4d9",
+    "sample_id": "h0099_speech_f02",
+    "output": "Qを装うとしたら、Wをつかうでしょう？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["negation"],
+    "rationale": "「装う」は「ふりをかける」の意を含むが、文脈に合致しない表現",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0099",
+      "judge-result:h0099_speech_f02-1e7461919ee96950.json"
+    ],
+    "semantic_signature": "Qをふりをかける→Wを使う予測"
+  },
+  {
+    "blind_id": "review-3c86a4cdc7232b09",
+    "sample_id": "h0119_speech_f02",
+    "output": "確かに入力がちょっともっと速いものですか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["sequence"],
+    "rationale": "「ちょっともっと速い」は矛盾した表現で、意味が崩れている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0119",
+      "judge-result:h0119_speech_f02-74487f79f11eaa3d.json"
+    ],
+    "semantic_signature": "入力がちょっともっと速い（推測）"
+  },
+  {
+    "blind_id": "review-98fcc01e9fe649f0",
+    "sample_id": "h0109_speech_f02",
+    "output": "金ナザル リジョ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "「金ナザル リジョ」はゲーム内での特定の表現であり、原文の意味を保持していない。reference_statusがambiguousのため判定不能。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0109",
+      "judge-result:h0109_speech_f02-778300d74f2ea1c7.json"
+    ],
+    "semantic_signature": "ゲーム内表現_不明"
+  },
+  {
+    "blind_id": "review-38692b5dde694550",
+    "sample_id": "h0004_speech_f02",
+    "output": "攻撃速度が2.30に設定される",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「設定される」はゲーム内では通常「落ちる」や「下がる」を意味するため、用語が不適切。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0004",
+      "judge-result:h0004_speech_f02-41fc6f126ad841fc.json"
+    ],
+    "semantic_signature": "攻撃速度変更_2.30"
+  },
+  {
+    "blind_id": "review-c077644584e7a117",
+    "sample_id": "h0061_speech_f02",
+    "output": "合ってるか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["hallucination"],
+    "rationale": "「合ってるか？」は文脈に合致せず、ゲーム内での「当たる」の意味を誤っており、重要用語の誤り。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0061",
+      "judge-result:h0061_speech_f02-bbac10cc4df28f36.json"
+    ],
+    "semantic_signature": "当たるかという疑問"
+  },
+  {
+    "blind_id": "review-1f87e2df3a20900f",
+    "sample_id": "h0009_speech_f02",
+    "output": "入力が速いキーボードになるように",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「なるように」は文脈に合致しない",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0009",
+      "judge-result:h0009_speech_f02-f1f9323104ba39f3.json"
+    ],
+    "semantic_signature": "入力が速い_キーボード_なるように"
+  },
+  {
+    "blind_id": "review-cbcbbbec302e97f9",
+    "sample_id": "h0000_speech_f02",
+    "output": "1コアで内シャオリゴ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「내셔 올리고」は「ナッシャーを積んで」を意味し、候補は「内シャオリゴ」という不自然な表現で、意味を壊している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0000",
+      "judge-result:h0000_speech_f02-a3e16af483532a65.json"
+    ],
+    "semantic_signature": "1コア目ナッシャーを積む"
+  },
+  {
+    "blind_id": "review-dc8b32c08f925ca7",
+    "sample_id": "h0009_speech_f02",
+    "output": "入力が早くなるキーボードがいいんだけど",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["sequence"],
+    "rationale": "「早くなる」は文脈に合致しない",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0009",
+      "judge-result:h0009_speech_f02-f1f9323104ba39f3.json"
+    ],
+    "semantic_signature": "入力が早くなる_キーボード_いいんだけど"
+  },
+  {
+    "blind_id": "review-494ddac2ef632146",
+    "sample_id": "h0099_speech_f02",
+    "output": "ヤオボクは、直すならWをつかいますよね？い",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「ヤオボク」は原文にない追加情報で、文脈を完全に崩している",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0099",
+      "judge-result:h0099_speech_f02-1e7461919ee96950.json"
+    ],
+    "semantic_signature": "Qをふりをかける→Wを使う予測"
+  },
+  {
+    "blind_id": "review-c91347a3794674ad",
+    "sample_id": "h0030_speech_f02",
+    "output": "でもリープトリガーがあれば",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "リープトリガーは誤った用語",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0030",
+      "judge-result:h0030_speech_f02-eaf2f93b99e56d11.json"
+    ],
+    "semantic_signature": "でもリープトリガーがあれば"
+  },
+  {
+    "blind_id": "review-a228d02a4fa40fca",
+    "sample_id": "h0005_speech_f02",
+    "output": "極ダメをボリベアに与えるとき、本当に",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["omission"],
+    "rationale": "「極ダメ」は「極딜」の誤訳で、ゲーム用語として不正確。ただし文意はほぼ保持している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0005",
+      "judge-result:h0005_speech_f02-df11d818d259f3d2.json"
+    ],
+    "semantic_signature": "極ダメ ボリベア 本当に"
+  },
+  {
+    "blind_id": "review-3ca87d557d1cc0d5",
+    "sample_id": "h0118_speech_f02",
+    "output": "ヒンは反応が発ラ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["hallucination", "negation"],
+    "rationale": "「発ラ」は意味不明で、否定や不自然な表現を含むため誤り。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0118",
+      "judge-result:h0118_speech_f02-2916c7081d2aa72d.json"
+    ],
+    "semantic_signature": "反応が速い"
+  },
+  {
+    "blind_id": "review-867ca85b48ce51f9",
+    "sample_id": "h0089_speech_f02",
+    "output": "しっかり入力が速い",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「しっかり」は原文の「확실히」に該当しない用語誤り。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0089",
+      "judge-result:h0089_speech_f02-d7ecf4472864d33d.json"
+    ],
+    "semantic_signature": "入力が速い"
+  },
+  {
+    "blind_id": "review-044dae7a305ae58b",
+    "sample_id": "h0061_speech_f02",
+    "output": "合意するか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「合意するか？」は文脈に合致せず、ゲーム内での「当たる」の意味を誤っており、重要用語の誤り。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0061",
+      "judge-result:h0061_speech_f02-bbac10cc4df28f36.json"
+    ],
+    "semantic_signature": "当たるかという疑問"
+  },
+  {
+    "blind_id": "review-9fccb7144c2cab7a",
+    "sample_id": "h0114_speech_f02",
+    "output": "これ、もっと美味しそう",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["omission"],
+    "rationale": "「これ、もっと美味しそう」は文脈に合致するが、比較の明確さが欠如しているため軽微な不自然さあり。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0114",
+      "judge-result:h0114_speech_f02-90745c33f1c1491c.json"
+    ],
+    "semantic_signature": "このほうが美味い"
+  },
+  {
+    "blind_id": "review-ed44e94697589bf6",
+    "sample_id": "h0103_speech_f02",
+    "output": "緊急でも大丈夫",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["hallucination"],
+    "rationale": "「緊急でも大丈夫」は原文の意味と無関係で、誤った表現である。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0103",
+      "judge-result:h0103_speech_f02-9f566cdbc7435680.json"
+    ],
+    "semantic_signature": "緊急でも大丈夫"
+  },
+  {
+    "blind_id": "review-567fb9be4c78df45",
+    "sample_id": "h0054_speech_f02",
+    "output": "無効にしないで、これが",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「無理をしない」が完全に省略され、新たな表現「無効にしないで」が追加され、意味が大きく変化。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0054",
+      "judge-result:h0054_speech_f02-9fc6f63e16899d80.json"
+    ],
+    "semantic_signature": "無理をしない_否定_行動"
+  },
+  {
+    "blind_id": "review-8603353baa45804a",
+    "sample_id": "h0118_speech_f02",
+    "output": "ホンは反応がバルァ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["hallucination"],
+    "rationale": "「バルァ」は意味不明で不自然な表現を含むため誤り。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0118",
+      "judge-result:h0118_speech_f02-2916c7081d2aa72d.json"
+    ],
+    "semantic_signature": "反応が速い"
+  },
+  {
+    "blind_id": "review-ff63b521d3c8f643",
+    "sample_id": "h0001_speech_f02",
+    "output": "ニタラヘルメスが行く",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["actor"],
+    "rationale": "「닌탑」が「ニタラ」と誤訳され、ゲーム内での「ニタラ」は存在しない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0001",
+      "judge-result:h0001_speech_f02-80208743822e2699.json"
+    ],
+    "semantic_signature": "ニタラヘルメス,行く"
+  },
+  {
+    "blind_id": "review-ce1565e9441d616e",
+    "sample_id": "h0054_speech_f02",
+    "output": "アマリクしないで、これだ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「無理をしない」が完全に省略され、新たな表現「アマリクしないで」が追加され、意味が大きく変化。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0054",
+      "judge-result:h0054_speech_f02-9fc6f63e16899d80.json"
+    ],
+    "semantic_signature": "無理をしない_否定_行動"
+  },
+  {
+    "blind_id": "review-61bb9658b593ca1c",
+    "sample_id": "h0074_speech_f02",
+    "output": "あんにすぎないほど大きいやつだよ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「ク・サンテの言葉遊び」と「図々しい」が完全に欠如。否定のニュアンスも失われている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0074",
+      "judge-result:h0074_speech_f02-c61d7444a2fd8d39.json"
+    ],
+    "semantic_signature": "大きさの否定 + 言葉遊び + 図々しい"
+  },
+  {
+    "blind_id": "review-42bae806458f47f2",
+    "sample_id": "h0008_speech_f02",
+    "output": "対戦相手cをちゃんと見つめていただけたはずだったんだ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「CC」が「c」に誤っており、意味が不明瞭。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0008",
+      "judge-result:h0008_speech_f02-aae3d6367e447b84.json"
+    ],
+    "semantic_signature": "相手CC_防ぐ_必須"
+  },
+  {
+    "blind_id": "review-efdc6c3aa4390db6",
+    "sample_id": "h0061_speech_f02",
+    "output": "合ってる？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["hallucination"],
+    "rationale": "「合ってる？」は文脈に合致せず、ゲーム内での「当たる」の意味を誤っており、重要用語の誤り。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0061",
+      "judge-result:h0061_speech_f02-bbac10cc4df28f36.json"
+    ],
+    "semantic_signature": "当たるかという疑問"
+  },
+  {
+    "blind_id": "review-d716d560deac847f",
+    "sample_id": "h0049_speech_f02",
+    "output": "あんたに当たったなら、タワーに行ったか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「当たった場合」を「あんたに当たったなら」で保持。疑問形を保持。タワーも保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0049",
+      "judge-result:h0049_speech_f02-259ffe822457a582.json"
+    ],
+    "semantic_signature": "当たった場合_タワー_疑問"
+  },
+  {
+    "blind_id": "review-46146ffc04d1f5c6",
+    "sample_id": "h0030_speech_f02",
+    "output": "大ダメージのリアクティブトリガーがあるなら",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "条件が欠如",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0030",
+      "judge-result:h0030_speech_f02-eaf2f93b99e56d11.json"
+    ],
+    "semantic_signature": "大ダメージのリアクティブトリガーがあるなら"
+  },
+  {
+    "blind_id": "review-fa8052e221f2cff7",
+    "sample_id": "h0103_speech_f02",
+    "output": "急がなくても大丈夫",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「急がなくても大丈夫」は「急がなくていい」の自然な日本語表現で、意味を保持している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0103",
+      "judge-result:h0103_speech_f02-9f566cdbc7435680.json"
+    ],
+    "semantic_signature": "急がなくても大丈夫"
+  },
+  {
+    "blind_id": "review-4dd1818fe5a14002",
+    "sample_id": "h0032_speech_f02",
+    "output": "君がこうしてすぐに出るなんて",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["actor"],
+    "rationale": "「宮」を誤って「君」で翻訳し、文脈が崩れている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0032",
+      "judge-result:h0032_speech_f02-3cc2fc569293ef39.json"
+    ],
+    "semantic_signature": "君/すぐに出る/文拡張"
+  },
+  {
+    "blind_id": "review-79e0492dd3b22e3e",
+    "sample_id": "h0084_speech_f02",
+    "output": "ワイ シン インプット だけでもいい",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "「W」を「ワイ」と誤訳し、「先行入力」を省略。ゲーム内判断を保持しない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0084",
+      "judge-result:h0084_speech_f02-8d1e8f42f5936f90.json"
+    ],
+    "semantic_signature": "W_先行入力_ゲーム操作"
+  },
+  {
+    "blind_id": "review-0d95ad0a21276d86",
+    "sample_id": "h0109_speech_f02",
+    "output": "金ナザル リジョ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "「金ナザル リジョ」はゲーム内での特定の表現であり、原文の意味を保持していない。reference_statusがambiguousのため判定不能。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0109",
+      "judge-result:h0109_speech_f02-778300d74f2ea1c7.json"
+    ],
+    "semantic_signature": "ゲーム内表現_不明"
+  },
+  {
+    "blind_id": "review-2cc3cef3eb517269",
+    "sample_id": "h0079_speech_f02",
+    "output": "OK×3",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「オーケー」を「OK」と表記し、「3回」を「×3」と表記しているため、意味を保持している",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0079",
+      "judge-result:h0079_speech_f02-d375dfad808e0591.json"
+    ],
+    "semantic_signature": "OK, 3回"
+  },
+  {
+    "blind_id": "review-e6edf6ee911bce9e",
+    "sample_id": "h0031_speech_f02",
+    "output": "または宮をクリックすれば",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「宮」を「クリック」するのは文脈に合致せず、意図が完全に崩れている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0031",
+      "judge-result:h0031_speech_f02-60647aabee5118b1.json"
+    ],
+    "semantic_signature": "宮/クリック"
+  },
+  {
+    "blind_id": "review-33223c58ba0cf173",
+    "sample_id": "h0069_speech_f02",
+    "output": "サンテーフ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "ク・サンテへの呼びかけが完全に欠如しているため、重要な要素を欠落している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0069",
+      "judge-result:h0069_speech_f02-4c65a79d1a1137b0.json"
+    ],
+    "semantic_signature": "ク・サンテへの呼びかけ"
+  },
+  {
+    "blind_id": "review-89e5ac4c479e8865",
+    "sample_id": "h0101_speech_f02",
+    "output": "ああ…",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「ああ…」は戸惑いを表す表現ではなく、驚きや同意を表すため、must_preserveの「戸惑い」を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0101",
+      "judge-result:h0101_speech_f02-9558401266375a67.json"
+    ],
+    "semantic_signature": "戸惑い"
+  },
+  {
+    "blind_id": "review-3f70cbc2c26d31ae",
+    "sample_id": "h0063_speech_f02",
+    "output": "ゲイターじゃない？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "「ゲイターじゃない？」は疑問形を保持しているが、語彙が完全に異なるため意味が不明。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0063",
+      "judge-result:h0063_speech_f02-bb8500fb2e8f366a.json"
+    ],
+    "semantic_signature": "ゲイターじゃない？"
+  },
+  {
+    "blind_id": "review-cc8c91fbea890d8d",
+    "sample_id": "h0090_speech_f02",
+    "output": "いや、間違ってる？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "否定表現が不自然で、疑問の意図を失う",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0090",
+      "judge-result:h0090_speech_f02-c4f5058ae4245c35.json"
+    ],
+    "semantic_signature": "いや_否定_疑問"
+  },
+  {
+    "blind_id": "review-c575c2a47edc48fe",
+    "sample_id": "h0046_speech_f02",
+    "output": "Q マラッパリ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「マラッパリ」はゲーム内用語ではなく、意味を完全に壊している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0046",
+      "judge-result:h0046_speech_f02-7c6bc56bf2ca6cde.json"
+    ],
+    "semantic_signature": "Qを使いたくなるように"
+  },
+  {
+    "blind_id": "review-02b3d9cc90c53cba",
+    "sample_id": "h0052_speech_f02",
+    "output": "なぜこんなにも悔しいのか",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「惜しい」が「悔しい」に置き換えられ、重要な感情表現が誤っており、ゲーム内での判断を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0052",
+      "judge-result:h0052_speech_f02-a1fd9fc55cfe2c53.json"
+    ],
+    "semantic_signature": "なぜこんなにも悔しいのか"
+  },
+  {
+    "blind_id": "review-77e2701c986c3820",
+    "sample_id": "h0074_speech_f02",
+    "output": "いや、それほど大きくわざわざね",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「ク・サンテの言葉遊び」と「図々しい」が完全に欠如。否定のニュアンスも失われている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0074",
+      "judge-result:h0074_speech_f02-c61d7444a2fd8d39.json"
+    ],
+    "semantic_signature": "大きさの否定 + 言葉遊び + 図々しい"
+  },
+  {
+    "blind_id": "review-a11c71e201bbb81e",
+    "sample_id": "h0003_speech_f02",
+    "output": "そして今、そのコアを求人する",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["actor"],
+    "rationale": "「求人する」は主語が不明で、ゲーム内での行動主体を失っている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0003",
+      "judge-result:h0003_speech_f02-eb4655ca259d89ff.json"
+    ],
+    "semantic_signature": "次のコア_求人_行動"
+  },
+  {
+    "blind_id": "review-9a174ef2167490d8",
+    "sample_id": "h0053_speech_f02",
+    "output": "ダイブがどうしてもしたいのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["sequence"],
+    "rationale": "「どうしても」は強調語で文意変化",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0053",
+      "judge-result:h0053_speech_f02-ed92a9eaab655afe.json"
+    ],
+    "semantic_signature": "ダイブがどうしてもしたいのか？"
+  },
+  {
+    "blind_id": "review-03ee2e8fc6039e46",
+    "sample_id": "h0009_speech_f02",
+    "output": "入力が早いキンボードがいいんだけど",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「キンボード」はキーボードの誤訳",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0009",
+      "judge-result:h0009_speech_f02-f1f9323104ba39f3.json"
+    ],
+    "semantic_signature": "入力が早い_キーボード_いいんだけど"
+  },
+  {
+    "blind_id": "review-48ea6d5851ba195c",
+    "sample_id": "h0041_speech_f02",
+    "output": "このチャンピオンから",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「チャンピオンから」は原文の意味と一致せず、誤った用語を使用している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0041",
+      "judge-result:h0041_speech_f02-50f5588e87d06ca9.json"
+    ],
+    "semantic_signature": "この[誤用語]から"
+  },
+  {
+    "blind_id": "review-fd99663ef4516617",
+    "sample_id": "h0004_speech_f02",
+    "output": "攻撃速度が2.30に落ちる",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「落ちる」はゲーム内では減少を表すため、意味を保持。数値も正確に保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0004",
+      "judge-result:h0004_speech_f02-41fc6f126ad841fc.json"
+    ],
+    "semantic_signature": "攻撃速度減少_2.30"
+  },
+  {
+    "blind_id": "review-649c8db6767ed08e",
+    "sample_id": "h0092_speech_f02",
+    "output": "それだけ相手を早く倒せるんだよ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["negation"],
+    "rationale": "「その分」が「それだけ」に置き換えられ、文のニュアンスがやや変化している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0092",
+      "judge-result:h0092_speech_f02-aabb0bb1dd592483.json"
+    ],
+    "semantic_signature": "相手を早く倒せる_因果"
+  },
+  {
+    "blind_id": "review-ac3ff1165421ccf8",
+    "sample_id": "h0036_speech_f02",
+    "output": "今日、極デイルボリベアを一度やってみましょう",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "「極デイルボリベア」はゲーム内用語と一致せず、また「フルダメージ」が失われているため重要用語の誤り",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0036",
+      "judge-result:h0036_speech_f02-4d84875eae90a8e8.json"
+    ],
+    "semantic_signature": "今日 極デイルボリベア 一度やってみましょう"
+  },
+  {
+    "blind_id": "review-fc2a6a81ec15b941",
+    "sample_id": "h0104_speech_f02",
+    "output": "？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "疑問・驚きの意図が完全に失われる。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0104",
+      "judge-result:h0104_speech_f02-f3e9b3128e35834f.json"
+    ],
+    "semantic_signature": "疑問・驚き"
+  },
+  {
+    "blind_id": "review-5f8ef0d698e1dedd",
+    "sample_id": "h0040_speech_f02",
+    "output": "最近、やばいことになってる？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「やばいこと」は原文の「童謡」に該当せず、意味が完全に異なる。疑問形も異なるため、誤りが大きい。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0040",
+      "judge-result:h0040_speech_f02-2f41289ee855ae5a.json"
+    ],
+    "semantic_signature": "最近の子ども｜童謡｜疑問"
+  },
+  {
+    "blind_id": "review-8fd87f21c77c5f9e",
+    "sample_id": "h0029_speech_f02",
+    "output": "バードが宮のようなものを当てたとき",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「궁 같은 걸 맞았을 때」は「バードのウルトのようなものを受けたとき」を指すが、候補は「バードが宮のようなものを当てたとき」と誤って主語・動作を逆転させている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0029",
+      "judge-result:h0029_speech_f02-ab1528a23770adca.json"
+    ],
+    "semantic_signature": "バード, ウルト, 受けたとき"
+  },
+  {
+    "blind_id": "review-505e5d0f3a9b34bc",
+    "sample_id": "h0053_speech_f02",
+    "output": "ダイブが無理なのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "否定形で意図を逆転",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0053",
+      "judge-result:h0053_speech_f02-ed92a9eaab655afe.json"
+    ],
+    "semantic_signature": "ダイブが無理なのか？"
+  },
+  {
+    "blind_id": "review-4875261745bb8839",
+    "sample_id": "h0109_speech_f02",
+    "output": "すごくしっかり貫かれるはずです",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「すごくしっかり貫かれるはずです」は否定的なニュアンスを含み、原文の肯定的な意味を逆転させている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0109",
+      "judge-result:h0109_speech_f02-778300d74f2ea1c7.json"
+    ],
+    "semantic_signature": "簡単突破_否定"
+  },
+  {
+    "blind_id": "review-cb02a495d8017a7f",
+    "sample_id": "h0052_speech_f02",
+    "output": "なぜこんなに悔しいのか",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "同様に「惜しい」が「悔しい」に置き換えられ、感情表現が誤っており、ゲーム内での判断を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0052",
+      "judge-result:h0052_speech_f02-a1fd9fc55cfe2c53.json"
+    ],
+    "semantic_signature": "なぜこんなに悔しいのか"
+  },
+  {
+    "blind_id": "review-abe12a983e0b707c",
+    "sample_id": "h0001_speech_f02",
+    "output": "ニントップかヘルメスが行く",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["actor"],
+    "rationale": "「닌탑」が「ニントップ」と誤訳され、ゲーム内での「ニントップ」は存在しない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0001",
+      "judge-result:h0001_speech_f02-80208743822e2699.json"
+    ],
+    "semantic_signature": "ニントップ,ヘルメス,行く"
+  },
+  {
+    "blind_id": "review-6103b389de5b4aa3",
+    "sample_id": "h0078_speech_f02",
+    "output": "ア",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「ア」は意味を完全に失っているため、肯定の意味を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0078",
+      "judge-result:h0078_speech_f02-16a325a826623a50.json"
+    ],
+    "semantic_signature": "좋아 vs ア"
+  },
+  {
+    "blind_id": "review-5c45c65d0ad6584f",
+    "sample_id": "h0078_speech_f02",
+    "output": "いいね",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["terminology"],
+    "rationale": "「いいね」は肯定的な意味を保持しているが、文脈によっては冗長または感情的なニュアンスが強すぎるため、軽微な不自然さがある。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0078",
+      "judge-result:h0078_speech_f02-16a325a826623a50.json"
+    ],
+    "semantic_signature": "좋아 vs いいね"
+  },
+  {
+    "blind_id": "review-b2ced1dddd4ca66c",
+    "sample_id": "h0032_speech_f02",
+    "output": "宮がこんなにすぐ出て行くのだとか",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["actor"],
+    "rationale": "「宮」を誤って「宮」で翻訳し、文脈が崩れている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0032",
+      "judge-result:h0032_speech_f02-3cc2fc569293ef39.json"
+    ],
+    "semantic_signature": "宮/すぐ出て行く/文脈崩壊"
+  },
+  {
+    "blind_id": "review-e8ba0e88a207c3c7",
+    "sample_id": "h0036_speech_f02",
+    "output": "今日、極デリルドブーを一度やってみます",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "「極デリルドブー」はゲーム内用語と一致せず、また「フルダメージのボリベア」が完全に失われているため重要用語の誤り",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0036",
+      "judge-result:h0036_speech_f02-4d84875eae90a8e8.json"
+    ],
+    "semantic_signature": "今日 極デリルドブー 一度やってみます"
+  },
+  {
+    "blind_id": "review-11a7041756610c6e",
+    "sample_id": "h0086_speech_f02",
+    "output": "アニシルドを手に入れない",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「アニシルド」は原文の「シールド」に該当しない。また「手に入れない」は「受けられない」に誤っており、文意が大きく変化している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0086",
+      "judge-result:h0086_speech_f02-e504650ebdfae8cc.json"
+    ],
+    "semantic_signature": "シールド_受けられなかった"
+  },
+  {
+    "blind_id": "review-8c9ec35d1e299849",
+    "sample_id": "h0101_speech_f02",
+    "output": "フラッシュで敵を攻撃する際、100%の確率でダメージを20%増加させ、そのダメージはさらに20%増加する。この効果は、敵がフラッシュを受ける前に、100%の確率で発動する。敵がフラッシュを受ける前に、100%の確率で発動する。この効果は、敵がフラッシュを受ける前に、10-15%の確率で発動する。敵がフラッシュを受ける前に、10-15%の確率で発動する。この効果は、敵がフラッシュを受ける前に、10-15%の確率で発動する。敵がフラッシュを受ける前に、10-15%の確率で発動する。敵がフラッシュを受ける前に、10-15%の確率で発動する。敵がフラッシュを受ける前に、10-15%の確率で発動する。敵がフラッシュを受ける前に、10-15%の確率で発動する。敵がフラッシュを受ける前に、10-15%の確率で発動する。敵がフラッシュを受ける前に、10-15%の確率で発動する。敵がフラッシュを受ける前に、10-15%の確率で発動する。敵がフラッシュを受ける前に、10-15%の確率で発動する。敵がフラッシュを受ける前に、10-15%の確",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "原文は「어...」であり、語尾の省略や中断を表す表現であるが、候補文はLeague of Legendsのスキル効果に関する内容であり、語尾の中断表現とは無関係であるため、semantic_signatureが不明瞭。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0101",
+      "judge-result:h0101_speech_f02-9558401266375a67.json"
+    ],
+    "semantic_signature": "中断表現"
+  },
+  {
+    "blind_id": "review-04ac1e4faad15f89",
+    "sample_id": "h0045_speech_f02",
+    "output": "ド",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "「ド」は意味不明で、原文と無関係。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0045",
+      "judge-result:h0045_speech_f02-5fbf15f1069eb002.json"
+    ],
+    "semantic_signature": "ド"
+  },
+  {
+    "blind_id": "review-9834908326bdddee",
+    "sample_id": "h0031_speech_f02",
+    "output": "それなら、城をフリックすれば",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "hallucination"],
+    "rationale": "「城」は原文の「宮」に該当せず、意図が完全に崩れている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0031",
+      "judge-result:h0031_speech_f02-60647aabee5118b1.json"
+    ],
+    "semantic_signature": "城/フリック"
+  },
+  {
+    "blind_id": "review-740cd0451e005288",
+    "sample_id": "h0001_speech_f02",
+    "output": "ニタラヘルメスがごこ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "文意不明で、語句の誤りが含まれる可能性があるため判定不能。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0001",
+      "judge-result:h0001_speech_f02-80208743822e2699.json"
+    ],
+    "semantic_signature": "ニタラヘルメス,行く"
+  },
+  {
+    "blind_id": "review-cba6f76a17556d9f",
+    "sample_id": "h0105_speech_f02",
+    "output": "ただそれだけやったの？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "Qフラッシュという重要用語を省略し、意味が大きく崩れる。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0105",
+      "judge-result:h0105_speech_f02-10746c1d63643abb.json"
+    ],
+    "semantic_signature": "それだけやった"
+  },
+  {
+    "blind_id": "review-aaed1a6b6882a384",
+    "sample_id": "h0081_speech_f02",
+    "output": "ダンジョはねんしょだよ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「ブランブルベスト」が完全に省略され、否定表現も変化しているため、ゲーム内判断を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0081",
+      "judge-result:h0081_speech_f02-064f4ffa9f0bd560.json"
+    ],
+    "semantic_signature": "ブランブルベスト ない"
+  },
+  {
+    "blind_id": "review-3cad074adc4fb9fa",
+    "sample_id": "h0118_speech_f02",
+    "output": "ヒョンは反応が速い",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「ヒョンは反応が速い」は「兄さんは反応が速い」と意味を保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0118",
+      "judge-result:h0118_speech_f02-2916c7081d2aa72d.json"
+    ],
+    "semantic_signature": "反応が速い"
+  },
+  {
+    "blind_id": "review-dbbf5172f40d6381",
+    "sample_id": "h0113_speech_f02",
+    "output": "何で？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "疑問・驚きを保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0113",
+      "judge-result:h0113_speech_f02-da38c801ac113e4f.json"
+    ],
+    "semantic_signature": "疑問・何だ"
+  },
+  {
+    "blind_id": "review-25e900e3a0a8a1db",
+    "sample_id": "h0104_speech_f02",
+    "output": "あ？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["omission"],
+    "rationale": "「あ？」は驚きを示すが、疑問のニュアンスが弱い。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0104",
+      "judge-result:h0104_speech_f02-f3e9b3128e35834f.json"
+    ],
+    "semantic_signature": "驚き"
+  },
+  {
+    "blind_id": "review-cfefbd8ac3bf04f5",
+    "sample_id": "h0078_speech_f02",
+    "output": "良い",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「良い」は「좋아」の肯定的な意味を保持している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0078",
+      "judge-result:h0078_speech_f02-16a325a826623a50.json"
+    ],
+    "semantic_signature": "좋아 vs 良い"
+  },
+  {
+    "blind_id": "review-45e8b91feda6c912",
+    "sample_id": "h0103_speech_f02",
+    "output": "緊急でも大丈夫",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["hallucination"],
+    "rationale": "「緊急でも大丈夫」は原文の意味と無関係で、誤った表現である。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0103",
+      "judge-result:h0103_speech_f02-9f566cdbc7435680.json"
+    ],
+    "semantic_signature": "緊急でも大丈夫"
+  },
+  {
+    "blind_id": "review-298b3131cfd381a9",
+    "sample_id": "h0089_speech_f02",
+    "output": "確実に入力が速い",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「確実に」は原文の「확실히」に該当しない用語誤り。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0089",
+      "judge-result:h0089_speech_f02-d7ecf4472864d33d.json"
+    ],
+    "semantic_signature": "入力が速い"
+  },
+  {
+    "blind_id": "review-837414614e9233e3",
+    "sample_id": "h0119_speech_f02",
+    "output": "確かに入力が少し速くなったような？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「少し速くなった」は「少し速い」に置き換えられ、推測のニュアンスも保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0119",
+      "judge-result:h0119_speech_f02-74487f79f11eaa3d.json"
+    ],
+    "semantic_signature": "入力が少し速くなった（推測）"
+  },
+  {
+    "blind_id": "review-276cae6ea1a16428",
+    "sample_id": "h0008_speech_f02",
+    "output": "相手のCCをしっかり食らわなければならないんだ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「うまく防ぐ」が欠如し、意味が大きく変化。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0008",
+      "judge-result:h0008_speech_f02-aae3d6367e447b84.json"
+    ],
+    "semantic_signature": "相手CC_防ぐ_必須"
+  },
+  {
+    "blind_id": "review-469821f3fa07555f",
+    "sample_id": "h0063_speech_f02",
+    "output": "ゲイツじゃないの？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "「ゲイツじゃないの？」は疑問形を保持しているが、語彙が完全に異なるため意味が不明。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0063",
+      "judge-result:h0063_speech_f02-bb8500fb2e8f366a.json"
+    ],
+    "semantic_signature": "ゲイツじゃないの？"
+  },
+  {
+    "blind_id": "review-11fe547c42ac2caa",
+    "sample_id": "h0004_speech_f02",
+    "output": "攻撃速度が2.3にまで落ちる",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「落ちる」は減少を意味するが、原文は「찍혀버리는」（減少する）と同義で、候補は否定を含むが意味は保持。ただし、ゲーム内では「落ちる」は通常減少を表すため、この表現はゲーム内判断を保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0004",
+      "judge-result:h0004_speech_f02-41fc6f126ad841fc.json"
+    ],
+    "semantic_signature": "攻撃速度減少_2.30"
+  },
+  {
+    "blind_id": "review-f46d32bbd433beca",
+    "sample_id": "h0002_speech_f02",
+    "output": "多才多能10スタックです",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「다재다능」を保持し、「10スタック」も保持しているため意味を保持",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0002",
+      "judge-result:h0002_speech_f02-925d1c19c7898c8b.json"
+    ],
+    "semantic_signature": "다재다능_10스택"
+  },
+  {
+    "blind_id": "review-506ecd0a9b013769",
+    "sample_id": "h0092_speech_f02",
+    "output": "その分、相手を早く倒せるんだよ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「その分、相手を早く倒せるんだよ」は因果関係を保持し、意味が完全に保持されている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0092",
+      "judge-result:h0092_speech_f02-aabb0bb1dd592483.json"
+    ],
+    "semantic_signature": "相手を早く倒せる_因果"
+  },
+  {
+    "blind_id": "review-de6109cfdce99b9f",
+    "sample_id": "h0072_speech_f02",
+    "output": "何してるやつなんだよいっけ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation", "omission"],
+    "rationale": "「やつなんだよいっけ」は文法的に不自然で、笑いの要素を完全に欠いている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0072",
+      "judge-result:h0072_speech_f02-2ddbdb01257aecc0.json"
+    ],
+    "semantic_signature": "何してる？+不自然な表現+笑い無し"
+  },
+  {
+    "blind_id": "review-207e0cc0e7dce9c6",
+    "sample_id": "h0074_speech_f02",
+    "output": "いや、本当に大きすぎるよ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「ク・サンテの言葉遊び」と「図々しい」が完全に欠如。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0074",
+      "judge-result:h0074_speech_f02-c61d7444a2fd8d39.json"
+    ],
+    "semantic_signature": "大きさの否定 + 言葉遊び + 図々しい"
+  },
+  {
+    "blind_id": "review-3259cf5e68e94f9c",
+    "sample_id": "h0007_speech_f02",
+    "output": "相手の主要スキルは？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "疑問形で文意が逆転",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0007",
+      "judge-result:h0007_speech_f02-16b4cb06dd0c0de0.json"
+    ],
+    "semantic_signature": "相手_主要スキル_？"
+  },
+  {
+    "blind_id": "review-b3023005b1433da5",
+    "sample_id": "h0003_speech_f02",
+    "output": "そして今、コアを求める数を上げる",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["actor"],
+    "rationale": "「求める数を上げる」は主語が不明で、ゲーム内での行動主体を失っている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0003",
+      "judge-result:h0003_speech_f02-eb4655ca259d89ff.json"
+    ],
+    "semantic_signature": "次のコア_求人_数_行動"
+  },
+  {
+    "blind_id": "review-8d4436a54d561749",
+    "sample_id": "h0042_speech_f02",
+    "output": "フラッシュ（短距離の瞬間移動を行うサモナースペル）は、敵のアクションを無効にし、敵のアクションを無効にできる。  \nサポート（味方を支援するロール）が、敵のアクションを無効にできる。  \nブラック クリーバー（アイテム名。黒斧とも呼ぶ）は、敵のアクションを無効にできる。  \n妖夢の霊剣（アイテム名。ヨウムとも呼ぶ）は、敵のアクションを無効にできる。  \nヘクステックフラッシュネイター（ルーン名。ヘクスフラッシュとも呼ぶ）は、敵のアクションを無効にできる。  \nグレイシャルオーグメント（ルーン文脈での氷結。一般語の凍結の可能性もある）は、敵のアクションを無効にできる。  \nなんでも屋（ルーン文脈では固有名詞。一般語としては多才）は、敵のアクションを無効にできる。  \nダリウス（チャンピオン名。다리は一般語では脚や橋でもある）は、敵のアクションを無効にできる。  \nタロン（チャンピオン名）は、敵のアクションを無効にできる。  \nカイ＝サ（チャンピオン名）は、敵のアクションを無効にできる。  \nボリベア（チャン連名）は、敵のアクションを無効にできる。  \n大丈夫／悪くない（괜찮다の子音略記。文脈で訳し分ける）  \n本当に／マジで（レアル／リアル",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "原文の「Q」の意味が曖昧なため、候補文の意味を判断できない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0042",
+      "judge-result:h0042_speech_f02-dd3cbb3590f45d2b.json"
+    ],
+    "semantic_signature": "フラッシュ（短距離の瞬間移動を行うサモナースペル）は、敵のアクションを無効にし、敵のアクションを無効にできる。  \nサポート（味方を支援するロール）が、敵のアクションを無効にできる。  \nブラック クリーバー（アイテム名。黒斧とも呼ぶ）は、敵のアクションを無効にできる。  \n妖夢の霊剣（アイテム名。ヨウムとも呼ぶ）は、敵のアクションを無効にできる。  \nヘクステックフラッシュネイター（ルーン名。ヘクスフラッシュとも呼ぶ）は、敵のアクションを無効にできる。  \nグレイシャルオーグメント（ルーン文脈での氷結。一般語の凍結の可能性もある）は、敵のアクションを無効にできる。  \nなんでも屋（ルーン文脈では固有名詞。一般語としては多才）は、敵のアクションを無効にできる。  \nダリウス（チャンピオン名。다리は一般語では脚や橋でもある）は、敵のアクションを無効にできる。  \nタロン（チャンピオン名）は、敵のアクションを無効にできる。  \nカイ＝サ（チャンピオン名）は、敵のアクションを無効にできる。  \nボリベア（チャン連名）は、敵のアクションを無効にできる。  \n大丈夫／悪くない（괜찮다の子音略記。文脈で訳し分ける）  \n本当に／マジで（レアル／リアル"
+  },
+  {
+    "blind_id": "review-a3009716cc49676d",
+    "sample_id": "h0000_speech_f02",
+    "output": "1コアで内シャオリゴ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「내셔 올리고」は「ナッシャーを積んで」を意味し、候補は「内シャオリゴ」という不自然な表現で、意味を壊している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0000",
+      "judge-result:h0000_speech_f02-a3e16af483532a65.json"
+    ],
+    "semantic_signature": "1コア目ナッシャーを積む"
+  },
+  {
+    "blind_id": "review-c1dd4023bcd26ffd",
+    "sample_id": "h0101_speech_f02",
+    "output": "そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を失った。彼は、その能力を失った。そして、その結果、彼はその能力を",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "原文は「어...」であり、語尾の省略や中断を表す表現であるが、候補文はLeague of Legendsのスキル効果に関する内容であり、語尾の中断表現とは無関係であるため、semantic_signatureが不明瞭。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0101",
+      "judge-result:h0101_speech_f02-9558401266375a67.json"
+    ],
+    "semantic_signature": "中断表現"
+  },
+  {
+    "blind_id": "review-be58a4a9ee905cee",
+    "sample_id": "h0055_speech_f02",
+    "output": "本当にゲーム終了までに負けられない",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「負けられない」は「勝てない」の同義表現で、意味を保持している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0055",
+      "judge-result:h0055_speech_f02-a6810678d9f1891d.json"
+    ],
+    "semantic_signature": "ゲーム終了まで_勝てない"
+  },
+  {
+    "blind_id": "review-ec7476d2f9140f45",
+    "sample_id": "h0084_speech_f02",
+    "output": "Wスキルを入力すればいい",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「先行入力」を省略。ゲーム内判断を保持しない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0084",
+      "judge-result:h0084_speech_f02-8d1e8f42f5936f90.json"
+    ],
+    "semantic_signature": "W_先行入力_ゲーム操作"
+  },
+  {
+    "blind_id": "review-115c10ac78fcda74",
+    "sample_id": "h0055_speech_f02",
+    "output": "本当にゲームが終わるまでに負けられない",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「負けられない」は原文の「勝てない」を否定的に表現しており、意味が逆転している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0055",
+      "judge-result:h0055_speech_f02-a6810678d9f1891d.json"
+    ],
+    "semantic_signature": "ゲーム終了まで_勝てない"
+  },
+  {
+    "blind_id": "review-3b218b81b5b6caa0",
+    "sample_id": "h0101_speech_f02",
+    "output": "あ……",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「あ……」は戸惑いを表す表現であり、reference_ja「え……」と同様の感情を保持している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0101",
+      "judge-result:h0101_speech_f02-9558401266375a67.json"
+    ],
+    "semantic_signature": "戸惑い"
+  },
+  {
+    "blind_id": "review-1ece3c6cad9e9478",
+    "sample_id": "h0006_speech_f02",
+    "output": "反応速度が速い必要があるってことですか",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["omission"],
+    "rationale": "「速い必要がある」は「良くないといけない」より弱い表現で、必須要素は保持していますが、ニュアンスがやや異なるため軽微な不自然さがあります。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0006",
+      "judge-result:h0006_speech_f02-00eeb46b5ca701b5.json"
+    ],
+    "semantic_signature": "反応速度, 必要, 速い"
+  },
+  {
+    "blind_id": "review-345fb1497bd57a19",
+    "sample_id": "h0032_speech_f02",
+    "output": "クイ，こんなにすぐ出て行ったが",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["actor", "sequence"],
+    "rationale": "「クイ」は原文の「宮」を誤訳し、文脈が完全に崩れている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0032",
+      "judge-result:h0032_speech_f02-3cc2fc569293ef39.json"
+    ],
+    "semantic_signature": "クイ/すぐ出て行った/文脈崩壊"
+  },
+  {
+    "blind_id": "review-bbbb51ee4eabb73f",
+    "sample_id": "h0052_speech_f02",
+    "output": "なぜこんなにも悔しいのか",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "「惜しい」が「悔しい」に置き換えられ、重要な感情表現が誤っており、ゲーム内での判断を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0052",
+      "judge-result:h0052_speech_f02-a1fd9fc55cfe2c53.json"
+    ],
+    "semantic_signature": "なぜこんなにも悔しいのか"
+  },
+  {
+    "blind_id": "review-0d7a7c4e8495cf45",
+    "sample_id": "h0050_speech_f02",
+    "output": "バーフィナをやる",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「反ピ」が「体力半分」に該当せず、推測の要素も欠如。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0050",
+      "judge-result:h0050_speech_f02-d941efcd31b902a1.json"
+    ],
+    "semantic_signature": "バンピ/体力半分/推測"
+  },
+  {
+    "blind_id": "review-02c5c34713ce0a48",
+    "sample_id": "h0079_speech_f02",
+    "output": "OK×3",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "「オーケー」を「OK」と表記し、「3回」を「×3」と表記しているため、意味を保持している",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0079",
+      "judge-result:h0079_speech_f02-d375dfad808e0591.json"
+    ],
+    "semantic_signature": "OK, 3回"
+  },
+  {
+    "blind_id": "review-2712861ac98f2deb",
+    "sample_id": "h0079_speech_f02",
+    "output": "オH×3",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["hallucination"],
+    "rationale": "「オーケー」が「オH」と誤訳されているため、重要な語句が誤っている",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0079",
+      "judge-result:h0079_speech_f02-d375dfad808e0591.json"
+    ],
+    "semantic_signature": "オーケー, 3回"
+  },
+  {
+    "blind_id": "review-7f866b3d4fc5eba3",
+    "sample_id": "h0105_speech_f02",
+    "output": "ただQフラッシュするべきだったのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "Qフラッシュとすればよかったという疑問を保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0105",
+      "judge-result:h0105_speech_f02-10746c1d63643abb.json"
+    ],
+    "semantic_signature": "Qフラッシュ_すればよかった疑問"
+  },
+  {
+    "blind_id": "review-1f693a57f91e3a94",
+    "sample_id": "h0080_speech_f02",
+    "output": "おー",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「おー」は肯定的な反応であり、否定・反応を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0080",
+      "judge-result:h0080_speech_f02-f82efc7feb7c3f9b.json"
+    ],
+    "semantic_signature": "否定・反応"
+  },
+  {
+    "blind_id": "review-05be69371dd39fcc",
+    "sample_id": "h0097_speech_f02",
+    "output": "じゃあ、ちょっとだけ戦いを？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["format"],
+    "rationale": "「ちょっとだけ戦いを？」は疑問形を保持しているが、「意地を張る」のニュアンスは弱い。文法的に自然だが、意図の保持が不完全。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0097",
+      "judge-result:h0097_speech_f02-05e5ec23679554dd.json"
+    ],
+    "semantic_signature": "戦い？"
+  },
+  {
+    "blind_id": "review-bd2ab9e13d2969c2",
+    "sample_id": "h0049_speech_f02",
+    "output": "ちょうど合ったなら、タワーに行ったのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "minor",
+    "error_types": ["terminology"],
+    "rationale": "「ちょうど合った」は原文の「当たった」を誤って表現。疑問形は保持。タワーも保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0049",
+      "judge-result:h0049_speech_f02-259ffe822457a582.json"
+    ],
+    "semantic_signature": "合った_タワー_疑問"
+  },
+  {
+    "blind_id": "review-5a6d84312007bdb1",
+    "sample_id": "h0004_speech_f02",
+    "output": "攻撃速度が2.3にまで落ちる",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["negation"],
+    "rationale": "「落ちる」は減少を意味するが、原文は「찍혀버리는」（減少する）と同義で、候補は否定を含むが意味は保持。ただし、ゲーム内では「落ちる」は通常減少を表すため、この表現はゲーム内判断を保持。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0004",
+      "judge-result:h0004_speech_f02-41fc6f126ad841fc.json"
+    ],
+    "semantic_signature": "攻撃速度減少_2.30"
+  },
+  {
+    "blind_id": "review-da4df5ad7486555a",
+    "sample_id": "h0029_speech_f02",
+    "output": "バードがグールに合うとき",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「グール」は「宮」の誤訳で、また「合うとき」は「受けたとき」を誤って表現している。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0029",
+      "judge-result:h0029_speech_f02-ab1528a23770adca.json"
+    ],
+    "semantic_signature": "バード, ウルト, 受けたとき"
+  },
+  {
+    "blind_id": "review-2b39c1c1e33331b3",
+    "sample_id": "h0062_speech_f02",
+    "output": "それならサンテテルはただ無理にやったのか？",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission", "negation"],
+    "rationale": "「ク・サンテ」を「サンテテル」と誤訳し、重要な情報が欠落。また「テレポートを無駄にした」を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0062",
+      "judge-result:h0062_speech_f02-2e5ad6cc4f00b43d.json"
+    ],
+    "semantic_signature": "ク・サンテ, テレポートを無駄にした"
+  },
+  {
+    "blind_id": "review-16f2a8d3fde139de",
+    "sample_id": "h0046_speech_f02",
+    "output": "マ",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「マ」は意味を完全に失っている。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0046",
+      "judge-result:h0046_speech_f02-7c6bc56bf2ca6cde.json"
+    ],
+    "semantic_signature": "Qを使いたくなるように"
+  },
+  {
+    "blind_id": "review-f91644231964d406",
+    "sample_id": "h0073_speech_f02",
+    "output": "今、あまりにクレアスのように見える",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「ク・サンテらしい行動」が誤って「クレアス」に置き換えられ、文意が大きくずれる",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0073",
+      "judge-result:h0073_speech_f02-244a68b0b2e5c3e9.json"
+    ],
+    "semantic_signature": "クレアスのように 今"
+  },
+  {
+    "blind_id": "review-9d3bc1924821983d",
+    "sample_id": "h0078_speech_f02",
+    "output": "ア",
+    "primary": true,
+    "review_status": "ai_provisional",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "「ア」は意味を完全に失っているため、肯定の意味を保持していない。",
+    "reviewer": "qwen3:8b local blind semantic judge",
+    "evidence": [
+      "dataset:h0078",
+      "judge-result:h0078_speech_f02-16a325a826623a50.json"
+    ],
+    "semantic_signature": "좋아 vs ア"
+  }
+]

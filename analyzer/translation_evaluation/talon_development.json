@@ -1,0 +1,185 @@
+{
+  "video_id": "Ns8VQexyJes",
+  "split": "development_additional",
+  "reference_status": "ai_visual_transcription_provisional",
+  "human_verified": false,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "crop_xywh": [38, 800, 1844, 140],
+  "speech_crop_xywh": [38, 860, 1844, 80],
+  "annotation_crop_xywh": [38, 800, 1844, 60],
+  "line_crop_note": "動画共通の固定行帯。行数と役割の選択はAI目視アノテーションを使用し、自動行検出の精度とは区別する。",
+  "samples": [
+    {
+      "id": "t01",
+      "time": 25,
+      "speech": "오랜만까진 아니고 최근에도 했던 거 같은데 이거",
+      "tags": ["long", "negation", "dark"]
+    },
+    {
+      "id": "t02",
+      "time": 35,
+      "speech": "왜 이렇게 센데",
+      "tags": ["short", "dark"]
+    },
+    {
+      "id": "t03",
+      "time": 40,
+      "speech": "아 기발 어디 갔어",
+      "tags": ["short", "term", "dark"]
+    },
+    {
+      "id": "t04",
+      "time": 45,
+      "speech": "근데 로크만 안 크면은 쉬울 거 같은데",
+      "tags": ["long", "negation", "term"]
+    },
+    {
+      "id": "t05",
+      "time": 85,
+      "speech": "하.. 괜찮네요",
+      "tags": ["short", "light"]
+    },
+    {
+      "id": "t06",
+      "time": 95,
+      "speech": "나 있잖아 나 너무 슬프다 카이사야 나는",
+      "tags": ["long", "champion", "dark"]
+    },
+    {
+      "id": "t07",
+      "time": 115,
+      "speech": "일단 6렙..을 빨리 찍읍시다",
+      "tags": ["number", "level", "dark"]
+    },
+    {
+      "id": "t08",
+      "time": 155,
+      "speech": "그 다음엔 제가 할 수 있는 최선을 다해봅시다",
+      "tags": ["long", "sequence", "light"]
+    },
+    {
+      "id": "t09",
+      "time": 175,
+      "speech": "카이사한테도 쨍하고 해뜰날 돌아온다잉",
+      "tags": ["long", "champion", "idiom"]
+    },
+    {
+      "id": "t10",
+      "time": 205,
+      "speech": "아 오케 ㅇㅈ",
+      "tags": ["short", "jamo"]
+    },
+    {
+      "id": "t11",
+      "time": 235,
+      "speech": "누구셔 이분?",
+      "tags": ["short", "question"]
+    },
+    {
+      "id": "t12",
+      "time": 290,
+      "speech": "너 먹어",
+      "tags": ["short", "target"]
+    },
+    {
+      "id": "t13",
+      "time": 335,
+      "speech": "자식아 나 월식이다잉~",
+      "tags": ["term", "item", "light"]
+    },
+    {
+      "id": "t14",
+      "time": 340,
+      "speech": "로크.. 플 반응 못 하게 되게 깔끔하게 잡았다",
+      "tags": ["long", "term", "negation"]
+    },
+    {
+      "id": "t15",
+      "time": 370,
+      "annotation": "카이사 전적 검색 중",
+      "speech": "탈론 하는 친구네",
+      "tags": ["two_line", "yellow", "white", "champion"],
+      "roles_note": "黄色は戦績検索中の編集注釈、白色は発言。369秒の別発言にも同じ注釈が続く。人による意味確認は未実施。"
+    },
+    {
+      "id": "t16",
+      "time": 375,
+      "speech": "어디서 많이 본 챔프폭 같이 생겼네",
+      "tags": ["long", "term"]
+    },
+    {
+      "id": "t17",
+      "time": 395,
+      "speech": "저는 원래 다 품고 갑니다 원래",
+      "tags": ["medium", "context_dependent"]
+    },
+    {
+      "id": "t18",
+      "time": 435,
+      "speech": "나 이번 한타 때 죽무가 없는 게 좀 아쉽다",
+      "tags": ["long", "item", "negation", "combat"]
+    },
+    {
+      "id": "t19",
+      "time": 455,
+      "speech": "저분 누구셔?",
+      "tags": ["short", "question"]
+    },
+    {
+      "id": "t20",
+      "time": 475,
+      "speech": "내가 과연 품을 수 있을까",
+      "tags": ["medium", "question"]
+    },
+    {
+      "id": "t21",
+      "time": 505,
+      "speech": "뭐 잘못된 거 아니야?",
+      "tags": ["question", "negation"]
+    },
+    {
+      "id": "t22",
+      "time": 515,
+      "speech": "왜케 어수선하냐 게임이",
+      "tags": ["medium", "colloquial"]
+    },
+    {
+      "id": "t23",
+      "time": 545,
+      "speech": "아 이거! 하..",
+      "tags": ["short", "dark"]
+    },
+    {
+      "id": "t24",
+      "time": 625,
+      "speech": "이 판은 진짜 정정탈 한 게 신의 한 수다",
+      "tags": ["long", "term", "unconfirmed_abbreviation"]
+    },
+    {
+      "id": "t25",
+      "time": 645,
+      "speech": "날라갔으면 박수 쳐줬는데",
+      "tags": ["condition", "combat"]
+    },
+    {
+      "id": "t26",
+      "time": 690,
+      "speech": "저 왜요",
+      "tags": ["short", "question"]
+    },
+    {
+      "id": "t27",
+      "time": 745,
+      "speech": "제발 안 죽어",
+      "tags": ["short", "negation", "combat"]
+    },
+    {
+      "id": "t28",
+      "time": 755,
+      "speech": "아 근데 사실 상대 트린도 15데스긴 해",
+      "tags": ["long", "number", "champion", "light"]
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+[
+  {
+    "group_id": "g01",
+    "output": "そのままブリンドル・デッパーだが",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "ルーン、ダリウス、サポートのいずれも保持できていない。",
+    "semantic_signature": "固有語消失",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g01"]
+  },
+  {
+    "group_id": "g01",
+    "output": "すぐ近くのバインドで、まだだ",
+    "severity": "major",
+    "error_types": ["terminology", "hallucination"],
+    "rationale": "近くのバインドという別内容になり、役割と固有名詞を失った。",
+    "semantic_signature": "バインド",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g01"]
+  },
+  {
+    "group_id": "g01",
+    "output": "すぐグレイシャルサポートダリウスだ",
+    "severity": "minor",
+    "error_types": [],
+    "rationale": "語順は不自然だがルーン、ダリウス、サポートを保持した。",
+    "semantic_signature": "グレイシャル・ダリウス・サポート",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g01"]
+  },
+  {
+    "group_id": "g01",
+    "output": "すぐグレイシャルダリウスサポートで",
+    "severity": "minor",
+    "error_types": [],
+    "rationale": "文末は欠けるが中心的なゲーム内意味は保持した。",
+    "semantic_signature": "グレイシャル・ダリウス・サポート",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g01"]
+  },
+
+  {
+    "group_id": "g02",
+    "output": "1レベルのeを予想できない",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "レベル1のEを予想できないという意味を保持した。",
+    "semantic_signature": "レベル1 E 予測不能",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g02"]
+  },
+  {
+    "group_id": "g02",
+    "output": "1ループを予想できないところに",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "レベルとEがループに変わり、重要条件を失った。",
+    "semantic_signature": "1ループ",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g02"]
+  },
+  {
+    "group_id": "g02",
+    "output": "1段階でeを予想できない",
+    "severity": "minor",
+    "error_types": [],
+    "rationale": "レベルを段階としたが、1とEと予測不能は保持した。",
+    "semantic_signature": "1段階 E 予測不能",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g02"]
+  },
+  {
+    "group_id": "g02",
+    "output": "1ループを予想できないんだね",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "レベル1のEが1ループに変わった。",
+    "semantic_signature": "1ループ",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g02"]
+  },
+
+  {
+    "group_id": "g03",
+    "output": "せんようむどうも ㄱㅊ긴데 対戦相手の組み合わせに応じて ちょっとだけでも変わるなら ブルクです",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "装備名と条件が未訳・崩壊し、ブラッククリーバーの判断を正しく伝えない。",
+    "semantic_signature": "未訳とブルク",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g03"]
+  },
+  {
+    "group_id": "g03",
+    "output": "せんようむども ㄱツギンハンデ そうたい조합 たれ タラタナハヤルゲルイブククライ",
+    "severity": "major",
+    "error_types": ["terminology", "format"],
+    "rationale": "ほぼ音写と未訳で、ゲーム内の判断を読み取れない。",
+    "semantic_signature": "音写崩壊",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g03"]
+  },
+  {
+    "group_id": "g03",
+    "output": "せんゆうむも ㄱㅊ긴데、相手組みに応じて別々にやるべきなら ブラック クリーバー です",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "ブラッククリーバーは保持するが、硬い相手ならという重要条件を失った。",
+    "semantic_signature": "条件欠落ブラッククリーバー",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g03"]
+  },
+  {
+    "group_id": "g03",
+    "output": "せんゆうむも ㄱㅊ긴けど、対戦相手の組み合わせによっては別にすべきだと思うので、ブラッククリーバーです",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "相手が硬い場合という選択基準が一般的な別判断に薄まった。",
+    "semantic_signature": "条件欠落ブラッククリーバー",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g03"]
+  },
+
+  {
+    "group_id": "g04",
+    "output": "ブイングマゴンポイントが本当にロムイン影響力がジリム",
+    "severity": "major",
+    "error_types": ["terminology", "format"],
+    "rationale": "氷結増強とヘクステックフラッシュの評価が判別できない。",
+    "semantic_signature": "音写崩壊",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g04"]
+  },
+  {
+    "group_id": "g04",
+    "output": "ブリングマゴンの影響範囲が地脈に",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "ルーンとヘクステックフラッシュを別語に変え、強いローム性能という判断も失った。",
+    "semantic_signature": "地脈",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g04"]
+  },
+  {
+    "group_id": "g04",
+    "output": "グレイシャルオーグメントが本当にローミング影響力がある地限",
+    "severity": "major",
+    "error_types": ["omission"],
+    "rationale": "氷結増強は保持するが、ヘクステックフラッシュを欠落させた。",
+    "semantic_signature": "ヘクステックフラッシュ欠落",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g04"]
+  },
+  {
+    "group_id": "g04",
+    "output": "グレイシャルオーグメントのマグポインツフラッシュネイターがリローミングの影響範囲に及ぶ",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "ヘクステックフラッシュが別名になり、非常に強いという評価も弱い。",
+    "semantic_signature": "誤ったフラッシュ名",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g04"]
+  },
+
+  {
+    "group_id": "g05",
+    "output": "逃げている",
+    "severity": "undetermined",
+    "error_types": [],
+    "rationale": "原文の掛け声らしい「달려잇」自体の意味確認が未完了で判定不能。",
+    "semantic_signature": "要人手確認",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g05"]
+  },
+
+  {
+    "group_id": "g06",
+    "output": "次ターンにその対象を取って、パルを除いてください",
+    "severity": "major",
+    "error_types": ["terminology", "sequence"],
+    "rationale": "フラッシュを落として次回捕まえるという順序と対象が崩れた。",
+    "semantic_signature": "対象取得とパル除外",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g06"]
+  },
+  {
+    "group_id": "g06",
+    "output": "次ターンにプルーバを捕まえるだけでいいです",
+    "severity": "major",
+    "error_types": ["terminology", "omission"],
+    "rationale": "フラッシュを落とす前段を欠き、対象をプルーバという別語にした。",
+    "semantic_signature": "プルーバ捕捉",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g06"]
+  },
+  {
+    "group_id": "g06",
+    "output": "フラッシュを除いて、次のターンに捕まえればいいです",
+    "severity": "major",
+    "error_types": ["sequence"],
+    "rationale": "概略は近いが、相手にフラッシュを使わせる判断が単なる除外に変わった。",
+    "semantic_signature": "フラッシュ除外後捕捉",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g06"]
+  },
+  {
+    "group_id": "g06",
+    "output": "フラッシュを消して、次のターンに捕まえるだけです",
+    "severity": "major",
+    "error_types": ["sequence"],
+    "rationale": "ゲーム上の意図は近いが、今フラッシュを使わせる主体と因果が曖昧になった。",
+    "semantic_signature": "フラッシュ消去後捕捉",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g06"]
+  },
+
+  {
+    "group_id": "g07",
+    "output": "ここではちょっと細かいところがあります",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "ここに細かなポイントがあるという意味を保持した。",
+    "semantic_signature": "細部あり",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g07"]
+  },
+  {
+    "group_id": "g07",
+    "output": "ここではディテールがちょっとあるんだ",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "原文の意味を保持した。",
+    "semantic_signature": "細部あり",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g07"]
+  },
+  {
+    "group_id": "g07",
+    "output": "ここでは詳細がちょっとあるんです",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "原文の意味を保持した。",
+    "semantic_signature": "細部あり",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g07"]
+  },
+  {
+    "group_id": "g07",
+    "output": "ここでは詳細がちょっとあるんだけど",
+    "severity": "none",
+    "error_types": [],
+    "rationale": "原文の意味を保持した。",
+    "semantic_signature": "細部あり",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g07"]
+  },
+
+  {
+    "group_id": "g08",
+    "output": "壁のスターツで多才性を完成させる",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "ファーム能力値を壁のスターツに変えた。",
+    "semantic_signature": "壁のスターツ",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g08"]
+  },
+  {
+    "group_id": "g08",
+    "output": "ファームズステータスで多才多能を完成させてしまう",
+    "severity": "minor",
+    "error_types": [],
+    "rationale": "不自然な音写だが、ファーム能力値で多才多能を完成させる中心意味は残る。",
+    "semantic_signature": "ファーム能力値で多才多能完成",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g08"]
+  },
+  {
+    "group_id": "g08",
+    "output": "ファームマスターでなんでも屋も完成させる",
+    "severity": "major",
+    "error_types": ["terminology"],
+    "rationale": "能力値をファームマスターに変え、ルーン名も一般語化した。",
+    "semantic_signature": "ファームマスター",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g08"]
+  },
+  {
+    "group_id": "g08",
+    "output": "フラッシュでサポートのステータスも完璧に。",
+    "severity": "major",
+    "error_types": ["terminology", "hallucination"],
+    "rationale": "ファーム能力値と多才多能を、フラッシュとサポートの能力値に変えた。",
+    "semantic_signature": "フラッシュとサポート",
+    "review_status": "ai_provisional",
+    "reviewer": "Codex semantic review",
+    "evidence": ["meaning_targets.json:g08"]
+  }
+]

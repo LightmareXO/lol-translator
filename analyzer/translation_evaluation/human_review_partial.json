@@ -1,0 +1,546 @@
+{
+  "schema_version": 1,
+  "exported_at": "2026-09-16T16:40:41.831Z",
+  "reviews": {
+    "h0000_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "major",
+      "condition_B": "major",
+      "condition_C": "major",
+      "condition_D": "major",
+      "notes": "内シャオリゴ→ナッシャートゥースというアイテムの略称である\nこれが認識できていない？または辞書から推定できていない？"
+    },
+    "h0001_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "minor",
+      "condition_B": "major",
+      "condition_C": "minor",
+      "condition_D": "major",
+      "notes": "ニンタップ→忍足袋（ニンタビ　プレートスチールキャップの昔の名称）\nと\nヘルメス→マーキュリーブーツ\nがうまく翻訳できていない\nニンタビ、ヘルメスがわかってれば意味は通じる\norが韓国語として認識されてしまっている"
+    },
+    "h0002_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "ok",
+      "condition_B": "major",
+      "condition_C": "ok",
+      "condition_D": "ok",
+      "notes": "多才多能→何でも屋\nBだけ『非常に強力な』になってしまっている\n多才多能でもなんとなくわかるし10スタックって言われたらわかると思う"
+    },
+    "h0003_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "major",
+      "condition_B": "major",
+      "condition_C": "major",
+      "condition_D": "major",
+      "notes": "やはりグインソーレイジブレードの略称→グインソーができていない\n略称も辞書として登録する必要があるかも？"
+    },
+    "h0004_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "ok",
+      "condition_B": "minor",
+      "condition_C": "minor",
+      "condition_D": "minor",
+      "notes": "落ちるという表現は前後の文脈次第\n文脈込みの翻訳の精度検証も必要か"
+    },
+    "h0005_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "ok",
+      "condition_B": "major",
+      "condition_C": "minor",
+      "condition_D": "major",
+      "notes": ""
+    },
+    "h0006_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "minor",
+      "condition_B": "minor",
+      "condition_C": "ok",
+      "condition_D": "ok",
+      "notes": ""
+    },
+    "h0007_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "ok",
+      "condition_B": "ok",
+      "condition_C": "minor",
+      "condition_D": "ok",
+      "notes": "実際に実装するとしたら前後の文脈があると思うので、この程度のずれなら吸収できそう"
+    },
+    "h0008_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "minor",
+      "condition_B": "major",
+      "condition_C": "minor",
+      "condition_D": "minor",
+      "notes": "翻訳のずれは誤差だが意味のずれは少しだけ大きい\nCCをしっかり食らうんじゃなくて上手に食らうという意味だと思う"
+    },
+    "h0009_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "minor",
+      "condition_B": "minor",
+      "condition_C": "minor",
+      "condition_D": "ok",
+      "notes": ""
+    },
+    "h0029_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "major",
+      "condition_B": "major",
+      "condition_C": "major",
+      "condition_D": "major",
+      "notes": "궁 = 궁극기（ウルト、ULT、R）\n略称が弱そう"
+    },
+    "h0030_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "major",
+      "condition_B": "major",
+      "condition_C": "ok",
+      "condition_D": "major",
+      "notes": "キーボードの話だと思うんだけど、LOLに直接は関連してなさそうだからまあ許容？"
+    },
+    "h0031_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "major",
+      "condition_B": "major",
+      "condition_C": "major",
+      "condition_D": "major",
+      "notes": "궁 = 궁극기（ウルト、ULT、R）h0029と同様"
+    },
+    "h0032_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "major",
+      "condition_B": "major",
+      "condition_C": "major",
+      "condition_D": "major",
+      "notes": "궁 = 궁극기（ウルト、ULT、R）h0029と同様"
+    },
+    "h0036_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "major",
+      "condition_B": "major",
+      "condition_C": "ok",
+      "condition_D": "major",
+      "notes": "볼베 = ボリベア（Volibear）の略\n略称が弱いけどCは行けてる"
+    },
+    "h0040_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "major",
+      "condition_B": "major",
+      "condition_C": "major",
+      "condition_D": "major",
+      "notes": "LoL以外の話題もダメなものがあるのか"
+    },
+    "h0041_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "major",
+      "condition_B": "major",
+      "condition_C": "major",
+      "condition_D": "major",
+      "notes": "スラングが弱そう"
+    },
+    "h0042_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "major",
+      "condition_C": "major",
+      "condition_D": "major",
+      "notes": "短すぎるのも弱い？\nDは辞書が出てる？"
+    },
+    "h0043_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "unknown",
+      "condition_B": "unknown",
+      "condition_C": "unknown",
+      "condition_D": "unknown",
+      "notes": "辞書が悪さしてるか？"
+    },
+    "h0044_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "major",
+      "condition_B": "major",
+      "condition_C": "major",
+      "condition_D": "major",
+      "notes": "덤불 조끼=ブランブルベスト"
+    },
+    "h0045_speech_f02": {
+      "source_status": "ok",
+      "source_correction": "",
+      "condition_A": "minor",
+      "condition_B": "major",
+      "condition_C": "minor",
+      "condition_D": "major",
+      "notes": "B,Dはだめ"
+    },
+    "h0046_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0049_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0050_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0051_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0052_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0053_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0054_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0055_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0057_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0061_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0062_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0063_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0069_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0072_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0073_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0074_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0078_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0079_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0080_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0081_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0082_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0084_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0086_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0089_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0090_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0092_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0096_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0097_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0099_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0101_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0103_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0104_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0105_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0109_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0113_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0114_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0118_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0119_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    },
+    "h0123_speech_f02": {
+      "source_status": "",
+      "source_correction": "",
+      "condition_A": "",
+      "condition_B": "",
+      "condition_C": "",
+      "condition_D": "",
+      "notes": ""
+    }
+  }
+}

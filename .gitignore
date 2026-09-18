@@ -20,6 +20,9 @@ analyzer/ocr_evaluation/models/
 analyzer/ocr_evaluation/.venv-*/
 .paddlex/
 .EasyOCR/
+analyzer/translation_evaluation/work/
+analyzer/translation_evaluation/models/
+analyzer/translation_evaluation/.venv*/
 
 # Editor directories and files
 .vscode/*

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-09-17",
+  "video_id": "Di7pDd0YPw4",
+  "file_name": "믿고보세요. 이번 시즌 최고의 1인 캐리😎 [Di7pDd0YPw4].mp4",
+  "sha256": "ea48acc6da75b0c61ea7221c2cd8929f34ece939e036a416cbdc910f84264bf9",
+  "size_bytes": 953869737,
+  "duration_seconds": 1487.725714,
+  "video": {
+    "codec": "h264",
+    "width": 1920,
+    "height": 1080,
+    "fps": "60/1"
+  },
+  "split": "final_independent_holdout_reserved",
+  "state": {
+    "content_frames_inspected": false,
+    "frames_extracted": false,
+    "ocr_executed": false,
+    "translation_executed": false,
+    "reference_transcription_created": false
+  },
+  "release_condition": "Freeze the extraction rule, OCR configuration, translation configuration, and their source revisions before inspecting content frames.",
+  "notes": [
+    "File existence, hash, container metadata, and video stream metadata were inspected without decoding content frames.",
+    "The local absolute path is intentionally not recorded in the repository.",
+    "AI visual transcription and human confirmation must remain separate statuses."
+  ]
+}

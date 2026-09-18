@@ -1,0 +1,112 @@
+{
+  "job_sha256": "aabb0bb1dd592483292c7334978c45330f0bdec287124acdff4c61d2d17bedc3",
+  "identity": {
+    "judge_model": "qwen3:8b",
+    "judge_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "model_info": {
+      "general.architecture": "qwen3",
+      "general.basename": "Qwen3",
+      "general.file_type": 15,
+      "general.license": "apache-2.0",
+      "general.parameter_count": 8190735360,
+      "general.quantization_version": 2,
+      "general.size_label": "8B",
+      "general.type": "model",
+      "qwen3.attention.head_count": 32,
+      "qwen3.attention.head_count_kv": 8,
+      "qwen3.attention.key_length": 128,
+      "qwen3.attention.layer_norm_rms_epsilon": 1e-6,
+      "qwen3.attention.value_length": 128,
+      "qwen3.block_count": 36,
+      "qwen3.context_length": 40960,
+      "qwen3.embedding_length": 4096,
+      "qwen3.feed_forward_length": 12288,
+      "qwen3.rope.freq_base": 1000000,
+      "tokenizer.ggml.add_bos_token": false,
+      "tokenizer.ggml.bos_token_id": 151643,
+      "tokenizer.ggml.eos_token_id": 151645,
+      "tokenizer.ggml.merges": [],
+      "tokenizer.ggml.model": "gpt2",
+      "tokenizer.ggml.padding_token_id": 151643,
+      "tokenizer.ggml.pre": "qwen2",
+      "tokenizer.ggml.token_type": [],
+      "tokenizer.ggml.tokens": []
+    },
+    "system_sha256": "52bf7878cb20dc9b7d1a16b4c9f7800778e2ac21e945532520f2e35411fbe708",
+    "schema_sha256": "d6705d886ad4fe8c7f442b5698dc845eee307550957fee096affd5db4ecd013c",
+    "outputs_sha256": "2bb37a4d43486eccc5c930c475542ce61270172a3855f31365f3835d3a0bce50",
+    "dataset_sha256": "97db0c108d76862f66aee7d8963342df1112d0d9a812acb0b3315d74cce8a5d7",
+    "targets_sha256": "924c9dbda90794f54c46822b745d3aa3055ec88d4236cb470b1fdef3d99fd62d",
+    "settings": {
+      "temperature": 0,
+      "seed": 93271,
+      "num_predict": 1024,
+      "think": false
+    },
+    "runner_schema": 2,
+    "runner_sha256": "4a1f5791e647927d0069fb2a31333810fb9a3bf4a552d4dacfd59bc8f6182e16"
+  },
+  "job": {
+    "sample_id": "h0092_speech_f02",
+    "group_id": "h0092",
+    "source_ko": "그만큼 상대를 빨리 죽일 수 있잖아",
+    "reference_ja": "その分、相手を早く倒せるじゃないか",
+    "must_preserve": ["相手を早く倒せる", "因果"],
+    "reference_status": "ai_provisional",
+    "candidates": [
+      {
+        "candidate_id": "candidate-35ac01551492",
+        "ja": "そのまんきんサルデを早く死なせられるか"
+      },
+      {
+        "candidate_id": "candidate-f24b09efa3bb",
+        "ja": "その分、相手を早く倒せるんだよ"
+      },
+      {
+        "candidate_id": "candidate-aa6229ac7925",
+        "ja": "それだけ相手を早く倒せるんだよ"
+      },
+      {
+        "candidate_id": "candidate-83f126c61ca7",
+        "ja": "そのまん金サルデを早めに死なせられるか"
+      }
+    ]
+  },
+  "judgements": [
+    {
+      "candidate_id": "candidate-35ac01551492",
+      "severity": "major",
+      "error_types": ["hallucination", "omission"],
+      "rationale": "「サルデ」は原文にない誤った用語で、意味が完全に崩れている。",
+      "semantic_signature": "相手を早く倒せる_因果"
+    },
+    {
+      "candidate_id": "candidate-f24b09efa3bb",
+      "severity": "none",
+      "error_types": [],
+      "rationale": "「その分、相手を早く倒せるんだよ」は因果関係を保持し、意味が完全に保持されている。",
+      "semantic_signature": "相手を早く倒せる_因果"
+    },
+    {
+      "candidate_id": "candidate-aa6229ac7925",
+      "severity": "minor",
+      "error_types": ["negation"],
+      "rationale": "「その分」が「それだけ」に置き換えられ、文のニュアンスがやや変化している。",
+      "semantic_signature": "相手を早く倒せる_因果"
+    },
+    {
+      "candidate_id": "candidate-83f126c61ca7",
+      "severity": "major",
+      "error_types": ["hallucination", "omission"],
+      "rationale": "「サルデ」は原文にない誤った用語で、意味が完全に崩れている。",
+      "semantic_signature": "相手を早く倒せる_因果"
+    }
+  ],
+  "response_metadata": {
+    "done_reason": "stop",
+    "total_duration": 5783870600,
+    "load_duration": 3672900,
+    "prompt_eval_count": 531,
+    "eval_count": 357
+  }
+}

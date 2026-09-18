@@ -1,0 +1,101 @@
+{
+  "job_sha256": "90745c33f1c1491cb40dc9e46beacabd188ec1777b5dfb7430fdd96b480bfb27",
+  "identity": {
+    "judge_model": "qwen3:8b",
+    "judge_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "model_info": {
+      "general.architecture": "qwen3",
+      "general.basename": "Qwen3",
+      "general.file_type": 15,
+      "general.license": "apache-2.0",
+      "general.parameter_count": 8190735360,
+      "general.quantization_version": 2,
+      "general.size_label": "8B",
+      "general.type": "model",
+      "qwen3.attention.head_count": 32,
+      "qwen3.attention.head_count_kv": 8,
+      "qwen3.attention.key_length": 128,
+      "qwen3.attention.layer_norm_rms_epsilon": 1e-6,
+      "qwen3.attention.value_length": 128,
+      "qwen3.block_count": 36,
+      "qwen3.context_length": 40960,
+      "qwen3.embedding_length": 4096,
+      "qwen3.feed_forward_length": 12288,
+      "qwen3.rope.freq_base": 1000000,
+      "tokenizer.ggml.add_bos_token": false,
+      "tokenizer.ggml.bos_token_id": 151643,
+      "tokenizer.ggml.eos_token_id": 151645,
+      "tokenizer.ggml.merges": [],
+      "tokenizer.ggml.model": "gpt2",
+      "tokenizer.ggml.padding_token_id": 151643,
+      "tokenizer.ggml.pre": "qwen2",
+      "tokenizer.ggml.token_type": [],
+      "tokenizer.ggml.tokens": []
+    },
+    "system_sha256": "52bf7878cb20dc9b7d1a16b4c9f7800778e2ac21e945532520f2e35411fbe708",
+    "schema_sha256": "d6705d886ad4fe8c7f442b5698dc845eee307550957fee096affd5db4ecd013c",
+    "outputs_sha256": "2bb37a4d43486eccc5c930c475542ce61270172a3855f31365f3835d3a0bce50",
+    "dataset_sha256": "97db0c108d76862f66aee7d8963342df1112d0d9a812acb0b3315d74cce8a5d7",
+    "targets_sha256": "924c9dbda90794f54c46822b745d3aa3055ec88d4236cb470b1fdef3d99fd62d",
+    "settings": {
+      "temperature": 0,
+      "seed": 93271,
+      "num_predict": 1024,
+      "think": false
+    },
+    "runner_schema": 2,
+    "runner_sha256": "4a1f5791e647927d0069fb2a31333810fb9a3bf4a552d4dacfd59bc8f6182e16"
+  },
+  "job": {
+    "sample_id": "h0114_speech_f02",
+    "group_id": "h0114",
+    "source_ko": "이게 더 맛있어",
+    "reference_ja": "こっちのほうがうまい／良い",
+    "must_preserve": ["こちらを高く評価"],
+    "reference_status": "ai_provisional",
+    "candidates": [
+      {
+        "candidate_id": "candidate-483d2436e5bb",
+        "ja": "もっとおいしくなる"
+      },
+      {
+        "candidate_id": "candidate-03ca8c6aaf8a",
+        "ja": "これ、もっと美味しそう"
+      },
+      {
+        "candidate_id": "candidate-66207d5a9ac3",
+        "ja": "これの方が美味しい"
+      }
+    ]
+  },
+  "judgements": [
+    {
+      "candidate_id": "candidate-483d2436e5bb",
+      "severity": "major",
+      "error_types": ["negation"],
+      "rationale": "否定形で「もっとおいしくなる」は文意を逆転させ、元の肯定的な比較を壊す。",
+      "semantic_signature": "このほうが美味い"
+    },
+    {
+      "candidate_id": "candidate-03ca8c6aaf8a",
+      "severity": "minor",
+      "error_types": ["omission"],
+      "rationale": "「これ、もっと美味しそう」は文脈に合致するが、比較の明確さが欠如しているため軽微な不自然さあり。",
+      "semantic_signature": "このほうが美味い"
+    },
+    {
+      "candidate_id": "candidate-66207d5a9ac3",
+      "severity": "none",
+      "error_types": [],
+      "rationale": "「これの方が美味しい」は原文の比較を正確に保持し、must_preserveの「こちらを高く評価」も反映している。",
+      "semantic_signature": "このほうが美味い"
+    }
+  ],
+  "response_metadata": {
+    "done_reason": "stop",
+    "total_duration": 4206679400,
+    "load_duration": 3101500,
+    "prompt_eval_count": 456,
+    "eval_count": 247
+  }
+}
