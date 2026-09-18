@@ -158,13 +158,25 @@ def glossary_text(glossary, source_text=None):
     )
 
 
-def make_payload(model, text, with_glossary, prompts, glossary, glossary_filter_text=None):
+def make_payload(
+    model,
+    text,
+    with_glossary,
+    prompts,
+    glossary,
+    glossary_filter_text=None,
+    terminology_reference=None,
+):
     family = model.split(":")[0]
     if family not in ("translategemma", "qwen3"):
         raise ValueError("unsupported local model family")
     instruction = prompts[family]
     if with_glossary:
-        selected_glossary = glossary_text(glossary, glossary_filter_text)
+        selected_glossary = (
+            terminology_reference
+            if terminology_reference is not None
+            else glossary_text(glossary, glossary_filter_text)
+        )
         if selected_glossary:
             instruction += "\n" + prompts["glossary_instruction"] + "\n" + selected_glossary
     payload = {"model": model, "messages": [{"role": "user", "content": instruction + "\n\n\n" + text}],
