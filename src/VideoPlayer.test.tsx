@@ -6,6 +6,7 @@ import {
   render,
   screen,
   waitFor,
+  within,
 } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { AnalysisProject } from "./analysisProject";
@@ -208,16 +209,15 @@ describe("subtitle selection and playback integration", () => {
     const video = loadVideo();
     video.currentTime = 1.5;
     fireEvent.timeUpdate(video);
-    expect(
-      screen.getByText("こんにちは", { selector: ".translated-caption-line" }),
-    ).toBeInTheDocument();
+    const panel = screen.getByRole("region", { name: "再生位置の字幕" });
+    expect(panel).toHaveTextContent("안녕");
+    expect(panel).toHaveTextContent("こんにちは");
+    expect(panel.previousElementSibling).toHaveClass("video-stage");
+    expect(video.parentElement).not.toHaveTextContent("こんにちは");
     video.currentTime = 2;
     fireEvent.seeked(video);
-    expect(
-      screen.queryByText("こんにちは", {
-        selector: ".translated-caption-line",
-      }),
-    ).not.toBeInTheDocument();
+    expect(panel).toHaveTextContent("この時刻に字幕はありません。");
+    expect(within(panel).queryByText("こんにちは")).not.toBeInTheDocument();
   });
 
   it("shows overlapping upper and lower line subtitles together", () => {
@@ -244,11 +244,36 @@ describe("subtitle selection and playback integration", () => {
     const video = loadVideo();
     video.currentTime = 1.5;
     fireEvent.timeUpdate(video);
-    expect(
-      screen.getAllByText(/こんにちは|下段の訳/, {
-        selector: ".translated-caption-line",
-      }),
-    ).toHaveLength(2);
+    const panel = screen.getByRole("region", { name: "再生位置の字幕" });
+    expect(within(panel).getByText("こんにちは")).toBeInTheDocument();
+    expect(within(panel).getByText("下段の訳")).toBeInTheDocument();
+  });
+
+  it("updates the playback panel when Korean and Japanese are edited", () => {
+    render(
+      <VideoPlayer
+        path="C:/test.mp4"
+        url="asset://first"
+        initialProject={savedProject()}
+      />,
+    );
+    const video = loadVideo();
+    video.currentTime = 1.5;
+    fireEvent.timeUpdate(video);
+    const panel = screen.getByRole("region", { name: "再生位置の字幕" });
+
+    fireEvent.change(screen.getByLabelText("修正後の韓国語"), {
+      target: { value: "수정한 안녕" },
+    });
+    expect(panel).toHaveTextContent("수정한 안녕");
+    expect(panel).toHaveTextContent("再翻訳が必要です");
+    expect(within(panel).queryByText("こんにちは")).not.toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText("ユーザー修正の日本語"), {
+      target: { value: "ユーザー修正訳" },
+    });
+    expect(panel).toHaveTextContent("ユーザー修正訳");
+    expect(panel).toHaveTextContent("ユーザー修正");
   });
 
   it("passes the selected coordinates and time range to the analysis job", async () => {

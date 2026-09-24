@@ -121,26 +121,73 @@ button.secondary:hover {
 .video-stage {
   position: relative;
 }
-.translated-caption {
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  bottom: 8%;
-  z-index: 3;
-  padding: 8px 12px;
-  border-radius: 6px;
-  background: #05070bd9;
-  color: #fff;
-  font-size: clamp(18px, 2.2vw, 30px);
-  font-weight: 700;
-  line-height: 1.4;
-  text-align: center;
-  text-shadow: 0 2px 3px #000;
-  white-space: pre-line;
-  pointer-events: none;
+.playback-subtitles {
+  min-height: 178px;
+  margin-top: 10px;
+  padding: 14px 18px;
+  border: 1px solid #3a4b64;
+  border-radius: 8px;
+  background: #0c1119;
 }
-.translated-caption-line {
-  display: block;
+.playback-subtitle-list {
+  display: grid;
+  gap: 12px;
+}
+.playback-subtitle-item + .playback-subtitle-item {
+  padding-top: 12px;
+  border-top: 1px solid #304058;
+}
+.playback-subtitle-heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: #9eb5d4;
+  font-size: 12px;
+  font-weight: 700;
+}
+.playback-subtitle-text,
+.playback-subtitle-message,
+.playback-subtitle-empty {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.playback-subtitle-text {
+  margin: 3px 0 9px;
+}
+.playback-subtitle-korean {
+  color: #d6e4f7;
+  font-size: clamp(16px, 1.8vw, 21px);
+  line-height: 1.5;
+}
+.playback-subtitle-japanese {
+  margin-bottom: 0;
+  color: #fff;
+  font-size: clamp(20px, 2.4vw, 30px);
+  font-weight: 700;
+  line-height: 1.45;
+}
+.playback-subtitle-message,
+.playback-subtitle-empty {
+  color: #aab7ca;
+}
+.playback-subtitle-message {
+  margin: 4px 0 0;
+}
+.playback-subtitle-empty {
+  margin: 0;
+}
+.subtitle-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  padding: 1px 7px;
+  border: 1px solid #8f713a;
+  border-radius: 999px;
+  background: #332915;
+  color: #f6ce7b;
+  font-size: 11px;
+  font-weight: 700;
 }
 .region-toolbar {
   display: flex;
@@ -391,6 +438,10 @@ textarea:read-only {
   }
   .workspace {
     padding: 14px;
+  }
+  .playback-subtitles {
+    min-height: 164px;
+    padding: 12px 14px;
   }
 }
 @media (max-width: 760px) {
