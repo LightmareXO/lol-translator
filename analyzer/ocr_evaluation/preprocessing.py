@@ -32,6 +32,12 @@ def preprocess(image: Any, mode: str) -> Any:
     if mode == "grayscale":
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         return cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
+    if mode == "otsu":
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        _, output = cv2.threshold(
+            gray, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU
+        )
+        return cv2.cvtColor(output, cv2.COLOR_GRAY2BGR)
     # Keep the midpoint fixed and increase contrast by 1.5x. This is applied to
     # every image, never selected per image based on its recognition result.
     return np.clip((image.astype(np.float32) - 127.5) * 1.5 + 127.5, 0, 255).astype(
@@ -44,4 +50,5 @@ PREPROCESSING_DESCRIPTION = {
     "scale2x": "2x cubic interpolation (OpenCV INTER_CUBIC)",
     "grayscale": "OpenCV BGR to 8-bit grayscale, then equal-value 3-channel BGR",
     "contrast": "1.5x linear contrast around midpoint 127.5 with clipping",
+    "otsu": "8-bit grayscale followed by OpenCV Otsu THRESH_BINARY_INV, returned as 3-channel BGR",
 }

@@ -49,7 +49,7 @@ from analyzer.translation_evaluation.evaluate import (
 
 TRANSLATION_MODEL = "qwen3:4b-instruct-2507-q4_K_M"
 OCR_THREADS = 4
-OCR_PREPROCESSING = "contrast"
+OCR_PREPROCESSING = "otsu"
 CREATE_NO_WINDOW = getattr(subprocess, "CREATE_NO_WINDOW", 0)
 
 
