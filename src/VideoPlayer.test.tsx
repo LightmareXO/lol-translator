@@ -249,6 +249,33 @@ describe("subtitle selection and playback integration", () => {
     expect(within(panel).getByText("下段の訳")).toBeInTheDocument();
   });
 
+  it("updates the playback panel when Korean and Japanese are edited", () => {
+    render(
+      <VideoPlayer
+        path="C:/test.mp4"
+        url="asset://first"
+        initialProject={savedProject()}
+      />,
+    );
+    const video = loadVideo();
+    video.currentTime = 1.5;
+    fireEvent.timeUpdate(video);
+    const panel = screen.getByRole("region", { name: "再生位置の字幕" });
+
+    fireEvent.change(screen.getByLabelText("修正後の韓国語"), {
+      target: { value: "수정한 안녕" },
+    });
+    expect(panel).toHaveTextContent("수정한 안녕");
+    expect(panel).toHaveTextContent("再翻訳が必要です");
+    expect(within(panel).queryByText("こんにちは")).not.toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText("ユーザー修正の日本語"), {
+      target: { value: "ユーザー修正訳" },
+    });
+    expect(panel).toHaveTextContent("ユーザー修正訳");
+    expect(panel).toHaveTextContent("ユーザー修正");
+  });
+
   it("passes the selected coordinates and time range to the analysis job", async () => {
     vi.mocked(invoke).mockImplementation((command) => {
       if (command === "start_analysis")
