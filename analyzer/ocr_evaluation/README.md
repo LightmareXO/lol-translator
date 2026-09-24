@@ -5,6 +5,7 @@ Issue #8で、LoL韓国語字幕に対するPaddleOCRとEasyOCRをWindows x64の
 
 単一フレームの実測結果と採用判断は [REPORT.md](REPORT.md)、画像単位の結果は [results/details.csv](results/details.csv) にあります。
 複数フレームの限定検証は [MULTIFRAME_REPORT.md](MULTIFRAME_REPORT.md) に分けています。
+Tesseract fast/bestとの7前処理比較は [TESSERACT_REPORT.md](TESSERACT_REPORT.md)、再実行手順は [TESSERACT_README.md](TESSERACT_README.md) に分けています。
 
 ## 固定した構成
 
