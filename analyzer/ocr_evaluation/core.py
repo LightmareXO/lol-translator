@@ -12,7 +12,7 @@ import unicodedata
 from typing import Any, Iterable
 
 
-PREPROCESSING_MODES = ("raw", "scale2x", "grayscale", "contrast")
+PREPROCESSING_MODES = ("raw", "scale2x", "grayscale", "contrast", "otsu")
 SHA256_PATTERN = re.compile(r"^[0-9a-f]{64}$")
 
 

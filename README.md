@@ -88,7 +88,9 @@ OCRの例外は「OCR失敗」として時刻とエラーを保存します。
 2行字幕は手動分割を有効にし、ROI上端からの分割率を指定します。
 上段、下段の順でOCR結果を保存します。
 
-OCRはPaddleOCR 3.7.0、PaddlePaddle 3.4.0、`korean_PP-OCRv5_mobile_rec`、1.5倍の固定コントラスト補正、CPU 4スレッドを基準にしています。
+OCRはPaddleOCR 3.7.0、PaddlePaddle 3.4.0、`korean_PP-OCRv5_mobile_rec`、グレースケール後のOtsu二値化、CPU 4スレッドを基準にしています。
+Otsu二値化は、開発用12字幕の比較で固定コントラスト補正よりCERが低かったため既定値にしています。
+この比較の正解文はAI暫定転記であり、人手確認済みの独立評価ではありません。
 翻訳は`qwen3:4b-instruct-2507-q4_K_M`、プロンプト版`ko-ja-v4-instruct-nonthinking`、辞書版`lol-ko-ja-v1`を使います。
 設定は`think=false`、`temperature=0.7`、`top_p=0.8`、`top_k=20`、`min_p=0`、`seed=42`、`num_ctx=4096`、`num_predict=384`です。
 現在のプロンプトは直前字幕を参照しないため、韓国語の修正時に後続字幕を`stale`にする必要はありません。

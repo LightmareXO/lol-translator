@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 import unittest
 
+import numpy as np
+
 from ocr_evaluation.core import (
     edit_distance,
     load_manifest,
@@ -14,6 +16,7 @@ from ocr_evaluation.core import (
     validate_manifest,
 )
 from ocr_evaluation.aggregate import dataset_summary, validate_result
+from ocr_evaluation.preprocessing import PREPROCESSING_DESCRIPTION, preprocess
 
 
 MANIFEST_PATH = Path(__file__).parent / "ocr_evaluation" / "manifest.json"
@@ -91,6 +94,20 @@ class MetricTests(unittest.TestCase):
         self.assertEqual(summary["reference_characters"], 6)
         self.assertAlmostEqual(summary["cer"], 0.5)
         self.assertEqual(summary["stability"]["groups"][0]["changed_pairs"], 1)
+
+
+class PreprocessingTests(unittest.TestCase):
+    def test_otsu_returns_three_channels_with_bright_text_as_dark_pixels(self):
+        image = np.full((41, 81, 3), 30, dtype=np.uint8)
+        image[:, 30:50] = 230
+
+        output = preprocess(image, "otsu")
+
+        self.assertEqual(output.shape, image.shape)
+        self.assertEqual(int(output[20, 40, 0]), 0)
+        self.assertEqual(int(output[20, 5, 0]), 255)
+        self.assertTrue(np.array_equal(output[:, :, 0], output[:, :, 1]))
+        self.assertIn("Otsu", PREPROCESSING_DESCRIPTION["otsu"])
 
 
 class AggregationTests(unittest.TestCase):

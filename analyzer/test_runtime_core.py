@@ -23,6 +23,7 @@ from runtime_core import (
     validate_project,
     validate_request,
 )
+from runtime_cli import OCR_PREPROCESSING
 
 
 class RuntimeContractTests(unittest.TestCase):
@@ -43,6 +44,9 @@ class RuntimeContractTests(unittest.TestCase):
     def test_range_has_no_three_minute_limit(self):
         checked = validate_request(self.request)
         self.assertEqual(resolve_analysis_range(checked, 1_000), (60.0, 960.0))
+
+    def test_runtime_uses_the_evaluated_otsu_preprocessing(self):
+        self.assertEqual(OCR_PREPROCESSING, "otsu")
 
     def test_whole_video_resolves_to_metadata_duration(self):
         self.request["analysis_range"] = {
