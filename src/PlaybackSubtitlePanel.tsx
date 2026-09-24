@@ -57,19 +57,19 @@ function SubtitleItem({ subtitle }: { subtitle: SubtitleRecord }) {
   const corrected = Boolean(subtitle.corrected_ko?.trim());
   return (
     <article className="playback-subtitle-item">
-      <div className="playback-subtitle-heading">
-        <span>韓国語</span>
-        {corrected && <span className="subtitle-badge">原文修正済み</span>}
-      </div>
-      {korean ? (
-        <p
-          className="playback-subtitle-text playback-subtitle-korean"
-          lang="ko"
-        >
-          {korean}
-        </p>
-      ) : (
-        <p className="playback-subtitle-message">韓国語原文がありません。</p>
+      {korean && (
+        <>
+          <div className="playback-subtitle-heading">
+            <span>韓国語</span>
+            {corrected && <span className="subtitle-badge">原文修正済み</span>}
+          </div>
+          <p
+            className="playback-subtitle-text playback-subtitle-korean"
+            lang="ko"
+          >
+            {korean}
+          </p>
+        </>
       )}
       <div className="playback-subtitle-heading">
         <span>日本語</span>
@@ -98,7 +98,15 @@ export function PlaybackSubtitlePanel({
       <p className="playback-subtitle-empty">この時刻は解析範囲外です。</p>
     );
   } else {
-    const subtitles = activeSubtitles(project.subtitles, currentTime);
+    const subtitles = activeSubtitles(project.subtitles, currentTime).filter(
+      (subtitle) => {
+        const displayableJapanese =
+          subtitle.translation.user_ja?.trim() ||
+          (subtitle.translation.status === "completed" &&
+            subtitle.translation.generated_ja?.trim());
+        return effectiveKorean(subtitle).trim() || displayableJapanese;
+      },
+    );
     content =
       subtitles.length > 0 ? (
         <div className="playback-subtitle-list">

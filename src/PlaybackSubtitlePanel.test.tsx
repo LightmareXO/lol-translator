@@ -178,7 +178,23 @@ describe("playback subtitle panel", () => {
     rendered.rerender(
       <PlaybackSubtitlePanel
         project={project({
-          subtitles: [],
+          subtitles: [
+            subtitle({
+              ocr: {
+                ...subtitle().ocr,
+                raw_text: "",
+                raw_lines: [],
+                error: "画像を認識できませんでした",
+              },
+              translation: {
+                status: "error",
+                source_ko: "",
+                generated_ja: null,
+                user_ja: null,
+                error: "翻訳対象がありません",
+              },
+            }),
+          ],
           processing: {
             state: "completed_with_errors",
             sample_count: 20,
@@ -202,6 +218,9 @@ describe("playback subtitle panel", () => {
     expect(
       screen.getByText("この時刻に字幕はありません。"),
     ).toBeInTheDocument();
+    expect(
+      screen.queryByText("韓国語原文がありません。"),
+    ).not.toBeInTheDocument();
     expect(
       screen.queryByText(/画像を認識できませんでした/),
     ).not.toBeInTheDocument();
