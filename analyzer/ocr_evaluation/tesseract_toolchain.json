@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "platform": "Windows x64 CPU",
+  "tesseract": {
+    "version": "5.4.0.20240606",
+    "distribution": "UB Mannheim Windows installer",
+    "installer_url": "https://github.com/UB-Mannheim/tesseract/releases/download/v5.4.0.20240606/tesseract-ocr-w64-setup-5.4.0.20240606.exe",
+    "installer_sha256": "c885fff6998e0608ba4bb8ab51436e1c6775c2bafc2559a19b423e18678b60c9",
+    "executable_sha256": "babb405f4366b480d02cd8ff2bac8d497170f6c1711ce6f3d5d8bf0fb7fa6ed9",
+    "engine": "LSTM only (--oem 1)",
+    "languages": "kor+eng",
+    "threads": 4,
+    "internal_thresholding_defaults": {
+      "overridden": false,
+      "thresholding_method": 0,
+      "thresholding_method_name": "Otsu",
+      "thresholding_debug": 0,
+      "thresholding_window_size": 0.33,
+      "thresholding_kfactor": 0.34,
+      "thresholding_tile_size": 0.33,
+      "thresholding_smooth_kernel_size": 0,
+      "thresholding_score_fraction": 0.1,
+      "source": "tesseract --print-parameters"
+    },
+    "dependencies": [
+      "libarchive-13.dll",
+      "libb2-1.dll",
+      "libbrotlicommon.dll",
+      "libbrotlidec.dll",
+      "libbz2-1.dll",
+      "libcairo-2.dll",
+      "libcrypto-3-x64.dll",
+      "libdatrie-1.dll",
+      "libdeflate.dll",
+      "libexpat-1.dll",
+      "libffi-8.dll",
+      "libfontconfig-1.dll",
+      "libfreetype-6.dll",
+      "libfribidi-0.dll",
+      "libgcc_s_seh-1.dll",
+      "libgif-7.dll",
+      "libgio-2.0-0.dll",
+      "libglib-2.0-0.dll",
+      "libgmodule-2.0-0.dll",
+      "libgobject-2.0-0.dll",
+      "libgraphite2.dll",
+      "libharfbuzz-0.dll",
+      "libiconv-2.dll",
+      "libicudt75.dll",
+      "libicuin75.dll",
+      "libicuuc75.dll",
+      "libintl-8.dll",
+      "libjbig-0.dll",
+      "libjpeg-8.dll",
+      "libleptonica-6.dll",
+      "libLerc.dll",
+      "liblz4.dll",
+      "liblzma-5.dll",
+      "libopenjp2-7.dll",
+      "libpango-1.0-0.dll",
+      "libpangocairo-1.0-0.dll",
+      "libpangoft2-1.0-0.dll",
+      "libpangowin32-1.0-0.dll",
+      "libpcre2-8-0.dll",
+      "libpixman-1-0.dll",
+      "libpng16-16.dll",
+      "libsharpyuv-0.dll",
+      "libstdc++-6.dll",
+      "libtesseract-5.dll",
+      "libthai-0.dll",
+      "libtiff-6.dll",
+      "libwebp-7.dll",
+      "libwebpmux-3.dll",
+      "libwinpthread-1.dll",
+      "libzstd.dll",
+      "zlib1.dll"
+    ]
+  },
+  "tessdata_fast": {
+    "repository": "https://github.com/tesseract-ocr/tessdata_fast",
+    "commit": "87416418657359cb625c412a48b6e1d6d41c29bd",
+    "files": {
+      "eng.traineddata": {
+        "bytes": 4113088,
+        "sha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2"
+      },
+      "kor.traineddata": {
+        "bytes": 1677415,
+        "sha256": "6b85e11d9bbf07863b97b3523b1b112844c43e713df8b66418a081fd1060b3b2"
+      }
+    }
+  },
+  "tessdata_best": {
+    "repository": "https://github.com/tesseract-ocr/tessdata_best",
+    "commit": "e12c65a915945e4c28e237a9b52bc4a8f39a0cec",
+    "files": {
+      "eng.traineddata": {
+        "bytes": 15400601,
+        "sha256": "8280aed0782fe27257a68ea10fe7ef324ca0f8d85bd2fd145d1c2b560bcb66ba"
+      },
+      "kor.traineddata": {
+        "bytes": 12528128,
+        "sha256": "f888d4038348a0c3d25151e7f452bda0d74ca275b18cab146798bcbb94084fff"
+      }
+    }
+  },
+  "paddleocr": {
+    "paddleocr_version": "3.7.0",
+    "paddlepaddle_version": "3.4.0",
+    "model": "korean_PP-OCRv5_mobile_rec",
+    "threads": 4,
+    "backend": "paddle_static with oneDNN"
+  }
+}

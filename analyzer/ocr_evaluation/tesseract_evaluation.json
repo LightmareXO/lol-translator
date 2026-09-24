@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "issue": 19,
+  "frozen_before_tesseract_output": "2026-09-24",
+  "purpose": "development_comparison_only",
+  "independent_evaluation": {
+    "available": false,
+    "reason": "利用可能な字幕は過去のOCRまたは翻訳評価で内容を確認済みであり、未使用の人手確認済み正解データがない。"
+  },
+  "reference_policy": {
+    "legacy_verified_interpretation": "ai_visual_transcription_provisional",
+    "human_confirmed_count": 0,
+    "note": "既存manifestのverifiedはAIによる画像転記確認であり、ユーザーによる韓国語正解文の確認記録ではない。"
+  },
+  "initial_dataset": {
+    "manifest": "manifest.json",
+    "split": "development_reused",
+    "image_count": 24,
+    "subtitle_count": 8,
+    "representative_frame_rule": "各group_idの中央フレームf02を主集計に使い、24画像は隣接フレーム安定性の補助集計に使う。",
+    "reference_status": "ai_visual_transcription_provisional"
+  },
+  "additional_sources": {
+    "Ns8VQexyJes": {
+      "sha256": "f28de79e9b96a8fa38d210b9dee2fea1f53a3cd3bd24859c68604d39a0638d3a",
+      "width": 1920,
+      "height": 1080,
+      "fps": "60/1",
+      "split": "development_reused",
+      "reference_status": "ai_visual_transcription_provisional"
+    }
+  },
+  "additional_cases": [
+    {
+      "id": "t01_speech",
+      "video_id": "Ns8VQexyJes",
+      "timestamp_seconds": 25.0,
+      "crop_xywh": [38, 860, 1844, 80],
+      "ground_truth": "오랜만까진 아니고 최근에도 했던 거 같은데 이거",
+      "line_bands": [[0, 80]],
+      "color": "white",
+      "tags": ["one_line", "long", "dark_background"]
+    },
+    {
+      "id": "t07_speech",
+      "video_id": "Ns8VQexyJes",
+      "timestamp_seconds": 115.0,
+      "crop_xywh": [38, 860, 1844, 80],
+      "ground_truth": "일단 6렙..을 빨리 찍읍시다",
+      "line_bands": [[0, 80]],
+      "color": "white",
+      "tags": ["one_line", "number", "dark_background"]
+    },
+    {
+      "id": "t10_speech",
+      "video_id": "Ns8VQexyJes",
+      "timestamp_seconds": 205.25,
+      "crop_xywh": [38, 860, 1844, 80],
+      "ground_truth": "아 오케 ㅇㅈ",
+      "line_bands": [[0, 80]],
+      "color": "white",
+      "tags": ["one_line", "short", "jamo", "moving_background"]
+    },
+    {
+      "id": "t15_two_line",
+      "video_id": "Ns8VQexyJes",
+      "timestamp_seconds": 369.625,
+      "crop_xywh": [38, 800, 1844, 140],
+      "ground_truth": "카이사 전적 검색 중\n탈론 하는 친구네",
+      "line_bands": [[0, 60], [60, 140]],
+      "color": "yellow_and_white",
+      "tags": ["two_line", "annotation", "yellow", "white", "dark_background"]
+    }
+  ],
+  "adaptive_tuning": {
+    "development_case_ids": [
+      "g02_f02",
+      "g03_f02",
+      "g04_f02",
+      "g08_f02",
+      "t01_speech",
+      "t07_speech",
+      "t10_speech",
+      "t15_two_line"
+    ],
+    "candidates": [
+      { "block_size": 21, "c": 7, "polarity": "dark_text_on_light_background" },
+      { "block_size": 31, "c": 7, "polarity": "dark_text_on_light_background" },
+      { "block_size": 31, "c": 11, "polarity": "dark_text_on_light_background" }
+    ],
+    "selection_rule": "3エンジンの代表画像に対する空白除外CERの単純平均が最小の候補を固定する。同率ならblock_size、Cの順に小さい候補を選ぶ。"
+  },
+  "main_preprocessing": [
+    "original",
+    "contrast",
+    "grayscale",
+    "otsu",
+    "adaptive",
+    "contrast_otsu",
+    "contrast_adaptive"
+  ],
+  "background_suppression": {
+    "split": "development_exploratory",
+    "case_ids": [
+      "mf_q_g02",
+      "mf_q_g03",
+      "mf_q_g04",
+      "mf_q_g08",
+      "mf_t_t01",
+      "mf_t_t07",
+      "mf_t_t10",
+      "mf_t_t15_annotation",
+      "mf_t_t15_speech"
+    ],
+    "frame_count": 7,
+    "span_seconds": 0.5,
+    "methods": ["none", "temporal_median", "white_edge_mask"],
+    "note": "PR #12の実装と安定区間だけを再利用し、新しい背景除去方式は追加しない。"
+  }
+}
