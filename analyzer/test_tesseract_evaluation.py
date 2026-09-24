@@ -138,6 +138,9 @@ class FrozenSpecificationTests(unittest.TestCase):
         background = json.loads(
             (RESULTS_PATH / "tesseract-background.json").read_text(encoding="utf-8")
         )
+        javascript_reference = json.loads(
+            (RESULTS_PATH / "tesseract-js-reference.json").read_text(encoding="utf-8")
+        )
         self.assertEqual(len(dataset["cases"]), 28)
         self.assertEqual(sum(case["representative"] for case in dataset["cases"]), 12)
         self.assertTrue(all(len(case["crop_xywh"]) == 4 for case in dataset["cases"]))
@@ -148,6 +151,45 @@ class FrozenSpecificationTests(unittest.TestCase):
         self.assertEqual(len(background["records"]), 9 * 3 * 3)
         self.assertFalse(summary["independent_evaluation"])
         self.assertEqual(summary["human_confirmed_subtitles"], 0)
+        self.assertEqual(
+            javascript_reference["reference_condition"],
+            {
+                "tesseract_js": "5.1.1",
+                "languages": "kor",
+                "oem": 1,
+                "psm": 6,
+                "whole_roi": True,
+                "external_preprocessing": "none",
+                "line_splitting": "none",
+                "model_label": "tesseract_js_4.0.0_best_int",
+                "gzip": True,
+            },
+        )
+        self.assertEqual(
+            javascript_reference["integrity_audit"]["same_roi"]["pixel_identical_images"],
+            28,
+        )
+        self.assertEqual(
+            javascript_reference["integrity_audit"]["record_mapping"]["mismatch_count"],
+            0,
+        )
+        self.assertEqual(
+            javascript_reference["integrity_audit"]["error_separation"]["failed_records"],
+            0,
+        )
+        self.assertFalse(javascript_reference["improvement_gate"]["improved"])
+        self.assertFalse(javascript_reference["improvement_gate"]["ablation_executed"])
+        self.assertEqual(len(javascript_reference["records"]), 28)
+        for file_metadata in javascript_reference["toolchain"]["execution_core"]["files"].values():
+            self.assertEqual(len(file_metadata["sha256"]), 64)
+        self.assertEqual(
+            len(
+                javascript_reference["toolchain"]["language_models"]["kor"][
+                    "uncompressed_sha256"
+                ]
+            ),
+            64,
+        )
         for path in RESULTS_PATH.glob("tesseract-*.json"):
             self.assertNotIn("C:\\Users\\", path.read_text(encoding="utf-8"))
 

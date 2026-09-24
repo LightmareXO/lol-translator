@@ -200,3 +200,44 @@ PaddleOCRは常駐モデルの呼び出し時間と初期化時間を分けて�
 
 テストはNFC、CER、空出力と失敗、CLI末尾改行、2行結合、7前処理、極性、固定分割、結果件数、ローカルパス混入を確認する。
 単体テストとは別に、Tesseract fast、best、PaddleOCRを実画像で実行した結果をGitへ保存している。
+
+## Tesseract.js 5.1.1のWeb相当参照条件
+
+既存の`<WORK>/images`と`prepared.json`をそのまま再利用する。
+Node.js用の依存はPython評価環境から分離している。
+
+```powershell
+Push-Location analyzer/ocr_evaluation/tesseract_js
+npm ci --ignore-scripts
+Pop-Location
+
+node analyzer/ocr_evaluation/tesseract_js/run_reference.mjs `
+  --prepared <WORK>/prepared.json `
+  --images <WORK>/images `
+  --output <JS_WORK>/reference.json `
+  --languages kor `
+  --lang-path analyzer/ocr_evaluation/tesseract_js/node_modules/@tesseract.js-data/kor/4.0.0_best_int `
+  --gzip true `
+  --psm 6 `
+  --model-label tesseract_js_4.0.0_best_int `
+  --condition-id tesseract_js_kor_psm6
+```
+
+Tesseract.jsとローカル`original`画像の画素一致、結果と正解文の対応、背景ノイズの指標、エラー分離を検査して集計する。
+OpenCVとNumPyを含む既存のPaddleOCR評価用Pythonを使う。
+
+```powershell
+<PYTHON> -m analyzer.ocr_evaluation.tesseract_js_reference `
+  --reference <JS_WORK>/reference.json `
+  --local-summary <WORK>/summary.json `
+  --local-details <WORK>/tesseract-details.json `
+  --prepared <WORK>/prepared.json `
+  --source-images <WORK>/images `
+  --local-original-images <WORK>/inputs/original `
+  --runner analyzer/ocr_evaluation/tesseract_js/run_reference.mjs `
+  --package-lock analyzer/ocr_evaluation/tesseract_js/package-lock.json `
+  --output <JS_WORK>/comparison.json
+```
+
+参照条件のCERが現在のローカル原画像条件の最良値を下回った場合だけ、言語、PSM、モデルの切り分けへ進む。
+保存済み結果では改善しなかったため、切り分けは実行していない。
