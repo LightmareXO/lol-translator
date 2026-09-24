@@ -102,27 +102,27 @@ TesseractのROI全体`--psm 6`は別の診断条件として保存した。
 
 | エンジン | 前処理 | CER | 空白除外CER | 完全一致 | 推論中央値 (ms) | p95 (ms) | 隣接フレーム変化率 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| PaddleOCR | Original | 0.2217 | 0.1049 | 1/12 | 19.9 | 76.6 | 0.2500 |
-| PaddleOCR | Contrast | 0.1970 | 0.0679 | 1/12 | 17.0 | 34.3 | 0.3125 |
-| PaddleOCR | Grayscale | 0.2020 | 0.1049 | 0/12 | 16.1 | 32.4 | 0.4375 |
-| PaddleOCR | Otsu | **0.1232** | **0.0617** | **3/12** | 15.8 | 28.6 | 0.2500 |
-| PaddleOCR | Adaptive | 0.3744 | 0.2654 | 0/12 | 16.2 | 30.5 | 0.5625 |
-| PaddleOCR | Contrast→Otsu | 0.1379 | 0.0802 | 2/12 | 17.2 | 31.0 | 0.2500 |
-| PaddleOCR | Contrast→Adaptive | 0.4187 | 0.3086 | 0/12 | 16.7 | 28.9 | 0.2500 |
-| Tesseract fast | Original | 1.5567 | 0.7099 | 0/12 | 179.4 | 275.0 | 0.7500 |
-| Tesseract fast | Contrast | 1.2611 | 0.6358 | 0/12 | 164.2 | 261.0 | 0.5000 |
-| Tesseract fast | Grayscale | **1.1232** | 0.5556 | 0/12 | 172.6 | 244.8 | 0.8125 |
-| Tesseract fast | Otsu | 1.1379 | **0.5185** | 0/12 | 137.7 | 207.5 | 0.7500 |
-| Tesseract fast | Adaptive | 1.4335 | 1.2778 | 0/12 | 137.3 | 209.6 | 0.4375 |
-| Tesseract fast | Contrast→Otsu | 1.3103 | 0.5926 | 0/12 | 137.0 | 207.6 | 0.9375 |
-| Tesseract fast | Contrast→Adaptive | 1.3103 | 1.2037 | 0/12 | 153.7 | 267.3 | 0.8750 |
-| Tesseract best | Original | 1.6700 | 0.8519 | 0/12 | 243.6 | 385.0 | 0.6875 |
-| Tesseract best | Contrast | 1.3202 | 0.7160 | 0/12 | 229.6 | 361.8 | 0.4375 |
-| Tesseract best | Grayscale | **1.1478** | 0.5617 | 0/12 | 235.5 | 373.1 | 0.6250 |
-| Tesseract best | Otsu | 1.1724 | **0.5370** | 0/12 | 199.4 | 293.7 | 0.8125 |
-| Tesseract best | Adaptive | 1.5074 | 1.3765 | 0/12 | 176.1 | 294.4 | 0.4375 |
-| Tesseract best | Contrast→Otsu | 1.1724 | 0.5494 | 0/12 | 200.0 | 310.4 | 0.8125 |
-| Tesseract best | Contrast→Adaptive | 1.4236 | 1.3025 | 0/12 | 230.9 | 404.3 | 0.8750 |
+| PaddleOCR | Original | 0.2217 | 0.1049 | 1/12 | 19.6 | 86.2 | 0.2500 |
+| PaddleOCR | Contrast | 0.1970 | 0.0679 | 1/12 | 29.4 | 60.4 | 0.3125 |
+| PaddleOCR | Grayscale | 0.2020 | 0.1049 | 0/12 | 20.4 | 37.4 | 0.4375 |
+| PaddleOCR | Otsu | **0.1232** | **0.0617** | **3/12** | 20.1 | 38.6 | 0.2500 |
+| PaddleOCR | Adaptive | 0.3744 | 0.2654 | 0/12 | 20.5 | 39.2 | 0.5625 |
+| PaddleOCR | Contrast→Otsu | 0.1379 | 0.0802 | 2/12 | 21.2 | 38.1 | 0.2500 |
+| PaddleOCR | Contrast→Adaptive | 0.4187 | 0.3086 | 0/12 | 20.3 | 38.3 | 0.2500 |
+| Tesseract fast | Original | 1.5567 | 0.7099 | 0/12 | 179.7 | 266.0 | 0.7500 |
+| Tesseract fast | Contrast | 1.2611 | 0.6358 | 0/12 | 165.9 | 251.6 | 0.5000 |
+| Tesseract fast | Grayscale | **1.1232** | 0.5556 | 0/12 | 166.3 | 252.6 | 0.8125 |
+| Tesseract fast | Otsu | 1.1379 | **0.5185** | 0/12 | 137.3 | 215.4 | 0.7500 |
+| Tesseract fast | Adaptive | 1.4335 | 1.2778 | 0/12 | 129.3 | 209.6 | 0.4375 |
+| Tesseract fast | Contrast→Otsu | 1.3103 | 0.5926 | 0/12 | 137.4 | 207.2 | 0.9375 |
+| Tesseract fast | Contrast→Adaptive | 1.3103 | 1.2037 | 0/12 | 154.1 | 268.1 | 0.8750 |
+| Tesseract best | Original | 1.6700 | 0.8519 | 0/12 | 255.6 | 375.3 | 0.6875 |
+| Tesseract best | Contrast | 1.3202 | 0.7160 | 0/12 | 235.2 | 368.4 | 0.4375 |
+| Tesseract best | Grayscale | **1.1478** | 0.5617 | 0/12 | 235.7 | 366.7 | 0.6250 |
+| Tesseract best | Otsu | 1.1724 | **0.5370** | 0/12 | 192.6 | 302.1 | 0.8125 |
+| Tesseract best | Adaptive | 1.5074 | 1.3765 | 0/12 | 176.0 | 293.3 | 0.4375 |
+| Tesseract best | Contrast→Otsu | 1.1724 | 0.5494 | 0/12 | 200.7 | 295.9 | 0.8125 |
+| Tesseract best | Contrast→Adaptive | 1.4236 | 1.3025 | 0/12 | 229.6 | 404.2 | 0.8750 |
 
 前処理の固定候補は主指標のCERで選んだ。
 PaddleOCRはOtsu、fastとbestはGrayscaleとなる。
@@ -193,9 +193,9 @@ Tesseractの推論時間は1行ごとのCLIサブプロセス起動とモデル�
 
 | 方式 | 初回または初期化 | ウォームアップ後の代表中央値 | メモリ | 展開容量 |
 | --- | ---: | ---: | ---: | ---: |
-| PaddleOCR | 初期化1063.2ms、初回80.8ms | Otsu 15.8ms | 初期化後RSS 408.9MiB | モデル13.03MiB、評価用Python環境794.73MiB |
-| Tesseract fast | 初回191.0ms | Grayscale 172.6ms | 子プロセス最大49.0MiB | 配布本体237.88MiB、kor+eng 5.52MiB |
-| Tesseract best | 初回246.6ms | Grayscale 235.5ms | 子プロセス最大70.6MiB | 配布本体237.88MiB、kor+eng 26.63MiB |
+| PaddleOCR | 初期化5407.0ms、初回93.2ms | Otsu 20.1ms | 初期化後RSS 408.9MiB | モデル13.03MiB、評価用Python環境794.73MiB |
+| Tesseract fast | 初回188.4ms | Grayscale 166.3ms | 子プロセス最大48.7MiB | 配布本体237.88MiB、kor+eng 5.52MiB |
+| Tesseract best | 初回269.9ms | Grayscale 235.7ms | 子プロセス最大70.6MiB | 配布本体237.88MiB、kor+eng 26.63MiB |
 
 Tesseract配布本体の容量には同梱DLLと既定のデータが含まれる。
 fastとbestの言語データ容量は、今回別途固定した`kor+eng`だけの合計である。

@@ -19,7 +19,13 @@ import tempfile
 import time
 from typing import Any
 
-from .core import edit_distance, normalize_text, percentile, remove_whitespace
+from .core import (
+    edit_distance,
+    normalize_text,
+    normalized_region_to_pixels,
+    percentile,
+    remove_whitespace,
+)
 
 
 PREPROCESSING_MODES = (
@@ -285,6 +291,13 @@ def prepare_dataset(
     images_directory = output_directory / "images"
     images_directory.mkdir(parents=True, exist_ok=True)
     cases: list[dict[str, Any]] = []
+    initial_crop = list(
+        normalized_region_to_pixels(
+            initial["source"]["subtitle_region"],
+            initial["source"]["width"],
+            initial["source"]["height"],
+        )
+    )
     for item in initial["images"]:
         source = initial_images / item["image_file"]
         if not source.is_file():
@@ -298,11 +311,14 @@ def prepare_dataset(
                 "group_id": item["group_id"],
                 "video_id": initial["source"]["video_id"],
                 "timestamp_seconds": item["timestamp_seconds"],
+                "crop_xywh": initial_crop,
                 "image_file": item["image_file"],
                 "image_sha256": sha256_file(destination),
                 "ground_truth": item["ground_truth"],
                 "reference_status": spec["initial_dataset"]["reference_status"],
+                "reference_verifier": "Codex AI visual transcription; no human confirmation record",
                 "split": spec["initial_dataset"]["split"],
+                "prior_development_use": True,
                 "line_bands": [[0, height]],
                 "line_count": 1,
                 "tags": item["tags"],
@@ -344,11 +360,14 @@ def prepare_dataset(
                 "group_id": item["id"],
                 "video_id": item["video_id"],
                 "timestamp_seconds": item["timestamp_seconds"],
+                "crop_xywh": item["crop_xywh"],
                 "image_file": destination.name,
                 "image_sha256": sha256_file(destination),
                 "ground_truth": item["ground_truth"],
                 "reference_status": source_info["reference_status"],
+                "reference_verifier": "Codex AI visual transcription; no human confirmation record",
                 "split": source_info["split"],
+                "prior_development_use": True,
                 "line_bands": item["line_bands"],
                 "line_count": len(item["line_bands"]),
                 "tags": item["tags"],
