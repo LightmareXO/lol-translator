@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AnalysisWorkspace } from "./AnalysisWorkspace";
 import {
   type AnalysisProject,
-  activeSubtitle,
+  activeSubtitles,
   effectiveJapanese,
 } from "./analysisProject";
 import { SubtitleRegionOverlay } from "./SubtitleRegionOverlay";
@@ -46,9 +46,9 @@ export function VideoPlayer({
     "loading",
   );
   const name = path.split(/[\\/]/).pop() || path;
-  const subtitle = project
-    ? activeSubtitle(project.subtitles, currentTime)
-    : null;
+  const subtitles = project
+    ? activeSubtitles(project.subtitles, currentTime)
+    : [];
 
   const updateProcessing = useCallback(
     (busy: boolean) => {
@@ -188,9 +188,13 @@ export function VideoPlayer({
             onExit={() => setEditing(false)}
           />
         )}
-        {subtitle && effectiveJapanese(subtitle) && (
+        {subtitles.some((subtitle) => effectiveJapanese(subtitle)) && (
           <div className="translated-caption" aria-live="off">
-            {effectiveJapanese(subtitle)}
+            {subtitles.map((subtitle) => (
+              <span className="translated-caption-line" key={subtitle.id}>
+                {effectiveJapanese(subtitle)}
+              </span>
+            ))}
           </div>
         )}
       </div>

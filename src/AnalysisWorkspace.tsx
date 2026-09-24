@@ -93,6 +93,9 @@ export function AnalysisWorkspace({
   const [splitPercent, setSplitPercent] = useState(
     savedSplit == null ? 50 : Math.round(savedSplit * 100),
   );
+  const [minimumDisplaySeconds, setMinimumDisplaySeconds] = useState(
+    (project?.analysis.minimum_display_duration_ms ?? 1200) / 1000,
+  );
   const [activeJob, setActiveJob] = useState<ActiveJob | null>(null);
   const [progress, setProgress] = useState<Progress | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -206,9 +209,20 @@ export function AnalysisWorkspace({
       startSeconds >= 0 &&
       endSeconds > startSeconds &&
       endSeconds <= duration + 0.05);
+  const minimumDurationValid =
+    Number.isFinite(minimumDisplaySeconds) &&
+    minimumDisplaySeconds >= 0 &&
+    minimumDisplaySeconds <= 60;
 
   async function startAnalysis() {
-    if (!region || !rangeValid || activeJob || launching.current) return;
+    if (
+      !region ||
+      !rangeValid ||
+      !minimumDurationValid ||
+      activeJob ||
+      launching.current
+    )
+      return;
     launching.current = true;
     setError(null);
     setNotice(null);
@@ -216,7 +230,7 @@ export function AnalysisWorkspace({
     try {
       const started = await invoke<{ job_id: string }>("start_analysis", {
         request: {
-          schema_version: 1,
+          schema_version: 2,
           video_path: path,
           subtitle_region: region,
           analysis_range: {
@@ -227,6 +241,9 @@ export function AnalysisWorkspace({
           settings: {
             sample_interval_ms: 200,
             line_split_ratio: twoLines ? splitPercent / 100 : null,
+            minimum_display_duration_ms: Math.round(
+              minimumDisplaySeconds * 1000,
+            ),
           },
         },
       });
@@ -368,6 +385,26 @@ export function AnalysisWorkspace({
         <p className="selection-help">
           解析時間に3分の上限はありません。初回確認は短い区間がおすすめです。抽出間隔は200msです。
         </p>
+        <label>
+          最小表示時間（秒）
+          <input
+            type="number"
+            min="0"
+            max="60"
+            step="0.1"
+            value={minimumDisplaySeconds}
+            disabled={Boolean(activeJob)}
+            onChange={(event) =>
+              setMinimumDisplaySeconds(event.currentTarget.valueAsNumber)
+            }
+          />
+        </label>
+        <p className="selection-help">
+          初期値は1.2秒です。0にすると長さによる除外を無効にしますが、全字幕の検出は保証しません。
+        </p>
+        {!minimumDurationValid && (
+          <p className="error">最小表示時間は0〜60秒で指定してください。</p>
+        )}
         <label className="check-row">
           <input
             type="checkbox"
@@ -393,7 +430,7 @@ export function AnalysisWorkspace({
               />
             </label>
             <p className="selection-help">
-              水色の線より上と下を別々にOCRし、上段→下段の順で1つの字幕として翻訳します。
+              水色の線より上と下を別の行IDとして追跡し、変化した行だけOCR・翻訳します。
             </p>
           </>
         )}
@@ -406,7 +443,11 @@ export function AnalysisWorkspace({
           <button
             type="button"
             disabled={
-              !region || !rangeValid || duration <= 0 || Boolean(activeJob)
+              !region ||
+              !rangeValid ||
+              !minimumDurationValid ||
+              duration <= 0 ||
+              Boolean(activeJob)
             }
             onClick={startAnalysis}
           >
@@ -485,7 +526,9 @@ export function AnalysisWorkspace({
                   }}
                 >
                   <span>{formatTime(item.start_seconds)}</span>
-                  <span>{effectiveJapanese(item) || "（翻訳なし）"}</span>
+                  <span>
+                    {item.line_id}：{effectiveJapanese(item) || "（翻訳なし）"}
+                  </span>
                 </button>
               ))}
             </nav>
@@ -503,6 +546,8 @@ export function AnalysisWorkspace({
                     {formatTime(selected.start_seconds)}〜
                     {formatTime(selected.end_seconds)}
                   </dd>
+                  <dt>行</dt>
+                  <dd>{selected.line_id}</dd>
                   <dt>OCR生出力（不変）</dt>
                   <dd className="raw-output">{selected.ocr.raw_text}</dd>
                 </dl>

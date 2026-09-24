@@ -1,7 +1,10 @@
 import { convertFileSrc, invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
 import { useState } from "react";
-import type { AnalysisProject } from "./analysisProject";
+import {
+  type AnalysisProject,
+  migrateAnalysisProject,
+} from "./analysisProject";
 import { VideoPlayer } from "./VideoPlayer";
 import "./App.css";
 
@@ -64,9 +67,13 @@ function App() {
         filters: [{ name: "LoL Translator JSON", extensions: ["json"] }],
       });
       if (path === null) return;
-      const project = await invoke<AnalysisProject>("load_analysis_project", {
-        path,
-      });
+      const loaded = await invoke<Parameters<typeof migrateAnalysisProject>[0]>(
+        "load_analysis_project",
+        {
+          path,
+        },
+      );
+      const project = migrateAnalysisProject(loaded);
       setVideo((previous) => ({
         path: project.source_video.path,
         url: convertFileSrc(project.source_video.path),
