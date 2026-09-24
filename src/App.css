@@ -177,9 +177,6 @@ button.secondary:hover {
 .playback-subtitle-empty {
   margin: 0;
 }
-.playback-subtitle-error {
-  color: #ffbebe;
-}
 .subtitle-badge {
   display: inline-flex;
   align-items: center;

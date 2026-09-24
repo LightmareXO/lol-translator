@@ -133,7 +133,7 @@ describe("playback subtitle panel", () => {
 
   it.each([
     ["pending", null, "日本語訳を準備中です。"],
-    ["error", "Ollama unavailable", "翻訳に失敗しました：Ollama unavailable"],
+    ["error", "Ollama unavailable", "日本語訳がありません。"],
   ] as const)("shows the %s translation state", (status, error, message) => {
     const item = subtitle({
       translation: {
@@ -151,9 +151,10 @@ describe("playback subtitle panel", () => {
       />,
     );
     expect(screen.getByText(message)).toBeInTheDocument();
+    expect(screen.queryByText(/Ollama unavailable/)).not.toBeInTheDocument();
   });
 
-  it("distinguishes unanalyzed, out-of-range, empty, and OCR error states", () => {
+  it("distinguishes unanalyzed, out-of-range, and empty states without exposing OCR errors", () => {
     const rendered = render(
       <PlaybackSubtitlePanel project={null} currentTime={2} />,
     );
@@ -198,9 +199,12 @@ describe("playback subtitle panel", () => {
         currentTime={2.1}
       />,
     );
-    expect(screen.getByText(/この時刻のOCRに失敗しました/)).toHaveTextContent(
-      "画像を認識できませんでした",
-    );
+    expect(
+      screen.getByText("この時刻に字幕はありません。"),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText(/画像を認識できませんでした/),
+    ).not.toBeInTheDocument();
   });
 
   it("renders simultaneous subtitle records in line order", () => {

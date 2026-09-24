@@ -12,37 +12,6 @@ interface PlaybackSubtitlePanelProps {
   currentTime: number;
 }
 
-interface ProcessingError {
-  phase?: unknown;
-  timestamp_seconds?: unknown;
-  message?: unknown;
-}
-
-function ocrErrorAtTime(
-  project: AnalysisProject,
-  currentTime: number,
-): string | null {
-  const sampleSeconds = Math.max(
-    project.analysis.sample_interval_ms / 1000,
-    0.001,
-  );
-  const error = project.processing.errors.find((candidate) => {
-    const { phase, timestamp_seconds: timestamp } =
-      candidate as ProcessingError;
-    return (
-      phase === "ocr" &&
-      typeof timestamp === "number" &&
-      timestamp <= currentTime &&
-      currentTime < timestamp + sampleSeconds
-    );
-  }) as ProcessingError | undefined;
-  return typeof error?.message === "string" && error.message.trim()
-    ? error.message
-    : error
-      ? "OCR処理に失敗しました。"
-      : null;
-}
-
 function JapaneseSubtitle({ subtitle }: { subtitle: SubtitleRecord }) {
   const userJapanese = subtitle.translation.user_ja?.trim();
   if (userJapanese) {
@@ -70,12 +39,7 @@ function JapaneseSubtitle({ subtitle }: { subtitle: SubtitleRecord }) {
     return <p className="playback-subtitle-message">日本語訳を準備中です。</p>;
   }
   if (subtitle.translation.status === "error") {
-    return (
-      <p className="playback-subtitle-message playback-subtitle-error">
-        翻訳に失敗しました
-        {subtitle.translation.error ? `：${subtitle.translation.error}` : "。"}
-      </p>
-    );
+    return <p className="playback-subtitle-message">日本語訳がありません。</p>;
   }
 
   const japanese = effectiveJapanese(subtitle).trim();
@@ -135,21 +99,16 @@ export function PlaybackSubtitlePanel({
     );
   } else {
     const subtitles = activeSubtitles(project.subtitles, currentTime);
-    const ocrError =
-      subtitles.length === 0 ? ocrErrorAtTime(project, currentTime) : null;
-    content = ocrError ? (
-      <p className="playback-subtitle-empty playback-subtitle-error">
-        この時刻のOCRに失敗しました：{ocrError}
-      </p>
-    ) : subtitles.length > 0 ? (
-      <div className="playback-subtitle-list">
-        {subtitles.map((subtitle) => (
-          <SubtitleItem key={subtitle.id} subtitle={subtitle} />
-        ))}
-      </div>
-    ) : (
-      <p className="playback-subtitle-empty">この時刻に字幕はありません。</p>
-    );
+    content =
+      subtitles.length > 0 ? (
+        <div className="playback-subtitle-list">
+          {subtitles.map((subtitle) => (
+            <SubtitleItem key={subtitle.id} subtitle={subtitle} />
+          ))}
+        </div>
+      ) : (
+        <p className="playback-subtitle-empty">この時刻に字幕はありません。</p>
+      );
   }
 
   return (
