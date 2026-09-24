@@ -1,10 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnalysisWorkspace } from "./AnalysisWorkspace";
-import {
-  type AnalysisProject,
-  activeSubtitles,
-  effectiveJapanese,
-} from "./analysisProject";
+import type { AnalysisProject } from "./analysisProject";
+import { PlaybackSubtitlePanel } from "./PlaybackSubtitlePanel";
 import { SubtitleRegionOverlay } from "./SubtitleRegionOverlay";
 import {
   getVideoContentRect,
@@ -46,9 +43,6 @@ export function VideoPlayer({
     "loading",
   );
   const name = path.split(/[\\/]/).pop() || path;
-  const subtitles = project
-    ? activeSubtitles(project.subtitles, currentTime)
-    : [];
 
   const updateProcessing = useCallback(
     (busy: boolean) => {
@@ -188,16 +182,8 @@ export function VideoPlayer({
             onExit={() => setEditing(false)}
           />
         )}
-        {subtitles.some((subtitle) => effectiveJapanese(subtitle)) && (
-          <div className="translated-caption" aria-live="off">
-            {subtitles.map((subtitle) => (
-              <span className="translated-caption-line" key={subtitle.id}>
-                {effectiveJapanese(subtitle)}
-              </span>
-            ))}
-          </div>
-        )}
       </div>
+      <PlaybackSubtitlePanel project={project} currentTime={currentTime} />
       {region && <p className="selection-help">字幕範囲を選択済み</p>}
       <AnalysisWorkspace
         path={path}

@@ -69,6 +69,7 @@ describe("subtitle timing", () => {
       "upper",
       "lower",
     ]);
+    expect(activeSubtitles([lower, upper], 3)).toEqual([]);
   });
 });
 
