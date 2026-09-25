@@ -3,7 +3,10 @@
 Issue #8で、LoL韓国語字幕に対するPaddleOCRとEasyOCRをWindows x64のCPU環境で比較するためのツールです。
 アプリ本体のPython環境にはOCR依存を追加せず、エンジンごとに隔離した仮想環境を使います。
 
-実測結果と採用判断は [REPORT.md](REPORT.md)、画像単位の結果は [results/details.csv](results/details.csv) にあります。
+単一フレームの実測結果と採用判断は [REPORT.md](REPORT.md)、画像単位の結果は [results/details.csv](results/details.csv) にあります。
+複数フレームの限定検証は [MULTIFRAME_REPORT.md](MULTIFRAME_REPORT.md) に分けています。
+Tesseract fast/bestとの7前処理比較は [TESSERACT_REPORT.md](TESSERACT_REPORT.md)、再実行手順は [TESSERACT_README.md](TESSERACT_README.md) に分けています。
+Tesseract.js 5.1.1のWeb相当参照条件は [TESSERACT_JS_REPORT.md](TESSERACT_JS_REPORT.md) に記録しています。
 
 ## 固定した構成
 
@@ -96,7 +99,38 @@ python analyzer/ocr_evaluation/aggregate.py `
 結果JSONのmanifestハッシュ、画像順、正解文、時刻、タグが一致しない場合は集計を拒否します。
 空文字と推論エラーは精度計算から除外せず、空の予測としてCERへ含めます。
 
-## 5. テスト
+## 5. 複数フレームの限定実験
+
+追加実験は`multiframe_development.json`で固定した開発用2動画・9行だけを使います。
+最終評価用として予約した動画は、この仕様とコマンドでは受け付けません。
+各字幕の安定表示区間から、同じ時間幅の3・7・15枚と、7枚固定の0.1秒・0.5秒幅を別条件として抽出します。
+
+```powershell
+analyzer/ocr_evaluation/.venv-paddle/Scripts/python.exe `
+  analyzer/ocr_evaluation/multiframe.py extract `
+  --specification analyzer/ocr_evaluation/multiframe_development.json `
+  --video "QK95uTvf7ks=<QK開発動画の絶対パス>" `
+  --video "Ns8VQexyJes=<Talon開発動画の絶対パス>" `
+  --output "<Git管理外の新規出力ディレクトリ>"
+
+analyzer/ocr_evaluation/.venv-paddle/Scripts/python.exe `
+  analyzer/ocr_evaluation/multiframe.py recognise `
+  --input "<上と同じ出力ディレクトリ>" `
+  --model-dir analyzer/ocr_evaluation/models/paddle
+```
+
+`results.json`は各フレームのOCR、最高信頼度候補、文字列medoid、合意状態、処理時間を保存します。
+最高信頼度候補とmedoidの総処理時間には、候補に使った全フレームのOCR時間を含めます。
+合成方式の総処理時間には、画像合成と合成画像1枚のOCR時間を含めます。
+画像合成は時間中央値と、白・黄色および輪郭の時間的一貫性を使う固定マスクの2候補だけです。
+固定コントラスト補正後の各フレームは`preprocessed/`、合成画像は`composites/`へ保存します。
+元画像、前処理後、背景抑制後を並べ、静止UIの残留、細線欠損、切り替わり混入を目視確認できます。
+元画像・合成画像・絶対パスはGitへ追加しません。
+
+正解韓国語はAI目視転記の暫定値です。
+この実験のCERを人による確認済みの最終精度として扱いません。
+
+## 6. テスト
 
 ```powershell
 python -m unittest discover -s analyzer -v

@@ -1,0 +1,856 @@
+{
+  "schema_version": 1,
+  "split": "development_reused",
+  "reference_status": "ai_visual_transcription_provisional",
+  "independent_evaluation": false,
+  "case_ids": [
+    "g02_f02",
+    "g03_f02",
+    "g04_f02",
+    "g08_f02",
+    "t01_speech",
+    "t07_speech",
+    "t10_speech",
+    "t15_two_line"
+  ],
+  "selection_rule": "3エンジンの代表画像に対する空白除外CERの単純平均が最小の候補を固定する。同率ならblock_size、Cの順に小さい候補を選ぶ。",
+  "candidates": [
+    {
+      "block_size": 21,
+      "c": 7,
+      "polarity": "dark_text_on_light_background",
+      "mean_engine_whitespace_free_cer": 0.9523809523809524,
+      "engine_scores": {
+        "paddle": {
+          "image_count": 8,
+          "reference_characters": 158,
+          "edit_distance": 53,
+          "cer": 0.33544303797468356,
+          "whitespace_free_reference_characters": 126,
+          "whitespace_free_edit_distance": 28,
+          "whitespace_free_cer": 0.2222222222222222,
+          "exact_matches": 0,
+          "whitespace_free_exact_matches": 1,
+          "failure_count": 0,
+          "empty_output_count": 0,
+          "inference_ms_median": 21.127549989614636,
+          "inference_ms_p95": 114.44458499754543,
+          "total_ms_median": 21.127549989614636,
+          "total_ms_p95": 114.44458499754543
+        },
+        "tesseract_fast": {
+          "image_count": 8,
+          "reference_characters": 158,
+          "edit_distance": 189,
+          "cer": 1.1962025316455696,
+          "whitespace_free_reference_characters": 126,
+          "whitespace_free_edit_distance": 156,
+          "whitespace_free_cer": 1.2380952380952381,
+          "exact_matches": 0,
+          "whitespace_free_exact_matches": 0,
+          "failure_count": 0,
+          "empty_output_count": 2,
+          "inference_ms_median": 165.89730000123382,
+          "inference_ms_p95": 251.54023500654142,
+          "total_ms_median": 165.89730000123382,
+          "total_ms_p95": 251.54023500654142
+        },
+        "tesseract_best": {
+          "image_count": 8,
+          "reference_characters": 158,
+          "edit_distance": 226,
+          "cer": 1.4303797468354431,
+          "whitespace_free_reference_characters": 126,
+          "whitespace_free_edit_distance": 176,
+          "whitespace_free_cer": 1.3968253968253967,
+          "exact_matches": 0,
+          "whitespace_free_exact_matches": 0,
+          "failure_count": 0,
+          "empty_output_count": 2,
+          "inference_ms_median": 229.75939999741968,
+          "inference_ms_p95": 354.17904501227883,
+          "total_ms_median": 229.75939999741968,
+          "total_ms_p95": 354.17904501227883
+        }
+      },
+      "records": [
+        {
+          "engine_key": "paddle",
+          "case_id": "g02_f02",
+          "ground_truth": "1렙 e를 예상 못하는데",
+          "raw_output": "를예상못하는데",
+          "inference_ms": 132.81569999526255,
+          "total_ms": 132.81569999526255,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "g03_f02",
+          "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+          "raw_output": "선요우무도 기츠긴한데 상대조합 따라 딴판해야할기갈으면들크 같니다이",
+          "inference_ms": 17.530800017993897,
+          "total_ms": 17.530800017993897,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "g04_f02",
+          "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+          "raw_output": "빙결마공점이로밍영향력이지림",
+          "inference_ms": 19.212599989259616,
+          "total_ms": 19.212599989259616,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "g08_f02",
+          "ground_truth": "방마저스탯으로 다재다능도 완성시켜줌",
+          "raw_output": "방마지스으로다재다능도완성시즘",
+          "inference_ms": 18.97189998999238,
+          "total_ms": 18.97189998999238,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "t01_speech",
+          "ground_truth": "오랜만까진 아니고 최근에도 했던 거 같은데 이거",
+          "raw_output": "오랜만까진아니고최근에도했던거같은데이거",
+          "inference_ms": 58.79420001292601,
+          "total_ms": 58.79420001292601,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "t07_speech",
+          "ground_truth": "일단 6렙..을 빨리 찍읍시다",
+          "raw_output": "일단6럽을발리찍읍시다",
+          "inference_ms": 23.042499989969656,
+          "total_ms": 23.042499989969656,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "t10_speech",
+          "ground_truth": "아 오케 ㅇㅈ",
+          "raw_output": "아오a",
+          "inference_ms": 15.948699990985915,
+          "total_ms": 15.948699990985915,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "t15_two_line",
+          "ground_truth": "카이사 전적 검색 중\n탈론 하는 친구네",
+          "raw_output": "이사전적검색_w\n탈론하는친구네",
+          "inference_ms": 80.32680000178516,
+          "total_ms": 80.32680000178516,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "g02_f02",
+          "ground_truth": "1렙 e를 예상 못하는데",
+          "raw_output": "",
+          "inference_ms": 117.6131000102032,
+          "total_ms": 117.6131000102032,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "g03_f02",
+          "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+          "raw_output": "- and] Stas Cet Sees S38 aie a",
+          "inference_ms": 165.19379999954253,
+          "total_ms": 165.19379999954253,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "g04_f02",
+          "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+          "raw_output": "",
+          "inference_ms": 103.44599999370985,
+          "total_ms": 103.44599999370985,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "g08_f02",
+          "ground_truth": "방마저스탯으로 다재다능도 완성시켜줌",
+          "raw_output": " REITRAROR CRESS BARES % 23 VES",
+          "inference_ms": 179.30449999403208,
+          "total_ms": 179.30449999403208,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "t01_speech",
+          "ground_truth": "오랜만까진 아니고 최근에도 했던 거 같은데 이거",
+          "raw_output": "| eee] POL bul cd Fa es Se Ty EES Oh) = |",
+          "inference_ms": 166.6008000029251,
+          "total_ms": 166.6008000029251,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "t07_speech",
+          "ground_truth": "일단 6렙..을 빨리 찍읍시다",
+          "raw_output": "7             SA SSRN La",
+          "inference_ms": 152.38179999869317,
+          "total_ms": 152.38179999869317,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "t10_speech",
+          "ground_truth": "아 오케 ㅇㅈ",
+          "raw_output": "^ (OP SET] ©ZS (LEN |",
+          "inference_ms": 168.88610000023618,
+          "total_ms": 168.88610000023618,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "t15_two_line",
+          "ground_truth": "카이사 전적 검색 중\n탈론 하는 친구네",
+          "raw_output": "0 !「()![ 선적 검색 중 Wee AAT AQT\n",
+          "inference_ms": 290.4364000132773,
+          "total_ms": 290.4364000132773,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "g02_f02",
+          "ground_truth": "1렙 e를 예상 못하는데",
+          "raw_output": "",
+          "inference_ms": 118.9005000051111,
+          "total_ms": 118.9005000051111,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "g03_f02",
+          "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+          "raw_output": ", RULE) STD OF SEEGER E58 pilfldes,",
+          "inference_ms": 231.5189999935683,
+          "total_ms": 231.5189999935683,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "g04_f02",
+          "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+          "raw_output": "",
+          "inference_ms": 133.38070001918823,
+          "total_ms": 133.38070001918823,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "g08_f02",
+          "ground_truth": "방마저스탯으로 다재다능도 완성시켜줌",
+          "raw_output": "Co RARER NEE ANRE Yaa Nel ein",
+          "inference_ms": 227.99980000127107,
+          "total_ms": 227.99980000127107,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "t01_speech",
+          "ground_truth": "오랜만까진 아니고 최근에도 했던 거 같은데 이거",
+          "raw_output": "= EHO HIZO aE I 20 EHR 2H [0TH ES",
+          "inference_ms": 243.2115999981761,
+          "total_ms": 243.2115999981761,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "t07_speech",
+          "ground_truth": "일단 6렙..을 빨리 찍읍시다",
+          "raw_output": "3             HEL GELSEEEENIDy © (LAT",
+          "inference_ms": 215.13729999423958,
+          "total_ms": 215.13729999423958,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "t10_speech",
+          "ground_truth": "아 오케 ㅇㅈ",
+          "raw_output": "200000880908엘()|/오케【으조!       이 1 의논",
+          "inference_ms": 245.63210000633262,
+          "total_ms": 245.63210000633262,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "t15_two_line",
+          "ground_truth": "카이사 전적 검색 중\n탈론 하는 친구네",
+          "raw_output": "2 1 | 0] AL TE] HAH == ERC NI NN | IE | |\n",
+          "inference_ms": 412.6274000154808,
+          "total_ms": 412.6274000154808,
+          "error": null
+        }
+      ]
+    },
+    {
+      "block_size": 31,
+      "c": 7,
+      "polarity": "dark_text_on_light_background",
+      "mean_engine_whitespace_free_cer": 0.8677248677248676,
+      "engine_scores": {
+        "paddle": {
+          "image_count": 8,
+          "reference_characters": 158,
+          "edit_distance": 56,
+          "cer": 0.35443037974683544,
+          "whitespace_free_reference_characters": 126,
+          "whitespace_free_edit_distance": 28,
+          "whitespace_free_cer": 0.2222222222222222,
+          "exact_matches": 0,
+          "whitespace_free_exact_matches": 1,
+          "failure_count": 0,
+          "empty_output_count": 0,
+          "inference_ms_median": 17.50309999624733,
+          "inference_ms_p95": 32.427884974458706,
+          "total_ms_median": 17.50309999624733,
+          "total_ms_p95": 32.427884974458706
+        },
+        "tesseract_fast": {
+          "image_count": 8,
+          "reference_characters": 158,
+          "edit_distance": 180,
+          "cer": 1.139240506329114,
+          "whitespace_free_reference_characters": 126,
+          "whitespace_free_edit_distance": 147,
+          "whitespace_free_cer": 1.1666666666666667,
+          "exact_matches": 0,
+          "whitespace_free_exact_matches": 0,
+          "failure_count": 0,
+          "empty_output_count": 3,
+          "inference_ms_median": 159.01240000675898,
+          "inference_ms_p95": 250.7716550084296,
+          "total_ms_median": 159.01240000675898,
+          "total_ms_p95": 250.7716550084296
+        },
+        "tesseract_best": {
+          "image_count": 8,
+          "reference_characters": 158,
+          "edit_distance": 189,
+          "cer": 1.1962025316455696,
+          "whitespace_free_reference_characters": 126,
+          "whitespace_free_edit_distance": 153,
+          "whitespace_free_cer": 1.2142857142857142,
+          "exact_matches": 0,
+          "whitespace_free_exact_matches": 0,
+          "failure_count": 0,
+          "empty_output_count": 3,
+          "inference_ms_median": 235.9355499938829,
+          "inference_ms_p95": 359.0947550241253,
+          "total_ms_median": 235.9355499938829,
+          "total_ms_p95": 359.0947550241253
+        }
+      },
+      "records": [
+        {
+          "engine_key": "paddle",
+          "case_id": "g02_f02",
+          "ground_truth": "1렙 e를 예상 못하는데",
+          "raw_output": "예하는데",
+          "inference_ms": 17.631800001254305,
+          "total_ms": 17.631800001254305,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "g03_f02",
+          "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+          "raw_output": "선요우무도 기긴한데 상대조합 따라 딴판해야 할기같으면들클 같니다 ",
+          "inference_ms": 15.98189998185262,
+          "total_ms": 15.98189998185262,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "g04_f02",
+          "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+          "raw_output": "빙결마공적이로밍영향력이지림",
+          "inference_ms": 15.311699971789494,
+          "total_ms": 15.311699971789494,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "g08_f02",
+          "ground_truth": "방마저스탯으로 다재다능도 완성시켜줌",
+          "raw_output": "방마지스했으로다재다능도완성시즘",
+          "inference_ms": 18.92159998533316,
+          "total_ms": 18.92159998533316,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "t01_speech",
+          "ground_truth": "오랜만까진 아니고 최근에도 했던 거 같은데 이거",
+          "raw_output": "오랜만까진아니고최근에도했던거같은데이거",
+          "inference_ms": 17.504599993117154,
+          "total_ms": 17.504599993117154,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "t07_speech",
+          "ground_truth": "일단 6렙..을 빨리 찍읍시다",
+          "raw_output": "일단6럽.을빨리찍읍시다",
+          "inference_ms": 17.21019999240525,
+          "total_ms": 17.21019999240525,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "t10_speech",
+          "ground_truth": "아 오케 ㅇㅈ",
+          "raw_output": "아오a",
+          "inference_ms": 17.501599999377504,
+          "total_ms": 17.501599999377504,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "t15_two_line",
+          "ground_truth": "카이사 전적 검색 중\n탈론 하는 친구네",
+          "raw_output": "이사전적검색w\n탈론하는친구네나그",
+          "inference_ms": 39.70049996860325,
+          "total_ms": 39.70049996860325,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "g02_f02",
+          "ground_truth": "1렙 e를 예상 못하는데",
+          "raw_output": "시이 은이 8 SEIBE CATER 4g (인 \\ ESS",
+          "inference_ms": 181.2437000044156,
+          "total_ms": 181.2437000044156,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "g03_f02",
+          "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+          "raw_output": "",
+          "inference_ms": 119.48200000915676,
+          "total_ms": 119.48200000915676,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "g04_f02",
+          "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+          "raw_output": "",
+          "inference_ms": 119.97610001708381,
+          "total_ms": 119.97610001708381,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "g08_f02",
+          "ground_truth": "방마저스탯으로 다재다능도 완성시켜줌",
+          "raw_output": "",
+          "inference_ms": 118.82999999215826,
+          "total_ms": 118.82999999215826,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "t01_speech",
+          "ground_truth": "오랜만까진 아니고 최근에도 했던 거 같은데 이거",
+          "raw_output": "수오랜만까진'아티외최큰에되)했던버]같은데(010 10",
+          "inference_ms": 166.6999000008218,
+          "total_ms": 166.6999000008218,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "t07_speech",
+          "ground_truth": "일단 6렙..을 빨리 찍읍시다",
+          "raw_output": "7      Se A ESSN | TL",
+          "inference_ms": 151.32490001269616,
+          "total_ms": 151.32490001269616,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "t10_speech",
+          "ground_truth": "아 오케 ㅇㅈ",
+          "raw_output": "NT Oe (IGEN ©ZS  이 PES 토이",
+          "inference_ms": 181.2979000096675,
+          "total_ms": 181.2979000096675,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "t15_two_line",
+          "ground_truth": "카이사 전적 검색 중\n탈론 하는 친구네",
+          "raw_output": "\n0 EEA Se Ry] oA Ley 애",
+          "inference_ms": 288.18060000776313,
+          "total_ms": 288.18060000776313,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "g02_f02",
+          "ground_truth": "1렙 e를 예상 못하는데",
+          "raw_output": "~ BS SEEMED qt a \\ (ass",
+          "inference_ms": 287.320000003092,
+          "total_ms": 287.320000003092,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "g03_f02",
+          "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+          "raw_output": "",
+          "inference_ms": 120.21710001863539,
+          "total_ms": 120.21710001863539,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "g04_f02",
+          "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+          "raw_output": "",
+          "inference_ms": 119.98590000439435,
+          "total_ms": 119.98590000439435,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "g08_f02",
+          "ground_truth": "방마저스탯으로 다재다능도 완성시켜줌",
+          "raw_output": "",
+          "inference_ms": 134.30830001016147,
+          "total_ms": 134.30830001016147,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "t01_speech",
+          "ground_truth": "오랜만까진 아니고 최근에도 했던 거 같은데 이거",
+          "raw_output": "0>=오랜만까진!야[다최근에도했던밥|같은데[이88",
+          "inference_ms": 244.60580002050847,
+          "total_ms": 244.60580002050847,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "t07_speech",
+          "ground_truth": "일단 6렙..을 빨리 찍읍시다",
+          "raw_output": "5      HE CELSEEENId © LLC",
+          "inference_ms": 228.16259998944588,
+          "total_ms": 228.16259998944588,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "t10_speech",
+          "ground_truth": "아 오케 ㅇㅈ",
+          "raw_output": "hey yy (GE @23  Lmao",
+          "inference_ms": 243.7084999983199,
+          "total_ms": 243.7084999983199,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "t15_two_line",
+          "ground_truth": "카이사 전적 검색 중\n탈론 하는 친구네",
+          "raw_output": "\nEEA =! == 1 (| =A 151] | Ee AORN | Vo I 재배",
+          "inference_ms": 397.742700035451,
+          "total_ms": 397.742700035451,
+          "error": null
+        }
+      ]
+    },
+    {
+      "block_size": 31,
+      "c": 11,
+      "polarity": "dark_text_on_light_background",
+      "mean_engine_whitespace_free_cer": 0.8201058201058201,
+      "engine_scores": {
+        "paddle": {
+          "image_count": 8,
+          "reference_characters": 158,
+          "edit_distance": 52,
+          "cer": 0.3291139240506329,
+          "whitespace_free_reference_characters": 126,
+          "whitespace_free_edit_distance": 28,
+          "whitespace_free_cer": 0.2222222222222222,
+          "exact_matches": 0,
+          "whitespace_free_exact_matches": 1,
+          "failure_count": 0,
+          "empty_output_count": 0,
+          "inference_ms_median": 16.727399997762404,
+          "inference_ms_p95": 39.5744999827002,
+          "total_ms_median": 16.727399997762404,
+          "total_ms_p95": 39.5744999827002
+        },
+        "tesseract_fast": {
+          "image_count": 8,
+          "reference_characters": 158,
+          "edit_distance": 174,
+          "cer": 1.1012658227848102,
+          "whitespace_free_reference_characters": 126,
+          "whitespace_free_edit_distance": 139,
+          "whitespace_free_cer": 1.1031746031746033,
+          "exact_matches": 0,
+          "whitespace_free_exact_matches": 0,
+          "failure_count": 0,
+          "empty_output_count": 5,
+          "inference_ms_median": 127.44255000143312,
+          "inference_ms_p95": 225.413094999385,
+          "total_ms_median": 127.44255000143312,
+          "total_ms_p95": 225.413094999385
+        },
+        "tesseract_best": {
+          "image_count": 8,
+          "reference_characters": 158,
+          "edit_distance": 182,
+          "cer": 1.1518987341772151,
+          "whitespace_free_reference_characters": 126,
+          "whitespace_free_edit_distance": 143,
+          "whitespace_free_cer": 1.1349206349206349,
+          "exact_matches": 0,
+          "whitespace_free_exact_matches": 0,
+          "failure_count": 0,
+          "empty_output_count": 5,
+          "inference_ms_median": 134.6649500046624,
+          "inference_ms_p95": 312.3355199990328,
+          "total_ms_median": 134.6649500046624,
+          "total_ms_p95": 312.3355199990328
+        }
+      },
+      "records": [
+        {
+          "engine_key": "paddle",
+          "case_id": "g02_f02",
+          "ground_truth": "1렙 e를 예상 못하는데",
+          "raw_output": "e를예상못하는데",
+          "inference_ms": 15.195100015262142,
+          "total_ms": 15.195100015262142,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "g03_f02",
+          "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+          "raw_output": "선요우무도 기긴한데 상대조합 따라 딴판해야할기같으면들글 감니다이",
+          "inference_ms": 14.740700018592179,
+          "total_ms": 14.740700018592179,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "g04_f02",
+          "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+          "raw_output": "빙결마공점이로밍영향력이지림",
+          "inference_ms": 16.053600003942847,
+          "total_ms": 16.053600003942847,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "g08_f02",
+          "ground_truth": "방마저스탯으로 다재다능도 완성시켜줌",
+          "raw_output": "방마지스했으로다재다능도 완성시키즘으",
+          "inference_ms": 13.412500004051253,
+          "total_ms": 13.412500004051253,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "t01_speech",
+          "ground_truth": "오랜만까진 아니고 최근에도 했던 거 같은데 이거",
+          "raw_output": "오랜만까진아니고최근에도했던거같은데이거",
+          "inference_ms": 17.40119999158196,
+          "total_ms": 17.40119999158196,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "t07_speech",
+          "ground_truth": "일단 6렙..을 빨리 찍읍시다",
+          "raw_output": "일단6럽을빨리찍읍시다",
+          "inference_ms": 20.429399999557063,
+          "total_ms": 20.429399999557063,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "t10_speech",
+          "ground_truth": "아 오케 ㅇㅈ",
+          "raw_output": "아오a@",
+          "inference_ms": 19.750599982216954,
+          "total_ms": 19.750599982216954,
+          "error": null
+        },
+        {
+          "engine_key": "paddle",
+          "case_id": "t15_two_line",
+          "ground_truth": "카이사 전적 검색 중\n탈론 하는 친구네",
+          "raw_output": "이사전검색_w\n탈론하는친구네L",
+          "inference_ms": 49.883399973623455,
+          "total_ms": 49.883399973623455,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "g02_f02",
+          "ground_truth": "1렙 e를 예상 못하는데",
+          "raw_output": "",
+          "inference_ms": 112.51209999318235,
+          "total_ms": 112.51209999318235,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "g03_f02",
+          "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+          "raw_output": "",
+          "inference_ms": 118.08750001364388,
+          "total_ms": 118.08750001364388,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "g04_f02",
+          "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+          "raw_output": "",
+          "inference_ms": 119.1658999887295,
+          "total_ms": 119.1658999887295,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "g08_f02",
+          "ground_truth": "방마저스탯으로 다재다능도 완성시켜줌",
+          "raw_output": "",
+          "inference_ms": 135.71920001413673,
+          "total_ms": 135.71920001413673,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "t01_speech",
+          "ground_truth": "오랜만까진 아니고 최근에도 했던 거 같은데 이거",
+          "raw_output": "| GSS Pa] TL ind ca Fat es Se Pe SSeOr = |",
+          "inference_ms": 165.5843000044115,
+          "total_ms": 165.5843000044115,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "t07_speech",
+          "ground_truth": "일단 6렙..을 빨리 찍읍시다",
+          "raw_output": "",
+          "inference_ms": 103.86899998411536,
+          "total_ms": 103.86899998411536,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "t10_speech",
+          "ground_truth": "아 오케 ㅇㅈ",
+          "raw_output": "oy OPGE] ©zs     — LEN",
+          "inference_ms": 151.59029999631457,
+          "total_ms": 151.59029999631457,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_fast",
+          "case_id": "t15_two_line",
+          "ground_truth": "카이사 전적 검색 중\n탈론 하는 친구네",
+          "raw_output": "00카이사전적검색중내 ~ | 띠 (|\n",
+          "inference_ms": 257.62859999667853,
+          "total_ms": 257.62859999667853,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "g02_f02",
+          "ground_truth": "1렙 e를 예상 못하는데",
+          "raw_output": "",
+          "inference_ms": 120.22740000975318,
+          "total_ms": 120.22740000975318,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "g03_f02",
+          "ground_truth": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+          "raw_output": "",
+          "inference_ms": 133.99219998973422,
+          "total_ms": 133.99219998973422,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "g04_f02",
+          "ground_truth": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+          "raw_output": "",
+          "inference_ms": 134.79340000776574,
+          "total_ms": 134.79340000776574,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "g08_f02",
+          "ground_truth": "방마저스탯으로 다재다능도 완성시켜줌",
+          "raw_output": "",
+          "inference_ms": 134.53650000155903,
+          "total_ms": 134.53650000155903,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "t01_speech",
+          "ground_truth": "오랜만까진 아니고 최근에도 했던 거 같은데 이거",
+          "raw_output": "= HO HIER OHE | sR I 2 NIE SE RHE 2 HO [HE",
+          "inference_ms": 244.55949998809956,
+          "total_ms": 244.55949998809956,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "t07_speech",
+          "ground_truth": "일단 6렙..을 빨리 찍읍시다",
+          "raw_output": "",
+          "inference_ms": 120.89689998538233,
+          "total_ms": 120.89689998538233,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "t10_speech",
+          "ground_truth": "아 오케 ㅇㅈ",
+          "raw_output": "EEN OHH [OR     LEAT",
+          "inference_ms": 214.53179998206906,
+          "total_ms": 214.53179998206906,
+          "error": null
+        },
+        {
+          "engine_key": "tesseract_best",
+          "case_id": "t15_two_line",
+          "ground_truth": "카이사 전적 검색 중\n탈론 하는 친구네",
+          "raw_output": "0 기[이사전적검색 = ARE \\ SG | EE 시 |\n",
+          "inference_ms": 348.83030000492,
+          "total_ms": 348.83030000492,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "selected": {
+    "block_size": 31,
+    "c": 11,
+    "polarity": "dark_text_on_light_background",
+    "mean_engine_whitespace_free_cer": 0.8201058201058201
+  }
+}
