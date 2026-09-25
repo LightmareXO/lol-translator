@@ -6,6 +6,7 @@ import numpy as np
 from subtitle_detection import (
     FrameFeature,
     LineIntervalTracker,
+    detail_mask_similarity,
     extract_text_feature,
     line_slices,
     mask_similarity,
@@ -23,6 +24,12 @@ def feature(timestamp, pattern, *, line_id="line-1", line_index=0, present=True)
     elif pattern == "digit-change":
         mask[5:15, 10:20] = True
         mask[2:18, 42:46] = True
+    elif pattern == "subtle-a":
+        for x in (10, 14, 18, 30, 34, 38):
+            mask[5:15, x] = True
+    elif pattern == "subtle-b":
+        for x in (11, 15, 19, 29, 33, 37):
+            mask[5:15, x] = True
     return FrameFeature(
         timestamp_seconds=timestamp,
         source_pts_seconds=timestamp,
@@ -52,6 +59,14 @@ class ImageFeatureTests(unittest.TestCase):
         shifted = np.roll(left, 1, axis=1)
         self.assertGreater(mask_similarity(left, shifted), 0.9)
         self.assertLess(mask_similarity(left, feature(0, "b").mask), 0.68)
+
+    def test_detail_similarity_preserves_internal_shape_change(self):
+        left = feature(0, "subtle-a").mask
+        right = feature(0, "subtle-b").mask
+        shifted = np.roll(left, 1, axis=1)
+        self.assertEqual(mask_similarity(left, right), 1.0)
+        self.assertLess(detail_mask_similarity(left, right), 0.65)
+        self.assertEqual(detail_mask_similarity(left, shifted), 1.0)
 
     def test_feature_uses_white_and_yellow_text_but_not_plain_background(self):
         image = np.full((80, 320, 3), (40, 70, 40), dtype=np.uint8)
@@ -263,6 +278,45 @@ class LineTrackerTests(unittest.TestCase):
         tracker.finish(0.8)
         self.assertEqual(len(tracker.intervals), 2)
         self.assertEqual(tracker.intervals[1].start_seconds, 0.4)
+
+    def test_subtle_shape_change_requires_three_stable_samples(self):
+        tracker = LineIntervalTracker(
+            line_id="line-1",
+            line_index=0,
+            minimum_duration_seconds=0,
+        )
+        for timestamp, pattern in [
+            (0.0, "subtle-a"),
+            (0.2, "subtle-a"),
+            (0.4, "subtle-b"),
+            (0.6, "subtle-b"),
+            (0.8, "subtle-b"),
+        ]:
+            tracker.add(feature(timestamp, pattern))
+        tracker.finish(1.0)
+        self.assertEqual(
+            [(item.start_seconds, item.end_seconds) for item in tracker.intervals],
+            [(0.0, 0.4), (0.4, 1.0)],
+        )
+        self.assertEqual(tracker.intervals[0].end_reason, "detail_change_confirmed")
+
+    def test_short_lived_detail_change_does_not_split(self):
+        tracker = LineIntervalTracker(
+            line_id="line-1",
+            line_index=0,
+            minimum_duration_seconds=0,
+        )
+        for timestamp, pattern in [
+            (0.0, "subtle-a"),
+            (0.2, "subtle-a"),
+            (0.4, "subtle-b"),
+            (0.6, "subtle-b"),
+            (0.8, "subtle-a"),
+            (1.0, "subtle-a"),
+        ]:
+            tracker.add(feature(timestamp, pattern))
+        tracker.finish(1.2)
+        self.assertEqual(len(tracker.intervals), 1)
 
 
 if __name__ == "__main__":

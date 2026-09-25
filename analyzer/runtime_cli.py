@@ -44,6 +44,8 @@ from analyzer.runtime_core import (
 )
 from analyzer.subtitle_detection import (
     DEFAULT_CONFIRMATION_SAMPLES,
+    DEFAULT_DETAIL_CONFIRMATION_SAMPLES,
+    DEFAULT_DETAIL_SIMILARITY_THRESHOLD,
     DEFAULT_SIMILARITY_THRESHOLD,
     DETECTION_VERSION,
     DetectedInterval,
@@ -589,6 +591,8 @@ def analyze(
             minimum_duration_seconds=minimum_duration_seconds,
             similarity_threshold=DEFAULT_SIMILARITY_THRESHOLD,
             confirmation_samples=DEFAULT_CONFIRMATION_SAMPLES,
+            detail_similarity_threshold=DEFAULT_DETAIL_SIMILARITY_THRESHOLD,
+            detail_confirmation_samples=DEFAULT_DETAIL_CONFIRMATION_SAMPLES,
         )
         for line_id, line_index, _, _ in line_regions
     }
@@ -804,6 +808,8 @@ def analyze(
                 "sample_interval_ms": request["settings"]["sample_interval_ms"],
                 "similarity_threshold": DEFAULT_SIMILARITY_THRESHOLD,
                 "confirmation_samples": DEFAULT_CONFIRMATION_SAMPLES,
+                "detail_similarity_threshold": DEFAULT_DETAIL_SIMILARITY_THRESHOLD,
+                "detail_confirmation_samples": DEFAULT_DETAIL_CONFIRMATION_SAMPLES,
                 "minimum_display_duration_ms": request["settings"]["minimum_display_duration_ms"],
                 "colors": ["white", "yellow"],
                 "line_regions": [

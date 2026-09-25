@@ -15,7 +15,13 @@ from typing import Any, Iterable
 
 DEFAULT_SIMILARITY_THRESHOLD = 0.68
 DEFAULT_CONFIRMATION_SAMPLES = 2
-DETECTION_VERSION = "image-line-state-machine-v1"
+# The detail score has a different scale from the dilated overlap above.
+# 0.65 is the lowest observed-data threshold that removed the known merge
+# with three-sample confirmation; it remains provisional until independent
+# evaluation.
+DEFAULT_DETAIL_SIMILARITY_THRESHOLD = 0.65
+DEFAULT_DETAIL_CONFIRMATION_SAMPLES = 3
+DETECTION_VERSION = "image-line-state-machine-v2"
 
 
 @dataclass(frozen=True)
@@ -240,6 +246,51 @@ def mask_similarity(left: Any, right: Any) -> float:
     return min(1.0, matched / (left_count + right_count))
 
 
+def detail_mask_similarity(left: Any, right: Any) -> float:
+    """Return exact Dice overlap with at most one pixel of global shift.
+
+    Unlike ``mask_similarity``, this score does not dilate each mask.  It
+    therefore preserves glyph-shape differences while still tolerating a
+    small whole-caption position jitter.
+    """
+    import numpy as np
+
+    left_mask = np.asarray(left, dtype=bool)
+    right_mask = np.asarray(right, dtype=bool)
+    if left_mask.shape != right_mask.shape:
+        raise ValueError("feature masks must have equal shapes")
+    left_count = int(np.count_nonzero(left_mask))
+    right_count = int(np.count_nonzero(right_mask))
+    if left_count == 0 and right_count == 0:
+        return 1.0
+    if left_count == 0 or right_count == 0:
+        return 0.0
+
+    height, width = left_mask.shape
+    best = 0.0
+    for y_shift in (-1, 0, 1):
+        left_y_start = max(0, y_shift)
+        left_y_end = min(height, height + y_shift)
+        right_y_start = max(0, -y_shift)
+        right_y_end = min(height, height - y_shift)
+        for x_shift in (-1, 0, 1):
+            left_x_start = max(0, x_shift)
+            left_x_end = min(width, width + x_shift)
+            right_x_start = max(0, -x_shift)
+            right_x_end = min(width, width - x_shift)
+            matched = int(
+                np.count_nonzero(
+                    left_mask[left_y_start:left_y_end, left_x_start:left_x_end]
+                    & right_mask[
+                        right_y_start:right_y_end,
+                        right_x_start:right_x_end,
+                    ]
+                )
+            )
+            best = max(best, 2 * matched / (left_count + right_count))
+    return best
+
+
 def _representative_score(feature: FrameFeature, stability: float) -> float:
     sharpness_score = 1 - math.exp(-max(0.0, feature.sharpness) / 500)
     return 0.4 * sharpness_score + 0.35 * feature.presence_score + 0.25 * stability
@@ -256,6 +307,8 @@ class LineIntervalTracker:
         minimum_duration_seconds: float,
         similarity_threshold: float = DEFAULT_SIMILARITY_THRESHOLD,
         confirmation_samples: int = DEFAULT_CONFIRMATION_SAMPLES,
+        detail_similarity_threshold: float = DEFAULT_DETAIL_SIMILARITY_THRESHOLD,
+        detail_confirmation_samples: int = DEFAULT_DETAIL_CONFIRMATION_SAMPLES,
     ) -> None:
         if minimum_duration_seconds < 0:
             raise ValueError("minimum duration must not be negative")
@@ -263,11 +316,17 @@ class LineIntervalTracker:
             raise ValueError("similarity threshold must be from 0 to 1")
         if confirmation_samples < 1:
             raise ValueError("confirmation samples must be positive")
+        if not 0 <= detail_similarity_threshold <= 1:
+            raise ValueError("detail similarity threshold must be from 0 to 1")
+        if detail_confirmation_samples < 1:
+            raise ValueError("detail confirmation samples must be positive")
         self.line_id = line_id
         self.line_index = line_index
         self.minimum_duration_seconds = minimum_duration_seconds
         self.similarity_threshold = similarity_threshold
         self.confirmation_samples = confirmation_samples
+        self.detail_similarity_threshold = detail_similarity_threshold
+        self.detail_confirmation_samples = detail_confirmation_samples
         self.current: _Candidate | None = None
         self.pending: _Pending | None = None
         self.intervals: list[DetectedInterval] = []
@@ -276,6 +335,12 @@ class LineIntervalTracker:
     def _similar(self, left: FrameFeature, right: FrameFeature) -> tuple[bool, float]:
         score = mask_similarity(left.mask, right.mask)
         return score >= self.similarity_threshold, score
+
+    def _detail_similar(
+        self, left: FrameFeature, right: FrameFeature
+    ) -> tuple[bool, float]:
+        score = detail_mask_similarity(left.mask, right.mask)
+        return score >= self.detail_similarity_threshold, score
 
     def _begin_candidate(
         self, observations: list[FrameFeature], *, start_reason: str
@@ -369,55 +434,78 @@ class LineIntervalTracker:
             return
 
         similar_to_reference = False
+        detail_similar_to_reference = False
         similarity = 0.0
         if observation.present:
             similar_to_reference, similarity = self._similar(self.current.reference, observation)
-        if observation.present and similar_to_reference:
+            detail_similar_to_reference, _ = self._detail_similar(
+                self.current.reference, observation
+            )
+        if observation.present and similar_to_reference and detail_similar_to_reference:
             self.current.add(observation, similarity)
             self.pending = None
             return
 
-        kind = "change" if observation.present else "disappearance"
-        if self.confirmation_samples == 1:
+        if not observation.present:
+            kind = "disappearance"
+            required_samples = self.confirmation_samples
+        elif not similar_to_reference:
+            kind = "change"
+            required_samples = self.confirmation_samples
+        else:
+            kind = "detail_change"
+            required_samples = self.detail_confirmation_samples
+        if required_samples == 1:
             boundary = observation.timestamp_seconds
             self._close_current(
                 boundary,
                 reason=(
-                    "image_change_confirmed"
-                    if kind == "change"
-                    else "disappearance_confirmed"
+                    "disappearance_confirmed"
+                    if kind == "disappearance"
+                    else f"{kind}_confirmed"
                 ),
             )
             self.pending = None
-            if kind == "change":
+            if kind != "disappearance":
                 self.current = self._begin_candidate(
                     [observation],
-                    start_reason="image_change_confirmed",
+                    start_reason=f"{kind}_confirmed",
                 )
             return
         if self.pending is None or self.pending.kind != kind:
             self.pending = _Pending(kind, observation.timestamp_seconds, [observation])
             return
-        if kind == "change":
-            similar_to_pending, _ = self._similar(self.pending.observations[0], observation)
+        if kind in {"change", "detail_change"}:
+            if kind == "detail_change":
+                similar_to_pending, _ = self._detail_similar(
+                    self.pending.observations[0], observation
+                )
+            else:
+                similar_to_pending, _ = self._similar(
+                    self.pending.observations[0], observation
+                )
             if not similar_to_pending:
                 self.pending = _Pending(kind, observation.timestamp_seconds, [observation])
                 return
         self.pending.observations.append(observation)
-        if len(self.pending.observations) < self.confirmation_samples:
+        if len(self.pending.observations) < required_samples:
             return
 
         boundary = self.pending.first_timestamp_seconds
         pending = self.pending
         self._close_current(
             boundary,
-            reason="image_change_confirmed" if kind == "change" else "disappearance_confirmed",
+            reason=(
+                "disappearance_confirmed"
+                if kind == "disappearance"
+                else f"{kind}_confirmed"
+            ),
         )
         self.pending = None
-        if kind == "change":
+        if kind != "disappearance":
             self.current = self._begin_candidate(
                 pending.observations,
-                start_reason="image_change_confirmed",
+                start_reason=f"{kind}_confirmed",
             )
 
     def finish(self, range_end_seconds: float) -> None:
@@ -455,6 +543,8 @@ def detect_intervals(
     minimum_duration_seconds: float,
     similarity_threshold: float = DEFAULT_SIMILARITY_THRESHOLD,
     confirmation_samples: int = DEFAULT_CONFIRMATION_SAMPLES,
+    detail_similarity_threshold: float = DEFAULT_DETAIL_SIMILARITY_THRESHOLD,
+    detail_confirmation_samples: int = DEFAULT_DETAIL_CONFIRMATION_SAMPLES,
 ) -> tuple[list[DetectedInterval], list[DroppedInterval]]:
     trackers = {
         line_id: LineIntervalTracker(
@@ -463,6 +553,8 @@ def detect_intervals(
             minimum_duration_seconds=minimum_duration_seconds,
             similarity_threshold=similarity_threshold,
             confirmation_samples=confirmation_samples,
+            detail_similarity_threshold=detail_similarity_threshold,
+            detail_confirmation_samples=detail_confirmation_samples,
         )
         for line_id, line_index in line_ids
     }
