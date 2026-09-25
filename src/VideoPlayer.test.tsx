@@ -214,8 +214,14 @@ describe("subtitle selection and playback integration", () => {
     expect(panel).toHaveTextContent("こんにちは");
     expect(panel.previousElementSibling).toHaveClass("video-stage");
     expect(video.parentElement).not.toHaveTextContent("こんにちは");
+    expect(screen.getByText("0:01.5")).toBeInTheDocument();
+    expect(screen.getByRole("slider", { name: "解析開始" })).toHaveValue("1");
+    expect(screen.getByRole("slider", { name: "解析終了" })).toHaveValue("4");
     video.currentTime = 2;
     fireEvent.seeked(video);
+    expect(screen.getByText("0:02.0")).toBeInTheDocument();
+    expect(screen.getByRole("slider", { name: "解析開始" })).toHaveValue("1");
+    expect(screen.getByRole("slider", { name: "解析終了" })).toHaveValue("4");
     expect(panel).toHaveTextContent("この時刻に字幕はありません。");
     expect(within(panel).queryByText("こんにちは")).not.toBeInTheDocument();
   });

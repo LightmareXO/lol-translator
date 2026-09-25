@@ -86,13 +86,20 @@ function project(): AnalysisProject {
   };
 }
 
-function Harness({ initial = null }: { initial?: AnalysisProject | null }) {
+function Harness({
+  initial = null,
+  duration = 1_000,
+}: {
+  initial?: AnalysisProject | null;
+  duration?: number;
+}) {
   const [value, setValue] = useState(initial);
   return (
     <AnalysisWorkspace
       path="C:/video.mp4"
       region={region}
-      duration={1_000}
+      duration={duration}
+      currentTime={75}
       project={value}
       setProject={setValue}
       onSeek={() => {}}
@@ -110,11 +117,11 @@ it("accepts a range longer than three minutes without adding an upper limit", as
     return new Promise(() => {});
   });
   render(<Harness />);
-  fireEvent.change(screen.getByLabelText("開始（秒）"), {
-    target: { value: "60" },
-  });
-  fireEvent.change(screen.getByLabelText("終了（秒）"), {
+  fireEvent.change(screen.getByRole("slider", { name: "解析終了" }), {
     target: { value: "960" },
+  });
+  fireEvent.change(screen.getByRole("slider", { name: "解析開始" }), {
+    target: { value: "60" },
   });
   fireEvent.click(screen.getByRole("button", { name: "解析を開始" }));
   await waitFor(() =>
@@ -136,6 +143,97 @@ it("accepts a range longer than three minutes without adding an upper limit", as
       },
     }),
   );
+});
+
+it("keeps the range thumbs and numeric time fields in sync", () => {
+  render(<Harness />);
+  fireEvent.change(screen.getByRole("slider", { name: "解析開始" }), {
+    target: { value: "12.3" },
+  });
+  fireEvent.change(screen.getByRole("slider", { name: "解析終了" }), {
+    target: { value: "900.4" },
+  });
+  expect(screen.getByLabelText("開始（秒）")).toHaveValue(12.3);
+  expect(screen.getByLabelText("終了（秒）")).toHaveValue(900.4);
+
+  fireEvent.change(screen.getByLabelText("開始（秒）"), {
+    target: { value: "20.5" },
+  });
+  fireEvent.change(screen.getByLabelText("終了（秒）"), {
+    target: { value: "800.6" },
+  });
+  expect(screen.getByRole("slider", { name: "解析開始" })).toHaveValue("20.5");
+  expect(screen.getByRole("slider", { name: "解析終了" })).toHaveValue("800.6");
+});
+
+it("blocks analysis for empty, crossed, and out-of-bounds numeric ranges", () => {
+  render(<Harness />);
+  const start = screen.getByLabelText("開始（秒）");
+  const end = screen.getByLabelText("終了（秒）");
+  const analyze = screen.getByRole("button", { name: "解析を開始" });
+
+  fireEvent.change(start, { target: { value: "" } });
+  expect(analyze).toBeDisabled();
+  expect(screen.getByText(/終了時刻は開始より後/)).toBeInTheDocument();
+
+  fireEvent.change(start, { target: { value: "100" } });
+  fireEvent.change(end, { target: { value: "100" } });
+  expect(analyze).toBeDisabled();
+
+  fireEvent.change(end, { target: { value: "1000.1" } });
+  expect(analyze).toBeDisabled();
+
+  fireEvent.change(start, { target: { value: "0" } });
+  fireEvent.change(end, { target: { value: "1000" } });
+  expect(analyze).toBeEnabled();
+});
+
+it("shows the full interval without losing the previous partial range", () => {
+  render(<Harness />);
+  fireEvent.change(screen.getByLabelText("開始（秒）"), {
+    target: { value: "20" },
+  });
+  fireEvent.change(screen.getByLabelText("終了（秒）"), {
+    target: { value: "80" },
+  });
+
+  fireEvent.click(screen.getByLabelText("動画全体を解析"));
+  expect(screen.getByRole("slider", { name: "解析開始" })).toHaveValue("0");
+  expect(screen.getByRole("slider", { name: "解析終了" })).toHaveValue("1000");
+  expect(screen.getByLabelText("開始（秒）")).toBeDisabled();
+  expect(screen.getByLabelText("終了（秒）")).toBeDisabled();
+
+  fireEvent.click(screen.getByLabelText("動画全体を解析"));
+  expect(screen.getByLabelText("開始（秒）")).toHaveValue(20);
+  expect(screen.getByLabelText("終了（秒）")).toHaveValue(80);
+  expect(screen.getByRole("slider", { name: "解析開始" })).toHaveValue("20");
+  expect(screen.getByRole("slider", { name: "解析終了" })).toHaveValue("80");
+});
+
+it("disables range operations before video metadata is available", () => {
+  render(<Harness duration={0} />);
+  expect(screen.getByRole("slider", { name: "解析開始" })).toBeDisabled();
+  expect(screen.getByRole("slider", { name: "解析終了" })).toBeDisabled();
+  expect(screen.getByLabelText("開始（秒）")).toBeDisabled();
+  expect(screen.getByRole("button", { name: "解析を開始" })).toBeDisabled();
+});
+
+it("keeps hundredth-second precision for a very short video", () => {
+  render(<Harness duration={0.05} />);
+  expect(screen.getByLabelText("開始（秒）")).toHaveAttribute("step", "0.01");
+  expect(screen.getByLabelText("終了（秒）")).toHaveValue(0.05);
+  expect(screen.getByRole("button", { name: "解析を開始" })).toBeEnabled();
+});
+
+it("disables settings while the analyzer start request is pending", async () => {
+  vi.mocked(invoke).mockImplementation(() => new Promise(() => {}));
+  render(<Harness />);
+  fireEvent.click(screen.getByRole("button", { name: "解析を開始" }));
+  await waitFor(() =>
+    expect(screen.getByRole("slider", { name: "解析開始" })).toBeDisabled(),
+  );
+  expect(screen.getByLabelText("開始（秒）")).toBeDisabled();
+  expect(screen.getByLabelText("動画全体を解析")).toBeDisabled();
 });
 
 it("allows zero seconds as the minimum display duration", async () => {
@@ -214,10 +312,24 @@ it("restores the saved analysis range and manual line split", () => {
   render(<Harness initial={value} />);
   expect(screen.getByLabelText("開始（秒）")).toHaveValue(60);
   expect(screen.getByLabelText("終了（秒）")).toHaveValue(180);
+  expect(screen.getByRole("slider", { name: "解析開始" })).toHaveValue("60");
+  expect(screen.getByRole("slider", { name: "解析終了" })).toHaveValue("180");
   expect(
     screen.getByLabelText("1つのROIを上下2領域としてOCRする"),
   ).toBeChecked();
   expect(screen.getByLabelText("上段の高さ：42%")).toHaveValue("42");
+});
+
+it("restores the saved partial range after leaving saved whole-video mode", () => {
+  const value = project();
+  value.analysis.mode = "whole";
+  render(<Harness initial={value} />);
+  expect(screen.getByRole("slider", { name: "解析開始" })).toHaveValue("0");
+  expect(screen.getByRole("slider", { name: "解析終了" })).toHaveValue("1000");
+
+  fireEvent.click(screen.getByLabelText("動画全体を解析"));
+  expect(screen.getByRole("slider", { name: "解析開始" })).toHaveValue("60");
+  expect(screen.getByRole("slider", { name: "解析終了" })).toHaveValue("180");
 });
 
 it("shows every raw OCR variant retained by timeline stabilization", () => {

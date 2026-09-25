@@ -189,6 +189,7 @@ export function VideoPlayer({
         path={path}
         region={region}
         duration={duration}
+        currentTime={currentTime}
         project={project}
         setProject={setProject}
         onSeek={seek}
