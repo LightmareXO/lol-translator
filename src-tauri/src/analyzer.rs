@@ -284,13 +284,25 @@ fn validate_project(project: &Value) -> Result<(), String> {
     if !matches!(
         project.get("schema_version").and_then(Value::as_u64),
         Some(version) if version == u64::from(SCHEMA_VERSION) || version == u64::from(LEGACY_SCHEMA_VERSION)
-    )
-        || project.get("kind").and_then(Value::as_str) != Some(PROJECT_KIND)
+    ) || project.get("kind").and_then(Value::as_str) != Some(PROJECT_KIND)
         || !project.get("subtitles").is_some_and(Value::is_array)
     {
         return Err("このアプリで保存した対応済みJSONを選択してください。".into());
     }
     Ok(())
+}
+
+fn project_video_path(project: &Value) -> Result<PathBuf, String> {
+    let path = project
+        .pointer("/source_video/path")
+        .and_then(Value::as_str)
+        .map(PathBuf::from)
+        .ok_or_else(|| "保存結果に元動画のパスが記録されていません。".to_string())?;
+    validate_video(&path).map_err(|_| {
+        "保存結果に記録された元動画が見つかりません。動画を元の場所へ戻してから、もう一度お試しください。"
+            .to_string()
+    })?;
+    Ok(path)
 }
 
 fn save_legacy_request(
@@ -612,17 +624,22 @@ pub async fn save_analysis_project(path: PathBuf, project: Value) -> Result<(), 
 }
 
 #[tauri::command]
-pub async fn load_analysis_project(path: PathBuf) -> Result<Value, String> {
+pub async fn load_analysis_project(app: tauri::AppHandle, path: PathBuf) -> Result<Value, String> {
     if !path.is_absolute() || !path.is_file() {
         return Err("読み込むJSONファイルが見つかりません。".into());
     }
-    tauri::async_runtime::spawn_blocking(move || {
+    let (project, video_path) = tauri::async_runtime::spawn_blocking(move || {
         let project = read_json(&path)?;
         validate_project(&project)?;
-        Ok(project)
+        let video_path = project_video_path(&project)?;
+        Ok::<_, String>((project, video_path))
     })
     .await
-    .map_err(|error| format!("読込処理が中断しました: {error}"))?
+    .map_err(|error| format!("読込処理が中断しました: {error}"))??;
+    app.asset_protocol_scope()
+        .allow_file(video_path)
+        .map_err(|error| format!("元動画の読込を許可できません: {error}"))?;
+    Ok(project)
 }
 
 #[tauri::command]
@@ -721,6 +738,29 @@ mod tests {
     }
 
     #[test]
+    fn resolves_the_saved_video_before_loading_a_project() {
+        let video_path = std::env::current_exe().unwrap();
+        let project = json!({
+            "schema_version": 2,
+            "kind": PROJECT_KIND,
+            "source_video": { "path": video_path },
+            "subtitles": []
+        });
+        validate_project(&project).unwrap();
+        assert_eq!(project_video_path(&project).unwrap(), video_path);
+
+        let missing = json!({
+            "schema_version": 2,
+            "kind": PROJECT_KIND,
+            "source_video": { "path": "Z:/missing/video.mp4" },
+            "subtitles": []
+        });
+        assert!(project_video_path(&missing)
+            .unwrap_err()
+            .contains("元動画が見つかりません"));
+    }
+
+    #[test]
     fn legacy_request_still_preserves_the_existing_contract() {
         let legacy = LegacyAnalysisRequest {
             video_path: std::env::current_exe().unwrap(),
@@ -744,7 +784,10 @@ mod tests {
             "PermissionError",
         );
         assert_eq!(failed["state"], "failed");
-        assert!(failed["error"].as_str().unwrap().contains("PermissionError"));
+        assert!(failed["error"]
+            .as_str()
+            .unwrap()
+            .contains("PermissionError"));
 
         let recovered = reconcile_progress(
             Some(running),
