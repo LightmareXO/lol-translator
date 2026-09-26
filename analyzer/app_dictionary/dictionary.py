@@ -151,11 +151,40 @@ class DictionarySelection:
 
 
 class AppDictionary:
-    def __init__(self, official_path: Path, aliases_path: Path):
-        self.official_path = official_path
-        self.aliases_path = aliases_path
-        self.official = _read_json(official_path)
-        self.aliases = _read_json(aliases_path)
+    def __init__(self, manifest_path: Path):
+        self.manifest_path = manifest_path
+        self.base = manifest_path.parent
+        self.manifest = _read_json(manifest_path)
+        if self.manifest.get("schema_version") != 2:
+            raise ValueError("unsupported app dictionary manifest schema")
+
+        self.official_path = self._manifest_file_path(self.manifest["official_file"])
+        self.official = _read_json(self.official_path)
+        self.sources_path = self._manifest_file_path(self.manifest["sources_file"])
+        self.sources = _read_json(self.sources_path)
+        self.aliases_paths = tuple(
+            self._manifest_file_path(item) for item in self.manifest["alias_files"]
+        )
+        self.term_paths = tuple(
+            self._manifest_file_path(item) for item in self.manifest["term_files"]
+        )
+        alias_documents = [_read_json(path) for path in self.aliases_paths]
+        term_documents = [_read_json(path) for path in self.term_paths]
+        self.aliases = {
+            "version": self.manifest["app_dictionary_version"],
+            "checked_at": self.manifest["checked_at"],
+            "sources": self.sources["sources"],
+            "concepts": [
+                concept
+                for document in term_documents
+                for concept in document.get("concepts", [])
+            ],
+            "aliases": [
+                alias
+                for document in (*alias_documents, *term_documents)
+                for alias in document.get("aliases", [])
+            ],
+        }
         self.entries: dict[str, dict[str, Any]] = {}
         for entry in self.official["entries"]:
             self.entries[entry["id"]] = {**entry, "origin": "official"}
@@ -164,18 +193,37 @@ class AppDictionary:
                 raise ValueError(f"duplicate dictionary ID: {concept['id']}")
             self.entries[concept["id"]] = {**concept, "origin": "curated_concept"}
         self.validate()
-        self.official_sha256 = _sha256(official_path)
-        self.aliases_sha256 = _sha256(aliases_path)
-        identity = f"{self.official_sha256}:{self.aliases_sha256}".encode()
+        self.official_sha256 = _sha256(self.official_path)
+        self.file_sha256 = {
+            item["path"]: _sha256(self.base / item["path"])
+            for item in self._manifest_items()
+        }
+        identity = ":".join(
+            f"{path}:{digest}" for path, digest in sorted(self.file_sha256.items())
+        ).encode()
         self.sha256 = hashlib.sha256(identity).hexdigest()
-        self.version = (
-            f"lol-ko-ja-app-{self.official['patch']}-{self.aliases['checked_at']}"
-        )
+        self.version = self.manifest["app_dictionary_version"]
 
     @classmethod
     def load_default(cls, analyzer_root: Path) -> "AppDictionary":
         directory = analyzer_root / "app_dictionary"
-        return cls(directory / "official-16.18.1.json", directory / "aliases.json")
+        return cls(directory / "manifest.json")
+
+    def _manifest_items(self) -> list[dict[str, Any]]:
+        return [
+            self.manifest["official_file"],
+            self.manifest["sources_file"],
+            *self.manifest["alias_files"],
+            *self.manifest["term_files"],
+        ]
+
+    def _manifest_file_path(self, item: dict[str, Any]) -> Path:
+        path = (self.base / item["path"]).resolve()
+        if path.parent != self.base.resolve() and self.base.resolve() not in path.parents:
+            raise ValueError(f"dictionary path escapes base directory: {item['path']}")
+        if _sha256(path) != item["sha256"]:
+            raise ValueError(f"dictionary hash differs from manifest: {item['path']}")
+        return path
 
     def validate(self) -> None:
         official_ids = [entry["id"] for entry in self.official["entries"]]
@@ -184,6 +232,9 @@ class AppDictionary:
         alias_ids = [alias["id"] for alias in self.aliases["aliases"]]
         if len(alias_ids) != len(set(alias_ids)):
             raise ValueError("duplicate alias ID")
+        concept_ids = [concept["id"] for concept in self.aliases["concepts"]]
+        if len(concept_ids) != len(set(concept_ids)):
+            raise ValueError("duplicate concept ID")
         sources = self.aliases["sources"]
         for alias in self.aliases["aliases"]:
             if not alias["status"].startswith(ACTIVE_STATUSES):
@@ -214,7 +265,13 @@ class AppDictionary:
             "official_version": self.official["dictionary_version"],
             "official_sha256": self.official_sha256,
             "alias_version": self.aliases["version"],
-            "alias_sha256": self.aliases_sha256,
+            "dictionary_files": [
+                {
+                    "path": item["path"],
+                    "sha256": self.file_sha256[item["path"]],
+                }
+                for item in self._manifest_items()
+            ],
             "selection_mode": "bounded-source-relevant-v2",
         }
 

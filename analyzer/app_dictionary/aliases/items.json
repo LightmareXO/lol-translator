@@ -1,0 +1,266 @@
+{
+  "schema_version": 1,
+  "version": "lol-ko-ja-aliases-2026-09-19",
+  "target_category": "item",
+  "aliases": [
+    {
+      "id": "alias:item:nashor",
+      "ko": "내셔",
+      "target_ids": ["item:3115"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["nashor_guinsoo_usage"],
+      "evidence": "내셔+구인수",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:ninja-tabi",
+      "ko": "닌탑",
+      "target_ids": ["item:3047"],
+      "type": "old_name_abbreviation",
+      "status": "community_source_checked",
+      "sources": ["ninja_tabi_history"],
+      "evidence": "닌탑(닌자타비,닌자신발)",
+      "historical": {
+        "origin_ko": "닌자의 신발",
+        "current_target_since": "10.23",
+        "video_patch_may_be_unknown": true
+      },
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:mercury-treads",
+      "ko": "헤르메스",
+      "target_ids": ["item:3111"],
+      "type": "abbreviation",
+      "status": "community_source_checked_context_required",
+      "sources": ["boots_current_usage"],
+      "evidence": "닌탑, 헤르메스신",
+      "ambiguity": {
+        "level": "conflict",
+        "other_meanings": ["item:3139"],
+        "guidance": "신발, 강인함, 마법 저항력 문맥이면 머큐리 부츠 후보. 수은, 치명타 문맥이면 헤르메스의 시미터일 수 있음."
+      },
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:guinsoo",
+      "ko": "구인수",
+      "target_ids": ["item:3124"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["nashor_guinsoo_usage"],
+      "evidence": "구인수의 격노검, 흔히 구인수",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:bramble-compact",
+      "ko": "덤불조끼",
+      "target_ids": ["item:3076"],
+      "type": "spacing_variant",
+      "status": "official_derived",
+      "sources": ["riot_ddragon_16_18_1"],
+      "evidence": "덤불 조끼에서 공백 제거",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:infinity-edge",
+      "ko": "인피",
+      "target_ids": ["item:3031"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["adc_item_abbreviations"],
+      "evidence": "정수, 인피",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:trinity-force",
+      "ko": "트포",
+      "target_ids": ["item:3078"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["adc_item_abbreviations"],
+      "evidence": "트포루난 빌드",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:zhonya",
+      "ko": "존야",
+      "target_ids": ["item:3157"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["adc_item_abbreviations"],
+      "evidence": "라바돈, 존야",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:rabadon",
+      "ko": "라바돈",
+      "target_ids": ["item:3089"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["adc_item_abbreviations"],
+      "evidence": "라바돈, 존야",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:bork",
+      "ko": "몰왕",
+      "target_ids": ["item:3153"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["adc_item_abbreviations"],
+      "evidence": "몰왕, 루난, 구인수",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:frozen-heart",
+      "ko": "얼심",
+      "target_ids": ["item:3110"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["ninja_tabi_history"],
+      "evidence": "얼심, 얼어붙은 심장",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:thornmail",
+      "ko": "가갑",
+      "target_ids": ["item:3075"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["item_effect_terms"],
+      "evidence": "가갑과 닌탑",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:lucidity-boots",
+      "ko": "쿨감신",
+      "target_ids": ["item:3158"],
+      "type": "legacy_mechanic_abbreviation",
+      "status": "community_source_checked",
+      "sources": ["boots_current_usage"],
+      "evidence": "쿨감신 등 다른 여러 신발",
+      "historical": {
+        "origin_ko": "쿨타임 감소 신발",
+        "video_patch_may_be_unknown": true
+      },
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:sorcerer-shoes",
+      "ko": "마관신",
+      "target_ids": ["item:3020"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["boots_terms"],
+      "evidence": "마관신이라 불리우며",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:runaan",
+      "ko": "루난",
+      "target_ids": ["item:3085"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["adc_item_abbreviations"],
+      "evidence": "트포, 루난",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:youmuu",
+      "ko": "요우무",
+      "target_ids": ["item:3142"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["adc_item_abbreviations"],
+      "evidence": "2코어 요우무",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:black-cleaver",
+      "ko": "블클",
+      "target_ids": ["item:3071"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["item_effect_terms"],
+      "evidence": "블클 몰락",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:guardian-angel",
+      "ko": "가엔",
+      "target_ids": ["item:3026"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["adc_item_abbreviations"],
+      "evidence": "가엔, 시미터",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:wits-end",
+      "ko": "마최",
+      "target_ids": ["item:3091"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["adc_item_abbreviations"],
+      "evidence": "몰락마최",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:item:essence-reaver",
+      "ko": "정수",
+      "target_ids": ["item:3508"],
+      "type": "abbreviation",
+      "status": "community_source_checked_context_required",
+      "sources": ["adc_item_abbreviations"],
+      "evidence": "정수, 인피",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["精髄", "整数"],
+        "guidance": "아이템 빌드와 원딜 문맥에서만 에센스 리버 후보로 사용."
+      },
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    }
+  ]
+}

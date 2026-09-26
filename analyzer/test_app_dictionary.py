@@ -2,10 +2,12 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+import shutil
 import tempfile
 import unittest
 
 from app_dictionary.dictionary import AppDictionary, collision_report
+from app_dictionary.update_manifest import update_manifest
 from app_dictionary.validate_dictionary import official_diff, validate
 
 
@@ -142,17 +144,56 @@ class AppDictionaryTests(unittest.TestCase):
         self.assertIn("ability:Renata:P", targets)
 
     def test_unconfirmed_alias_or_missing_source_is_rejected(self):
-        aliases = copy.deepcopy(self.dictionary.aliases)
-        aliases["aliases"][0]["status"] = "unconfirmed"
         with tempfile.TemporaryDirectory() as temporary:
-            alias_path = Path(temporary) / "aliases.json"
-            alias_path.write_text(json.dumps(aliases, ensure_ascii=False), encoding="utf-8")
+            copied = Path(temporary) / "app_dictionary"
+            shutil.copytree(BASE, copied)
+            alias_path = copied / "aliases" / "champions.json"
+            aliases = json.loads(alias_path.read_text(encoding="utf-8"))
+            aliases["aliases"][0]["status"] = "unconfirmed"
+            alias_path.write_text(
+                json.dumps(aliases, ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            update_manifest(copied)
             with self.assertRaisesRegex(ValueError, "unconfirmed alias"):
-                AppDictionary(self.dictionary.official_path, alias_path)
+                AppDictionary(copied / "manifest.json")
+
+    def test_hash_mismatch_is_rejected_before_loading(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            copied = Path(temporary) / "app_dictionary"
+            shutil.copytree(BASE, copied)
+            source_path = copied / "sources.json"
+            source_path.write_text(
+                source_path.read_text(encoding="utf-8") + " ",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "hash differs from manifest"):
+                AppDictionary(copied / "manifest.json")
+
+    def test_duplicate_alias_ids_across_files_are_rejected(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            copied = Path(temporary) / "app_dictionary"
+            shutil.copytree(BASE, copied)
+            champion_path = copied / "aliases" / "champions.json"
+            item_path = copied / "aliases" / "items.json"
+            champions = json.loads(champion_path.read_text(encoding="utf-8"))
+            items = json.loads(item_path.read_text(encoding="utf-8"))
+            duplicate = copy.deepcopy(champions["aliases"][0])
+            duplicate["target_ids"] = ["item:3115"]
+            items["aliases"].append(duplicate)
+            item_path.write_text(
+                json.dumps(items, ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            update_manifest(copied)
+            with self.assertRaisesRegex(ValueError, "duplicate alias ID"):
+                AppDictionary(copied / "manifest.json")
 
     def test_regeneration_keeps_alias_file_independent(self):
         configuration = self.dictionary.configuration()
-        self.assertNotEqual(configuration["official_sha256"], configuration["alias_sha256"])
+        files = {item["path"] for item in configuration["dictionary_files"]}
+        self.assertIn("aliases/champions.json", files)
+        self.assertIn("terms/gameplay.json", files)
         self.assertIn("alias_version", configuration)
         self.assertIn("official_version", configuration)
 
@@ -165,6 +206,7 @@ class AppDictionaryTests(unittest.TestCase):
         report = validate(BASE)
         self.assertEqual(report["status"], "ok")
         self.assertTrue(report["legacy_evaluation_glossary"]["unchanged"])
+        self.assertTrue(report["migration"]["unchanged"])
         self.assertEqual(report["survey"]["missing_confirmed"], [])
         self.assertEqual(report["survey"]["forbidden_active"], [])
 

@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "version": "lol-ko-ja-aliases-2026-09-19",
+  "target_category": "summoner_spell",
+  "aliases": [
+    {
+      "id": "alias:spell:flash-short",
+      "ko": "플",
+      "target_ids": ["summoner-spell:SummonerFlash"],
+      "type": "abbreviation",
+      "status": "community_source_checked_context_required",
+      "sources": ["flash_ultimate_usage"],
+      "evidence": "E -> W -> 플 콤보",
+      "ambiguity": {
+        "level": "short",
+        "other_meanings": ["플레이 등의 접두 부분"],
+        "guidance": "독립 토큰이며 스펠, 콤보, 빠지다 문맥이면 플래시 후보. 단어 내부에서는 일치시키지 않음."
+      },
+      "matching": {
+        "boundary": "strict_korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:spell:flash-transliteration",
+      "ko": "플래쉬",
+      "target_ids": ["summoner-spell:SummonerFlash"],
+      "type": "spelling_variant",
+      "status": "community_source_checked",
+      "sources": ["flash_spelling_usage"],
+      "evidence": "플래쉬 사용례",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:spell:flash-transliteration-standard",
+      "ko": "플래시",
+      "target_ids": ["summoner-spell:SummonerFlash"],
+      "type": "spelling_variant",
+      "status": "community_source_checked",
+      "sources": ["flash_standard_spelling_usage"],
+      "evidence": "점멸, 플래시",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:spell:teleport-short",
+      "ko": "텔",
+      "target_ids": ["summoner-spell:SummonerTeleport"],
+      "type": "abbreviation",
+      "status": "community_source_checked_context_required",
+      "sources": ["teleport_abbreviation"],
+      "evidence": "텔로 봇 로밍",
+      "ambiguity": {
+        "level": "short",
+        "other_meanings": ["텔레포트以外の略語"],
+        "guidance": "스펠 조합 문맥에서만 텔레포트 후보."
+      },
+      "matching": {
+        "boundary": "strict_korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:spell:teleport",
+      "ko": "텔포",
+      "target_ids": ["summoner-spell:SummonerTeleport"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["teleport_abbreviation"],
+      "evidence": "순간이동, 텔포",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:spell:heal",
+      "ko": "힐",
+      "target_ids": ["summoner-spell:SummonerHeal"],
+      "type": "english_short_name",
+      "status": "community_source_checked_context_required",
+      "sources": ["heal_barrier_abbreviations"],
+      "evidence": "힐/탈진 스펠",
+      "ambiguity": {
+        "level": "mechanic",
+        "other_meanings": ["一般的な回復"],
+        "guidance": "스펠 선택이면 힐, 회복 행위 문맥이면 일반적인 회복."
+      },
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:spell:barrier",
+      "ko": "배리어",
+      "target_ids": ["summoner-spell:SummonerBarrier"],
+      "type": "spelling_variant",
+      "status": "community_source_checked",
+      "sources": ["heal_barrier_abbreviations"],
+      "evidence": "배리어 스펠",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:spell:barrier-variant",
+      "ko": "베리어",
+      "target_ids": ["summoner-spell:SummonerBarrier"],
+      "type": "spelling_variant",
+      "status": "community_source_checked",
+      "sources": ["barrier_variant"],
+      "evidence": "방어막, 베리어",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:spell:smite",
+      "ko": "스마",
+      "target_ids": ["summoner-spell:SummonerSmite"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["smite_usage"],
+      "evidence": "강타(스마이트)",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:spell:smite-full",
+      "ko": "스마이트",
+      "target_ids": ["summoner-spell:SummonerSmite"],
+      "type": "english_name",
+      "status": "community_source_checked",
+      "sources": ["smite_usage"],
+      "evidence": "강타(스마이트)",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    }
+  ]
+}

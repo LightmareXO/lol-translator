@@ -1,8 +1,8 @@
 {
   "status": "ok",
-  "version": "lol-ko-ja-app-16.18.1-2026-09-19",
+  "version": "lol-ko-ja-app-16.18.1-2026-09-27",
   "patch": "16.18.1",
-  "dictionary_sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
+  "dictionary_sha256": "ac3a9741070af335fa8e8b39f7d9cc2665b257c7e007f5ebb1889dbc0ae34724",
   "official_counts": {
     "champion": 173,
     "champion_ability": 865,
@@ -625,6 +625,136 @@
   "legacy_evaluation_glossary": {
     "path": "..\\translation_evaluation\\glossary.json",
     "sha256": "174c7371da7bae3fb5b98e9d707ad949bb108a88e128de2b501a804b28820a1d",
+    "unchanged": true
+  },
+  "migration": {
+    "counts": {
+      "sources": 27,
+      "concepts": 22,
+      "aliases": 68
+    },
+    "canonical_sha256": {
+      "sources": "f1474a2af61a9243841833a3ecb6950449506c8e12d7356d06c924b7d90ec2dd",
+      "concepts": "8a022f73afde80622a92f9263f0dea7656fa3738c2638d72c4e997a2febc9f4f",
+      "aliases": "ceb86410d8f33eff18f49e76bb514dec1a7a76f65e9db78f1e6d11aa2d794824",
+      "alias_ids": "a3d5f27807cce0a9a34c9a75e694697a3bf90f6a7d41060e04448512fb6f6595"
+    },
+    "selection_cases": [
+      {
+        "source_ko": "볼베가 닌탑을 사고 궁을 썼어",
+        "matches": [
+          [
+            "alias:champion:volibear",
+            "exact",
+            0,
+            2
+          ],
+          [
+            "alias:item:ninja-tabi",
+            "exact",
+            4,
+            6
+          ],
+          [
+            "alias:game:ultimate",
+            "exact",
+            11,
+            12
+          ]
+        ]
+      },
+      {
+        "source_ko": "빙결마공점이 ㄹㅇ 좋고 요우무도 ㄱㅊ",
+        "matches": [
+          [
+            "alias:rune:glacial",
+            "compound_segment",
+            0,
+            2
+          ],
+          [
+            "alias:rune:hexflash",
+            "compound_segment",
+            2,
+            5
+          ],
+          [
+            "alias:internet:real",
+            "exact",
+            7,
+            9
+          ],
+          [
+            "alias:item:youmuu",
+            "exact",
+            13,
+            16
+          ],
+          [
+            "alias:internet:okay",
+            "exact",
+            18,
+            20
+          ]
+        ]
+      },
+      {
+        "source_ko": "다리 빙결 들고 플 쓴 다음 궁",
+        "matches": [
+          [
+            "alias:champion:darius",
+            "exact",
+            0,
+            2
+          ],
+          [
+            "alias:rune:glacial",
+            "exact",
+            3,
+            5
+          ],
+          [
+            "alias:spell:flash-short",
+            "exact",
+            9,
+            10
+          ],
+          [
+            "alias:game:ultimate",
+            "exact",
+            16,
+            17
+          ]
+        ]
+      },
+      {
+        "source_ko": "플레이가 좋아요",
+        "matches": []
+      },
+      {
+        "source_ko": "바로 빙결다리서폿인데",
+        "matches": [
+          [
+            "alias:rune:glacial",
+            "compound_segment",
+            3,
+            5
+          ],
+          [
+            "alias:champion:darius",
+            "compound_segment",
+            5,
+            7
+          ],
+          [
+            "alias:role:support",
+            "compound_segment",
+            7,
+            9
+          ]
+        ]
+      }
+    ],
     "unchanged": true
   }
 }

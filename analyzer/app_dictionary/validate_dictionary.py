@@ -25,6 +25,16 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def canonical_sha256(value: Any) -> str:
+    rendered = json.dumps(
+        value,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+    return hashlib.sha256(rendered.encode("utf-8")).hexdigest()
+
+
 def official_diff(previous: dict[str, Any], current: dict[str, Any]) -> dict[str, Any]:
     before = {entry["id"]: entry for entry in previous["entries"]}
     after = {entry["id"]: entry for entry in current["entries"]}
@@ -49,15 +59,34 @@ def official_diff(previous: dict[str, Any], current: dict[str, Any]) -> dict[str
 
 def validate(base: Path, compare: Path | None = None) -> dict[str, Any]:
     manifest = read_json(base / "manifest.json")
-    official_path = base / manifest["official_file"]
-    aliases_path = base / manifest["aliases_file"]
-    dictionary = AppDictionary(official_path, aliases_path)
-    if sha256(official_path) != manifest["official_sha256"]:
-        raise ValueError("official dictionary hash differs from manifest")
-    if sha256(aliases_path) != manifest["aliases_sha256"]:
-        raise ValueError("alias dictionary hash differs from manifest")
+    dictionary = AppDictionary(base / "manifest.json")
+    official_path = base / manifest["official_file"]["path"]
     if dictionary.official["counts"] != manifest["expected_official_counts"]:
         raise ValueError("official counts differ from manifest")
+    if len(dictionary.official["entries"]) != manifest["official_file"]["expected_count"]:
+        raise ValueError("official entry count differs from manifest")
+    if len(dictionary.aliases["sources"]) != manifest["sources_file"]["expected_count"]:
+        raise ValueError("source count differs from manifest")
+
+    for item in manifest["alias_files"]:
+        document = read_json(base / item["path"])
+        if len(document["aliases"]) != item["expected_count"]:
+            raise ValueError(f"alias count differs from manifest: {item['path']}")
+        for alias in document["aliases"]:
+            target_categories = {
+                dictionary.entries[target_id]["category"]
+                for target_id in alias["target_ids"]
+            }
+            if target_categories != {item["target_category"]}:
+                raise ValueError(
+                    f"alias target category differs from file: {alias['id']}"
+                )
+    for item in manifest["term_files"]:
+        document = read_json(base / item["path"])
+        if len(document.get("concepts", [])) != item["expected_concept_count"]:
+            raise ValueError(f"concept count differs from manifest: {item['path']}")
+        if len(document.get("aliases", [])) != item["expected_alias_count"]:
+            raise ValueError(f"term alias count differs from manifest: {item['path']}")
     legacy = (base / manifest["legacy_evaluation_glossary"]).resolve()
     if sha256(legacy) != manifest["legacy_evaluation_glossary_sha256"]:
         raise ValueError("legacy evaluation glossary changed")
@@ -79,6 +108,59 @@ def validate(base: Path, compare: Path | None = None) -> dict[str, Any]:
         raise ValueError(
             f"survey/active mismatch: missing={missing_confirmed}, forbidden={forbidden_active}"
         )
+
+    baseline = read_json(base / "migration-baseline.json")
+    source_ids = set(baseline["ids"]["sources"])
+    concept_ids = set(baseline["ids"]["concepts"])
+    alias_ids = set(baseline["ids"]["aliases"])
+    baseline_sources = {
+        identifier: source
+        for identifier, source in dictionary.aliases["sources"].items()
+        if identifier in source_ids
+    }
+    ordered_concepts = sorted(
+        (
+            item
+            for item in dictionary.aliases["concepts"]
+            if item["id"] in concept_ids
+        ),
+        key=lambda item: item["id"],
+    )
+    ordered_aliases = sorted(
+        (
+            item
+            for item in dictionary.aliases["aliases"]
+            if item["id"] in alias_ids
+        ),
+        key=lambda item: item["id"],
+    )
+    migration_actual = {
+        "counts": {
+            "sources": len(baseline_sources),
+            "concepts": len(ordered_concepts),
+            "aliases": len(ordered_aliases),
+        },
+        "canonical_sha256": {
+            "sources": canonical_sha256(baseline_sources),
+            "concepts": canonical_sha256(ordered_concepts),
+            "aliases": canonical_sha256(ordered_aliases),
+            "alias_ids": canonical_sha256([item["id"] for item in ordered_aliases]),
+        },
+    }
+    if migration_actual["counts"] != baseline["counts"]:
+        raise ValueError("migration record counts differ from baseline")
+    if migration_actual["canonical_sha256"] != baseline["canonical_sha256"]:
+        raise ValueError("migration content differs from baseline")
+    migration_selections = []
+    for case in baseline["selection_cases"]:
+        selection = dictionary.select(case["source_ko"])
+        actual = [
+            [match["source_id"], match["match_type"], match["start"], match["end"]]
+            for match in selection.trace["matches"]
+        ]
+        if actual != case["expected"]:
+            raise ValueError(f"migration selection differs: {case['source_ko']}")
+        migration_selections.append({"source_ko": case["source_ko"], "matches": actual})
 
     alias_categories = Counter()
     statuses = Counter()
@@ -115,6 +197,11 @@ def validate(base: Path, compare: Path | None = None) -> dict[str, Any]:
         "legacy_evaluation_glossary": {
             "path": str(Path(manifest["legacy_evaluation_glossary"])),
             "sha256": sha256(legacy),
+            "unchanged": True,
+        },
+        "migration": {
+            **migration_actual,
+            "selection_cases": migration_selections,
             "unchanged": True,
         },
     }

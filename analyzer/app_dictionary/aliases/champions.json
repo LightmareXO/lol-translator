@@ -1,0 +1,275 @@
+{
+  "schema_version": 1,
+  "version": "lol-ko-ja-aliases-2026-09-19",
+  "target_category": "champion",
+  "aliases": [
+    {
+      "id": "alias:champion:volibear",
+      "ko": "볼베",
+      "target_ids": ["champion:Volibear"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["volibear_abbreviation"],
+      "evidence": "볼베 스킬",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:darius",
+      "ko": "다리",
+      "target_ids": ["champion:Darius"],
+      "type": "abbreviation",
+      "status": "community_source_checked_context_required",
+      "sources": ["darius_abbreviation"],
+      "evidence": "다리 유저들",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["脚", "橋"],
+        "guidance": "챔피언, 탑, 스킬, 상대 문맥이면 다리우스 후보. 신체나 구조물 문맥이면 일반어로 해석.",
+        "negative_cues": ["아파", "아픈", "무릎", "발목", "건너", "교량"]
+      },
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:tristana",
+      "ko": "트타",
+      "target_ids": ["champion:Tristana"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "트리스타나를 줄여 ... 트타",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:miss-fortune",
+      "ko": "미포",
+      "target_ids": ["champion:MissFortune"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "미스포춘 = 미포",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:blitzcrank",
+      "ko": "블츠",
+      "target_ids": ["champion:Blitzcrank"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "블리츠크랭크 = 블츠",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:malphite",
+      "ko": "말파",
+      "target_ids": ["champion:Malphite"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "말파이트 = 말파",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:dr-mundo",
+      "ko": "문도",
+      "target_ids": ["champion:DrMundo"],
+      "type": "short_name",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "문도박사 = 문도",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:gangplank",
+      "ko": "갱플",
+      "target_ids": ["champion:Gangplank"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "갱플랭크 = 갱플",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:katarina",
+      "ko": "카타",
+      "target_ids": ["champion:Katarina"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "카타리나 = 카타",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:ezreal",
+      "ko": "이즈",
+      "target_ids": ["champion:Ezreal"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "이즈리얼 = 이즈",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:irelia",
+      "ko": "이렐",
+      "target_ids": ["champion:Irelia"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "이렐리아 = 이렐",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:cassiopeia",
+      "ko": "카시",
+      "target_ids": ["champion:Cassiopeia"],
+      "type": "abbreviation",
+      "status": "community_source_checked_context_required",
+      "sources": ["champion_abbreviations"],
+      "evidence": "카시오페아 = 카시",
+      "ambiguity": {
+        "level": "name_prefix",
+        "other_meanings": ["카사딘 오인 가능"],
+        "guidance": "독, 쌍독니, 미드 문맥이면 카시오페아 후보."
+      },
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:maokai",
+      "ko": "마오",
+      "target_ids": ["champion:Maokai"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "마오카이 = 마오",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:orianna",
+      "ko": "오리",
+      "target_ids": ["champion:Orianna"],
+      "type": "abbreviation",
+      "status": "community_source_checked_context_required",
+      "sources": ["champion_abbreviations"],
+      "evidence": "오리아나 = 오리",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["오리（鴨）"],
+        "guidance": "챔피언이나 미드 문맥일 때만 오리아나 후보."
+      },
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:graves",
+      "ko": "그브",
+      "target_ids": ["champion:Graves"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "그레이브즈 = 그브",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:sejuani",
+      "ko": "세주",
+      "target_ids": ["champion:Sejuani"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "세주아니 = 세주",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:nautilus",
+      "ko": "노틸",
+      "target_ids": ["champion:Nautilus"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "노틸러스 = 노틸",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:aatrox",
+      "ko": "아트",
+      "target_ids": ["champion:Aatrox"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "아트록스 = 아트",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:kalista",
+      "ko": "칼리",
+      "target_ids": ["champion:Kalista"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "칼리스타 = 칼리",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:kindred",
+      "ko": "킨드",
+      "target_ids": ["champion:Kindred"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "킨드레드 = 킨드",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:champion:aphelios",
+      "ko": "아펠",
+      "target_ids": ["champion:Aphelios"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["champion_abbreviations"],
+      "evidence": "아펠리오스 = 아펠",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    }
+  ]
+}

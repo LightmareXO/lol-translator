@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "version": "lol-ko-ja-aliases-2026-09-19",
+  "checked_at": "2026-09-19",
+  "note": "Community usage is reference information for the translation model, never a mechanical replacement. Context-required aliases remain searchable and carry alternative meanings.",
+  "concepts": [
+    {
+      "id": "role:top",
+      "category": "role",
+      "ko": "탑",
+      "ja": "トップ",
+      "meaning": "上側のソロレーンまたはその担当"
+    },
+    {
+      "id": "role:mid",
+      "category": "role",
+      "ko": "미드",
+      "ja": "ミッド",
+      "meaning": "中央レーンまたはその担当"
+    },
+    {
+      "id": "role:jungle",
+      "category": "role",
+      "ko": "정글",
+      "ja": "ジャングル",
+      "meaning": "中立モンスター区域またはその担当"
+    },
+    {
+      "id": "role:bottom-carry",
+      "category": "role",
+      "ko": "원거리 딜러",
+      "ja": "ADC",
+      "meaning": "主にボットを担当する遠隔キャリー"
+    },
+    {
+      "id": "role:support",
+      "category": "role",
+      "ko": "서포터",
+      "ja": "サポート",
+      "meaning": "味方を支援するロール"
+    },
+    {
+      "id": "game:ultimate",
+      "category": "game_term",
+      "ko": "궁극기",
+      "ja": "アルティメット／R",
+      "meaning": "チャンピオンのRスキル"
+    },
+    {
+      "id": "game:gank",
+      "category": "game_term",
+      "ko": "갱킹",
+      "ja": "ガンク",
+      "meaning": "別のレーンへ奇襲すること"
+    },
+    {
+      "id": "game:roam",
+      "category": "game_term",
+      "ko": "로밍",
+      "ja": "ローム",
+      "meaning": "担当レーンを離れて他所へ影響を出すこと"
+    },
+    {
+      "id": "game:teamfight",
+      "category": "game_term",
+      "ko": "한타",
+      "ja": "集団戦",
+      "meaning": "複数人同士の戦闘"
+    },
+    {
+      "id": "game:laning",
+      "category": "game_term",
+      "ko": "라인전",
+      "ja": "レーン戦",
+      "meaning": "主に序盤のレーンでの対面"
+    },
+    {
+      "id": "game:trade",
+      "category": "game_term",
+      "ko": "딜교환",
+      "ja": "ダメージ交換",
+      "meaning": "短い攻撃の応酬"
+    },
+    {
+      "id": "game:counter-jungle",
+      "category": "game_term",
+      "ko": "카운터 정글",
+      "ja": "カウンタージャングル",
+      "meaning": "敵ジャングルへ侵入して資源を奪うこと"
+    },
+    {
+      "id": "game:waveclear",
+      "category": "game_term",
+      "ko": "라인 클리어",
+      "ja": "ウェーブクリア",
+      "meaning": "ミニオンウェーブを処理すること"
+    },
+    {
+      "id": "game:objective",
+      "category": "game_term",
+      "ko": "오브젝트",
+      "ja": "オブジェクト",
+      "meaning": "ドラゴン、バロン、タワーなどの主要目標"
+    },
+    {
+      "id": "game:cs",
+      "category": "game_term",
+      "ko": "CS",
+      "ja": "CS",
+      "meaning": "ミニオンなどへのラストヒット数"
+    },
+    {
+      "id": "game:core-item",
+      "category": "game_term",
+      "ko": "코어 아이템",
+      "ja": "コアアイテム",
+      "meaning": "ビルドの中核となる完成アイテム"
+    },
+    {
+      "id": "game:initiate",
+      "category": "game_term",
+      "ko": "이니시에이팅",
+      "ja": "エンゲージ",
+      "meaning": "戦闘を開始すること"
+    },
+    {
+      "id": "game:poke",
+      "category": "game_term",
+      "ko": "포킹",
+      "ja": "ポーク",
+      "meaning": "遠距離から継続的に体力を削ること"
+    },
+    {
+      "id": "game:kite",
+      "category": "game_term",
+      "ko": "카이팅",
+      "ja": "カイト",
+      "meaning": "距離を保ちながら攻撃する操作"
+    },
+    {
+      "id": "game:warding",
+      "category": "game_term",
+      "ko": "와딩",
+      "ja": "ワーディング",
+      "meaning": "ワードを設置して視界を取ること"
+    },
+    {
+      "id": "internet:okay",
+      "category": "internet_abbreviation",
+      "ko": "괜찮다",
+      "ja": "大丈夫／悪くない",
+      "meaning": "文脈で訳し分ける肯定的な表現"
+    },
+    {
+      "id": "internet:real",
+      "category": "internet_abbreviation",
+      "ko": "레알",
+      "ja": "本当に／マジで",
+      "meaning": "強調を表す口語"
+    }
+  ],
+  "aliases": [
+    {
+      "id": "alias:game:ultimate",
+      "ko": "궁",
+      "target_ids": ["game:ultimate"],
+      "type": "abbreviation",
+      "status": "community_source_checked_context_required",
+      "sources": ["flash_ultimate_usage"],
+      "evidence": "궁극기의 범위, 궁",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["宮", "弓"],
+        "guidance": "Q/W/E/R, 스킬, 쿨타임, 사용 문맥이면アルティメット候補。根拠不足なら宮・弓を含む一般語の可能性を残す。"
+      },
+      "matching": {
+        "boundary": "strict_korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:role:adc",
+      "ko": "원딜",
+      "target_ids": ["role:bottom-carry"],
+      "type": "abbreviation",
+      "status": "source_checked",
+      "sources": ["role_labels"],
+      "evidence": "탑, 정글, 미드, 원딜, 서폿",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:role:support",
+      "ko": "서폿",
+      "target_ids": ["role:support"],
+      "type": "abbreviation",
+      "status": "source_checked",
+      "sources": ["role_labels"],
+      "evidence": "탑, 정글, 미드, 원딜, 서폿",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:game:gank",
+      "ko": "갱",
+      "target_ids": ["game:gank"],
+      "type": "abbreviation",
+      "status": "community_source_checked_context_required",
+      "sources": ["game_terms_match_report"],
+      "evidence": "유효 갱킹",
+      "ambiguity": {
+        "level": "short",
+        "other_meanings": ["갱단"],
+        "guidance": "라인, 정글러, 로밍 문맥이면ガンク候補。"
+      },
+      "matching": {
+        "boundary": "strict_korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:game:trade",
+      "ko": "딜교",
+      "target_ids": ["game:trade"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["game_terms_laning"],
+      "evidence": "라인전 딜교",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:game:counter-jungle",
+      "ko": "카정",
+      "target_ids": ["game:counter-jungle"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["game_terms_match_report"],
+      "evidence": "카운터 정글",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:game:waveclear",
+      "ko": "라클",
+      "target_ids": ["game:waveclear"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["volibear_abbreviation"],
+      "evidence": "라클 걱정없음",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:internet:okay",
+      "ko": "ㄱㅊ",
+      "target_ids": ["internet:okay"],
+      "type": "jamo_abbreviation",
+      "status": "source_checked",
+      "sources": ["korean_jamo_abbreviations"],
+      "evidence": "괜찮다の子音略記",
+      "matching": {
+        "boundary": "strict_korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:internet:real",
+      "ko": "ㄹㅇ",
+      "target_ids": ["internet:real"],
+      "type": "jamo_abbreviation",
+      "status": "source_checked",
+      "sources": ["korean_jamo_abbreviations"],
+      "evidence": "레알／리얼の子音略記",
+      "matching": {
+        "boundary": "strict_korean_token_or_particle"
+      }
+    }
+  ]
+}

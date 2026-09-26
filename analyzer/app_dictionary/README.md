@@ -1,7 +1,12 @@
 # アプリ用韓日辞書の更新手順
 
 アプリ用辞書は、Riot Data Dragonから生成する正式名称層と、人が出典を確認して保守する別名層に分かれています。
-正式名称を再生成しても、`aliases.json`の略称、愛称、旧称、表記ゆれは変更されません。
+正式名称を再生成しても、`aliases/`と`terms/`にある略称、愛称、旧称、表記ゆれは変更されません。
+
+別名は呼び方の種類ではなく、参照先のカテゴリで分割します。
+チャンピオン、アイテム、ルーン、サモナースペルの別名は`aliases/`に置きます。
+特定の正式名称へ紐づかないゲーム用語と、その別名は`terms/gameplay.json`に置きます。
+出典は`sources.json`、読み込むファイルとSHA-256は`manifest.json`で管理します。
 
 `translation_evaluation/glossary.json`は過去の翻訳評価を再現するための凍結済みv1です。
 アプリ用辞書の更新時に、このファイルを編集しないでください。
@@ -43,7 +48,7 @@ python analyzer/app_dictionary/validate_dictionary.py `
 
 ## 別名の追加
 
-別名は`aliases.json`へ直接追加します。
+別名は参照先に対応する`aliases/*.json`または`terms/gameplay.json`へ追加します。
 正式名称JSONへ手書きで追加してはいけません。
 
 一つの別名には、次の情報が必要です。
@@ -60,6 +65,12 @@ python analyzer/app_dictionary/validate_dictionary.py `
 検索だけで対応を推測した語は、`alias-survey.json`で`unconfirmed`として保留します。
 保留語と却下語は、実行時辞書へ入れません。
 
+別名または出典を変更した後は、manifestの件数とハッシュを更新します。
+
+```powershell
+python analyzer/app_dictionary/update_manifest.py
+```
+
 ## 検証
 
 ```powershell
@@ -68,7 +79,8 @@ python analyzer/app_dictionary/validate_dictionary.py `
 python -m unittest discover -s analyzer -p "test_*.py"
 ```
 
-検証処理は正式名称件数、ID重複、ロケール欠落、別名の出典、参照先、調査結果との整合、旧v1のSHA-256を確認します。
+検証処理は正式名称件数、ファイルをまたぐID重複、ロケール欠落、別名の出典、参照先、カテゴリ、調査結果との整合、全配布ファイルのSHA-256、旧v1のSHA-256を確認します。
+`migration-baseline.json`との照合により、分割前から存在した出典、補助概念、別名、代表的な候補選択結果が維持されていることも確認します。
 衝突一覧は、同じ正式名を持つ別IDを削除するための一覧ではありません。
 ゲームモード違い、アイテム派生、スキル名と一般名の重複を確認するための一覧です。
 

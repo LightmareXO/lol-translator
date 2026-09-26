@@ -1,11 +1,59 @@
 {
-  "schema_version": 1,
-  "app_dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-19",
+  "schema_version": 2,
+  "app_dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+  "checked_at": "2026-09-27",
   "patch": "16.18.1",
-  "official_file": "official-16.18.1.json",
-  "official_sha256": "673f297ee04a85ab7439ebe6537ba6b6a6bbdd42fc7977b78a83d3c62331f418",
-  "aliases_file": "aliases.json",
-  "aliases_sha256": "caa883fda9b3e1ba34d1837ce5fb042edd76bdc79f812097a5ccb28538724653",
+  "official_file": {
+    "role": "official",
+    "path": "official-16.18.1.json",
+    "sha256": "673f297ee04a85ab7439ebe6537ba6b6a6bbdd42fc7977b78a83d3c62331f418",
+    "expected_count": 1455
+  },
+  "sources_file": {
+    "role": "sources",
+    "path": "sources.json",
+    "sha256": "5de1fc5cab2109a2b26ccd9364790e1f4054c69b8a5c7de7230e292052639cae",
+    "expected_count": 27
+  },
+  "alias_files": [
+    {
+      "role": "aliases",
+      "target_category": "champion",
+      "path": "aliases/champions.json",
+      "sha256": "a2a82c51192dfcf7d182429a595ccc22d8d3c5193b2e356a8c7f59a255da117f",
+      "expected_count": 21
+    },
+    {
+      "role": "aliases",
+      "target_category": "item",
+      "path": "aliases/items.json",
+      "sha256": "c390ece058eb7cdfc94547fd7e3823ffacac273ddf0af85531d5576db22e0e14",
+      "expected_count": 20
+    },
+    {
+      "role": "aliases",
+      "target_category": "rune",
+      "path": "aliases/runes.json",
+      "sha256": "bdb865abf66e4e6d0810f9e4f38451a3bfbbfbfdd345b4c66be44ab2178fdf95",
+      "expected_count": 8
+    },
+    {
+      "role": "aliases",
+      "target_category": "summoner_spell",
+      "path": "aliases/summoner_spells.json",
+      "sha256": "d50b67ccb1c65fd9752ea09734fa449af26986679684927892951c20676a5ed5",
+      "expected_count": 10
+    }
+  ],
+  "term_files": [
+    {
+      "role": "terms",
+      "path": "terms/gameplay.json",
+      "sha256": "dfe7ccecf6692623e471f1995136aae2649ffcef35e082c30fbac9956bbfe342",
+      "expected_concept_count": 22,
+      "expected_alias_count": 9
+    }
+  ],
   "legacy_evaluation_glossary": "../translation_evaluation/glossary.json",
   "legacy_evaluation_glossary_sha256": "174c7371da7bae3fb5b98e9d707ad949bb108a88e128de2b501a804b28820a1d",
   "expected_official_counts": {
