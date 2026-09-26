@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { AnalysisRangeSlider } from "./AnalysisRangeSlider";
 import {
   type AnalysisProject,
   effectiveJapanese,
@@ -45,6 +46,7 @@ interface Props {
   path: string;
   region: SubtitleRegion | null;
   duration: number;
+  currentTime: number;
   project: AnalysisProject | null;
   setProject: Dispatch<SetStateAction<AnalysisProject | null>>;
   onSeek: (seconds: number) => void;
@@ -73,6 +75,7 @@ export function AnalysisWorkspace({
   path,
   region,
   duration,
+  currentTime,
   project,
   setProject,
   onSeek,
@@ -93,7 +96,11 @@ export function AnalysisWorkspace({
   const [splitPercent, setSplitPercent] = useState(
     savedSplit == null ? 50 : Math.round(savedSplit * 100),
   );
+  const [minimumDisplaySeconds, setMinimumDisplaySeconds] = useState(
+    (project?.analysis.minimum_display_duration_ms ?? 600) / 1000,
+  );
   const [activeJob, setActiveJob] = useState<ActiveJob | null>(null);
+  const [launchingJob, setLaunchingJob] = useState(false);
   const [progress, setProgress] = useState<Progress | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -103,9 +110,11 @@ export function AnalysisWorkspace({
   const polling = useRef(false);
   const launching = useRef(false);
 
+  const busy = launchingJob || Boolean(activeJob);
+
   useEffect(() => {
-    onBusyChange?.(Boolean(activeJob));
-  }, [activeJob, onBusyChange]);
+    onBusyChange?.(busy);
+  }, [busy, onBusyChange]);
 
   useEffect(() => {
     onLineSplitChange?.(twoLines ? splitPercent / 100 : null);
@@ -205,18 +214,31 @@ export function AnalysisWorkspace({
       Number.isFinite(endSeconds) &&
       startSeconds >= 0 &&
       endSeconds > startSeconds &&
-      endSeconds <= duration + 0.05);
+      endSeconds <= duration);
+  const minimumDurationValid =
+    Number.isFinite(minimumDisplaySeconds) &&
+    minimumDisplaySeconds >= 0 &&
+    minimumDisplaySeconds <= 60;
+  const timeStep = duration > 0 && duration < 1 ? 0.01 : 0.1;
 
   async function startAnalysis() {
-    if (!region || !rangeValid || activeJob || launching.current) return;
+    if (
+      !region ||
+      !rangeValid ||
+      !minimumDurationValid ||
+      activeJob ||
+      launching.current
+    )
+      return;
     launching.current = true;
+    setLaunchingJob(true);
     setError(null);
     setNotice(null);
     setProgress(INITIAL_PROGRESS);
     try {
       const started = await invoke<{ job_id: string }>("start_analysis", {
         request: {
-          schema_version: 1,
+          schema_version: 2,
           video_path: path,
           subtitle_region: region,
           analysis_range: {
@@ -227,6 +249,9 @@ export function AnalysisWorkspace({
           settings: {
             sample_interval_ms: 200,
             line_split_ratio: twoLines ? splitPercent / 100 : null,
+            minimum_display_duration_ms: Math.round(
+              minimumDisplaySeconds * 1000,
+            ),
           },
         },
       });
@@ -236,6 +261,7 @@ export function AnalysisWorkspace({
       setError(messageFrom(cause));
     } finally {
       launching.current = false;
+      setLaunchingJob(false);
     }
   }
 
@@ -247,6 +273,7 @@ export function AnalysisWorkspace({
     setNotice(null);
     setProgress(INITIAL_PROGRESS);
     launching.current = true;
+    setLaunchingJob(true);
     try {
       const input = selectedOnly
         ? { ...project, subtitles: [selectedOnly] }
@@ -264,6 +291,7 @@ export function AnalysisWorkspace({
       setError(messageFrom(cause));
     } finally {
       launching.current = false;
+      setLaunchingJob(false);
     }
   }
 
@@ -332,23 +360,36 @@ export function AnalysisWorkspace({
           <input
             type="checkbox"
             checked={wholeVideo}
-            disabled={Boolean(activeJob)}
+            disabled={busy || duration <= 0}
             onChange={(event) => setWholeVideo(event.currentTarget.checked)}
           />
           動画全体を解析
         </label>
+        <AnalysisRangeSlider
+          duration={duration}
+          currentSeconds={currentTime}
+          startSeconds={startSeconds}
+          endSeconds={endSeconds}
+          disabled={busy}
+          wholeVideo={wholeVideo}
+          onChange={(start, end) => {
+            setStartSeconds(start);
+            setEndSeconds(end);
+          }}
+        />
         <div className="time-fields">
           <label>
             開始（秒）
             <input
               type="number"
               min="0"
-              step="0.1"
-              value={startSeconds}
-              disabled={wholeVideo || Boolean(activeJob)}
-              onChange={(event) =>
-                setStartSeconds(event.currentTarget.valueAsNumber)
-              }
+              step={timeStep}
+              value={Number.isFinite(startSeconds) ? startSeconds : ""}
+              disabled={wholeVideo || busy || duration <= 0}
+              onChange={(event) => {
+                const value = event.currentTarget.value;
+                setStartSeconds(value === "" ? Number.NaN : Number(value));
+              }}
             />
           </label>
           <label>
@@ -356,23 +397,44 @@ export function AnalysisWorkspace({
             <input
               type="number"
               min="0"
-              step="0.1"
-              value={endSeconds}
-              disabled={wholeVideo || Boolean(activeJob)}
-              onChange={(event) =>
-                setEndSeconds(event.currentTarget.valueAsNumber)
-              }
+              step={timeStep}
+              value={Number.isFinite(endSeconds) ? endSeconds : ""}
+              disabled={wholeVideo || busy || duration <= 0}
+              onChange={(event) => {
+                const value = event.currentTarget.value;
+                setEndSeconds(value === "" ? Number.NaN : Number(value));
+              }}
             />
           </label>
         </div>
         <p className="selection-help">
           解析時間に3分の上限はありません。初回確認は短い区間がおすすめです。抽出間隔は200msです。
         </p>
+        <label>
+          最小表示時間（秒）
+          <input
+            type="number"
+            min="0"
+            max="60"
+            step="0.1"
+            value={minimumDisplaySeconds}
+            disabled={busy}
+            onChange={(event) =>
+              setMinimumDisplaySeconds(event.currentTarget.valueAsNumber)
+            }
+          />
+        </label>
+        <p className="selection-help">
+          初期値は0.6秒です。0にすると長さによる除外を無効にしますが、全字幕の検出は保証しません。
+        </p>
+        {!minimumDurationValid && (
+          <p className="error">最小表示時間は0〜60秒で指定してください。</p>
+        )}
         <label className="check-row">
           <input
             type="checkbox"
             checked={twoLines}
-            disabled={Boolean(activeJob)}
+            disabled={busy}
             onChange={(event) => setTwoLines(event.currentTarget.checked)}
           />
           1つのROIを上下2領域としてOCRする
@@ -386,14 +448,14 @@ export function AnalysisWorkspace({
                 min="10"
                 max="90"
                 value={splitPercent}
-                disabled={Boolean(activeJob)}
+                disabled={busy}
                 onChange={(event) =>
                   setSplitPercent(event.currentTarget.valueAsNumber)
                 }
               />
             </label>
             <p className="selection-help">
-              水色の線より上と下を別々にOCRし、上段→下段の順で1つの字幕として翻訳します。
+              水色の線より上と下を別の行IDとして追跡し、変化した行だけOCR・翻訳します。
             </p>
           </>
         )}
@@ -406,7 +468,11 @@ export function AnalysisWorkspace({
           <button
             type="button"
             disabled={
-              !region || !rangeValid || duration <= 0 || Boolean(activeJob)
+              !region ||
+              !rangeValid ||
+              !minimumDurationValid ||
+              duration <= 0 ||
+              busy
             }
             onClick={startAnalysis}
           >
@@ -449,17 +515,13 @@ export function AnalysisWorkspace({
           <div className="review-toolbar">
             <h2>字幕の確認と修正</h2>
             <div className="button-row">
-              <button
-                type="button"
-                disabled={Boolean(activeJob)}
-                onClick={saveProject}
-              >
+              <button type="button" disabled={busy} onClick={saveProject}>
                 JSONを保存
               </button>
               <button
                 type="button"
                 className="secondary"
-                disabled={Boolean(activeJob) || project.subtitles.length === 0}
+                disabled={busy || project.subtitles.length === 0}
                 onClick={() => startRetranslation("all")}
               >
                 翻訳だけ全件再実行
@@ -485,7 +547,9 @@ export function AnalysisWorkspace({
                   }}
                 >
                   <span>{formatTime(item.start_seconds)}</span>
-                  <span>{effectiveJapanese(item) || "（翻訳なし）"}</span>
+                  <span>
+                    {item.line_id}：{effectiveJapanese(item) || "（翻訳なし）"}
+                  </span>
                 </button>
               ))}
             </nav>
@@ -503,6 +567,8 @@ export function AnalysisWorkspace({
                     {formatTime(selected.start_seconds)}〜
                     {formatTime(selected.end_seconds)}
                   </dd>
+                  <dt>行</dt>
+                  <dd>{selected.line_id}</dd>
                   <dt>OCR生出力（不変）</dt>
                   <dd className="raw-output">{selected.ocr.raw_text}</dd>
                 </dl>
@@ -533,7 +599,7 @@ export function AnalysisWorkspace({
                   <textarea
                     value={selected.corrected_ko ?? ""}
                     placeholder={selected.ocr.raw_text}
-                    disabled={Boolean(activeJob)}
+                    disabled={busy}
                     onChange={(event) => {
                       const value = event.currentTarget.value;
                       updateSelected((item) =>
@@ -558,7 +624,7 @@ export function AnalysisWorkspace({
                   <textarea
                     value={selected.translation.user_ja ?? ""}
                     placeholder="空の場合は生成訳を表示"
-                    disabled={Boolean(activeJob)}
+                    disabled={busy}
                     onChange={(event) => {
                       const value = event.currentTarget.value;
                       updateSelected((item) => updateUserJapanese(item, value));
@@ -568,7 +634,7 @@ export function AnalysisWorkspace({
                 <button
                   type="button"
                   className="secondary"
-                  disabled={Boolean(activeJob)}
+                  disabled={busy}
                   onClick={() => startRetranslation("selected")}
                 >
                   この字幕を再翻訳

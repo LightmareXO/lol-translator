@@ -34,6 +34,7 @@
       "../analyzer/app_dictionary/dictionary.py": "analyzer/app_dictionary/dictionary.py",
       "../analyzer/app_dictionary/official-16.18.1.json": "analyzer/app_dictionary/official-16.18.1.json",
       "../analyzer/app_dictionary/aliases.json": "analyzer/app_dictionary/aliases.json",
+      "../analyzer/subtitle_detection.py": "analyzer/subtitle_detection.py",
       "../analyzer/ocr_evaluation/__init__.py": "analyzer/ocr_evaluation/__init__.py",
       "../analyzer/ocr_evaluation/core.py": "analyzer/ocr_evaluation/core.py",
       "../analyzer/ocr_evaluation/preprocessing.py": "analyzer/ocr_evaluation/preprocessing.py",

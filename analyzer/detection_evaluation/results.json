@@ -1,0 +1,343 @@
+{
+  "schema_version": 1,
+  "manifest_frozen_at": "2026-09-18T22:12:00+09:00",
+  "annotation_review_status": "ai_visual_provisional_not_second_human_verified",
+  "annotation_event_count": 37,
+  "primary_minimum_seconds": 1.2,
+  "partitions": {
+    "ns-tuning-360-420": {
+      "role": "tuning",
+      "video_id": "Ns8VQexyJes",
+      "annotation_count": 16,
+      "primary_annotation_count": 13,
+      "methods": {
+        "image": {
+          "all": {
+            "truth_count": 16,
+            "prediction_count": 30,
+            "matched_count": 10,
+            "precision": 0.3333333333333333,
+            "recall": 0.625,
+            "oversegmentation_extra_count": 2,
+            "merged_truth_extra_count": 4,
+            "start_error_median_seconds": 0.19999999999998863,
+            "start_error_p95_seconds": 1.599999999999966,
+            "end_error_median_seconds": 0.0,
+            "end_error_p95_seconds": 1.1999999999999886,
+            "unmatched_truth_ids": [
+              "ns-t-001",
+              "ns-t-003",
+              "ns-t-005",
+              "ns-t-006",
+              "ns-t-010",
+              "ns-t-012"
+            ]
+          },
+          "primary": {
+            "truth_count": 13,
+            "prediction_count": 30,
+            "matched_count": 10,
+            "precision": 0.3333333333333333,
+            "recall": 0.7692307692307693,
+            "oversegmentation_extra_count": 2,
+            "merged_truth_extra_count": 3,
+            "start_error_median_seconds": 0.19999999999998863,
+            "start_error_p95_seconds": 1.599999999999966,
+            "end_error_median_seconds": 0.0,
+            "end_error_p95_seconds": 1.1999999999999886,
+            "unmatched_truth_ids": ["ns-t-003", "ns-t-010", "ns-t-012"]
+          },
+          "runtime": {
+            "sample_count": 300,
+            "detected_interval_count": 30,
+            "ocr_call_count": 70,
+            "translation_call_count": 10,
+            "timings_ms": {
+              "probe_and_hash": 342,
+              "frame_decoding": 1079,
+              "image_detection": 2746,
+              "ocr_model_startup": 2458,
+              "ocr": 1956,
+              "translation_model_startup": 26,
+              "translation": 1385,
+              "total": 9999
+            },
+            "peak_rss_bytes": 478793728,
+            "result_json_bytes": 8698238,
+            "error_count": 20
+          }
+        },
+        "legacy": {
+          "all": {
+            "truth_count": 16,
+            "prediction_count": 9,
+            "matched_count": 9,
+            "precision": 1.0,
+            "recall": 0.5625,
+            "oversegmentation_extra_count": 0,
+            "merged_truth_extra_count": 1,
+            "start_error_median_seconds": 0.0,
+            "start_error_p95_seconds": 1.0,
+            "end_error_median_seconds": 0.0,
+            "end_error_p95_seconds": 0.0,
+            "unmatched_truth_ids": [
+              "ns-t-001",
+              "ns-t-002",
+              "ns-t-003",
+              "ns-t-005",
+              "ns-t-006",
+              "ns-t-010",
+              "ns-t-013"
+            ]
+          },
+          "primary": {
+            "truth_count": 13,
+            "prediction_count": 9,
+            "matched_count": 9,
+            "precision": 1.0,
+            "recall": 0.6923076923076923,
+            "oversegmentation_extra_count": 0,
+            "merged_truth_extra_count": 1,
+            "start_error_median_seconds": 0.0,
+            "start_error_p95_seconds": 1.0,
+            "end_error_median_seconds": 0.0,
+            "end_error_p95_seconds": 0.0,
+            "unmatched_truth_ids": [
+              "ns-t-002",
+              "ns-t-003",
+              "ns-t-010",
+              "ns-t-013"
+            ]
+          },
+          "runtime": {
+            "sample_count": 300,
+            "detected_interval_count": 9,
+            "ocr_call_count": 600,
+            "translation_call_count": 9,
+            "timings_ms": null,
+            "peak_rss_bytes": null,
+            "result_json_bytes": null,
+            "error_count": 0
+          }
+        }
+      }
+    },
+    "ns-verification-600-660": {
+      "role": "verification",
+      "video_id": "Ns8VQexyJes",
+      "annotation_count": 16,
+      "primary_annotation_count": 12,
+      "methods": {
+        "image": {
+          "all": {
+            "truth_count": 16,
+            "prediction_count": 30,
+            "matched_count": 8,
+            "precision": 0.26666666666666666,
+            "recall": 0.5,
+            "oversegmentation_extra_count": 3,
+            "merged_truth_extra_count": 4,
+            "start_error_median_seconds": 0.0,
+            "start_error_p95_seconds": 0.599999999999909,
+            "end_error_median_seconds": 0.0,
+            "end_error_p95_seconds": 0.7999999999999545,
+            "unmatched_truth_ids": [
+              "ns-v-002",
+              "ns-v-003",
+              "ns-v-004",
+              "ns-v-008",
+              "ns-v-010",
+              "ns-v-011",
+              "ns-v-012",
+              "ns-v-016"
+            ]
+          },
+          "primary": {
+            "truth_count": 12,
+            "prediction_count": 30,
+            "matched_count": 7,
+            "precision": 0.23333333333333334,
+            "recall": 0.5833333333333334,
+            "oversegmentation_extra_count": 3,
+            "merged_truth_extra_count": 3,
+            "start_error_median_seconds": 0.0,
+            "start_error_p95_seconds": 0.599999999999909,
+            "end_error_median_seconds": 0.0,
+            "end_error_p95_seconds": 0.7999999999999545,
+            "unmatched_truth_ids": [
+              "ns-v-002",
+              "ns-v-003",
+              "ns-v-010",
+              "ns-v-011",
+              "ns-v-012"
+            ]
+          },
+          "runtime": {
+            "sample_count": 300,
+            "detected_interval_count": 30,
+            "ocr_call_count": 66,
+            "translation_call_count": 13,
+            "timings_ms": {
+              "probe_and_hash": 353,
+              "frame_decoding": 964,
+              "image_detection": 2592,
+              "ocr_model_startup": 2380,
+              "ocr": 1725,
+              "translation_model_startup": 46,
+              "translation": 1699,
+              "total": 9767
+            },
+            "peak_rss_bytes": 468553728,
+            "result_json_bytes": 9325329,
+            "error_count": 17
+          }
+        },
+        "legacy": {
+          "all": {
+            "truth_count": 16,
+            "prediction_count": 9,
+            "matched_count": 9,
+            "precision": 1.0,
+            "recall": 0.5625,
+            "oversegmentation_extra_count": 1,
+            "merged_truth_extra_count": 1,
+            "start_error_median_seconds": 0.0,
+            "start_error_p95_seconds": 0.599999999999909,
+            "end_error_median_seconds": 0.0,
+            "end_error_p95_seconds": 0.20000000000004547,
+            "unmatched_truth_ids": [
+              "ns-v-002",
+              "ns-v-003",
+              "ns-v-004",
+              "ns-v-005",
+              "ns-v-007",
+              "ns-v-008",
+              "ns-v-016"
+            ]
+          },
+          "primary": {
+            "truth_count": 12,
+            "prediction_count": 9,
+            "matched_count": 9,
+            "precision": 1.0,
+            "recall": 0.75,
+            "oversegmentation_extra_count": 1,
+            "merged_truth_extra_count": 1,
+            "start_error_median_seconds": 0.0,
+            "start_error_p95_seconds": 0.599999999999909,
+            "end_error_median_seconds": 0.0,
+            "end_error_p95_seconds": 0.20000000000004547,
+            "unmatched_truth_ids": ["ns-v-002", "ns-v-003", "ns-v-007"]
+          },
+          "runtime": {
+            "sample_count": 300,
+            "detected_interval_count": 9,
+            "ocr_call_count": 600,
+            "translation_call_count": 9,
+            "timings_ms": null,
+            "peak_rss_bytes": null,
+            "result_json_bytes": null,
+            "error_count": 0
+          }
+        }
+      }
+    },
+    "qk-verification-120-180": {
+      "role": "verification",
+      "video_id": "QK95uTvf7ks",
+      "annotation_count": 5,
+      "primary_annotation_count": 5,
+      "methods": {
+        "image": {
+          "all": {
+            "truth_count": 5,
+            "prediction_count": 15,
+            "matched_count": 5,
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "oversegmentation_extra_count": 0,
+            "merged_truth_extra_count": 0,
+            "start_error_median_seconds": 0.0,
+            "start_error_p95_seconds": 0.0,
+            "end_error_median_seconds": 0.0,
+            "end_error_p95_seconds": 0.5999999999999943,
+            "unmatched_truth_ids": []
+          },
+          "primary": {
+            "truth_count": 5,
+            "prediction_count": 15,
+            "matched_count": 5,
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "oversegmentation_extra_count": 0,
+            "merged_truth_extra_count": 0,
+            "start_error_median_seconds": 0.0,
+            "start_error_p95_seconds": 0.0,
+            "end_error_median_seconds": 0.0,
+            "end_error_p95_seconds": 0.5999999999999943,
+            "unmatched_truth_ids": []
+          },
+          "runtime": {
+            "sample_count": 300,
+            "detected_interval_count": 15,
+            "ocr_call_count": 35,
+            "translation_call_count": 5,
+            "timings_ms": {
+              "probe_and_hash": 486,
+              "frame_decoding": 1151,
+              "image_detection": 1589,
+              "ocr_model_startup": 6619,
+              "ocr": 793,
+              "translation_model_startup": 36,
+              "translation": 6320,
+              "total": 17002
+            },
+            "peak_rss_bytes": 413323264,
+            "result_json_bytes": 4509697,
+            "error_count": 10
+          }
+        },
+        "legacy": {
+          "all": {
+            "truth_count": 5,
+            "prediction_count": 5,
+            "matched_count": 5,
+            "precision": 1.0,
+            "recall": 1.0,
+            "oversegmentation_extra_count": 0,
+            "merged_truth_extra_count": 0,
+            "start_error_median_seconds": 0.0,
+            "start_error_p95_seconds": 0.0,
+            "end_error_median_seconds": 0.0,
+            "end_error_p95_seconds": 0.5999999999999943,
+            "unmatched_truth_ids": []
+          },
+          "primary": {
+            "truth_count": 5,
+            "prediction_count": 5,
+            "matched_count": 5,
+            "precision": 1.0,
+            "recall": 1.0,
+            "oversegmentation_extra_count": 0,
+            "merged_truth_extra_count": 0,
+            "start_error_median_seconds": 0.0,
+            "start_error_p95_seconds": 0.0,
+            "end_error_median_seconds": 0.0,
+            "end_error_p95_seconds": 0.5999999999999943,
+            "unmatched_truth_ids": []
+          },
+          "runtime": {
+            "sample_count": 300,
+            "detected_interval_count": 5,
+            "ocr_call_count": 300,
+            "translation_call_count": 5,
+            "timings_ms": null,
+            "peak_rss_bytes": null,
+            "result_json_bytes": null,
+            "error_count": 0
+          }
+        }
+      }
+    }
+  }
+}

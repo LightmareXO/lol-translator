@@ -21,7 +21,8 @@ const PYTHON_NAME: &str = "python";
 #[cfg(all(not(windows), debug_assertions))]
 const VENV_BIN_DIRECTORY: &str = "bin";
 
-const SCHEMA_VERSION: u32 = 1;
+const SCHEMA_VERSION: u32 = 2;
+const LEGACY_SCHEMA_VERSION: u32 = 1;
 const PROJECT_KIND: &str = "lol-translator-project";
 
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq)]
@@ -106,6 +107,7 @@ impl AnalysisRange {
 pub struct AnalysisSettings {
     sample_interval_ms: u32,
     line_split_ratio: Option<f64>,
+    minimum_display_duration_ms: u32,
 }
 
 impl AnalysisSettings {
@@ -118,6 +120,9 @@ impl AnalysisSettings {
             .is_some_and(|value| !value.is_finite() || !(0.1..=0.9).contains(&value))
         {
             return Err("2行の分割位置は10〜90%で指定してください。".into());
+        }
+        if self.minimum_display_duration_ms > 60_000 {
+            return Err("最小表示時間は0〜60000msで指定してください。".into());
         }
         Ok(())
     }
@@ -276,13 +281,28 @@ fn reconcile_progress(
 }
 
 fn validate_project(project: &Value) -> Result<(), String> {
-    if project.get("schema_version").and_then(Value::as_u64) != Some(SCHEMA_VERSION.into())
-        || project.get("kind").and_then(Value::as_str) != Some(PROJECT_KIND)
+    if !matches!(
+        project.get("schema_version").and_then(Value::as_u64),
+        Some(version) if version == u64::from(SCHEMA_VERSION) || version == u64::from(LEGACY_SCHEMA_VERSION)
+    ) || project.get("kind").and_then(Value::as_str) != Some(PROJECT_KIND)
         || !project.get("subtitles").is_some_and(Value::is_array)
     {
         return Err("このアプリで保存した対応済みJSONを選択してください。".into());
     }
     Ok(())
+}
+
+fn project_video_path(project: &Value) -> Result<PathBuf, String> {
+    let path = project
+        .pointer("/source_video/path")
+        .and_then(Value::as_str)
+        .map(PathBuf::from)
+        .ok_or_else(|| "保存結果に元動画のパスが記録されていません。".to_string())?;
+    validate_video(&path).map_err(|_| {
+        "保存結果に記録された元動画が見つかりません。動画を元の場所へ戻してから、もう一度お試しください。"
+            .to_string()
+    })?;
+    Ok(path)
 }
 
 fn save_legacy_request(
@@ -604,17 +624,22 @@ pub async fn save_analysis_project(path: PathBuf, project: Value) -> Result<(), 
 }
 
 #[tauri::command]
-pub async fn load_analysis_project(path: PathBuf) -> Result<Value, String> {
+pub async fn load_analysis_project(app: tauri::AppHandle, path: PathBuf) -> Result<Value, String> {
     if !path.is_absolute() || !path.is_file() {
         return Err("読み込むJSONファイルが見つかりません。".into());
     }
-    tauri::async_runtime::spawn_blocking(move || {
+    let (project, video_path) = tauri::async_runtime::spawn_blocking(move || {
         let project = read_json(&path)?;
         validate_project(&project)?;
-        Ok(project)
+        let video_path = project_video_path(&project)?;
+        Ok::<_, String>((project, video_path))
     })
     .await
-    .map_err(|error| format!("読込処理が中断しました: {error}"))?
+    .map_err(|error| format!("読込処理が中断しました: {error}"))??;
+    app.asset_protocol_scope()
+        .allow_file(video_path)
+        .map_err(|error| format!("元動画の読込を許可できません: {error}"))?;
+    Ok(project)
 }
 
 #[tauri::command]
@@ -642,7 +667,7 @@ mod tests {
 
     fn request() -> RuntimeAnalysisRequest {
         RuntimeAnalysisRequest {
-            schema_version: 1,
+            schema_version: 2,
             video_path: std::env::current_exe().unwrap(),
             subtitle_region: Region {
                 x: 0.1,
@@ -658,6 +683,7 @@ mod tests {
             settings: AnalysisSettings {
                 sample_interval_ms: 200,
                 line_split_ratio: None,
+                minimum_display_duration_ms: 1_200,
             },
         }
     }
@@ -688,6 +714,9 @@ mod tests {
         value = request();
         value.settings.line_split_ratio = Some(0.95);
         assert!(value.validate().is_err());
+        value = request();
+        value.settings.minimum_display_duration_ms = 60_001;
+        assert!(value.validate().is_err());
     }
 
     #[test]
@@ -695,17 +724,40 @@ mod tests {
         let directory = std::env::temp_dir().join(unique_name("lol-translator-rust-test").unwrap());
         let path = directory.join("結果.json");
         let project =
-            json!({"schema_version":1,"kind":PROJECT_KIND,"subtitles":[],"note":"한국어と日本語"});
+            json!({"schema_version":2,"kind":PROJECT_KIND,"subtitles":[],"note":"한국어と日本語"});
         validate_project(&project).unwrap();
         atomic_write_json(&path, &project).unwrap();
         assert_eq!(read_json(&path).unwrap(), project);
         let updated =
-            json!({"schema_version":1,"kind":PROJECT_KIND,"subtitles":[],"note":"修正済み"});
+            json!({"schema_version":2,"kind":PROJECT_KIND,"subtitles":[],"note":"修正済み"});
         atomic_write_json(&path, &updated).unwrap();
         assert_eq!(read_json(&path).unwrap(), updated);
         assert!(!path.with_extension("json.tmp").exists());
         fs::remove_file(path).unwrap();
         fs::remove_dir(directory).unwrap();
+    }
+
+    #[test]
+    fn resolves_the_saved_video_before_loading_a_project() {
+        let video_path = std::env::current_exe().unwrap();
+        let project = json!({
+            "schema_version": 2,
+            "kind": PROJECT_KIND,
+            "source_video": { "path": video_path },
+            "subtitles": []
+        });
+        validate_project(&project).unwrap();
+        assert_eq!(project_video_path(&project).unwrap(), video_path);
+
+        let missing = json!({
+            "schema_version": 2,
+            "kind": PROJECT_KIND,
+            "source_video": { "path": "Z:/missing/video.mp4" },
+            "subtitles": []
+        });
+        assert!(project_video_path(&missing)
+            .unwrap_err()
+            .contains("元動画が見つかりません"));
     }
 
     #[test]
@@ -732,7 +784,10 @@ mod tests {
             "PermissionError",
         );
         assert_eq!(failed["state"], "failed");
-        assert!(failed["error"].as_str().unwrap().contains("PermissionError"));
+        assert!(failed["error"]
+            .as_str()
+            .unwrap()
+            .contains("PermissionError"));
 
         let recovered = reconcile_progress(
             Some(running),

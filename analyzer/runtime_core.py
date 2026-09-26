@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import copy
 import json
 import math
 import os
@@ -13,14 +14,18 @@ import unicodedata
 from typing import Any, Iterable
 
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
+LEGACY_SCHEMA_VERSION = 1
 PROJECT_KIND = "lol-translator-project"
 DEFAULT_SAMPLE_INTERVAL_MS = 200
 MIN_SAMPLE_INTERVAL_MS = 50
 MAX_SAMPLE_INTERVAL_MS = 5_000
 MAX_STABILIZATION_EDIT_RATIO = 0.2
 MAX_TEMPORAL_HANGUL_EDIT_RATIO = 0.45
-MIN_STABLE_CAPTION_SECONDS = 1.2
+DEFAULT_MINIMUM_DISPLAY_DURATION_MS = 600
+LEGACY_MINIMUM_DISPLAY_DURATION_MS = 1_200
+MIN_STABLE_CAPTION_SECONDS = DEFAULT_MINIMUM_DISPLAY_DURATION_MS / 1_000
+MAX_MINIMUM_DISPLAY_DURATION_MS = 60_000
 MIN_OCR_CONFIDENCE = 0.5
 MIN_NON_KOREAN_OCR_CONFIDENCE = 0.6
 HANGUL_PATTERN = re.compile(r"[가-힣]")
@@ -176,7 +181,8 @@ def validate_request(value: Any) -> dict[str, Any]:
     }
     if set(value) != expected:
         raise ValueError(f"analysis request fields must be {sorted(expected)}")
-    if value["schema_version"] != SCHEMA_VERSION:
+    input_schema_version = value["schema_version"]
+    if input_schema_version not in (LEGACY_SCHEMA_VERSION, SCHEMA_VERSION):
         raise ValueError(f"unsupported schema_version: {value['schema_version']!r}")
 
     video_path = value["video_path"]
@@ -208,10 +214,10 @@ def validate_request(value: Any) -> dict[str, Any]:
         raise ValueError("whole-video analysis must use null start and end")
 
     settings = value["settings"]
-    if not isinstance(settings, dict) or set(settings) != {
-        "sample_interval_ms",
-        "line_split_ratio",
-    }:
+    expected_settings = {"sample_interval_ms", "line_split_ratio"}
+    if input_schema_version == SCHEMA_VERSION:
+        expected_settings.add("minimum_display_duration_ms")
+    if not isinstance(settings, dict) or set(settings) != expected_settings:
         raise ValueError("settings has an invalid shape")
     interval = settings["sample_interval_ms"]
     if type(interval) is not int or not MIN_SAMPLE_INTERVAL_MS <= interval <= MAX_SAMPLE_INTERVAL_MS:
@@ -223,6 +229,16 @@ def validate_request(value: Any) -> dict[str, Any]:
         type(split) not in (int, float) or not math.isfinite(split) or not 0.1 <= split <= 0.9
     ):
         raise ValueError("line_split_ratio must be null or a number from 0.1 to 0.9")
+    minimum_duration = settings.get(
+        "minimum_display_duration_ms", LEGACY_MINIMUM_DISPLAY_DURATION_MS
+    )
+    if (
+        type(minimum_duration) is not int
+        or not 0 <= minimum_duration <= MAX_MINIMUM_DISPLAY_DURATION_MS
+    ):
+        raise ValueError(
+            f"minimum_display_duration_ms must be an integer from 0 to {MAX_MINIMUM_DISPLAY_DURATION_MS}"
+        )
 
     return {
         "schema_version": SCHEMA_VERSION,
@@ -236,6 +252,7 @@ def validate_request(value: Any) -> dict[str, Any]:
         "settings": {
             "sample_interval_ms": interval,
             "line_split_ratio": None if split is None else float(split),
+            "minimum_display_duration_ms": minimum_duration,
         },
     }
 
@@ -430,14 +447,61 @@ def mark_translation_stale(subtitle: dict[str, Any], corrected_ko: str | None) -
         translation["status"] = "completed" if translation.get("generated_ja") else "pending"
 
 
+def migrate_project(value: Any) -> dict[str, Any]:
+    """Convert a saved v1 project without changing its existing user data."""
+    if not isinstance(value, dict):
+        raise ValueError("project must be an object")
+    if value.get("schema_version") == SCHEMA_VERSION:
+        return value
+    if value.get("schema_version") != LEGACY_SCHEMA_VERSION:
+        raise ValueError("unsupported project schema")
+    migrated = copy.deepcopy(value)
+    migrated["schema_version"] = SCHEMA_VERSION
+    analysis = migrated.setdefault("analysis", {})
+    analysis.setdefault(
+        "minimum_display_duration_ms", LEGACY_MINIMUM_DISPLAY_DURATION_MS
+    )
+    configuration = migrated.setdefault("configuration", {})
+    configuration.setdefault(
+        "detection",
+        {
+            "version": "legacy-ocr-text-timeline-v1",
+            "boundary_source": "ocr_text",
+            "migrated_from_schema_version": LEGACY_SCHEMA_VERSION,
+        },
+    )
+    for subtitle in migrated.get("subtitles", []):
+        subtitle.setdefault("line_id", "line-1")
+        subtitle.setdefault("line_index", 0)
+        subtitle.setdefault(
+            "detection",
+            {
+                "status": "legacy",
+                "start_reason": "legacy_saved_boundary",
+                "end_reason": "legacy_saved_boundary",
+                "needs_review": False,
+            },
+        )
+        ocr = subtitle.get("ocr")
+        if isinstance(ocr, dict):
+            ocr.setdefault("attempts", [])
+    processing = migrated.setdefault("processing", {})
+    processing.setdefault("detection_count", len(migrated.get("subtitles", [])))
+    processing.setdefault("dropped_intervals", [])
+    processing.setdefault("ocr_call_count", processing.get("sample_count", 0))
+    processing.setdefault("translation_call_count", len(migrated.get("subtitles", [])))
+    return migrated
+
+
 def validate_project(value: Any) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise ValueError("project must be an object")
-    if value.get("schema_version") != SCHEMA_VERSION or value.get("kind") != PROJECT_KIND:
+    schema_version = value.get("schema_version")
+    if schema_version not in (LEGACY_SCHEMA_VERSION, SCHEMA_VERSION) or value.get("kind") != PROJECT_KIND:
         raise ValueError("unsupported project schema")
     if not isinstance(value.get("subtitles"), list):
         raise ValueError("project subtitles must be a list")
-    previous_end = -1.0
+    previous_end_by_line: dict[str, float] = {}
     seen_ids: set[str] = set()
     for subtitle in value["subtitles"]:
         if not isinstance(subtitle, dict):
@@ -449,6 +513,16 @@ def validate_project(value: Any) -> dict[str, Any]:
             raise ValueError("subtitle ids must be unique non-empty strings")
         if type(start) not in (int, float) or type(end) not in (int, float):
             raise ValueError("subtitle timestamps must be numbers")
+        line_id = subtitle.get("line_id", "line-1")
+        line_index = subtitle.get("line_index", 0)
+        if schema_version == SCHEMA_VERSION and (
+            not isinstance(line_id, str)
+            or not line_id
+            or type(line_index) is not int
+            or line_index < 0
+        ):
+            raise ValueError("subtitle line identity is missing")
+        previous_end = previous_end_by_line.get(line_id, -1.0)
         if not math.isfinite(start) or not math.isfinite(end) or start < previous_end or end < start:
             raise ValueError("subtitle timestamps must be ordered and finite")
         ocr = subtitle.get("ocr")
@@ -461,5 +535,5 @@ def validate_project(value: Any) -> dict[str, Any]:
         if user_ja is not None and not isinstance(user_ja, str):
             raise ValueError("user_ja must be null or a string")
         seen_ids.add(identifier)
-        previous_end = float(end)
+        previous_end_by_line[line_id] = float(end)
     return value
