@@ -310,6 +310,7 @@ class TimelineTests(unittest.TestCase):
         self.assertEqual(migrated["subtitles"][0]["start_seconds"], 1)
         self.assertEqual(migrated["subtitles"][0]["translation"]["user_ja"], "手直し")
         self.assertEqual(migrated["subtitles"][0]["line_id"], "line-1")
+        self.assertEqual(migrated["analysis"]["minimum_display_duration_ms"], 1200)
         self.assertEqual(legacy["schema_version"], 1)
 
 

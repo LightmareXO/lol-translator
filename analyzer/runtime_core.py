@@ -22,8 +22,9 @@ MIN_SAMPLE_INTERVAL_MS = 50
 MAX_SAMPLE_INTERVAL_MS = 5_000
 MAX_STABILIZATION_EDIT_RATIO = 0.2
 MAX_TEMPORAL_HANGUL_EDIT_RATIO = 0.45
-MIN_STABLE_CAPTION_SECONDS = 1.2
-DEFAULT_MINIMUM_DISPLAY_DURATION_MS = 1_200
+DEFAULT_MINIMUM_DISPLAY_DURATION_MS = 600
+LEGACY_MINIMUM_DISPLAY_DURATION_MS = 1_200
+MIN_STABLE_CAPTION_SECONDS = DEFAULT_MINIMUM_DISPLAY_DURATION_MS / 1_000
 MAX_MINIMUM_DISPLAY_DURATION_MS = 60_000
 MIN_OCR_CONFIDENCE = 0.5
 MIN_NON_KOREAN_OCR_CONFIDENCE = 0.6
@@ -229,7 +230,7 @@ def validate_request(value: Any) -> dict[str, Any]:
     ):
         raise ValueError("line_split_ratio must be null or a number from 0.1 to 0.9")
     minimum_duration = settings.get(
-        "minimum_display_duration_ms", DEFAULT_MINIMUM_DISPLAY_DURATION_MS
+        "minimum_display_duration_ms", LEGACY_MINIMUM_DISPLAY_DURATION_MS
     )
     if (
         type(minimum_duration) is not int
@@ -458,7 +459,7 @@ def migrate_project(value: Any) -> dict[str, Any]:
     migrated["schema_version"] = SCHEMA_VERSION
     analysis = migrated.setdefault("analysis", {})
     analysis.setdefault(
-        "minimum_display_duration_ms", DEFAULT_MINIMUM_DISPLAY_DURATION_MS
+        "minimum_display_duration_ms", LEGACY_MINIMUM_DISPLAY_DURATION_MS
     )
     configuration = migrated.setdefault("configuration", {})
     configuration.setdefault(

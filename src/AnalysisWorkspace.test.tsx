@@ -138,7 +138,7 @@ it("accepts a range longer than three minutes without adding an upper limit", as
         settings: {
           sample_interval_ms: 200,
           line_split_ratio: null,
-          minimum_display_duration_ms: 1200,
+          minimum_display_duration_ms: 600,
         },
       },
     }),
@@ -254,6 +254,29 @@ it("allows zero seconds as the minimum display duration", async () => {
         request: expect.objectContaining({
           settings: expect.objectContaining({
             minimum_display_duration_ms: 0,
+          }),
+        }),
+      }),
+    ),
+  );
+});
+
+it("uses 0.6 seconds as the minimum display duration for a new analysis", async () => {
+  vi.mocked(invoke).mockImplementation((command) => {
+    if (command === "start_analysis")
+      return Promise.resolve({ job_id: "job-default-minimum" });
+    return new Promise(() => {});
+  });
+  render(<Harness />);
+  expect(screen.getByLabelText("最小表示時間（秒）")).toHaveValue(0.6);
+  fireEvent.click(screen.getByRole("button", { name: "解析を開始" }));
+  await waitFor(() =>
+    expect(invoke).toHaveBeenCalledWith(
+      "start_analysis",
+      expect.objectContaining({
+        request: expect.objectContaining({
+          settings: expect.objectContaining({
+            minimum_display_duration_ms: 600,
           }),
         }),
       }),
