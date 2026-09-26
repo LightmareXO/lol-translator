@@ -109,6 +109,62 @@ def validate(base: Path, compare: Path | None = None) -> dict[str, Any]:
             f"survey/active mismatch: missing={missing_confirmed}, forbidden={forbidden_active}"
         )
 
+    namu_survey = read_json(base / "namu-survey.json")
+    active_pairs = {
+        (alias["ko"], tuple(alias["target_ids"]))
+        for alias in dictionary.aliases["aliases"]
+    }
+    namu_missing = sorted(
+        item["term"]
+        for item in namu_survey["candidates"]
+        if item["decision"] in ("added_active", "duplicate_existing")
+        and (item["term"], tuple(item["target_ids"])) not in active_pairs
+    )
+    namu_forbidden = sorted(
+        item["term"]
+        for item in namu_survey["candidates"]
+        if item["decision"] == "held_unconfirmed"
+        and (item["term"], tuple(item["target_ids"])) in active_pairs
+    )
+    incomplete_pages = sorted(
+        page["id"]
+        for page in namu_survey["pages"]
+        if page["collection_status"] != "complete"
+    )
+    decision_counts = Counter(
+        item["decision"] for item in namu_survey["candidates"]
+    )
+    expected_summary = {
+        "pages": len(namu_survey["pages"]),
+        "completed_pages": len(namu_survey["pages"]) - len(incomplete_pages),
+        "added": decision_counts["added_active"],
+        "duplicate_existing": decision_counts["duplicate_existing"],
+        "held": decision_counts["held_unconfirmed"],
+    }
+    if namu_survey["summary"] != expected_summary:
+        raise ValueError("Namu Wiki survey summary differs from candidate ledger")
+    if namu_missing or namu_forbidden or incomplete_pages:
+        raise ValueError(
+            "Namu Wiki survey/active mismatch: "
+            f"missing={namu_missing}, forbidden={namu_forbidden}, "
+            f"incomplete_pages={incomplete_pages}"
+        )
+
+    for source_id, source in dictionary.aliases["sources"].items():
+        if source.get("kind") != "namu_wiki":
+            continue
+        required = {"url", "retrieval_url", "section", "checked_at", "page_revision"}
+        if required - source.keys():
+            raise ValueError(f"incomplete Namu Wiki source: {source_id}")
+    for alias in dictionary.aliases["aliases"]:
+        if not any(source.startswith("namu_") for source in alias["sources"]):
+            continue
+        verification = alias.get("verification", {})
+        if not verification.get("source_checked") or verification.get("human_checked"):
+            raise ValueError(f"invalid Namu Wiki verification state: {alias['id']}")
+        if not alias.get("evidence"):
+            raise ValueError(f"missing Namu Wiki evidence: {alias['id']}")
+
     baseline = read_json(base / "migration-baseline.json")
     source_ids = set(baseline["ids"]["sources"])
     concept_ids = set(baseline["ids"]["concepts"])
@@ -193,6 +249,17 @@ def validate(base: Path, compare: Path | None = None) -> dict[str, Any]:
             "decisions": dict(sorted(Counter(item["decision"] for item in survey["candidates"]).items())),
             "missing_confirmed": missing_confirmed,
             "forbidden_active": forbidden_active,
+        },
+        "namu_survey": {
+            "scope_frozen_at": namu_survey["scope_frozen_at"],
+            "page_count": len(namu_survey["pages"]),
+            "completed_pages": len(namu_survey["pages"]) - len(incomplete_pages),
+            "candidate_count": len(namu_survey["candidates"]),
+            "decisions": dict(sorted(decision_counts.items())),
+            "missing_active": namu_missing,
+            "forbidden_active": namu_forbidden,
+            "incomplete_pages": incomplete_pages,
+            "human_verified": False,
         },
         "legacy_evaluation_glossary": {
             "path": str(Path(manifest["legacy_evaluation_glossary"])),

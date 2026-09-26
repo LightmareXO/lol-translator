@@ -2,7 +2,7 @@
   "status": "ok",
   "version": "lol-ko-ja-app-16.18.1-2026-09-27",
   "patch": "16.18.1",
-  "dictionary_sha256": "ac3a9741070af335fa8e8b39f7d9cc2665b257c7e007f5ebb1889dbc0ae34724",
+  "dictionary_sha256": "ddced8ef106a7a5069c610e2bf9eaef88354ce0dde4028d442d34d4d308436ab",
   "official_counts": {
     "champion": 173,
     "champion_ability": 865,
@@ -12,13 +12,13 @@
     "summoner_spell": 34
   },
   "official_total": 1455,
-  "alias_count": 68,
-  "concept_count": 22,
+  "alias_count": 109,
+  "concept_count": 25,
   "alias_categories": {
-    "champion": 21,
-    "game_term": 5,
+    "champion": 37,
+    "game_term": 11,
     "internet_abbreviation": 2,
-    "item": 20,
+    "item": 40,
     "role": 2,
     "rune": 8,
     "summoner_spell": 10
@@ -27,11 +27,12 @@
     "community_source_checked": 49,
     "community_source_checked_context_required": 14,
     "official_derived": 1,
-    "source_checked": 4
+    "source_checked": 27,
+    "source_checked_context_required": 18
   },
-  "context_required_aliases": 14,
-  "historical_aliases": 2,
-  "collision_count": 51,
+  "context_required_aliases": 32,
+  "historical_aliases": 4,
+  "collision_count": 52,
   "collisions": [
     {
       "term": "가시 갑옷",
@@ -136,6 +137,16 @@
       "source_ids": [
         "item:3109",
         "item:323109"
+      ]
+    },
+    {
+      "term": "닌덤",
+      "target_ids": [
+        "item:3047",
+        "item:3076"
+      ],
+      "source_ids": [
+        "alias:item:ninja-bramble-combo"
       ]
     },
     {
@@ -613,14 +624,30 @@
       "confirmed_conflict_active": 1,
       "confirmed_contextual_active": 6,
       "confirmed_historical_active": 1,
+      "confirmed_namu_active": 3,
       "legacy_v1_retained_active": 3,
       "official_spacing_variant_active": 1,
       "rejected_ambiguous": 1,
       "rejected_conflict": 1,
-      "unconfirmed": 4
+      "unconfirmed": 1
     },
     "missing_confirmed": [],
     "forbidden_active": []
+  },
+  "namu_survey": {
+    "scope_frozen_at": "2026-09-27",
+    "page_count": 12,
+    "completed_pages": 12,
+    "candidate_count": 62,
+    "decisions": {
+      "added_active": 41,
+      "duplicate_existing": 17,
+      "held_unconfirmed": 4
+    },
+    "missing_active": [],
+    "forbidden_active": [],
+    "incomplete_pages": [],
+    "human_verified": false
   },
   "legacy_evaluation_glossary": {
     "path": "..\\translation_evaluation\\glossary.json",

@@ -110,6 +110,102 @@
     "role_labels": {
       "url": "https://itrc.honam.ac.kr/PublicationsReferenceRoom/download/274/362527",
       "kind": "published_usage"
+    },
+    "namu_champion_aurelion_sol": {
+      "url": "https://namu.wiki/w/아우렐리온%20솔",
+      "retrieval_url": "https://namu.moe/w/아우렐리온%20솔",
+      "kind": "namu_wiki",
+      "section": "13. 기타",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-13 17:37:19"
+    },
+    "namu_champion_xin_zhao": {
+      "url": "https://namu.wiki/w/신%20짜오",
+      "retrieval_url": "https://namu.moe/w/신%20짜오",
+      "kind": "namu_wiki",
+      "section": "13. 기타",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-05 11:35:57"
+    },
+    "namu_champion_volibear": {
+      "url": "https://namu.wiki/w/볼리베어",
+      "retrieval_url": "https://namu.moe/w/볼리베어",
+      "kind": "namu_wiki",
+      "section": "13. 기타",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-15 19:25:50"
+    },
+    "namu_champion_blitzcrank": {
+      "url": "https://namu.wiki/w/블리츠크랭크",
+      "retrieval_url": "https://namu.moe/w/블리츠크랭크",
+      "kind": "namu_wiki",
+      "section": "13. 기타",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-20 20:39:55"
+    },
+    "namu_champion_tristana": {
+      "url": "https://namu.wiki/w/트리스타나",
+      "retrieval_url": "https://namu.moe/w/트리스타나",
+      "kind": "namu_wiki",
+      "section": "13.1. 트리 vs 트타",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-21 19:30:37"
+    },
+    "namu_champion_miss_fortune": {
+      "url": "https://namu.wiki/w/미스%20포츈(리그%20오브%20레전드)",
+      "retrieval_url": "https://namu.moe/w/미스%20포츈(리그%20오브%20레전드)",
+      "kind": "namu_wiki",
+      "section": "page body",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-23 12:05:43"
+    },
+    "namu_champion_pantheon": {
+      "url": "https://namu.wiki/w/판테온(리그%20오브%20레전드)",
+      "retrieval_url": "https://namu.moe/w/판테온(리그%20오브%20레전드)",
+      "kind": "namu_wiki",
+      "section": "13. 기타",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-15 23:28:04"
+    },
+    "namu_champion_twisted_fate": {
+      "url": "https://namu.wiki/w/트위스티드%20페이트",
+      "retrieval_url": "https://namu.moe/w/트위스티드%20페이트",
+      "kind": "namu_wiki",
+      "section": "13. 기타",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-16 19:16:39"
+    },
+    "namu_items_boots": {
+      "url": "https://namu.wiki/w/리그%20오브%20레전드/아이템/장화",
+      "retrieval_url": "https://namu.moe/w/리그%20오브%20레전드/아이템/장화",
+      "kind": "namu_wiki",
+      "section": "3.1–3.6",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-13 00:16:34"
+    },
+    "namu_items_legendary": {
+      "url": "https://namu.wiki/w/리그%20오브%20레전드/아이템/전설",
+      "retrieval_url": "https://namu.moe/w/리그%20오브%20레전드/아이템/전설",
+      "kind": "namu_wiki",
+      "section": "fixed item sections in namu-survey.json",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-13 20:53:12"
+    },
+    "namu_items_epic": {
+      "url": "https://namu.wiki/w/리그%20오브%20레전드/아이템/서사",
+      "retrieval_url": "https://namu.moe/w/리그%20오브%20레전드/아이템/서사",
+      "kind": "namu_wiki",
+      "section": "6.3. 덤불 조끼",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-13 18:11:36"
+    },
+    "namu_gameplay_terms": {
+      "url": "https://namu.wiki/w/리그%20오브%20레전드/용어",
+      "retrieval_url": "https://namu.moe/w/리그%20오브%20레전드/용어",
+      "kind": "namu_wiki",
+      "section": "fixed gameplay sections in namu-survey.json",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-05 12:48:43"
     }
   }
 }

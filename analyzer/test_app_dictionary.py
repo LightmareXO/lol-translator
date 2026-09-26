@@ -119,6 +119,46 @@ class AppDictionaryTests(unittest.TestCase):
             all(match["match_type"] == "compound_segment" for match in selected.trace["matches"])
         )
 
+    def test_namu_aliases_select_expected_official_targets_with_particles(self):
+        cases = {
+            "아우솔이 바론을 쳐요": {"champion:AurelionSol", "game:baron"},
+            "신짜장으로 카운터 정글링을 해": {"champion:XinZhao", "game:counter-jungle"},
+            "빵테가 고연포를 샀어": {"champion:Pantheon", "item:3094"},
+            "윗엔은 덤조보다 먼저 가요": {"item:3091", "item:3076"},
+            "닌덤으로 버티고 이니시를 해": {"item:3047", "item:3076", "game:initiate"},
+        }
+        for text, expected in cases.items():
+            with self.subTest(text=text):
+                targets = {
+                    target
+                    for match in self.dictionary.select(text).trace["matches"]
+                    for target in match["target_ids"]
+                }
+                self.assertTrue(expected <= targets)
+
+    def test_namu_aliases_do_not_match_inside_longer_words(self):
+        for text in ("사이드카를 탔어", "판테라 음악을 들어", "솔직히 말해"):
+            with self.subTest(text=text):
+                self.assertEqual(self.dictionary.select(text).trace["selected_count"], 0)
+
+    def test_ambiguous_namu_aliases_remain_context_candidates(self):
+        selected = self.dictionary.select("세탁기를 돌렸어")
+        match = next(
+            match
+            for match in selected.trace["matches"]
+            if match["source_id"] == "alias:champion:blitzcrank-washing-machine"
+        )
+        self.assertTrue(match["context_required"])
+        self.assertIn("洗濯機", selected.prompt_text)
+
+    def test_legacy_namu_names_keep_history_and_held_terms_stay_inactive(self):
+        selected = self.dictionary.select("트리로 점프하고 버디버디를 사")
+        source_ids = {match["source_id"] for match in selected.trace["matches"]}
+        self.assertIn("alias:champion:tristana-tree", source_ids)
+        self.assertIn("alias:item:boots-of-swiftness-buddybuddy", source_ids)
+        for held in ("트스", "트나", "리나", "스나"):
+            self.assertEqual(self.dictionary.select(held).trace["selected_count"], 0)
+
     def test_only_source_relevant_entries_are_emitted_and_limits_apply(self):
         selected = self.dictionary.select("볼베가 닌탑을 사고 궁을 썼어")
         self.assertLessEqual(selected.trace["selected_count"], 5)
@@ -209,6 +249,11 @@ class AppDictionaryTests(unittest.TestCase):
         self.assertTrue(report["migration"]["unchanged"])
         self.assertEqual(report["survey"]["missing_confirmed"], [])
         self.assertEqual(report["survey"]["forbidden_active"], [])
+        self.assertEqual(report["namu_survey"]["completed_pages"], 12)
+        self.assertEqual(report["namu_survey"]["decisions"]["added_active"], 41)
+        self.assertEqual(report["namu_survey"]["decisions"]["duplicate_existing"], 17)
+        self.assertEqual(report["namu_survey"]["decisions"]["held_unconfirmed"], 4)
+        self.assertFalse(report["namu_survey"]["human_verified"])
 
     def test_comparison_dataset_selection_expectations(self):
         dataset = json.loads(

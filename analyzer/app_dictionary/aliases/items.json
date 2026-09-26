@@ -261,6 +261,346 @@
       "matching": {
         "boundary": "korean_token_or_particle"
       }
+    },
+    {
+      "id": "alias:item:berserkers-greaves-berserker",
+      "ko": "광전사",
+      "target_ids": ["item:3006"],
+      "type": "short_name",
+      "status": "source_checked_context_required",
+      "sources": ["namu_items_boots"],
+      "evidence": "3.1절의 약칭 목록에 기재",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["狂戦士"],
+        "guidance": "신발이나 공격 속도 빌드 문맥에서 광전사의 군화 후보로 사용."
+      },
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:berserkers-greaves-attack-speed-boots",
+      "ko": "공속신",
+      "target_ids": ["item:3006"],
+      "type": "descriptive_nickname",
+      "status": "source_checked",
+      "sources": ["namu_items_boots"],
+      "evidence": "3.1절의 약칭 목록에 기재",
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:berserkers-greaves-berserker-en",
+      "ko": "버서커",
+      "target_ids": ["item:3006"],
+      "type": "english_nickname",
+      "status": "source_checked_context_required",
+      "sources": ["namu_items_boots"],
+      "evidence": "3.1절의 약칭 목록에 기재",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["バーサーカー一般"],
+        "guidance": "신발이나 공격 속도 빌드 문맥에서 광전사의 군화 후보로 사용."
+      },
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:lucidity-boots-haste",
+      "ko": "가속신",
+      "target_ids": ["item:3158"],
+      "type": "descriptive_nickname",
+      "status": "source_checked",
+      "sources": ["namu_items_boots"],
+      "evidence": "3.3절의 약칭 목록에 기재",
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:lucidity-boots-ionia",
+      "ko": "아이오니아",
+      "target_ids": ["item:3158"],
+      "type": "short_name",
+      "status": "source_checked_context_required",
+      "sources": ["namu_items_boots"],
+      "evidence": "3.3절의 약칭 목록에 기재",
+      "ambiguity": {
+        "level": "proper_name",
+        "other_meanings": ["地域名アイオニア"],
+        "guidance": "신발, 스킬 가속, 쿨타임 문맥에서 명석함의 아이오니아 장화 후보로 사용."
+      },
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:boots-of-swiftness-short",
+      "ko": "신속신",
+      "target_ids": ["item:3009"],
+      "type": "abbreviation",
+      "status": "source_checked",
+      "sources": ["namu_items_boots"],
+      "evidence": "3.4절의 약칭 목록에 기재",
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:boots-of-swiftness-swift",
+      "ko": "스위프트",
+      "target_ids": ["item:3009"],
+      "type": "english_nickname",
+      "status": "source_checked_context_required",
+      "sources": ["namu_items_boots"],
+      "evidence": "3.4절의 약칭 목록에 기재",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["Swiftという一般的な英語名・固有名"],
+        "guidance": "신발, 이동 속도, 둔화 감소 문맥에서 신속의 장화 후보로 사용."
+      },
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:boots-of-swiftness-buddybuddy",
+      "ko": "버디버디",
+      "target_ids": ["item:3009"],
+      "type": "legacy_nickname",
+      "status": "source_checked_context_required",
+      "sources": ["namu_items_boots"],
+      "evidence": "3.4절에서 과거 아이콘에 유래한 현재는 드문 약칭으로 설명",
+      "historical": {
+        "origin_ko": "구 아이콘과 버디버디 실행 아이콘의 유사성",
+        "current_use": "현재는 드문 표현",
+        "video_patch_may_be_unknown": true
+      },
+      "ambiguity": {
+        "level": "proper_name",
+        "other_meanings": ["韓国の旧メッセンジャー名"],
+        "guidance": "LoL 아이템과 신발 문맥에서만 신속의 장화 후보로 사용."
+      },
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:plated-steelcaps-plate",
+      "ko": "판금",
+      "target_ids": ["item:3047"],
+      "type": "short_name",
+      "status": "source_checked_context_required",
+      "sources": ["namu_items_boots"],
+      "evidence": "3.5절의 약칭 목록에 기재",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["板金一般"],
+        "guidance": "신발, 방어력, 기본 공격 피해 감소 문맥에서 판금 장화 후보로 사용."
+      },
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:mercurys-treads-mercury",
+      "ko": "머큐리",
+      "target_ids": ["item:3111"],
+      "type": "english_nickname",
+      "status": "source_checked_context_required",
+      "sources": ["namu_items_boots"],
+      "evidence": "3.6절의 약칭 목록에 기재",
+      "ambiguity": {
+        "level": "name_conflict",
+        "other_meanings": ["マーキュリー一般", "ヘルメスのシミターとの混同"],
+        "guidance": "신발, 강인함, 마법 저항력 문맥에서 헤르메스의 발걸음 후보로 사용."
+      },
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:ninja-bramble-combo",
+      "ko": "닌덤",
+      "target_ids": ["item:3047", "item:3076"],
+      "type": "compound_abbreviation",
+      "status": "source_checked",
+      "sources": ["namu_items_boots"],
+      "evidence": "3.5절에서 판금 장화와 덤불 조끼 조합의 줄임말로 풀이",
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:bork-long-short",
+      "ko": "몰왕검",
+      "target_ids": ["item:3153"],
+      "type": "abbreviation",
+      "status": "source_checked",
+      "sources": ["namu_items_legendary"],
+      "evidence": "2.2절의 약칭 표기에 포함",
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:bork-ruined",
+      "ko": "몰락",
+      "target_ids": ["item:3153"],
+      "type": "abbreviation",
+      "status": "source_checked_context_required",
+      "sources": ["namu_items_legendary"],
+      "evidence": "2.2절의 약칭 표기에 포함",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["没落"],
+        "guidance": "아이템, 온힛, 현재 체력 비례 피해 문맥에서 몰락한 왕의 검 후보로 사용."
+      },
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:bork-ruined-sword",
+      "ko": "몰락검",
+      "target_ids": ["item:3153"],
+      "type": "abbreviation",
+      "status": "source_checked",
+      "sources": ["namu_items_legendary"],
+      "evidence": "2.2절의 약칭 표기에 포함",
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:wits-end-english",
+      "ko": "윗엔",
+      "target_ids": ["item:3091"],
+      "type": "english_abbreviation",
+      "status": "source_checked",
+      "sources": ["namu_items_legendary"],
+      "evidence": "2.3절의 약칭 목록에 기재",
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:black-cleaver-black",
+      "ko": "칠흑",
+      "target_ids": ["item:3071"],
+      "type": "short_name",
+      "status": "source_checked_context_required",
+      "sources": ["namu_items_legendary"],
+      "evidence": "2.11절의 약칭 목록에 기재",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["漆黒"],
+        "guidance": "아이템, 방어력 감소, 전사 빌드 문맥에서 칠흑의 양날 도끼 후보로 사용."
+      },
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:rapid-firecannon",
+      "ko": "고연포",
+      "target_ids": ["item:3094"],
+      "type": "abbreviation",
+      "status": "source_checked",
+      "sources": ["namu_items_legendary"],
+      "evidence": "3.10절의 약칭으로 명시",
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:bramble-short",
+      "ko": "덤불",
+      "target_ids": ["item:3076"],
+      "type": "short_name",
+      "status": "source_checked_context_required",
+      "sources": ["namu_items_epic"],
+      "evidence": "6.3절의 약칭 목록에 기재",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["茂み"],
+        "guidance": "아이템, 방어력, 치유 감소 문맥에서 덤불 조끼 후보로 사용."
+      },
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
+    },
+    {
+      "id": "alias:item:bramble-abbreviation",
+      "ko": "덤조",
+      "target_ids": ["item:3076"],
+      "type": "abbreviation",
+      "status": "source_checked",
+      "sources": ["namu_items_epic"],
+      "evidence": "6.3절의 약칭 목록에 기재",
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-27"
+      },
+      "matching": { "boundary": "korean_token_or_particle" }
     }
   ]
 }
