@@ -97,7 +97,7 @@ export function AnalysisWorkspace({
     savedSplit == null ? 50 : Math.round(savedSplit * 100),
   );
   const [minimumDisplaySeconds, setMinimumDisplaySeconds] = useState(
-    (project?.analysis.minimum_display_duration_ms ?? 1200) / 1000,
+    (project?.analysis.minimum_display_duration_ms ?? 600) / 1000,
   );
   const [activeJob, setActiveJob] = useState<ActiveJob | null>(null);
   const [launchingJob, setLaunchingJob] = useState(false);
@@ -425,7 +425,7 @@ export function AnalysisWorkspace({
           />
         </label>
         <p className="selection-help">
-          初期値は1.2秒です。0にすると長さによる除外を無効にしますが、全字幕の検出は保証しません。
+          初期値は0.6秒です。0にすると長さによる除外を無効にしますが、全字幕の検出は保証しません。
         </p>
         {!minimumDurationValid && (
           <p className="error">最小表示時間は0〜60秒で指定してください。</p>

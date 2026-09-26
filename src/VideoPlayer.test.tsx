@@ -308,7 +308,7 @@ describe("subtitle selection and playback integration", () => {
           settings: {
             sample_interval_ms: 200,
             line_split_ratio: null,
-            minimum_display_duration_ms: 1200,
+            minimum_display_duration_ms: 600,
           },
         },
       }),
