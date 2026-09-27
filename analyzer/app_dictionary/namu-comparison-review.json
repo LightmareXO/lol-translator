@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "comparison_results_sha256": "07586a3e491b705f4e484281137434c8d51c055623052f56371f274f20377a2c",
+  "review_status": "ai_provisional",
+  "human_verified": false,
+  "note": "辞書追加前後の候補と訳文をAIで暫定確認した。韓国語話者による意味判定と、日本語字幕としての自然さは未確認。",
+  "cases": [
+    {"id": "dev-stability-g03", "assessment": "equivalent_with_existing_error", "note": "両条件ともブラック クリーバーは保持したが、요우무とㄱㅊを適切に訳せていない。Namu追加による回帰は確認できない。"},
+    {"id": "dev-stability-g06", "assessment": "equivalent_acceptable", "note": "両条件とも플をフラッシュとして保持した。"},
+    {"id": "synthetic-aurelion-baron", "assessment": "improved", "note": "追加前のアウソル表記が、追加後はオレリオン・ソルになった。バロンは両条件で保持した。"},
+    {"id": "synthetic-xin-initiate-tf", "assessment": "improved", "note": "追加後はシン・ジャオ、エンゲージ、ツイステッド・フェイトを保持した。自動判定ではエンゲージを許容語として扱った。"},
+    {"id": "synthetic-pantheon-rapid-firecannon", "assessment": "improved", "note": "追加後はパンテオンとラピッド ファイアキャノンを保持した。"},
+    {"id": "synthetic-wits-end-bramble", "assessment": "improved_with_awkward_japanese", "note": "追加後は二つの正式アイテム名を保持したが、文末の「先にかかる」は不自然。"},
+    {"id": "synthetic-combined-items-initiate", "assessment": "partial_improvement", "note": "追加後は이니시をエンゲージにできたが、닌덤を二つのアイテム名へ展開できなかった。"},
+    {"id": "synthetic-historical-nicknames", "assessment": "partial_improvement", "note": "追加後は버디버디をスイフトネスブーツにできたが、트리をトリスターナにできなかった。"},
+    {"id": "synthetic-ambiguity-washing-machine", "assessment": "equivalent_acceptable", "note": "ブリッツクランク候補を渡しても、一般語の文脈では洗濯機と訳した。候補を機械置換していない。"},
+    {"id": "synthetic-negative-sidecar", "assessment": "equivalent_acceptable", "note": "사이드を사이드카の内部でスプリットプッシュへ誤一致させなかった。"}
+  ],
+  "summary": {
+    "improved": 3,
+    "improved_with_awkward_japanese": 1,
+    "partial_improvement": 2,
+    "equivalent_acceptable": 3,
+    "equivalent_with_existing_error": 1,
+    "regressed": 0,
+    "unconfirmed": [
+      "韓国語話者による意味判定",
+      "日本語字幕としての自然さ",
+      "温度0.7での反復実行時の安定性",
+      "実動画で新規別名が現れる字幕の確認"
+    ]
+  }
+}

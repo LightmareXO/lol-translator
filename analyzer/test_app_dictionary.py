@@ -256,36 +256,47 @@ class AppDictionaryTests(unittest.TestCase):
         self.assertFalse(report["namu_survey"]["human_verified"])
 
     def test_comparison_dataset_selection_expectations(self):
-        dataset = json.loads(
-            (BASE / "comparison-dataset.json").read_text(encoding="utf-8")
-        )
-        self.assertFalse(dataset["holdout_used"])
-        for case in dataset["cases"]:
-            with self.subTest(case=case["id"]):
-                selected = self.dictionary.select(case["source_ko"])
-                targets = {
-                    target
-                    for match in selected.trace["matches"]
-                    for target in match["target_ids"]
-                }
-                self.assertTrue(set(case.get("expected_target_ids", [])) <= targets)
-                self.assertFalse(set(case.get("forbidden_target_ids", [])) & targets)
+        for dataset_name in (
+            "comparison-dataset.json",
+            "namu-comparison-dataset.json",
+        ):
+            dataset = json.loads((BASE / dataset_name).read_text(encoding="utf-8"))
+            self.assertFalse(dataset["holdout_used"])
+            for case in dataset["cases"]:
+                with self.subTest(dataset=dataset_name, case=case["id"]):
+                    selected = self.dictionary.select(case["source_ko"])
+                    targets = {
+                        target
+                        for match in selected.trace["matches"]
+                        for target in match["target_ids"]
+                    }
+                    self.assertTrue(set(case.get("expected_target_ids", [])) <= targets)
+                    self.assertFalse(set(case.get("forbidden_target_ids", [])) & targets)
 
     def test_comparison_artifacts_use_development_data_and_match_review(self):
-        results_path = BASE / "comparison-results.json"
-        results = json.loads(results_path.read_text(encoding="utf-8"))
-        review = json.loads(
-            (BASE / "comparison-review.json").read_text(encoding="utf-8")
+        for prefix in ("comparison", "namu-comparison"):
+            results_path = BASE / f"{prefix}-results.json"
+            results = json.loads(results_path.read_text(encoding="utf-8"))
+            review = json.loads(
+                (BASE / f"{prefix}-review.json").read_text(encoding="utf-8")
+            )
+            with self.subTest(prefix=prefix):
+                self.assertFalse(results["scope"]["holdout_used"])
+                self.assertEqual(
+                    results["identity"]["model"],
+                    "qwen3:4b-instruct-2507-q4_K_M",
+                )
+                self.assertEqual(
+                    review["comparison_results_sha256"],
+                    hashlib.sha256(results_path.read_bytes()).hexdigest(),
+                )
+                self.assertFalse(review["human_verified"])
+
+        namu_results = json.loads(
+            (BASE / "namu-comparison-results.json").read_text(encoding="utf-8")
         )
-        self.assertFalse(results["scope"]["holdout_used"])
-        self.assertEqual(
-            results["identity"]["model"], "qwen3:4b-instruct-2507-q4_K_M"
-        )
-        self.assertEqual(
-            review["comparison_results_sha256"],
-            hashlib.sha256(results_path.read_bytes()).hexdigest(),
-        )
-        self.assertFalse(review["human_verified"])
+        self.assertEqual(namu_results["identity"]["baseline_ref"], "ee603d4")
+        self.assertEqual(namu_results["summary"]["current_selection_checks_passed"], 10)
 
     def test_official_diff_reports_id_and_locale_name_changes(self):
         before = {"dictionary_version": "old", "entries": [{"id": "x", "ko": "옛", "ja": "旧"}]}

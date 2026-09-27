@@ -1,0 +1,1623 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-27T05:33:09.075183+00:00",
+  "scope": {
+    "holdout_used": false,
+    "dataset_name": "pre-namu-vs-namu-aliases-development-and-synthetic",
+    "dataset_sha256": "54634f62eb9e4c94c4a192f1ab577d76dd4c8bce3954a7c8a0710689dcb567c0",
+    "assessment": "automatic terminology presence only; not a human translation-quality score"
+  },
+  "identity": {
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+    "size": 2497293803,
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen3",
+      "families": [
+        "qwen3"
+      ],
+      "parameter_size": "4.0B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 262144,
+      "embedding_length": 2560
+    },
+    "ollama": {
+      "version": "0.34.1"
+    },
+    "prompt_version": "ko-ja-v4-instruct-nonthinking",
+    "options": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "seed": 42,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "think": false,
+    "baseline_ref": "ee603d4",
+    "baseline_dictionary": {
+      "version": "lol-ko-ja-app-16.18.1-2026-09-27",
+      "patch": "16.18.1",
+      "sha256": "2689e404375e5c138a315ceeffa79e4eefd0b01a891541d70f175a75651180fb",
+      "official_version": "lol-ko-ja-official-16.18.1",
+      "official_sha256": "673f297ee04a85ab7439ebe6537ba6b6a6bbdd42fc7977b78a83d3c62331f418",
+      "alias_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+      "dictionary_files": [
+        {
+          "path": "official-16.18.1.json",
+          "sha256": "673f297ee04a85ab7439ebe6537ba6b6a6bbdd42fc7977b78a83d3c62331f418"
+        },
+        {
+          "path": "sources.json",
+          "sha256": "93ac363d21666d8a89cf38118db7f0c2f9b3d7b735dd4cc674c23287465833ce"
+        },
+        {
+          "path": "aliases/champions.json",
+          "sha256": "a2a82c51192dfcf7d182429a595ccc22d8d3c5193b2e356a8c7f59a255da117f"
+        },
+        {
+          "path": "aliases/items.json",
+          "sha256": "c390ece058eb7cdfc94547fd7e3823ffacac273ddf0af85531d5576db22e0e14"
+        },
+        {
+          "path": "aliases/runes.json",
+          "sha256": "bdb865abf66e4e6d0810f9e4f38451a3bfbbfbfdd345b4c66be44ab2178fdf95"
+        },
+        {
+          "path": "aliases/summoner_spells.json",
+          "sha256": "d50b67ccb1c65fd9752ea09734fa449af26986679684927892951c20676a5ed5"
+        },
+        {
+          "path": "terms/gameplay.json",
+          "sha256": "dfe7ccecf6692623e471f1995136aae2649ffcef35e082c30fbac9956bbfe342"
+        }
+      ],
+      "selection_mode": "bounded-source-relevant-v2"
+    },
+    "current_dictionary": {
+      "version": "lol-ko-ja-app-16.18.1-2026-09-27",
+      "patch": "16.18.1",
+      "sha256": "ddced8ef106a7a5069c610e2bf9eaef88354ce0dde4028d442d34d4d308436ab",
+      "official_version": "lol-ko-ja-official-16.18.1",
+      "official_sha256": "673f297ee04a85ab7439ebe6537ba6b6a6bbdd42fc7977b78a83d3c62331f418",
+      "alias_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+      "dictionary_files": [
+        {
+          "path": "official-16.18.1.json",
+          "sha256": "673f297ee04a85ab7439ebe6537ba6b6a6bbdd42fc7977b78a83d3c62331f418"
+        },
+        {
+          "path": "sources.json",
+          "sha256": "f56a7cf639a3fe6ab9f363eb583b73792b62065c2073c4b6a49e86c161684b3d"
+        },
+        {
+          "path": "aliases/champions.json",
+          "sha256": "3df52ab5acbf3f749b8346cf6369eccb7f94e3be59813606e2f37435ba581bab"
+        },
+        {
+          "path": "aliases/items.json",
+          "sha256": "60110b56046f00f8a3ce71f0c8275cf956e788a2d841cb1531fabc4dc21b2527"
+        },
+        {
+          "path": "aliases/runes.json",
+          "sha256": "bdb865abf66e4e6d0810f9e4f38451a3bfbbfbfdd345b4c66be44ab2178fdf95"
+        },
+        {
+          "path": "aliases/summoner_spells.json",
+          "sha256": "d50b67ccb1c65fd9752ea09734fa449af26986679684927892951c20676a5ed5"
+        },
+        {
+          "path": "terms/gameplay.json",
+          "sha256": "33ce9a360db0fa31dcb8ddc7437bd45ee88c356ff17dfdad2001b54b97b86f75"
+        }
+      ],
+      "selection_mode": "bounded-source-relevant-v2"
+    }
+  },
+  "summary": {
+    "case_count": 10,
+    "comparisons": {
+      "improved": 4,
+      "unchanged_fail": 3,
+      "unchanged_pass": 3
+    },
+    "baseline_selection_checks_passed": 10,
+    "current_selection_checks_passed": 10,
+    "baseline_term_checks_passed": 3,
+    "current_term_checks_passed": 7
+  },
+  "cases": [
+    {
+      "id": "dev-stability-g03",
+      "kind": "development_subtitle",
+      "source": "ocr_evaluation/manifest.json:g03_f02",
+      "source_ko": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+      "expected_baseline_target_ids": [
+        "item:3142",
+        "internet:okay",
+        "item:3071"
+      ],
+      "expected_target_ids": [
+        "item:3142",
+        "internet:okay",
+        "item:3071"
+      ],
+      "required_ja": [
+        [
+          "妖夢",
+          "ヨウム"
+        ],
+        [
+          "ブラック クリーバー",
+          "ブラッククリーバー",
+          "黒斧"
+        ]
+      ],
+      "baseline_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "baseline_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "2689e404375e5c138a315ceeffa79e4eefd0b01a891541d70f175a75651180fb",
+        "source_text_sha256": "6ffee9b677e35cf4d0ca2832c9eceda1a883f324c04b48987d028d05a915edcc",
+        "selected_count": 3,
+        "matches": [
+          {
+            "target_ids": [
+              "item:3142"
+            ],
+            "source_id": "alias:item:youmuu",
+            "source_type": "abbreviation",
+            "status": "community_source_checked",
+            "matched_text": "요우무",
+            "start": 1,
+            "end": 4,
+            "match_type": "item_build_prefix",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "internet:okay"
+            ],
+            "source_id": "alias:internet:okay",
+            "source_type": "jamo_abbreviation",
+            "status": "source_checked",
+            "matched_text": "ㄱㅊ",
+            "start": 6,
+            "end": 8,
+            "match_type": "exact",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "item:3071"
+            ],
+            "source_id": "alias:item:black-cleaver",
+            "source_type": "abbreviation",
+            "status": "community_source_checked",
+            "matched_text": "블클",
+            "start": 30,
+            "end": 32,
+            "match_type": "exact",
+            "context_required": false
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "ddced8ef106a7a5069c610e2bf9eaef88354ce0dde4028d442d34d4d308436ab",
+        "source_text_sha256": "6ffee9b677e35cf4d0ca2832c9eceda1a883f324c04b48987d028d05a915edcc",
+        "selected_count": 3,
+        "matches": [
+          {
+            "target_ids": [
+              "item:3142"
+            ],
+            "source_id": "alias:item:youmuu",
+            "source_type": "abbreviation",
+            "status": "community_source_checked",
+            "matched_text": "요우무",
+            "start": 1,
+            "end": 4,
+            "match_type": "item_build_prefix",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "internet:okay"
+            ],
+            "source_id": "alias:internet:okay",
+            "source_type": "jamo_abbreviation",
+            "status": "source_checked",
+            "matched_text": "ㄱㅊ",
+            "start": 6,
+            "end": 8,
+            "match_type": "exact",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "item:3071"
+            ],
+            "source_id": "alias:item:black-cleaver",
+            "source_type": "abbreviation",
+            "status": "community_source_checked",
+            "matched_text": "블클",
+            "start": 30,
+            "end": 32,
+            "match_type": "exact",
+            "context_required": false
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "baseline": {
+        "status": "ok",
+        "output": "せんよウムも ㄱㅊ긴한데、相手の組み合わせに応じて別にすべき場合なら、ブラック クリーバーにします",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[item:3142] 原文一致「요우무」: 요우무의 유령검 = 妖夢の霊剣（item）.\n[internet:okay] 原文一致「ㄱㅊ」: 괜찮다 = 大丈夫／悪くない（文脈で訳し分ける肯定的な表現）.\n[item:3071] 原文一致「블클」: 칠흑의 양날 도끼 = ブラック クリーバー（item）.",
+        "wall_ms": 418.594,
+        "done_reason": "stop",
+        "prompt_eval_count": 301,
+        "eval_count": 41,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "妖夢",
+                "ヨウム"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ブラック クリーバー",
+                "ブラッククリーバー",
+                "黒斧"
+              ],
+              "matched": [
+                "ブラック クリーバー"
+              ]
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "せんよウムも ㄱㅊ긴한데、相手の組み合わせに応じて別にすべき場合なら、ブラック クリーバーにします",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[item:3142] 原文一致「요우무」: 요우무의 유령검 = 妖夢の霊剣（item）.\n[internet:okay] 原文一致「ㄱㅊ」: 괜찮다 = 大丈夫／悪くない（文脈で訳し分ける肯定的な表現）.\n[item:3071] 原文一致「블클」: 칠흑의 양날 도끼 = ブラック クリーバー（item）.",
+        "wall_ms": 295.115,
+        "done_reason": "stop",
+        "prompt_eval_count": 301,
+        "eval_count": 41,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "妖夢",
+                "ヨウム"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ブラック クリーバー",
+                "ブラッククリーバー",
+                "黒斧"
+              ],
+              "matched": [
+                "ブラック クリーバー"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "unchanged_fail",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "dev-stability-g06",
+      "kind": "development_subtitle",
+      "source": "ocr_evaluation/manifest.json:g06_f02",
+      "source_ko": "플 빼고 다음 턴에 잡으면 되죠",
+      "expected_baseline_target_ids": [
+        "summoner-spell:SummonerFlash"
+      ],
+      "expected_target_ids": [
+        "summoner-spell:SummonerFlash"
+      ],
+      "required_ja": [
+        [
+          "フラッシュ"
+        ]
+      ],
+      "baseline_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "baseline_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "2689e404375e5c138a315ceeffa79e4eefd0b01a891541d70f175a75651180fb",
+        "source_text_sha256": "d22e084e44d0c59ed274dd2855272adeea80259ba09a12ea4fe202e22cd9f5da",
+        "selected_count": 1,
+        "matches": [
+          {
+            "target_ids": [
+              "summoner-spell:SummonerFlash"
+            ],
+            "source_id": "alias:spell:flash-short",
+            "source_type": "abbreviation",
+            "status": "community_source_checked_context_required",
+            "matched_text": "플",
+            "start": 0,
+            "end": 1,
+            "match_type": "exact",
+            "context_required": true
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "ddced8ef106a7a5069c610e2bf9eaef88354ce0dde4028d442d34d4d308436ab",
+        "source_text_sha256": "d22e084e44d0c59ed274dd2855272adeea80259ba09a12ea4fe202e22cd9f5da",
+        "selected_count": 1,
+        "matches": [
+          {
+            "target_ids": [
+              "summoner-spell:SummonerFlash"
+            ],
+            "source_id": "alias:spell:flash-short",
+            "source_type": "abbreviation",
+            "status": "community_source_checked_context_required",
+            "matched_text": "플",
+            "start": 0,
+            "end": 1,
+            "match_type": "exact",
+            "context_required": true
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "baseline": {
+        "status": "ok",
+        "output": "フラッシュを除き、次のターンに捕らえるだけですね",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[summoner-spell:SummonerFlash] 原文一致「플」: 점멸 = フラッシュ（summoner_spell）. 文脈条件: 독립 토큰이며 스펠, 콤보, 빠지다 문맥이면 플래시 후보. 단어 내부에서는 일치시키지 않음. 他の意味候補: 플레이 등의 접두 부분.",
+        "wall_ms": 153.169,
+        "done_reason": "stop",
+        "prompt_eval_count": 262,
+        "eval_count": 16,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "フラッシュ"
+              ],
+              "matched": [
+                "フラッシュ"
+              ]
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "フラッシュを除き、次のターンに捕らえるだけですね",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[summoner-spell:SummonerFlash] 原文一致「플」: 점멸 = フラッシュ（summoner_spell）. 文脈条件: 독립 토큰이며 스펠, 콤보, 빠지다 문맥이면 플래시 후보. 단어 내부에서는 일치시키지 않음. 他の意味候補: 플레이 등의 접두 부분.",
+        "wall_ms": 131.772,
+        "done_reason": "stop",
+        "prompt_eval_count": 262,
+        "eval_count": 16,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "フラッシュ"
+              ],
+              "matched": [
+                "フラッシュ"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "unchanged_pass",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-aurelion-baron",
+      "kind": "synthetic_term_test",
+      "source_ko": "아우솔이 바론을 치고 있어",
+      "expected_baseline_target_ids": [],
+      "forbidden_baseline_target_ids": [
+        "champion:AurelionSol",
+        "game:baron"
+      ],
+      "expected_target_ids": [
+        "champion:AurelionSol",
+        "game:baron"
+      ],
+      "required_ja": [
+        [
+          "オレリオン・ソル",
+          "オレリオン ソル"
+        ],
+        [
+          "バロン"
+        ]
+      ],
+      "baseline_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "baseline_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "2689e404375e5c138a315ceeffa79e4eefd0b01a891541d70f175a75651180fb",
+        "source_text_sha256": "5182a398bb348459904b438381672044a8127e670c1039bb7021772b345fbb21",
+        "selected_count": 0,
+        "matches": [],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "ddced8ef106a7a5069c610e2bf9eaef88354ce0dde4028d442d34d4d308436ab",
+        "source_text_sha256": "5182a398bb348459904b438381672044a8127e670c1039bb7021772b345fbb21",
+        "selected_count": 2,
+        "matches": [
+          {
+            "target_ids": [
+              "champion:AurelionSol"
+            ],
+            "source_id": "alias:champion:aurelion-sol-au-sol",
+            "source_type": "abbreviation",
+            "status": "source_checked",
+            "matched_text": "아우솔",
+            "start": 0,
+            "end": 3,
+            "match_type": "exact",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "game:baron"
+            ],
+            "source_id": "alias:game:baron",
+            "source_type": "short_name",
+            "status": "source_checked",
+            "matched_text": "바론",
+            "start": 5,
+            "end": 7,
+            "match_type": "exact",
+            "context_required": false
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "baseline": {
+        "status": "ok",
+        "output": "アウソルがバロンを攻撃している",
+        "reference": "",
+        "wall_ms": 126.25,
+        "done_reason": "stop",
+        "prompt_eval_count": 63,
+        "eval_count": 13,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "オレリオン・ソル",
+                "オレリオン ソル"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "バロン"
+              ],
+              "matched": [
+                "バロン"
+              ]
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "オレリオン・ソルがバロンを攻撃している",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[champion:AurelionSol] 原文一致「아우솔」: 아우렐리온 솔 = オレリオン・ソル（champion）.\n[game:baron] 原文一致「바론」: 내셔 남작 = バロンナッシャー（サモナーズリフト上側のエピックモンスター）.",
+        "wall_ms": 156.851,
+        "done_reason": "stop",
+        "prompt_eval_count": 242,
+        "eval_count": 16,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "オレリオン・ソル",
+                "オレリオン ソル"
+              ],
+              "matched": [
+                "オレリオン・ソル"
+              ]
+            },
+            {
+              "alternatives": [
+                "バロン"
+              ],
+              "matched": [
+                "バロン"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "improved",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-xin-initiate-tf",
+      "kind": "synthetic_term_test",
+      "source_ko": "짜오가 이니시하고 트페가 합류해",
+      "expected_baseline_target_ids": [],
+      "forbidden_baseline_target_ids": [
+        "champion:XinZhao",
+        "game:initiate",
+        "champion:TwistedFate"
+      ],
+      "expected_target_ids": [
+        "champion:XinZhao",
+        "game:initiate",
+        "champion:TwistedFate"
+      ],
+      "required_ja": [
+        [
+          "シン・ジャオ",
+          "シン ジャオ"
+        ],
+        [
+          "イニシエート",
+          "仕掛け",
+          "エンゲージ"
+        ],
+        [
+          "ツイステッド・フェイト",
+          "ツイステッド フェイト"
+        ]
+      ],
+      "baseline_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "baseline_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "2689e404375e5c138a315ceeffa79e4eefd0b01a891541d70f175a75651180fb",
+        "source_text_sha256": "f4fe4c89afcd31eb4041034e1ae73c0718b70710cbd08f5dfecac5134e3233c2",
+        "selected_count": 0,
+        "matches": [],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "ddced8ef106a7a5069c610e2bf9eaef88354ce0dde4028d442d34d4d308436ab",
+        "source_text_sha256": "f4fe4c89afcd31eb4041034e1ae73c0718b70710cbd08f5dfecac5134e3233c2",
+        "selected_count": 3,
+        "matches": [
+          {
+            "target_ids": [
+              "champion:XinZhao"
+            ],
+            "source_id": "alias:champion:xin-zhao-zhao",
+            "source_type": "short_name",
+            "status": "source_checked_context_required",
+            "matched_text": "짜오",
+            "start": 0,
+            "end": 2,
+            "match_type": "exact",
+            "context_required": true
+          },
+          {
+            "target_ids": [
+              "game:initiate"
+            ],
+            "source_id": "alias:game:initiate-short",
+            "source_type": "abbreviation",
+            "status": "source_checked",
+            "matched_text": "이니시",
+            "start": 4,
+            "end": 7,
+            "match_type": "exact",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "champion:TwistedFate"
+            ],
+            "source_id": "alias:champion:twisted-fate-tf",
+            "source_type": "abbreviation",
+            "status": "source_checked",
+            "matched_text": "트페",
+            "start": 10,
+            "end": 12,
+            "match_type": "exact",
+            "context_required": false
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "baseline": {
+        "status": "ok",
+        "output": "ザオがインシとテペが合流する",
+        "reference": "",
+        "wall_ms": 119.228,
+        "done_reason": "stop",
+        "prompt_eval_count": 67,
+        "eval_count": 13,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "シン・ジャオ",
+                "シン ジャオ"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "イニシエート",
+                "仕掛け",
+                "エンゲージ"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ツイステッド・フェイト",
+                "ツイステッド フェイト"
+              ],
+              "matched": []
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "シン・ジャオがエンゲージし、ツイステッド・フェイトが合流する",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[champion:XinZhao] 原文一致「짜오」: 신 짜오 = シン・ジャオ（champion）. 文脈条件: 챔피언, 정글, 창, 갱킹 문맥에서 신 짜오 후보로 사용. 他の意味候補: ベトナム語の挨拶を含む音写.\n[game:initiate] 原文一致「이니시」: 이니시에이팅 = エンゲージ（戦闘を開始すること）.\n[champion:TwistedFate] 原文一致「트페」: 트위스티드 페이트 = ツイステッド・フェイト（champion）.",
+        "wall_ms": 209.108,
+        "done_reason": "stop",
+        "prompt_eval_count": 326,
+        "eval_count": 22,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "シン・ジャオ",
+                "シン ジャオ"
+              ],
+              "matched": [
+                "シン・ジャオ"
+              ]
+            },
+            {
+              "alternatives": [
+                "イニシエート",
+                "仕掛け",
+                "エンゲージ"
+              ],
+              "matched": [
+                "エンゲージ"
+              ]
+            },
+            {
+              "alternatives": [
+                "ツイステッド・フェイト",
+                "ツイステッド フェイト"
+              ],
+              "matched": [
+                "ツイステッド・フェイト"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "improved",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-pantheon-rapid-firecannon",
+      "kind": "synthetic_term_test",
+      "source_ko": "빵테가 고연포를 샀어",
+      "expected_baseline_target_ids": [],
+      "forbidden_baseline_target_ids": [
+        "champion:Pantheon",
+        "item:3094"
+      ],
+      "expected_target_ids": [
+        "champion:Pantheon",
+        "item:3094"
+      ],
+      "required_ja": [
+        [
+          "パンテオン"
+        ],
+        [
+          "ラピッド ファイアキャノン",
+          "ラピッドファイアキャノン"
+        ]
+      ],
+      "baseline_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "baseline_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "2689e404375e5c138a315ceeffa79e4eefd0b01a891541d70f175a75651180fb",
+        "source_text_sha256": "9d8ea51919b244d177b82891d53d5172dbb1bdbc4387496ffb6a273e3568c91c",
+        "selected_count": 0,
+        "matches": [],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "ddced8ef106a7a5069c610e2bf9eaef88354ce0dde4028d442d34d4d308436ab",
+        "source_text_sha256": "9d8ea51919b244d177b82891d53d5172dbb1bdbc4387496ffb6a273e3568c91c",
+        "selected_count": 2,
+        "matches": [
+          {
+            "target_ids": [
+              "champion:Pantheon"
+            ],
+            "source_id": "alias:champion:pantheon-bbangte",
+            "source_type": "nickname",
+            "status": "source_checked",
+            "matched_text": "빵테",
+            "start": 0,
+            "end": 2,
+            "match_type": "exact",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "item:3094"
+            ],
+            "source_id": "alias:item:rapid-firecannon",
+            "source_type": "abbreviation",
+            "status": "source_checked",
+            "matched_text": "고연포",
+            "start": 4,
+            "end": 7,
+            "match_type": "exact",
+            "context_required": false
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "baseline": {
+        "status": "ok",
+        "output": "パンテがゴヨンポを買ったんだ",
+        "reference": "",
+        "wall_ms": 107.579,
+        "done_reason": "stop",
+        "prompt_eval_count": 62,
+        "eval_count": 11,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "パンテオン"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ラピッド ファイアキャノン",
+                "ラピッドファイアキャノン"
+              ],
+              "matched": []
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "パンテオンがラピッド ファイアキャノンを買ったんだ",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[champion:Pantheon] 原文一致「빵테」: 판테온 = パンテオン（champion）.\n[item:3094] 原文一致「고연포」: 고속 연사포 = ラピッド ファイアキャノン（item）.",
+        "wall_ms": 183.24,
+        "done_reason": "stop",
+        "prompt_eval_count": 227,
+        "eval_count": 19,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "パンテオン"
+              ],
+              "matched": [
+                "パンテオン"
+              ]
+            },
+            {
+              "alternatives": [
+                "ラピッド ファイアキャノン",
+                "ラピッドファイアキャノン"
+              ],
+              "matched": [
+                "ラピッド ファイアキャノン"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "improved",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-wits-end-bramble",
+      "kind": "synthetic_term_test",
+      "source_ko": "윗엔은 덤조보다 먼저 가요",
+      "expected_baseline_target_ids": [],
+      "forbidden_baseline_target_ids": [
+        "item:3091",
+        "item:3076"
+      ],
+      "expected_target_ids": [
+        "item:3091",
+        "item:3076"
+      ],
+      "required_ja": [
+        [
+          "ウィッツ エンド",
+          "ウィッツエンド"
+        ],
+        [
+          "ブランブル ベスト",
+          "ブランブルベスト"
+        ]
+      ],
+      "baseline_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "baseline_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "2689e404375e5c138a315ceeffa79e4eefd0b01a891541d70f175a75651180fb",
+        "source_text_sha256": "642f52aed54ac12b442ecb66be127cc94e2f5e22ebc51e2b1b2b4c281f122499",
+        "selected_count": 0,
+        "matches": [],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "ddced8ef106a7a5069c610e2bf9eaef88354ce0dde4028d442d34d4d308436ab",
+        "source_text_sha256": "642f52aed54ac12b442ecb66be127cc94e2f5e22ebc51e2b1b2b4c281f122499",
+        "selected_count": 2,
+        "matches": [
+          {
+            "target_ids": [
+              "item:3091"
+            ],
+            "source_id": "alias:item:wits-end-english",
+            "source_type": "english_abbreviation",
+            "status": "source_checked",
+            "matched_text": "윗엔",
+            "start": 0,
+            "end": 2,
+            "match_type": "exact",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "item:3076"
+            ],
+            "source_id": "alias:item:bramble-abbreviation",
+            "source_type": "abbreviation",
+            "status": "source_checked",
+            "matched_text": "덤조",
+            "start": 4,
+            "end": 6,
+            "match_type": "exact",
+            "context_required": false
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "baseline": {
+        "status": "ok",
+        "output": "上には、ダムゾより先に行動します",
+        "reference": "",
+        "wall_ms": 107.184,
+        "done_reason": "stop",
+        "prompt_eval_count": 62,
+        "eval_count": 12,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "ウィッツ エンド",
+                "ウィッツエンド"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ブランブル ベスト",
+                "ブランブルベスト"
+              ],
+              "matched": []
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "ウィッツエンドはブランブルベストよりも先にかかる",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[item:3091] 原文一致「윗엔」: 마법사의 최후 = ウィッツ エンド（item）.\n[item:3076] 原文一致「덤조」: 덤불 조끼 = ブランブル ベスト（item）.",
+        "wall_ms": 134.835,
+        "done_reason": "stop",
+        "prompt_eval_count": 226,
+        "eval_count": 14,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "ウィッツ エンド",
+                "ウィッツエンド"
+              ],
+              "matched": [
+                "ウィッツエンド"
+              ]
+            },
+            {
+              "alternatives": [
+                "ブランブル ベスト",
+                "ブランブルベスト"
+              ],
+              "matched": [
+                "ブランブルベスト"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "improved",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-combined-items-initiate",
+      "kind": "synthetic_term_test",
+      "source_ko": "닌덤으로 버티고 이니시를 해",
+      "expected_baseline_target_ids": [],
+      "forbidden_baseline_target_ids": [
+        "item:3047",
+        "item:3076",
+        "game:initiate"
+      ],
+      "expected_target_ids": [
+        "item:3047",
+        "item:3076",
+        "game:initiate"
+      ],
+      "required_ja": [
+        [
+          "プレート スチールキャップ",
+          "プレートスチールキャップ"
+        ],
+        [
+          "ブランブル ベスト",
+          "ブランブルベスト"
+        ],
+        [
+          "イニシエート",
+          "仕掛け",
+          "エンゲージ"
+        ]
+      ],
+      "baseline_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "baseline_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "2689e404375e5c138a315ceeffa79e4eefd0b01a891541d70f175a75651180fb",
+        "source_text_sha256": "16ac855cc69a347da3b90d1a360a92f298bb810c2e018e6f4d76637eee87af7c",
+        "selected_count": 0,
+        "matches": [],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "ddced8ef106a7a5069c610e2bf9eaef88354ce0dde4028d442d34d4d308436ab",
+        "source_text_sha256": "16ac855cc69a347da3b90d1a360a92f298bb810c2e018e6f4d76637eee87af7c",
+        "selected_count": 2,
+        "matches": [
+          {
+            "target_ids": [
+              "item:3047",
+              "item:3076"
+            ],
+            "source_id": "alias:item:ninja-bramble-combo",
+            "source_type": "compound_abbreviation",
+            "status": "source_checked",
+            "matched_text": "닌덤",
+            "start": 0,
+            "end": 2,
+            "match_type": "exact",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "game:initiate"
+            ],
+            "source_id": "alias:game:initiate-short",
+            "source_type": "abbreviation",
+            "status": "source_checked",
+            "matched_text": "이니시",
+            "start": 9,
+            "end": 12,
+            "match_type": "exact",
+            "context_required": false
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "baseline": {
+        "status": "ok",
+        "output": "ニンダムで耐え、イニシを発動する",
+        "reference": "",
+        "wall_ms": 142.836,
+        "done_reason": "stop",
+        "prompt_eval_count": 63,
+        "eval_count": 17,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "プレート スチールキャップ",
+                "プレートスチールキャップ"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ブランブル ベスト",
+                "ブランブルベスト"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "イニシエート",
+                "仕掛け",
+                "エンゲージ"
+              ],
+              "matched": []
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "ニンダムで耐え、エンゲージを実行",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[item:3047,item:3076] 原文一致「닌덤」: 판금 장화 = プレート スチールキャップ（item） / 덤불 조끼 = ブランブル ベスト（item）.\n[game:initiate] 原文一致「이니시」: 이니시에이팅 = エンゲージ（戦闘を開始すること）.",
+        "wall_ms": 139.194,
+        "done_reason": "stop",
+        "prompt_eval_count": 254,
+        "eval_count": 15,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "プレート スチールキャップ",
+                "プレートスチールキャップ"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ブランブル ベスト",
+                "ブランブルベスト"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "イニシエート",
+                "仕掛け",
+                "エンゲージ"
+              ],
+              "matched": [
+                "エンゲージ"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "unchanged_fail",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-historical-nicknames",
+      "kind": "synthetic_term_test",
+      "source_ko": "트리로 점프하고 버디버디를 사",
+      "expected_baseline_target_ids": [],
+      "forbidden_baseline_target_ids": [
+        "champion:Tristana",
+        "item:3009"
+      ],
+      "expected_target_ids": [
+        "champion:Tristana",
+        "item:3009"
+      ],
+      "required_ja": [
+        [
+          "トリスターナ"
+        ],
+        [
+          "スイフトネス ブーツ",
+          "スイフトネスブーツ"
+        ]
+      ],
+      "baseline_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "baseline_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "2689e404375e5c138a315ceeffa79e4eefd0b01a891541d70f175a75651180fb",
+        "source_text_sha256": "7fa3da3765c54f126b09f2d1bb0f468bd64385be05275ac894d64eb94abd2bc1",
+        "selected_count": 0,
+        "matches": [],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "ddced8ef106a7a5069c610e2bf9eaef88354ce0dde4028d442d34d4d308436ab",
+        "source_text_sha256": "7fa3da3765c54f126b09f2d1bb0f468bd64385be05275ac894d64eb94abd2bc1",
+        "selected_count": 2,
+        "matches": [
+          {
+            "target_ids": [
+              "champion:Tristana"
+            ],
+            "source_id": "alias:champion:tristana-tree",
+            "source_type": "legacy_abbreviation",
+            "status": "source_checked_context_required",
+            "matched_text": "트리",
+            "start": 0,
+            "end": 2,
+            "match_type": "exact",
+            "context_required": true
+          },
+          {
+            "target_ids": [
+              "item:3009"
+            ],
+            "source_id": "alias:item:boots-of-swiftness-buddybuddy",
+            "source_type": "legacy_nickname",
+            "status": "source_checked_context_required",
+            "matched_text": "버디버디",
+            "start": 9,
+            "end": 13,
+            "match_type": "exact",
+            "context_required": true
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "baseline": {
+        "status": "ok",
+        "output": "トリをジャンプし、バーディバーディを買う",
+        "reference": "",
+        "wall_ms": 140.655,
+        "done_reason": "stop",
+        "prompt_eval_count": 65,
+        "eval_count": 17,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "トリスターナ"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "スイフトネス ブーツ",
+                "スイフトネスブーツ"
+              ],
+              "matched": []
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "トリでジャンプし、スイフトネスブーツを購入する",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[champion:Tristana] 原文一致「트리」: 트리스타나 = トリスターナ（champion）. 文脈条件: 챔피언, 원딜, 점프, 대포 문맥에서만 트리스타나 후보로 사용. 他の意味候補: 木、ツリー. 旧称由来: 서비스 초기 트리스타나 약칭。動画時期が不明なら現行名だったと断定しない。\n[item:3009] 原文一致「버디버디」: 신속의 장화 = スイフトネス ブーツ（item）. 文脈条件: LoL 아이템과 신발 문맥에서만 신속의 장화 후보로 사용. 他の意味候補: 韓国の旧メッセンジャー名. 旧称由来: 구 아이콘과 버디버디 실행 아이콘의 유사성。動画時期が不明なら現行名だったと断定しない。",
+        "wall_ms": 174.601,
+        "done_reason": "stop",
+        "prompt_eval_count": 387,
+        "eval_count": 19,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "トリスターナ"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "スイフトネス ブーツ",
+                "スイフトネスブーツ"
+              ],
+              "matched": [
+                "スイフトネスブーツ"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "unchanged_fail",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-ambiguity-washing-machine",
+      "kind": "synthetic_ambiguity_test",
+      "source_ko": "세탁기를 돌렸어",
+      "expected_baseline_target_ids": [],
+      "forbidden_baseline_target_ids": [
+        "champion:Blitzcrank"
+      ],
+      "expected_target_ids": [
+        "champion:Blitzcrank"
+      ],
+      "required_ja": [
+        [
+          "洗濯機"
+        ]
+      ],
+      "baseline_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "baseline_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "2689e404375e5c138a315ceeffa79e4eefd0b01a891541d70f175a75651180fb",
+        "source_text_sha256": "e92949ccc1d1e25ce5a149ef6b3a68636c8951aa6cec13e69296fbadc95a1cbe",
+        "selected_count": 0,
+        "matches": [],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "ddced8ef106a7a5069c610e2bf9eaef88354ce0dde4028d442d34d4d308436ab",
+        "source_text_sha256": "e92949ccc1d1e25ce5a149ef6b3a68636c8951aa6cec13e69296fbadc95a1cbe",
+        "selected_count": 1,
+        "matches": [
+          {
+            "target_ids": [
+              "champion:Blitzcrank"
+            ],
+            "source_id": "alias:champion:blitzcrank-washing-machine",
+            "source_type": "nickname",
+            "status": "source_checked_context_required",
+            "matched_text": "세탁기",
+            "start": 0,
+            "end": 3,
+            "match_type": "exact",
+            "context_required": true
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "baseline": {
+        "status": "ok",
+        "output": "洗濯機を回した",
+        "reference": "",
+        "wall_ms": 86.53,
+        "done_reason": "stop",
+        "prompt_eval_count": 58,
+        "eval_count": 7,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "洗濯機"
+              ],
+              "matched": [
+                "洗濯機"
+              ]
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "洗濯機を回したよ",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[champion:Blitzcrank] 原文一致「세탁기」: 블리츠크랭크 = ブリッツクランク（champion）. 文脈条件: 그랩, 서포터, 로봇 챔피언 문맥에서만 블리츠크랭크 후보로 사용. 他の意味候補: 洗濯機.",
+        "wall_ms": 102.278,
+        "done_reason": "stop",
+        "prompt_eval_count": 244,
+        "eval_count": 8,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "洗濯機"
+              ],
+              "matched": [
+                "洗濯機"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "unchanged_pass",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-negative-sidecar",
+      "kind": "synthetic_negative_match",
+      "source_ko": "사이드카를 탔어",
+      "expected_baseline_target_ids": [],
+      "expected_target_ids": [],
+      "forbidden_target_ids": [
+        "game:split-push"
+      ],
+      "required_ja": [
+        [
+          "サイドカー"
+        ]
+      ],
+      "baseline_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "baseline_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "2689e404375e5c138a315ceeffa79e4eefd0b01a891541d70f175a75651180fb",
+        "source_text_sha256": "7b9230a0f47794eeb23dccc25cb08f353236f28b9cd485a4b9602fa7700d24e0",
+        "selected_count": 0,
+        "matches": [],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
+        "dictionary_sha256": "ddced8ef106a7a5069c610e2bf9eaef88354ce0dde4028d442d34d4d308436ab",
+        "source_text_sha256": "7b9230a0f47794eeb23dccc25cb08f353236f28b9cd485a4b9602fa7700d24e0",
+        "selected_count": 0,
+        "matches": [],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "baseline": {
+        "status": "ok",
+        "output": "サイドカーに乗った",
+        "reference": "",
+        "wall_ms": 79.461,
+        "done_reason": "stop",
+        "prompt_eval_count": 59,
+        "eval_count": 6,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "サイドカー"
+              ],
+              "matched": [
+                "サイドカー"
+              ]
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "サイドカーに乗った",
+        "reference": "",
+        "wall_ms": 65.111,
+        "done_reason": "stop",
+        "prompt_eval_count": 59,
+        "eval_count": 6,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "サイドカー"
+              ],
+              "matched": [
+                "サイドカー"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "unchanged_pass",
+      "review_status": "automatic_term_check_only"
+    }
+  ]
+}

@@ -8,6 +8,20 @@
 特定の正式名称へ紐づかないゲーム用語と、その別名は`terms/gameplay.json`に置きます。
 出典は`sources.json`、読み込むファイルとSHA-256は`manifest.json`で管理します。
 
+現在の配布対象は次のファイルです。
+
+- `aliases/champions.json`
+- `aliases/items.json`
+- `aliases/runes.json`
+- `aliases/summoner_spells.json`
+- `terms/gameplay.json`
+- `sources.json`
+- `official-16.18.1.json`
+
+`namu-survey.json`は、今回のNamu Wiki調査範囲と候補の判断を保存する調査台帳です。
+`migration-baseline.json`は、分割前のID、件数、内容、代表的な検索結果を固定する検証資料です。
+この二つは実行時辞書へ読み込みません。
+
 `translation_evaluation/glossary.json`は過去の翻訳評価を再現するための凍結済みv1です。
 アプリ用辞書の更新時に、このファイルを編集しないでください。
 
@@ -65,6 +79,22 @@ python analyzer/app_dictionary/validate_dictionary.py `
 検索だけで対応を推測した語は、`alias-survey.json`で`unconfirmed`として保留します。
 保留語と却下語は、実行時辞書へ入れません。
 
+## Namu Wiki由来の別名を追加する場合
+
+収集前に、対象ページ、節、カテゴリを`namu-survey.json`へ追加して範囲を固定します。
+今回の固定範囲は、チャンピオン8ページ、アイテム3ページ、ゲーム用語1ページです。
+この範囲の完了は、Namu Wiki全体またはLoLの全別名を網羅したことを意味しません。
+
+正式なURLは`namu.wiki`を記録します。
+今回の収集環境では正式URLがHTTP 403を返したため、同じ題名の本文を`namu.moe`で確認しました。
+この確認状態は`source_checked`であり、韓国語話者による`human_checked`ではありません。
+
+候補には`added_active`、`duplicate_existing`、`held_unconfirmed`のいずれかを記録します。
+本文から参照先を確認できない語は、推測で有効辞書へ入れません。
+同じ表記が複数の対象を指す場合は、上書きせず`target_ids`へ候補を残します。
+一般語と衝突する語は`ambiguity`へ意味候補と文脈条件を記録します。
+旧称や過去の呼び方は`historical`へ確認できた時期と由来を記録します。
+
 別名または出典を変更した後は、manifestの件数とハッシュを更新します。
 
 ```powershell
@@ -95,3 +125,17 @@ python analyzer/app_dictionary/compare_runtime_dictionary.py
 比較データは、既に調整へ使った開発字幕と明示的な合成文だけです。
 独立評価用データは使いません。
 自動判定は期待用語の有無だけを確認するため、翻訳品質の人手評価を置き換えません。
+
+Namu Wiki由来の追加前後だけを比較する場合は、追加直前のコミットと専用データを指定します。
+
+```powershell
+python analyzer/app_dictionary/compare_runtime_dictionary.py `
+  --dataset analyzer/app_dictionary/namu-comparison-dataset.json `
+  --output analyzer/app_dictionary/namu-comparison-results.json `
+  --baseline-ref ee603d4
+```
+
+比較処理は指定したGitコミットの辞書を一時領域へ復元し、現在の辞書と同じモデル、プロンプト、生成設定で実行します。
+`namu-comparison-review.json`はAIによる暫定確認であり、人手確認済みの評価ではありません。
+新規別名を含む実字幕は現在の開発データで確認できなかったため、今回の追加語の比較例は合成文です。
+独立評価用データに存在する語は、辞書調整の入力へ使用していません。
