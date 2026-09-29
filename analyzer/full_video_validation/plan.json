@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "issue": 28,
+  "frozen_at": "2026-09-30T05:50:07+09:00",
+  "purpose": "現行アプリで動画1本の全区間解析と一連の操作を確認する",
+  "source_revision": "29d17ca45f10b2c1e42c6094ed7f389773db8eae",
+  "video": {
+    "video_id": "3ZRHyWrYBVk",
+    "sha256": "405e6fc63c9715d4284956dd3b41fe824410db2c7310fe2ed1d65da1b393f5b2",
+    "size_bytes": 351557923,
+    "duration_seconds": 553.14576,
+    "width": 1920,
+    "height": 1080,
+    "frame_rate": 60
+  },
+  "analysis": {
+    "mode": "whole",
+    "subtitle_region": {
+      "x": 0.2,
+      "y": 0.7666666666666667,
+      "width": 0.6,
+      "height": 0.08888888888888889
+    },
+    "pixel_region": [384, 828, 1152, 96],
+    "region_rationale": "既知字幕を含む複数時点のフレームで字幕上下端を確認し、前回の広いROIに入っていたHUDと右側チャットを除外した",
+    "line_split_ratio": null,
+    "sample_interval_ms": 200,
+    "minimum_display_duration_ms": 600
+  },
+  "ocr": {
+    "engine": "PaddleOCR",
+    "model": "korean_PP-OCRv5_mobile_rec",
+    "preprocessing": "otsu",
+    "device": "cpu",
+    "threads": 4
+  },
+  "translation": {
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "prompt_version": "ko-ja-v4-instruct-nonthinking",
+    "prompt_manifest_sha256": "04cbcb9cd64b2866675811b985583fbdcc63145d3cb2bbb1e33c26b46424bff1",
+    "think": false,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0,
+    "seed": 42,
+    "num_ctx": 4096,
+    "num_predict": 384
+  },
+  "dictionary": {
+    "version": "lol-ko-ja-app-16.18.1-2026-09-27",
+    "manifest_sha256": "4e219c7cde1d37c640cb41d1364f7bd9823c62b26cacca809e6f7d8f8879dbda"
+  },
+  "spot_check_sampling": {
+    "fixed_before_analysis_output_review": true,
+    "primary_windows": [
+      { "id": "beginning", "start_seconds": 30, "end_seconds": 60 },
+      { "id": "middle", "start_seconds": 255, "end_seconds": 285 },
+      { "id": "ending", "start_seconds": 480, "end_seconds": 510 }
+    ],
+    "fallback_window": {
+      "id": "fallback",
+      "start_seconds": 135,
+      "end_seconds": 165,
+      "use_only_if_primary_windows_contain_fewer_than_20_visual_subtitles": true
+    },
+    "selection_rule": "各窓を実映像から時系列に確認し、生成字幕一覧を選択母集団にせず、一次窓ごとに最大8件、全体で20〜24件を記録する",
+    "known_regression": {
+      "start_seconds": 291.8,
+      "end_seconds": 294.0,
+      "expected_korean": "기 싸움 GOAT인데?",
+      "report_separately": true
+    }
+  },
+  "review_status": {
+    "korean_transcription": "ai_visual_provisional_unless_human_confirmed",
+    "translation_judgement": "ai_provisional_unless_human_confirmed",
+    "generalization": "observed_development_video_only"
+  }
+}
