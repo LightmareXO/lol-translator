@@ -96,6 +96,19 @@ class TranslationTests(unittest.TestCase):
         )
         self.assertNotIn("短距離の瞬間移動", payload["messages"][0]["content"])
 
+    def test_preselected_terminology_reference_does_not_expand_legacy_glossary(self):
+        payload = make_payload(
+            "qwen3:4b",
+            "볼베 궁",
+            True,
+            self.prompts,
+            self.glossary,
+            terminology_reference="selected-only-reference",
+        )
+        content = payload["messages"][0]["content"]
+        self.assertIn("selected-only-reference", content)
+        self.assertNotIn("短距離の瞬間移動", content)
+
     def test_thinking_only_variant_cannot_be_mislabeled_as_nonthinking(self):
         with self.assertRaisesRegex(ValueError, "thinking-only"):
             validate_thinking({"model_info": {"general.finetune": "Thinking"}}, {"qwen_think": False})

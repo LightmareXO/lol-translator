@@ -1,0 +1,1497 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-18T19:29:48.895920+00:00",
+  "scope": {
+    "holdout_used": false,
+    "dataset_name": "legacy-v1-vs-app-dictionary-development-and-synthetic",
+    "dataset_sha256": "ed1ed65558897a1c50a89fb4c2d904b691b80fa5fd7107978a39f78ac1c3848a",
+    "assessment": "automatic terminology presence only; not a human translation-quality score"
+  },
+  "identity": {
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+    "size": 2497293803,
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen3",
+      "families": [
+        "qwen3"
+      ],
+      "parameter_size": "4.0B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 262144,
+      "embedding_length": 2560
+    },
+    "ollama": {
+      "version": "0.34.1"
+    },
+    "prompt_version": "ko-ja-v4-instruct-nonthinking",
+    "options": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "seed": 42,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "think": false,
+    "legacy_dictionary_version": "lol-ko-ja-v1",
+    "current_dictionary": {
+      "version": "lol-ko-ja-app-16.18.1-2026-09-19",
+      "patch": "16.18.1",
+      "sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
+      "official_version": "lol-ko-ja-official-16.18.1",
+      "official_sha256": "673f297ee04a85ab7439ebe6537ba6b6a6bbdd42fc7977b78a83d3c62331f418",
+      "alias_version": "lol-ko-ja-aliases-2026-09-19",
+      "alias_sha256": "caa883fda9b3e1ba34d1837ce5fb042edd76bdc79f812097a5ccb28538724653",
+      "selection_mode": "bounded-source-relevant-v2"
+    }
+  },
+  "summary": {
+    "case_count": 12,
+    "comparisons": {
+      "improved": 4,
+      "unchanged_fail": 4,
+      "unchanged_pass": 4
+    },
+    "selection_checks_passed": 12,
+    "legacy_term_checks_passed": 4,
+    "current_term_checks_passed": 8
+  },
+  "cases": [
+    {
+      "id": "dev-initial-g01",
+      "kind": "development_subtitle",
+      "source": "ocr_evaluation/manifest.json:g01_f02",
+      "source_ko": "바로 빙결다리서폿인데",
+      "expected_target_ids": [
+        "rune:8351",
+        "champion:Darius",
+        "role:support"
+      ],
+      "required_ja": [
+        [
+          "グレイシャルオーグメント"
+        ],
+        [
+          "ダリウス"
+        ],
+        [
+          "サポート"
+        ]
+      ],
+      "selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-19",
+        "dictionary_sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
+        "source_text_sha256": "0422b0c52cfa8a84470cb266099bc52a280ac9274501dc00f90f75ac61cb0e32",
+        "selected_count": 3,
+        "matches": [
+          {
+            "target_ids": [
+              "rune:8351"
+            ],
+            "source_id": "alias:rune:glacial",
+            "source_type": "abbreviation",
+            "status": "community_source_checked_context_required",
+            "matched_text": "빙결",
+            "start": 3,
+            "end": 5,
+            "match_type": "compound_segment",
+            "context_required": true
+          },
+          {
+            "target_ids": [
+              "champion:Darius"
+            ],
+            "source_id": "alias:champion:darius",
+            "source_type": "abbreviation",
+            "status": "community_source_checked_context_required",
+            "matched_text": "다리",
+            "start": 5,
+            "end": 7,
+            "match_type": "compound_segment",
+            "context_required": true
+          },
+          {
+            "target_ids": [
+              "role:support"
+            ],
+            "source_id": "alias:role:support",
+            "source_type": "abbreviation",
+            "status": "source_checked",
+            "matched_text": "서폿",
+            "start": 7,
+            "end": 9,
+            "match_type": "compound_segment",
+            "context_required": false
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "legacy_v1": {
+        "status": "ok",
+        "output": "そのままブリンドル・デッパーだが",
+        "reference": "",
+        "wall_ms": 113.097,
+        "done_reason": "stop",
+        "prompt_eval_count": 63,
+        "eval_count": 11,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "グレイシャルオーグメント"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ダリウス"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "サポート"
+              ],
+              "matched": []
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "そのままブリッジダリウスサポーターだね",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[rune:8351] 原文一致「빙결」: 빙결 강화 = グレイシャルオーグメント（rune）. 文脈条件: 룬, 세팅, 들어 같은 문맥이면 글레이셜 오그먼트 후보. 상태 설명이면 일반어 가능. 他の意味候補: 凍結、氷結.\n[champion:Darius] 原文一致「다리」: 다리우스 = ダリウス（champion）. 文脈条件: 챔피언, 탑, 스킬, 상대 문맥이면 다리우스 후보. 신체나 구조물 문맥이면 일반어로 해석. 他の意味候補: 脚、橋.\n[role:support] 原文一致「서폿」: 서포터 = サポート（味方を支援するロール）.",
+        "wall_ms": 142.929,
+        "done_reason": "stop",
+        "prompt_eval_count": 365,
+        "eval_count": 15,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "グレイシャルオーグメント"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ダリウス"
+              ],
+              "matched": [
+                "ダリウス"
+              ]
+            },
+            {
+              "alternatives": [
+                "サポート"
+              ],
+              "matched": []
+            }
+          ]
+        }
+      },
+      "comparison": "unchanged_fail",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "dev-initial-g03",
+      "kind": "development_subtitle",
+      "source": "ocr_evaluation/manifest.json:g03_f02",
+      "source_ko": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+      "expected_target_ids": [
+        "item:3142",
+        "internet:okay",
+        "item:3071"
+      ],
+      "required_ja": [
+        [
+          "妖夢",
+          "ヨウム"
+        ],
+        [
+          "ブラック クリーバー",
+          "ブラッククリーバー",
+          "黒斧"
+        ]
+      ],
+      "selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-19",
+        "dictionary_sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
+        "source_text_sha256": "6ffee9b677e35cf4d0ca2832c9eceda1a883f324c04b48987d028d05a915edcc",
+        "selected_count": 3,
+        "matches": [
+          {
+            "target_ids": [
+              "item:3142"
+            ],
+            "source_id": "alias:item:youmuu",
+            "source_type": "abbreviation",
+            "status": "community_source_checked",
+            "matched_text": "요우무",
+            "start": 1,
+            "end": 4,
+            "match_type": "item_build_prefix",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "internet:okay"
+            ],
+            "source_id": "alias:internet:okay",
+            "source_type": "jamo_abbreviation",
+            "status": "source_checked",
+            "matched_text": "ㄱㅊ",
+            "start": 6,
+            "end": 8,
+            "match_type": "exact",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "item:3071"
+            ],
+            "source_id": "alias:item:black-cleaver",
+            "source_type": "abbreviation",
+            "status": "community_source_checked",
+            "matched_text": "블클",
+            "start": 30,
+            "end": 32,
+            "match_type": "exact",
+            "context_required": false
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "legacy_v1": {
+        "status": "ok",
+        "output": "せんようむどう ㄱㅊ긴데、相手の組み合わせに応じて別にすべきなら、ブラック クリーバーです",
+        "reference": "칠흑의 양날 도끼 / 블클 = ブラック クリーバー (アイテム名。黒斧とも呼ぶ)",
+        "wall_ms": 282.254,
+        "done_reason": "stop",
+        "prompt_eval_count": 147,
+        "eval_count": 37,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "妖夢",
+                "ヨウム"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ブラック クリーバー",
+                "ブラッククリーバー",
+                "黒斧"
+              ],
+              "matched": [
+                "ブラック クリーバー"
+              ]
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "せんよウムも ㄱㅊ긴한데、相手の組み合わせに応じて別にすべき場合なら、ブラック クリーバーにします",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[item:3142] 原文一致「요우무」: 요우무의 유령검 = 妖夢の霊剣（item）.\n[internet:okay] 原文一致「ㄱㅊ」: 괜찮다 = 大丈夫／悪くない（文脈で訳し分ける肯定的な表現）.\n[item:3071] 原文一致「블클」: 칠흑의 양날 도끼 = ブラック クリーバー（item）.",
+        "wall_ms": 320.259,
+        "done_reason": "stop",
+        "prompt_eval_count": 301,
+        "eval_count": 41,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "妖夢",
+                "ヨウム"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ブラック クリーバー",
+                "ブラッククリーバー",
+                "黒斧"
+              ],
+              "matched": [
+                "ブラック クリーバー"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "unchanged_fail",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "dev-initial-g04",
+      "kind": "development_subtitle",
+      "source": "ocr_evaluation/manifest.json:g04_f02",
+      "source_ko": "빙결마공점이 ㄹㅇ 로밍 영향력이 지림",
+      "expected_target_ids": [
+        "rune:8351",
+        "rune:8306",
+        "internet:real",
+        "game:roam"
+      ],
+      "required_ja": [
+        [
+          "グレイシャルオーグメント"
+        ],
+        [
+          "ヘクステックフラッシュネイター",
+          "ヘクスフラッシュ"
+        ],
+        [
+          "ローム",
+          "ローミング"
+        ]
+      ],
+      "selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-19",
+        "dictionary_sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
+        "source_text_sha256": "bcc4466fa2b569f3e00c97977da1b76135f4ab9a1c654dcde7097425112f36d7",
+        "selected_count": 4,
+        "matches": [
+          {
+            "target_ids": [
+              "rune:8351"
+            ],
+            "source_id": "alias:rune:glacial",
+            "source_type": "abbreviation",
+            "status": "community_source_checked_context_required",
+            "matched_text": "빙결",
+            "start": 0,
+            "end": 2,
+            "match_type": "compound_segment",
+            "context_required": true
+          },
+          {
+            "target_ids": [
+              "rune:8306"
+            ],
+            "source_id": "alias:rune:hexflash",
+            "source_type": "abbreviation",
+            "status": "community_source_checked",
+            "matched_text": "마공점",
+            "start": 2,
+            "end": 5,
+            "match_type": "compound_segment",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "internet:real"
+            ],
+            "source_id": "alias:internet:real",
+            "source_type": "jamo_abbreviation",
+            "status": "source_checked",
+            "matched_text": "ㄹㅇ",
+            "start": 7,
+            "end": 9,
+            "match_type": "exact",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "game:roam"
+            ],
+            "source_id": "game:roam",
+            "source_type": "concept_name",
+            "status": "curated",
+            "matched_text": "로밍",
+            "start": 10,
+            "end": 12,
+            "match_type": "exact",
+            "context_required": false
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "legacy_v1": {
+        "status": "ok",
+        "output": "ブインケルマ공점が本当にロムイン影響力が地限",
+        "reference": "ㄹㅇ = 本当に／マジで (레알／리얼の子音略記)",
+        "wall_ms": 166.378,
+        "done_reason": "stop",
+        "prompt_eval_count": 117,
+        "eval_count": 18,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "グレイシャルオーグメント"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ヘクステックフラッシュネイター",
+                "ヘクスフラッシュ"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ローム",
+                "ローミング"
+              ],
+              "matched": []
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "ブインジュエルマ공점が ㄹㅇ ローム影響力がジリム",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[rune:8351] 原文一致「빙결」: 빙결 강화 = グレイシャルオーグメント（rune）. 文脈条件: 룬, 세팅, 들어 같은 문맥이면 글레이셜 오그먼트 후보. 상태 설명이면 일반어 가능. 他の意味候補: 凍結、氷結.\n[rune:8306] 原文一致「마공점」: 마법공학 점멸기 = ヘクステックフラッシュネイター（rune）.\n[internet:real] 原文一致「ㄹㅇ」: 레알 = 本当に／マジで（強調を表す口語）.\n[game:roam] 原文一致「로밍」: 로밍 = ローム（担当レーンを離れて他所へ影響を出すこと）.",
+        "wall_ms": 215.279,
+        "done_reason": "stop",
+        "prompt_eval_count": 368,
+        "eval_count": 22,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "グレイシャルオーグメント"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ヘクステックフラッシュネイター",
+                "ヘクスフラッシュ"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ローム",
+                "ローミング"
+              ],
+              "matched": [
+                "ローム"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "unchanged_fail",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "dev-initial-g06",
+      "kind": "development_subtitle",
+      "source": "ocr_evaluation/manifest.json:g06_f02",
+      "source_ko": "플 빼고 다음 턴에 잡으면 되죠",
+      "expected_target_ids": [
+        "summoner-spell:SummonerFlash"
+      ],
+      "required_ja": [
+        [
+          "フラッシュ"
+        ]
+      ],
+      "selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-19",
+        "dictionary_sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
+        "source_text_sha256": "d22e084e44d0c59ed274dd2855272adeea80259ba09a12ea4fe202e22cd9f5da",
+        "selected_count": 1,
+        "matches": [
+          {
+            "target_ids": [
+              "summoner-spell:SummonerFlash"
+            ],
+            "source_id": "alias:spell:flash-short",
+            "source_type": "abbreviation",
+            "status": "community_source_checked_context_required",
+            "matched_text": "플",
+            "start": 0,
+            "end": 1,
+            "match_type": "exact",
+            "context_required": true
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "legacy_v1": {
+        "status": "ok",
+        "output": "フラッシュを除き、次のターンに捕らえるだけですね",
+        "reference": "점멸 / 플 / 플래쉬 = フラッシュ (短距離の瞬間移動を行うサモナースペル)",
+        "wall_ms": 138.793,
+        "done_reason": "stop",
+        "prompt_eval_count": 125,
+        "eval_count": 16,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "フラッシュ"
+              ],
+              "matched": [
+                "フラッシュ"
+              ]
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "フラッシュを除き、次のターンに掴めばよいです",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[summoner-spell:SummonerFlash] 原文一致「플」: 점멸 = フラッシュ（summoner_spell）. 文脈条件: 독립 토큰이며 스펠, 콤보, 빠지다 문맥이면 플래시 후보. 단어 내부에서는 일치시키지 않음. 他の意味候補: 플레이 등의 접두 부분.",
+        "wall_ms": 147.023,
+        "done_reason": "stop",
+        "prompt_eval_count": 262,
+        "eval_count": 17,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "フラッシュ"
+              ],
+              "matched": [
+                "フラッシュ"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "unchanged_pass",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "dev-talon-t14",
+      "kind": "development_subtitle",
+      "source": "translation_evaluation/talon_development.json:t14",
+      "source_ko": "로크.. 플 반응 못 하게 되게 깔끔하게 잡았다",
+      "expected_target_ids": [
+        "summoner-spell:SummonerFlash"
+      ],
+      "required_ja": [
+        [
+          "フラッシュ"
+        ]
+      ],
+      "selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-19",
+        "dictionary_sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
+        "source_text_sha256": "971c28aec43e1a5cb70c423324577770e3798fbaa7c291f185c370aec08ad4a1",
+        "selected_count": 2,
+        "matches": [
+          {
+            "target_ids": [
+              "champion:Locke"
+            ],
+            "source_id": "champion:Locke",
+            "source_type": "official_name",
+            "status": "official",
+            "matched_text": "로크",
+            "start": 0,
+            "end": 2,
+            "match_type": "exact",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "summoner-spell:SummonerFlash"
+            ],
+            "source_id": "alias:spell:flash-short",
+            "source_type": "abbreviation",
+            "status": "community_source_checked_context_required",
+            "matched_text": "플",
+            "start": 5,
+            "end": 6,
+            "match_type": "exact",
+            "context_required": true
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "legacy_v1": {
+        "status": "ok",
+        "output": "ロク…フを反応させられなくして、しっかり捕らえた",
+        "reference": "점멸 / 플 / 플래쉬 = フラッシュ (短距離の瞬間移動を行うサモナースペル)",
+        "wall_ms": 163.914,
+        "done_reason": "stop",
+        "prompt_eval_count": 129,
+        "eval_count": 18,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "フラッシュ"
+              ],
+              "matched": []
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "ロック…フラッシュでしっかり抑えてしまった。",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[champion:Locke] 原文一致「로크」: 로크 = ロック（champion）.\n[summoner-spell:SummonerFlash] 原文一致「플」: 점멸 = フラッシュ（summoner_spell）. 文脈条件: 독립 토큰이며 스펠, 콤보, 빠지다 문맥이면 플래시 후보. 단어 내부에서는 일치시키지 않음. 他の意味候補: 플레이 등의 접두 부분.",
+        "wall_ms": 137.694,
+        "done_reason": "stop",
+        "prompt_eval_count": 293,
+        "eval_count": 11,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "フラッシュ"
+              ],
+              "matched": [
+                "フラッシュ"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "improved",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-priority-volibear-nashor",
+      "kind": "synthetic_term_test",
+      "source_ko": "볼베 궁 빠졌으니까 내셔부터 쳐요",
+      "expected_target_ids": [
+        "champion:Volibear",
+        "game:ultimate",
+        "item:3115"
+      ],
+      "required_ja": [
+        [
+          "ボリベア"
+        ],
+        [
+          "アルティメット",
+          "ウルト",
+          "R"
+        ],
+        [
+          "ナッシャー"
+        ]
+      ],
+      "selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-19",
+        "dictionary_sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
+        "source_text_sha256": "ecb2eb173481fecd9e390e03baf87c3098bf89491dfcb0bef6bb24697a0a1339",
+        "selected_count": 3,
+        "matches": [
+          {
+            "target_ids": [
+              "champion:Volibear"
+            ],
+            "source_id": "alias:champion:volibear",
+            "source_type": "abbreviation",
+            "status": "community_source_checked",
+            "matched_text": "볼베",
+            "start": 0,
+            "end": 2,
+            "match_type": "exact",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "game:ultimate"
+            ],
+            "source_id": "alias:game:ultimate",
+            "source_type": "abbreviation",
+            "status": "community_source_checked_context_required",
+            "matched_text": "궁",
+            "start": 3,
+            "end": 4,
+            "match_type": "exact",
+            "context_required": true
+          },
+          {
+            "target_ids": [
+              "item:3115"
+            ],
+            "source_id": "alias:item:nashor",
+            "source_type": "abbreviation",
+            "status": "community_source_checked",
+            "matched_text": "내셔",
+            "start": 11,
+            "end": 13,
+            "match_type": "exact",
+            "context_required": false
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "legacy_v1": {
+        "status": "ok",
+        "output": "ボルベの宮が抜けたので、まずはナーシャーを狙うよ",
+        "reference": "",
+        "wall_ms": 159.969,
+        "done_reason": "stop",
+        "prompt_eval_count": 69,
+        "eval_count": 20,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "ボリベア"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "アルティメット",
+                "ウルト",
+                "R"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ナッシャー"
+              ],
+              "matched": []
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "ボリベアアルティメットが抜けたのでナッシャーの牙から攻撃する",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[champion:Volibear] 原文一致「볼베」: 볼리베어 = ボリベア（champion）.\n[game:ultimate] 原文一致「궁」: 궁극기 = アルティメット／R（チャンピオンのRスキル）. 文脈条件: Q/W/E/R, 스킬, 쿨타임, 사용 문맥이면アルティメット候補。根拠不足なら宮・弓を含む一般語の可能性を残す。 他の意味候補: 宮、弓.\n[item:3115] 原文一致「내셔」: 내셔의 이빨 = ナッシャー トゥース（item）.",
+        "wall_ms": 210.566,
+        "done_reason": "stop",
+        "prompt_eval_count": 329,
+        "eval_count": 24,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "ボリベア"
+              ],
+              "matched": [
+                "ボリベア"
+              ]
+            },
+            {
+              "alternatives": [
+                "アルティメット",
+                "ウルト",
+                "R"
+              ],
+              "matched": [
+                "アルティメット"
+              ]
+            },
+            {
+              "alternatives": [
+                "ナッシャー"
+              ],
+              "matched": [
+                "ナッシャー"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "improved",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-priority-boots",
+      "kind": "synthetic_term_test",
+      "source_ko": "상대 조합 보고 닌탑이나 헤르메스 가자",
+      "expected_target_ids": [
+        "item:3047",
+        "item:3111"
+      ],
+      "required_ja": [
+        [
+          "プレート スチールキャップ",
+          "プレートスチールキャップ"
+        ],
+        [
+          "マーキュリー ブーツ",
+          "マーキュリーブーツ"
+        ]
+      ],
+      "selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-19",
+        "dictionary_sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
+        "source_text_sha256": "4ad0331ab623f594eeae5ff272c49d28cab7ac1f64bd566f51aea94a60a039fb",
+        "selected_count": 2,
+        "matches": [
+          {
+            "target_ids": [
+              "item:3047"
+            ],
+            "source_id": "alias:item:ninja-tabi",
+            "source_type": "old_name_abbreviation",
+            "status": "community_source_checked",
+            "matched_text": "닌탑",
+            "start": 9,
+            "end": 11,
+            "match_type": "exact",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "item:3111"
+            ],
+            "source_id": "alias:item:mercury-treads",
+            "source_type": "abbreviation",
+            "status": "community_source_checked_context_required",
+            "matched_text": "헤르메스",
+            "start": 14,
+            "end": 18,
+            "match_type": "exact",
+            "context_required": true
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "legacy_v1": {
+        "status": "ok",
+        "output": "相手の組み合わせを確認した上で、ニンタップかヘルメスを選びましょう",
+        "reference": "",
+        "wall_ms": 189.541,
+        "done_reason": "stop",
+        "prompt_eval_count": 70,
+        "eval_count": 24,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "プレート スチールキャップ",
+                "プレートスチールキャップ"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "マーキュリー ブーツ",
+                "マーキュリーブーツ"
+              ],
+              "matched": []
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "相手の組み合わせ報告、ニンタップかヘルメスを選びましょう",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[item:3047] 原文一致「닌탑」: 판금 장화 = プレート スチールキャップ（item）. 旧称由来: 닌자의 신발。動画時期が不明なら現行名だったと断定しない。\n[item:3111] 原文一致「헤르메스」: 헤르메스의 발걸음 = マーキュリー ブーツ（item）. 文脈条件: 신발, 강인함, 마법 저항력 문맥이면 머큐리 부츠 후보. 수은, 치명타 문맥이면 헤르메스의 시미터일 수 있음. 他の意味候補: item:3139.",
+        "wall_ms": 163.974,
+        "done_reason": "stop",
+        "prompt_eval_count": 339,
+        "eval_count": 21,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "プレート スチールキャップ",
+                "プレートスチールキャップ"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "マーキュリー ブーツ",
+                "マーキュリーブーツ"
+              ],
+              "matched": []
+            }
+          ]
+        }
+      },
+      "comparison": "unchanged_fail",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-priority-items",
+      "kind": "synthetic_term_test",
+      "source_ko": "구인수 전에 덤불 조끼부터 사세요",
+      "expected_target_ids": [
+        "item:3124",
+        "item:3076"
+      ],
+      "required_ja": [
+        [
+          "グインソー"
+        ],
+        [
+          "ブランブル ベスト",
+          "ブランブルベスト"
+        ]
+      ],
+      "selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-19",
+        "dictionary_sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
+        "source_text_sha256": "622ac2e6e71c3ce6feacb83fe3ecc32855869100a09c864b84ace766875b6656",
+        "selected_count": 2,
+        "matches": [
+          {
+            "target_ids": [
+              "item:3124"
+            ],
+            "source_id": "alias:item:guinsoo",
+            "source_type": "abbreviation",
+            "status": "community_source_checked",
+            "matched_text": "구인수",
+            "start": 0,
+            "end": 3,
+            "match_type": "exact",
+            "context_required": false
+          },
+          {
+            "target_ids": [
+              "item:3076"
+            ],
+            "source_id": "item:3076",
+            "source_type": "official_name",
+            "status": "official",
+            "matched_text": "덤불 조끼",
+            "start": 7,
+            "end": 12,
+            "match_type": "exact",
+            "context_required": false
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "legacy_v1": {
+        "status": "ok",
+        "output": "ダンブリーバッグは、クイーン・スーの前に購入してください",
+        "reference": "",
+        "wall_ms": 184.581,
+        "done_reason": "stop",
+        "prompt_eval_count": 65,
+        "eval_count": 20,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "グインソー"
+              ],
+              "matched": []
+            },
+            {
+              "alternatives": [
+                "ブランブル ベスト",
+                "ブランブルベスト"
+              ],
+              "matched": []
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "グインソーの前にブランブルベストを購入してください",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[item:3124] 原文一致「구인수」: 구인수의 격노검 = グインソー レイジブレード（item）.\n[item:3076] 原文一致「덤불 조끼」: 덤불 조끼 = ブランブル ベスト（item）.",
+        "wall_ms": 151.495,
+        "done_reason": "stop",
+        "prompt_eval_count": 238,
+        "eval_count": 14,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "グインソー"
+              ],
+              "matched": [
+                "グインソー"
+              ]
+            },
+            {
+              "alternatives": [
+                "ブランブル ベスト",
+                "ブランブルベスト"
+              ],
+              "matched": [
+                "ブランブルベスト"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "improved",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-contextual-chain",
+      "kind": "synthetic_term_test",
+      "source_ko": "다리 빙결 들고 플 쓴 다음 궁",
+      "expected_target_ids": [
+        "champion:Darius",
+        "rune:8351",
+        "summoner-spell:SummonerFlash",
+        "game:ultimate"
+      ],
+      "required_ja": [
+        [
+          "ダリウス"
+        ],
+        [
+          "グレイシャルオーグメント"
+        ],
+        [
+          "フラッシュ"
+        ],
+        [
+          "アルティメット",
+          "ウルト",
+          "R"
+        ]
+      ],
+      "selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-19",
+        "dictionary_sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
+        "source_text_sha256": "191471d99143b4cfdba18118c33a060f5ecb1eca04d81b2139d44257e308ac54",
+        "selected_count": 4,
+        "matches": [
+          {
+            "target_ids": [
+              "champion:Darius"
+            ],
+            "source_id": "alias:champion:darius",
+            "source_type": "abbreviation",
+            "status": "community_source_checked_context_required",
+            "matched_text": "다리",
+            "start": 0,
+            "end": 2,
+            "match_type": "exact",
+            "context_required": true
+          },
+          {
+            "target_ids": [
+              "rune:8351"
+            ],
+            "source_id": "alias:rune:glacial",
+            "source_type": "abbreviation",
+            "status": "community_source_checked_context_required",
+            "matched_text": "빙결",
+            "start": 3,
+            "end": 5,
+            "match_type": "exact",
+            "context_required": true
+          },
+          {
+            "target_ids": [
+              "summoner-spell:SummonerFlash"
+            ],
+            "source_id": "alias:spell:flash-short",
+            "source_type": "abbreviation",
+            "status": "community_source_checked_context_required",
+            "matched_text": "플",
+            "start": 9,
+            "end": 10,
+            "match_type": "exact",
+            "context_required": true
+          },
+          {
+            "target_ids": [
+              "game:ultimate"
+            ],
+            "source_id": "alias:game:ultimate",
+            "source_type": "abbreviation",
+            "status": "community_source_checked_context_required",
+            "matched_text": "궁",
+            "start": 16,
+            "end": 17,
+            "match_type": "exact",
+            "context_required": true
+          }
+        ],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "legacy_v1": {
+        "status": "ok",
+        "output": "ダリウスのグレイシャルオーグメントを持ち、フラッシュを発動した後に宮",
+        "reference": "점멸 / 플 / 플래쉬 = フラッシュ (短距離の瞬間移動を行うサモナースペル)\n빙결 강화 / 빙결 = グレイシャルオーグメント (ルーン文脈での氷結。一般語の凍結の可能性もある)\n다리우스 / 다리 = ダリウス (チャンピオン名。다리は一般語では脚や橋でもある)",
+        "wall_ms": 208.049,
+        "done_reason": "stop",
+        "prompt_eval_count": 195,
+        "eval_count": 25,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": false,
+          "groups": [
+            {
+              "alternatives": [
+                "ダリウス"
+              ],
+              "matched": [
+                "ダリウス"
+              ]
+            },
+            {
+              "alternatives": [
+                "グレイシャルオーグメント"
+              ],
+              "matched": [
+                "グレイシャルオーグメント"
+              ]
+            },
+            {
+              "alternatives": [
+                "フラッシュ"
+              ],
+              "matched": [
+                "フラッシュ"
+              ]
+            },
+            {
+              "alternatives": [
+                "アルティメット",
+                "ウルト",
+                "R"
+              ],
+              "matched": []
+            }
+          ]
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "ダリウス、グレイシャルオーグメントを装着し、フラッシュを発動した後、アルティメットを発動する",
+        "reference": "以下は原文に一致したLoL用語候補だけです。原文と文脈に合う意味だけを使い、根拠が足りない曖昧語を特定のLoL用語に決めつけないでください。候補一覧そのものを訳文へ出力しないでください。\n[champion:Darius] 原文一致「다리」: 다리우스 = ダリウス（champion）. 文脈条件: 챔피언, 탑, 스킬, 상대 문맥이면 다리우스 후보. 신체나 구조물 문맥이면 일반어로 해석. 他の意味候補: 脚、橋.\n[rune:8351] 原文一致「빙결」: 빙결 강화 = グレイシャルオーグメント（rune）. 文脈条件: 룬, 세팅, 들어 같은 문맥이면 글레이셜 오그먼트 후보. 상태 설명이면 일반어 가능. 他の意味候補: 凍結、氷結.\n[summoner-spell:SummonerFlash] 原文一致「플」: 점멸 = フラッシュ（summoner_spell）. 文脈条件: 독립 토큰이며 스펠, 콤보, 빠지다 문맥이면 플래시 후보. 단어 내부에서는 일치시키지 않음. 他の意味候補: 플레이 등의 접두 부분.\n[game:ultimate] 原文一致「궁」: 궁극기 = アルティメット／R（チャンピオンのRスキル）. 文脈条件: Q/W/E/R, 스킬, 쿨타임, 사용 문맥이면アルティメット候補。根拠不足なら宮・弓を含む一般語の可能性を残す。 他の意味候補: 宮、弓.",
+        "wall_ms": 272.849,
+        "done_reason": "stop",
+        "prompt_eval_count": 534,
+        "eval_count": 36,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": [
+            {
+              "alternatives": [
+                "ダリウス"
+              ],
+              "matched": [
+                "ダリウス"
+              ]
+            },
+            {
+              "alternatives": [
+                "グレイシャルオーグメント"
+              ],
+              "matched": [
+                "グレイシャルオーグメント"
+              ]
+            },
+            {
+              "alternatives": [
+                "フラッシュ"
+              ],
+              "matched": [
+                "フラッシュ"
+              ]
+            },
+            {
+              "alternatives": [
+                "アルティメット",
+                "ウルト",
+                "R"
+              ],
+              "matched": [
+                "アルティメット"
+              ]
+            }
+          ]
+        }
+      },
+      "comparison": "improved",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-negative-play",
+      "kind": "synthetic_negative_match",
+      "source_ko": "플레이가 좋아요",
+      "expected_target_ids": [],
+      "forbidden_target_ids": [
+        "summoner-spell:SummonerFlash"
+      ],
+      "required_ja": [],
+      "selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-19",
+        "dictionary_sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
+        "source_text_sha256": "297a752ce1498a06f1618c25de426bdd6aa496d7522679a7d3de1b4526749827",
+        "selected_count": 0,
+        "matches": [],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "legacy_v1": {
+        "status": "ok",
+        "output": "プレイが好きです",
+        "reference": "",
+        "wall_ms": 75.216,
+        "done_reason": "stop",
+        "prompt_eval_count": 57,
+        "eval_count": 5,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": []
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "プレイが好きです",
+        "reference": "",
+        "wall_ms": 54.193,
+        "done_reason": "stop",
+        "prompt_eval_count": 57,
+        "eval_count": 5,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": []
+        }
+      },
+      "comparison": "unchanged_pass",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-negative-leg",
+      "kind": "synthetic_negative_match",
+      "source_ko": "다리가 아파서 쉬고 싶어요",
+      "expected_target_ids": [],
+      "forbidden_target_ids": [
+        "champion:Darius"
+      ],
+      "required_ja": [],
+      "selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-19",
+        "dictionary_sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
+        "source_text_sha256": "3196cf92e3b8054ff8d0796097893ce3ece5ba7014a25fcb924ff2627ad0c818",
+        "selected_count": 0,
+        "matches": [],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "legacy_v1": {
+        "status": "ok",
+        "output": "足が痛くて休みたいです",
+        "reference": "다리우스 / 다리 = ダリウス (チャンピオン名。다리は一般語では脚や橋でもある)",
+        "wall_ms": 65.962,
+        "done_reason": "stop",
+        "prompt_eval_count": 122,
+        "eval_count": 7,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": []
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "足が痛くて休みたいです",
+        "reference": "",
+        "wall_ms": 63.587,
+        "done_reason": "stop",
+        "prompt_eval_count": 64,
+        "eval_count": 7,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": []
+        }
+      },
+      "comparison": "unchanged_pass",
+      "review_status": "automatic_term_check_only"
+    },
+    {
+      "id": "synthetic-negative-curious-tv",
+      "kind": "synthetic_negative_match",
+      "source_ko": "궁금해서 텔레비전을 봤어요",
+      "expected_target_ids": [],
+      "forbidden_target_ids": [
+        "game:ultimate",
+        "summoner-spell:SummonerTeleport"
+      ],
+      "required_ja": [],
+      "selection_check": {
+        "passed": true,
+        "missing": [],
+        "forbidden_selected": []
+      },
+      "current_dictionary_trace": {
+        "dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-19",
+        "dictionary_sha256": "721e8e8aa4bfcf380e64ab9fa66e64881bafa6e5ec62e43938fc0f53245ae941",
+        "source_text_sha256": "6f8dfed4f3415de7965e268e648ef5edfd7b8c9903fd90de45a5819102974536",
+        "selected_count": 0,
+        "matches": [],
+        "omitted_match_count": 0,
+        "limits": {
+          "entries": 5,
+          "characters": 1800
+        }
+      },
+      "legacy_v1": {
+        "status": "ok",
+        "output": "興味があってテレビを見た",
+        "reference": "",
+        "wall_ms": 80.421,
+        "done_reason": "stop",
+        "prompt_eval_count": 66,
+        "eval_count": 7,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": []
+        }
+      },
+      "current": {
+        "status": "ok",
+        "output": "気になるのでテレビを見た",
+        "reference": "",
+        "wall_ms": 49.555,
+        "done_reason": "stop",
+        "prompt_eval_count": 66,
+        "eval_count": 6,
+        "errors": [],
+        "automatic_term_check": {
+          "passed": true,
+          "groups": []
+        }
+      },
+      "comparison": "unchanged_pass",
+      "review_status": "automatic_term_check_only"
+    }
+  ]
+}

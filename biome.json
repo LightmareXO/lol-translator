@@ -11,6 +11,7 @@
       "!!public",
       "!!src-tauri/target",
       "!!dist",
+      "!!analyzer/app_dictionary/*.json",
       "!!analyzer/translation_evaluation/human_review_partial.json"
     ]
   },

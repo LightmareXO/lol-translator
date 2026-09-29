@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "captured_from": "aliases.json",
+  "legacy_file_sha256": "caa883fda9b3e1ba34d1837ce5fb042edd76bdc79f812097a5ccb28538724653",
+  "counts": {
+    "sources": 27,
+    "concepts": 22,
+    "aliases": 68
+  },
+  "canonical_sha256": {
+    "sources": "f1474a2af61a9243841833a3ecb6950449506c8e12d7356d06c924b7d90ec2dd",
+    "concepts": "8a022f73afde80622a92f9263f0dea7656fa3738c2638d72c4e997a2febc9f4f",
+    "aliases": "ceb86410d8f33eff18f49e76bb514dec1a7a76f65e9db78f1e6d11aa2d794824",
+    "alias_ids": "a3d5f27807cce0a9a34c9a75e694697a3bf90f6a7d41060e04448512fb6f6595"
+  },
+  "selection_cases": [
+    {
+      "source_ko": "볼베가 닌탑을 사고 궁을 썼어",
+      "expected": [
+        [
+          "alias:champion:volibear",
+          "exact",
+          0,
+          2
+        ],
+        [
+          "alias:item:ninja-tabi",
+          "exact",
+          4,
+          6
+        ],
+        [
+          "alias:game:ultimate",
+          "exact",
+          11,
+          12
+        ]
+      ]
+    },
+    {
+      "source_ko": "빙결마공점이 ㄹㅇ 좋고 요우무도 ㄱㅊ",
+      "expected": [
+        [
+          "alias:rune:glacial",
+          "compound_segment",
+          0,
+          2
+        ],
+        [
+          "alias:rune:hexflash",
+          "compound_segment",
+          2,
+          5
+        ],
+        [
+          "alias:internet:real",
+          "exact",
+          7,
+          9
+        ],
+        [
+          "alias:item:youmuu",
+          "exact",
+          13,
+          16
+        ],
+        [
+          "alias:internet:okay",
+          "exact",
+          18,
+          20
+        ]
+      ]
+    },
+    {
+      "source_ko": "다리 빙결 들고 플 쓴 다음 궁",
+      "expected": [
+        [
+          "alias:champion:darius",
+          "exact",
+          0,
+          2
+        ],
+        [
+          "alias:rune:glacial",
+          "exact",
+          3,
+          5
+        ],
+        [
+          "alias:spell:flash-short",
+          "exact",
+          9,
+          10
+        ],
+        [
+          "alias:game:ultimate",
+          "exact",
+          16,
+          17
+        ]
+      ]
+    },
+    {
+      "source_ko": "플레이가 좋아요",
+      "expected": []
+    },
+    {
+      "source_ko": "바로 빙결다리서폿인데",
+      "expected": [
+        [
+          "alias:rune:glacial",
+          "compound_segment",
+          3,
+          5
+        ],
+        [
+          "alias:champion:darius",
+          "compound_segment",
+          5,
+          7
+        ],
+        [
+          "alias:role:support",
+          "compound_segment",
+          7,
+          9
+        ]
+      ]
+    }
+  ],
+  "ids": {
+    "sources": [
+      "adc_item_abbreviations",
+      "aery_comet_abbreviations",
+      "barrier_variant",
+      "boots_current_usage",
+      "boots_terms",
+      "champion_abbreviations",
+      "darius_abbreviation",
+      "first_strike_abbreviation",
+      "flash_spelling_usage",
+      "flash_standard_spelling_usage",
+      "flash_ultimate_usage",
+      "game_terms_laning",
+      "game_terms_match_report",
+      "glacial_abbreviation",
+      "heal_barrier_abbreviations",
+      "hexflash_abbreviation",
+      "item_effect_terms",
+      "korean_jamo_abbreviations",
+      "nashor_guinsoo_usage",
+      "ninja_tabi_history",
+      "riot_ddragon_16_18_1",
+      "role_labels",
+      "rune_abbreviations",
+      "rune_usage_survey",
+      "smite_usage",
+      "teleport_abbreviation",
+      "volibear_abbreviation"
+    ],
+    "concepts": [
+      "game:core-item",
+      "game:counter-jungle",
+      "game:cs",
+      "game:gank",
+      "game:initiate",
+      "game:kite",
+      "game:laning",
+      "game:objective",
+      "game:poke",
+      "game:roam",
+      "game:teamfight",
+      "game:trade",
+      "game:ultimate",
+      "game:warding",
+      "game:waveclear",
+      "internet:okay",
+      "internet:real",
+      "role:bottom-carry",
+      "role:jungle",
+      "role:mid",
+      "role:support",
+      "role:top"
+    ],
+    "aliases": [
+      "alias:champion:aatrox",
+      "alias:champion:aphelios",
+      "alias:champion:blitzcrank",
+      "alias:champion:cassiopeia",
+      "alias:champion:darius",
+      "alias:champion:dr-mundo",
+      "alias:champion:ezreal",
+      "alias:champion:gangplank",
+      "alias:champion:graves",
+      "alias:champion:irelia",
+      "alias:champion:kalista",
+      "alias:champion:katarina",
+      "alias:champion:kindred",
+      "alias:champion:malphite",
+      "alias:champion:maokai",
+      "alias:champion:miss-fortune",
+      "alias:champion:nautilus",
+      "alias:champion:orianna",
+      "alias:champion:sejuani",
+      "alias:champion:tristana",
+      "alias:champion:volibear",
+      "alias:game:counter-jungle",
+      "alias:game:gank",
+      "alias:game:trade",
+      "alias:game:ultimate",
+      "alias:game:waveclear",
+      "alias:internet:okay",
+      "alias:internet:real",
+      "alias:item:black-cleaver",
+      "alias:item:bork",
+      "alias:item:bramble-compact",
+      "alias:item:essence-reaver",
+      "alias:item:frozen-heart",
+      "alias:item:guardian-angel",
+      "alias:item:guinsoo",
+      "alias:item:infinity-edge",
+      "alias:item:lucidity-boots",
+      "alias:item:mercury-treads",
+      "alias:item:nashor",
+      "alias:item:ninja-tabi",
+      "alias:item:rabadon",
+      "alias:item:runaan",
+      "alias:item:sorcerer-shoes",
+      "alias:item:thornmail",
+      "alias:item:trinity-force",
+      "alias:item:wits-end",
+      "alias:item:youmuu",
+      "alias:item:zhonya",
+      "alias:role:adc",
+      "alias:role:support",
+      "alias:rune:arcane-comet",
+      "alias:rune:first-strike",
+      "alias:rune:glacial",
+      "alias:rune:grasp",
+      "alias:rune:hexflash",
+      "alias:rune:lethal-tempo",
+      "alias:rune:press-the-attack",
+      "alias:rune:summon-aery",
+      "alias:spell:barrier",
+      "alias:spell:barrier-variant",
+      "alias:spell:flash-short",
+      "alias:spell:flash-transliteration",
+      "alias:spell:flash-transliteration-standard",
+      "alias:spell:heal",
+      "alias:spell:smite",
+      "alias:spell:smite-full",
+      "alias:spell:teleport",
+      "alias:spell:teleport-short"
+    ]
+  }
+}

@@ -29,6 +29,7 @@ if __package__ in (None, ""):
 from analyzer.ocr_evaluation.preprocessing import preprocess
 from analyzer.ocr_evaluation.run_paddle import MODEL_ID as PADDLE_MODEL_ID
 from analyzer.ocr_evaluation.run_paddle import result_text_and_score
+from analyzer.app_dictionary.dictionary import AppDictionary
 from analyzer.runtime_core import (
     PROJECT_KIND,
     SCHEMA_VERSION,
@@ -343,7 +344,7 @@ class Translator:
     def __init__(self, root: Path):
         self.model = TRANSLATION_MODEL
         self.prompts = read_json(root / "translation_evaluation" / "prompts-instruct.json")
-        self.glossary = read_json(root / "translation_evaluation" / "glossary.json")
+        self.dictionary = AppDictionary.load_default(root)
         self.client = LocalClient(timeout=60)
         try:
             models = self.client.request("tags").get("models", [])
@@ -371,13 +372,18 @@ class Translator:
             ) from error
 
     def translate(self, text: str) -> str:
+        translated, _ = self.translate_with_trace(text)
+        return translated
+
+    def translate_with_trace(self, text: str) -> tuple[str, dict[str, Any]]:
+        selection = self.dictionary.select(text)
         payload = make_payload(
             self.model,
             text,
-            True,
+            bool(selection.prompt_text),
             self.prompts,
-            self.glossary,
-            glossary_filter_text=text,
+            {},
+            terminology_reference=selection.prompt_text,
         )
         result = chat_with_retry(self.client, payload, attempts=2)
         if result["status"] != "ok":
@@ -385,7 +391,7 @@ class Translator:
             raise RuntimeError(
                 f"Ollamaで翻訳できませんでした: {error_types or '原因不明'}"
             )
-        return result["response"]["message"]["content"].strip()
+        return result["response"]["message"]["content"].strip(), selection.trace
 
     def configuration(self) -> dict[str, Any]:
         return {
@@ -394,9 +400,10 @@ class Translator:
             "prompt": self.prompts["qwen3"],
             "options": self.prompts["options"],
             "think": self.prompts["qwen_think"],
-            "glossary_version": self.glossary["version"],
+            "glossary_version": self.dictionary.version,
             "glossary_enabled": True,
-            "glossary_mode": "relevant-source-terms-v1",
+            "glossary_mode": "bounded-source-relevant-v2",
+            "dictionary": self.dictionary.configuration(),
         }
 
 
@@ -764,7 +771,9 @@ def analyze(
             continue
         try:
             translation_call_count += 1
-            apply_translation(subtitle, translator.translate(source), source_ko=source)
+            generated_ja, dictionary_trace = translator.translate_with_trace(source)
+            apply_translation(subtitle, generated_ja, source_ko=source)
+            subtitle["translation"]["dictionary"] = dictionary_trace
         except Exception as error:
             message = f"{type(error).__name__}: {error}"
             subtitle["translation"].update({"status": "error", "error": message})
@@ -907,7 +916,9 @@ def retranslate_project(
             continue
         try:
             translation_call_count += 1
-            apply_translation(subtitle, translator.translate(source), source_ko=source)
+            generated_ja, dictionary_trace = translator.translate_with_trace(source)
+            apply_translation(subtitle, generated_ja, source_ko=source)
+            subtitle["translation"]["dictionary"] = dictionary_trace
         except Exception as error:
             message = f"{type(error).__name__}: {error}"
             subtitle["translation"].update({"status": "error", "error": message})
@@ -947,9 +958,11 @@ def retranslate_project(
 
 def translate_one(text: str) -> dict[str, Any]:
     translator = Translator(Path(__file__).resolve().parent)
+    generated_ja, dictionary_trace = translator.translate_with_trace(text)
     return {
         "source_ko": text,
-        "generated_ja": translator.translate(text),
+        "generated_ja": generated_ja,
+        "dictionary": dictionary_trace,
         "configuration": translator.configuration(),
     }
 

@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "version": "lol-ko-ja-aliases-2026-09-19",
+  "target_category": "rune",
+  "aliases": [
+    {
+      "id": "alias:rune:glacial",
+      "ko": "빙결",
+      "target_ids": ["rune:8351"],
+      "type": "abbreviation",
+      "status": "community_source_checked_context_required",
+      "sources": ["glacial_abbreviation"],
+      "evidence": "빙결강화, 빙결",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["凍結", "氷結"],
+        "guidance": "룬, 세팅, 들어 같은 문맥이면 글레이셜 오그먼트 후보. 상태 설명이면 일반어 가능."
+      },
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:rune:lethal-tempo",
+      "ko": "치속",
+      "target_ids": ["rune:8008"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["rune_abbreviations"],
+      "evidence": "치속 정복자 집공",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:rune:press-the-attack",
+      "ko": "집공",
+      "target_ids": ["rune:8005"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["rune_abbreviations"],
+      "evidence": "치속 정복자 집공",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:rune:grasp",
+      "ko": "착취",
+      "target_ids": ["rune:8437"],
+      "type": "abbreviation",
+      "status": "community_source_checked_context_required",
+      "sources": ["rune_usage_survey"],
+      "evidence": "정복자 vs 착취",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["搾取"],
+        "guidance": "룬 선택 문맥에서는不死者の握撃候補。一般文では搾取の意味を優先可能。"
+      },
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:rune:first-strike",
+      "ko": "선공",
+      "target_ids": ["rune:8369"],
+      "type": "abbreviation",
+      "status": "community_source_checked_context_required",
+      "sources": ["first_strike_abbreviation"],
+      "evidence": "선제공격, 선공",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["先攻"],
+        "guidance": "룬과 빌드 문맥에서 퍼스트 스트라이크 후보."
+      },
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:rune:arcane-comet",
+      "ko": "유성",
+      "target_ids": ["rune:8229"],
+      "type": "short_name",
+      "status": "community_source_checked_context_required",
+      "sources": ["aery_comet_abbreviations"],
+      "evidence": "신비로운 유성, 유성",
+      "ambiguity": {
+        "level": "general_word",
+        "other_meanings": ["流星"],
+        "guidance": "룬 설정 문맥에서秘儀の彗星候補。"
+      },
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:rune:summon-aery",
+      "ko": "콩콩이",
+      "target_ids": ["rune:8214"],
+      "type": "short_name",
+      "status": "community_source_checked",
+      "sources": ["aery_comet_abbreviations"],
+      "evidence": "콩콩이 소환, 콩콩이",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    },
+    {
+      "id": "alias:rune:hexflash",
+      "ko": "마공점",
+      "target_ids": ["rune:8306"],
+      "type": "abbreviation",
+      "status": "community_source_checked",
+      "sources": ["hexflash_abbreviation"],
+      "evidence": "마법공학 점멸기, 마공점",
+      "matching": {
+        "boundary": "korean_token_or_particle"
+      }
+    }
+  ]
+}

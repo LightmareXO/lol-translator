@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "version": "lol-ko-ja-aliases-2026-09-19",
+  "checked_at": "2026-09-19",
+  "sources": {
+    "riot_ddragon_16_18_1": {
+      "url": "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/ko_KR/item.json",
+      "kind": "official"
+    },
+    "champion_abbreviations": {
+      "url": "https://www.inven.co.kr/board/lol/4625/2928401",
+      "kind": "community_usage"
+    },
+    "volibear_abbreviation": {
+      "url": "https://www.inven.co.kr/board/lol/3369/1998051",
+      "kind": "community_usage"
+    },
+    "darius_abbreviation": {
+      "url": "https://www.inven.co.kr/board/lol/3369/2058926",
+      "kind": "community_usage"
+    },
+    "adc_item_abbreviations": {
+      "url": "https://www.inven.co.kr/board/lol/3372/568106",
+      "kind": "community_usage"
+    },
+    "item_effect_terms": {
+      "url": "https://www.inven.co.kr/board/lol/2766/42344",
+      "kind": "community_usage"
+    },
+    "nashor_guinsoo_usage": {
+      "url": "https://m.inven.co.kr/site/lol/manualtool.php?idx=132979&view=%EF%BF%BD",
+      "kind": "community_usage"
+    },
+    "ninja_tabi_history": {
+      "url": "https://m.inven.co.kr/site/lol/manualtool.php?champnum=3&idx=124514&p=3&pg=3&vtype=mobile",
+      "kind": "community_usage"
+    },
+    "boots_current_usage": {
+      "url": "https://www.inven.co.kr/board/lol/3369/2516128",
+      "kind": "community_usage"
+    },
+    "boots_terms": {
+      "url": "https://m.inven.co.kr/board/lol/2971/5193?my=con&p=1",
+      "kind": "community_usage"
+    },
+    "rune_abbreviations": {
+      "url": "https://www.inven.co.kr/board/lol/3372/583364",
+      "kind": "community_usage"
+    },
+    "rune_usage_survey": {
+      "url": "https://www.inven.co.kr/board/lol/3369/2513068",
+      "kind": "community_usage"
+    },
+    "glacial_abbreviation": {
+      "url": "https://m.inven.co.kr/site/lol/manualtool.php?idx=139710&vtype=mobile",
+      "kind": "community_usage"
+    },
+    "aery_comet_abbreviations": {
+      "url": "https://www.inven.co.kr/board/lol/2766/49190",
+      "kind": "community_usage"
+    },
+    "first_strike_abbreviation": {
+      "url": "https://www.inven.co.kr/board/lol/3370/569550",
+      "kind": "community_usage"
+    },
+    "flash_ultimate_usage": {
+      "url": "https://www.inven.co.kr/board/lol/2766/47101",
+      "kind": "community_usage"
+    },
+    "flash_spelling_usage": {
+      "url": "https://www.inven.co.kr/board/lol/3369/1978586",
+      "kind": "community_usage"
+    },
+    "flash_standard_spelling_usage": {
+      "url": "https://www.inven.co.kr/board/lol/3338/4180?category=%EB%A0%88%EB%94%A7&p=24",
+      "kind": "community_usage"
+    },
+    "teleport_abbreviation": {
+      "url": "https://lol.inven.co.kr/dataninfo/champion/manualToolView.php?idx=115749&vtype=pc",
+      "kind": "community_usage"
+    },
+    "heal_barrier_abbreviations": {
+      "url": "https://www.inven.co.kr/board/lol/3369/1346474",
+      "kind": "community_usage"
+    },
+    "barrier_variant": {
+      "url": "https://m.inven.co.kr/site/lol/manualtool.php?category=1&champnum=32&filter=memnick&idx=122200&p=4&pg=271",
+      "kind": "community_usage"
+    },
+    "smite_usage": {
+      "url": "https://www.inven.co.kr/board/lol/2766/17736",
+      "kind": "community_usage"
+    },
+    "game_terms_match_report": {
+      "url": "https://www.inven.co.kr/webzine/news/?news=231546&site=lol",
+      "kind": "editorial_usage"
+    },
+    "game_terms_laning": {
+      "url": "https://m.inven.co.kr/board/lol/2766/49286?stype=subject&svalue=%EB%9D%BC%EC%9D%B8",
+      "kind": "community_usage"
+    },
+    "hexflash_abbreviation": {
+      "url": "https://m.inven.co.kr/site/lol/manualtool.php?c=122258&cp=1&idx=143140&p=80",
+      "kind": "community_usage"
+    },
+    "korean_jamo_abbreviations": {
+      "url": "https://korean.go.kr/common/download.do?c_file_name=3f292972-4353-45f8-9cc8-5580ed2ce8db.pdf&file_path=reportData&o_file_name=2021%EB%85%84+%EB%A7%9E%EC%B6%A4%EB%B2%95+%EA%B5%90%EC%A0%95+%EB%A7%90%EB%AD%89%EC%B9%98+%EC%97%B0%EA%B5%AC+%EB%B6%84%EC%84%9D.pdf",
+      "kind": "published_usage"
+    },
+    "role_labels": {
+      "url": "https://itrc.honam.ac.kr/PublicationsReferenceRoom/download/274/362527",
+      "kind": "published_usage"
+    },
+    "namu_champion_aurelion_sol": {
+      "url": "https://namu.wiki/w/아우렐리온%20솔",
+      "retrieval_url": "https://namu.moe/w/아우렐리온%20솔",
+      "kind": "namu_wiki",
+      "section": "13. 기타",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-13 17:37:19"
+    },
+    "namu_champion_xin_zhao": {
+      "url": "https://namu.wiki/w/신%20짜오",
+      "retrieval_url": "https://namu.moe/w/신%20짜오",
+      "kind": "namu_wiki",
+      "section": "13. 기타",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-05 11:35:57"
+    },
+    "namu_champion_volibear": {
+      "url": "https://namu.wiki/w/볼리베어",
+      "retrieval_url": "https://namu.moe/w/볼리베어",
+      "kind": "namu_wiki",
+      "section": "13. 기타",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-15 19:25:50"
+    },
+    "namu_champion_blitzcrank": {
+      "url": "https://namu.wiki/w/블리츠크랭크",
+      "retrieval_url": "https://namu.moe/w/블리츠크랭크",
+      "kind": "namu_wiki",
+      "section": "13. 기타",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-20 20:39:55"
+    },
+    "namu_champion_tristana": {
+      "url": "https://namu.wiki/w/트리스타나",
+      "retrieval_url": "https://namu.moe/w/트리스타나",
+      "kind": "namu_wiki",
+      "section": "13.1. 트리 vs 트타",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-21 19:30:37"
+    },
+    "namu_champion_miss_fortune": {
+      "url": "https://namu.wiki/w/미스%20포츈(리그%20오브%20레전드)",
+      "retrieval_url": "https://namu.moe/w/미스%20포츈(리그%20오브%20레전드)",
+      "kind": "namu_wiki",
+      "section": "page body",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-23 12:05:43"
+    },
+    "namu_champion_pantheon": {
+      "url": "https://namu.wiki/w/판테온(리그%20오브%20레전드)",
+      "retrieval_url": "https://namu.moe/w/판테온(리그%20오브%20레전드)",
+      "kind": "namu_wiki",
+      "section": "13. 기타",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-15 23:28:04"
+    },
+    "namu_champion_twisted_fate": {
+      "url": "https://namu.wiki/w/트위스티드%20페이트",
+      "retrieval_url": "https://namu.moe/w/트위스티드%20페이트",
+      "kind": "namu_wiki",
+      "section": "13. 기타",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-16 19:16:39"
+    },
+    "namu_items_boots": {
+      "url": "https://namu.wiki/w/리그%20오브%20레전드/아이템/장화",
+      "retrieval_url": "https://namu.moe/w/리그%20오브%20레전드/아이템/장화",
+      "kind": "namu_wiki",
+      "section": "3.1–3.6",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-13 00:16:34"
+    },
+    "namu_items_legendary": {
+      "url": "https://namu.wiki/w/리그%20오브%20레전드/아이템/전설",
+      "retrieval_url": "https://namu.moe/w/리그%20오브%20레전드/아이템/전설",
+      "kind": "namu_wiki",
+      "section": "fixed item sections in namu-survey.json",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-13 20:53:12"
+    },
+    "namu_items_epic": {
+      "url": "https://namu.wiki/w/리그%20오브%20레전드/아이템/서사",
+      "retrieval_url": "https://namu.moe/w/리그%20오브%20레전드/아이템/서사",
+      "kind": "namu_wiki",
+      "section": "6.3. 덤불 조끼",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-13 18:11:36"
+    },
+    "namu_gameplay_terms": {
+      "url": "https://namu.wiki/w/리그%20오브%20레전드/용어",
+      "retrieval_url": "https://namu.moe/w/리그%20오브%20레전드/용어",
+      "kind": "namu_wiki",
+      "section": "fixed gameplay sections in namu-survey.json",
+      "checked_at": "2026-09-27",
+      "page_revision": "2026-08-05 12:48:43"
+    }
+  }
+}

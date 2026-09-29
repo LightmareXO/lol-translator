@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "name": "pre-namu-vs-namu-aliases-development-and-synthetic",
+  "holdout_used": false,
+  "note": "Namu Wiki追加前の辞書と追加後の辞書を比較する。既に調整へ使った開発字幕2件は既存語の回帰確認、新規語を含む8件は挙動を明示した合成文であり、独立評価ではない。",
+  "cases": [
+    {
+      "id": "dev-stability-g03",
+      "kind": "development_subtitle",
+      "source": "ocr_evaluation/manifest.json:g03_f02",
+      "source_ko": "선요우무도 ㄱㅊ긴한데 상대조합 따라 딴딴해야할거같으면 블클 갑니다",
+      "expected_baseline_target_ids": ["item:3142", "internet:okay", "item:3071"],
+      "expected_target_ids": ["item:3142", "internet:okay", "item:3071"],
+      "required_ja": [["妖夢", "ヨウム"], ["ブラック クリーバー", "ブラッククリーバー", "黒斧"]]
+    },
+    {
+      "id": "dev-stability-g06",
+      "kind": "development_subtitle",
+      "source": "ocr_evaluation/manifest.json:g06_f02",
+      "source_ko": "플 빼고 다음 턴에 잡으면 되죠",
+      "expected_baseline_target_ids": ["summoner-spell:SummonerFlash"],
+      "expected_target_ids": ["summoner-spell:SummonerFlash"],
+      "required_ja": [["フラッシュ"]]
+    },
+    {
+      "id": "synthetic-aurelion-baron",
+      "kind": "synthetic_term_test",
+      "source_ko": "아우솔이 바론을 치고 있어",
+      "expected_baseline_target_ids": [],
+      "forbidden_baseline_target_ids": ["champion:AurelionSol", "game:baron"],
+      "expected_target_ids": ["champion:AurelionSol", "game:baron"],
+      "required_ja": [["オレリオン・ソル", "オレリオン ソル"], ["バロン"]]
+    },
+    {
+      "id": "synthetic-xin-initiate-tf",
+      "kind": "synthetic_term_test",
+      "source_ko": "짜오가 이니시하고 트페가 합류해",
+      "expected_baseline_target_ids": [],
+      "forbidden_baseline_target_ids": ["champion:XinZhao", "game:initiate", "champion:TwistedFate"],
+      "expected_target_ids": ["champion:XinZhao", "game:initiate", "champion:TwistedFate"],
+      "required_ja": [["シン・ジャオ", "シン ジャオ"], ["イニシエート", "仕掛け", "エンゲージ"], ["ツイステッド・フェイト", "ツイステッド フェイト"]]
+    },
+    {
+      "id": "synthetic-pantheon-rapid-firecannon",
+      "kind": "synthetic_term_test",
+      "source_ko": "빵테가 고연포를 샀어",
+      "expected_baseline_target_ids": [],
+      "forbidden_baseline_target_ids": ["champion:Pantheon", "item:3094"],
+      "expected_target_ids": ["champion:Pantheon", "item:3094"],
+      "required_ja": [["パンテオン"], ["ラピッド ファイアキャノン", "ラピッドファイアキャノン"]]
+    },
+    {
+      "id": "synthetic-wits-end-bramble",
+      "kind": "synthetic_term_test",
+      "source_ko": "윗엔은 덤조보다 먼저 가요",
+      "expected_baseline_target_ids": [],
+      "forbidden_baseline_target_ids": ["item:3091", "item:3076"],
+      "expected_target_ids": ["item:3091", "item:3076"],
+      "required_ja": [["ウィッツ エンド", "ウィッツエンド"], ["ブランブル ベスト", "ブランブルベスト"]]
+    },
+    {
+      "id": "synthetic-combined-items-initiate",
+      "kind": "synthetic_term_test",
+      "source_ko": "닌덤으로 버티고 이니시를 해",
+      "expected_baseline_target_ids": [],
+      "forbidden_baseline_target_ids": ["item:3047", "item:3076", "game:initiate"],
+      "expected_target_ids": ["item:3047", "item:3076", "game:initiate"],
+      "required_ja": [["プレート スチールキャップ", "プレートスチールキャップ"], ["ブランブル ベスト", "ブランブルベスト"], ["イニシエート", "仕掛け", "エンゲージ"]]
+    },
+    {
+      "id": "synthetic-historical-nicknames",
+      "kind": "synthetic_term_test",
+      "source_ko": "트리로 점프하고 버디버디를 사",
+      "expected_baseline_target_ids": [],
+      "forbidden_baseline_target_ids": ["champion:Tristana", "item:3009"],
+      "expected_target_ids": ["champion:Tristana", "item:3009"],
+      "required_ja": [["トリスターナ"], ["スイフトネス ブーツ", "スイフトネスブーツ"]]
+    },
+    {
+      "id": "synthetic-ambiguity-washing-machine",
+      "kind": "synthetic_ambiguity_test",
+      "source_ko": "세탁기를 돌렸어",
+      "expected_baseline_target_ids": [],
+      "forbidden_baseline_target_ids": ["champion:Blitzcrank"],
+      "expected_target_ids": ["champion:Blitzcrank"],
+      "required_ja": [["洗濯機"]]
+    },
+    {
+      "id": "synthetic-negative-sidecar",
+      "kind": "synthetic_negative_match",
+      "source_ko": "사이드카를 탔어",
+      "expected_baseline_target_ids": [],
+      "expected_target_ids": [],
+      "forbidden_target_ids": ["game:split-push"],
+      "required_ja": [["サイドカー"]]
+    }
+  ]
+}
