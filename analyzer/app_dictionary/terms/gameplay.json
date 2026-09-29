@@ -185,6 +185,19 @@
       }
     },
     {
+      "id": "game:side-lane",
+      "category": "game_term",
+      "ko": "사이드 레인",
+      "ja": "サイド",
+      "meaning": "トップまたはボットのサイドレーンと、そのレーンを処理する動き。사이드 가다は「サイドへ行く」、사이드 밀다は「サイドを押す」。スプリットプッシュとは同義にしない",
+      "sources": ["namu_gameplay_terms"],
+      "verification": {
+        "source_checked": true,
+        "human_checked": false,
+        "checked_at": "2026-09-30"
+      }
+    },
+    {
       "id": "game:playmaking",
       "category": "game_term",
       "ko": "플레이메이킹",
@@ -365,20 +378,20 @@
     {
       "id": "alias:game:side",
       "ko": "사이드",
-      "target_ids": ["game:split-push"],
+      "target_ids": ["game:side-lane"],
       "type": "related_short_name",
       "status": "source_checked_context_required",
       "sources": ["namu_gameplay_terms"],
-      "evidence": "용어 문서에서 스플릿 푸시와 함께 쓰는 줄임말로 설명",
+      "evidence": "용어 문서에서 스플릿 푸시와 함께 쓰는 표현이지만, 사이드 레인 자체와 그 운영까지 가리키므로 별도 개념으로 분리",
       "ambiguity": {
         "level": "general_word",
-        "other_meanings": ["側面", "サイドレーン自体"],
-        "guidance": "라인 분배, 운영, 포탑 압박 문맥에서 스플릿 푸시 후보로 사용."
+        "other_meanings": ["一般的な側面"],
+        "guidance": "LoL 문맥에서는「サイド」と訳す。사이드 가다は「サイドへ行く」、사이드 밀다は「サイドを押す」。스플릿이 명시되지 않으면スプリットプッシュへ狭めない。"
       },
       "verification": {
         "source_checked": true,
         "human_checked": false,
-        "checked_at": "2026-09-27"
+        "checked_at": "2026-09-30"
       },
       "matching": { "boundary": "korean_token_or_particle" }
     },

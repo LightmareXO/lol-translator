@@ -49,8 +49,8 @@
     {
       "role": "terms",
       "path": "terms/gameplay.json",
-      "sha256": "33ce9a360db0fa31dcb8ddc7437bd45ee88c356ff17dfdad2001b54b97b86f75",
-      "expected_concept_count": 25,
+      "sha256": "d918a626bc8745f84d9706a2269ce241dd5fdd404e7ae467dbd68ce6604678c1",
+      "expected_concept_count": 26,
       "expected_alias_count": 15
     }
   ],

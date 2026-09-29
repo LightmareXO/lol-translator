@@ -141,6 +141,26 @@ class AppDictionaryTests(unittest.TestCase):
             with self.subTest(text=text):
                 self.assertEqual(self.dictionary.select(text).trace["selected_count"], 0)
 
+    def test_side_lane_is_not_narrowed_to_split_push(self):
+        side = self.dictionary.select("사이드 가야 돼")
+        side_targets = {
+            target
+            for match in side.trace["matches"]
+            for target in match["target_ids"]
+        }
+        self.assertIn("game:side-lane", side_targets)
+        self.assertNotIn("game:split-push", side_targets)
+        self.assertIn("사이드 가다は「サイドへ行く」", side.prompt_text)
+
+        split = self.dictionary.select("스플릿 해야 돼")
+        split_targets = {
+            target
+            for match in split.trace["matches"]
+            for target in match["target_ids"]
+        }
+        self.assertIn("game:split-push", split_targets)
+        self.assertNotIn("game:side-lane", split_targets)
+
     def test_ambiguous_namu_aliases_remain_context_candidates(self):
         selected = self.dictionary.select("세탁기를 돌렸어")
         match = next(

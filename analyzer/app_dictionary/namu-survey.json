@@ -197,7 +197,7 @@
     {"term": "카정", "target_ids": ["game:counter-jungle"], "source": "namu_gameplay_terms", "decision": "duplicate_existing", "evidence": "カウンタージャングルの略称として明記", "human_checked": false},
     {"term": "바론", "target_ids": ["game:baron"], "source": "namu_gameplay_terms", "decision": "added_active", "evidence": "バロンナッシャーの短縮名として説明", "human_checked": false},
     {"term": "스플릿", "target_ids": ["game:split-push"], "source": "namu_gameplay_terms", "decision": "added_active", "evidence": "スプリットプッシュの短縮名として説明", "human_checked": false},
-    {"term": "사이드", "target_ids": ["game:split-push"], "source": "namu_gameplay_terms", "decision": "added_active", "evidence": "スプリットプッシュとともに使う短縮名として説明", "human_checked": false},
+    {"term": "사이드", "target_ids": ["game:side-lane"], "source": "namu_gameplay_terms", "decision": "added_active", "evidence": "スプリットプッシュとともに使う表現だが、サイドレーン自体とその運用を含むため独立概念として登録", "human_checked": false},
     {"term": "이니시", "target_ids": ["game:initiate"], "source": "namu_gameplay_terms", "decision": "added_active", "evidence": "イニシエーティングの短縮名として説明", "human_checked": false},
     {"term": "메이킹", "target_ids": ["game:playmaking"], "source": "namu_gameplay_terms", "decision": "added_active", "evidence": "プレイメイキングの短縮名として説明", "human_checked": false}
   ],
