@@ -2,18 +2,18 @@
 
 from __future__ import annotations
 
-import hashlib
 import json
 from pathlib import Path
 from typing import Any
 
+if __package__ in (None, ""):
+    from hashing import HASH_ALGORITHM, json_file_sha256
+else:
+    from .hashing import HASH_ALGORITHM, json_file_sha256
+
 
 def read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
-
-
-def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def update_manifest(base: Path) -> dict[str, Any]:
@@ -28,7 +28,7 @@ def update_manifest(base: Path) -> dict[str, Any]:
     for item in items:
         path = base / item["path"]
         document = read_json(path)
-        item["sha256"] = sha256(path)
+        item["sha256"] = json_file_sha256(path)
         if item["role"] == "official":
             item["expected_count"] = len(document["entries"])
         elif item["role"] == "sources":
@@ -40,6 +40,8 @@ def update_manifest(base: Path) -> dict[str, Any]:
             item["expected_alias_count"] = len(document.get("aliases", []))
         else:
             raise ValueError(f"unknown dictionary file role: {item['role']}")
+    manifest["schema_version"] = 3
+    manifest["hash_algorithm"] = HASH_ALGORITHM
     manifest_path.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",

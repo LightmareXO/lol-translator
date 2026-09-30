@@ -32,6 +32,7 @@
       "../analyzer/runtime_core.py": "analyzer/runtime_core.py",
       "../analyzer/app_dictionary/__init__.py": "analyzer/app_dictionary/__init__.py",
       "../analyzer/app_dictionary/dictionary.py": "analyzer/app_dictionary/dictionary.py",
+      "../analyzer/app_dictionary/hashing.py": "analyzer/app_dictionary/hashing.py",
       "../analyzer/app_dictionary/manifest.json": "analyzer/app_dictionary/manifest.json",
       "../analyzer/app_dictionary/official-16.18.1.json": "analyzer/app_dictionary/official-16.18.1.json",
       "../analyzer/app_dictionary/sources.json": "analyzer/app_dictionary/sources.json",

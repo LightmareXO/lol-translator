@@ -1,18 +1,18 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "app_dictionary_version": "lol-ko-ja-app-16.18.1-2026-09-27",
   "checked_at": "2026-09-27",
   "patch": "16.18.1",
   "official_file": {
     "role": "official",
     "path": "official-16.18.1.json",
-    "sha256": "673f297ee04a85ab7439ebe6537ba6b6a6bbdd42fc7977b78a83d3c62331f418",
+    "sha256": "792df00219bb97cfe8eaa9cf6c2af2607ec800055b531e52a3b86373a48b4a2c",
     "expected_count": 1455
   },
   "sources_file": {
     "role": "sources",
     "path": "sources.json",
-    "sha256": "f56a7cf639a3fe6ab9f363eb583b73792b62065c2073c4b6a49e86c161684b3d",
+    "sha256": "00fa58e648eac03837e7268872fc02672767f96a11ff02f70771f8a7ef1a5f09",
     "expected_count": 39
   },
   "alias_files": [
@@ -20,28 +20,28 @@
       "role": "aliases",
       "target_category": "champion",
       "path": "aliases/champions.json",
-      "sha256": "3df52ab5acbf3f749b8346cf6369eccb7f94e3be59813606e2f37435ba581bab",
+      "sha256": "11a445e4d85f5706eb8b1c2a9e32054b4620f1306a1c65c88a09a51e8fd3ab04",
       "expected_count": 37
     },
     {
       "role": "aliases",
       "target_category": "item",
       "path": "aliases/items.json",
-      "sha256": "60110b56046f00f8a3ce71f0c8275cf956e788a2d841cb1531fabc4dc21b2527",
+      "sha256": "959cc5037f0274eab099a57aa0b7a76d0f15bfd4ad84cf333e1aa5e489f1bac7",
       "expected_count": 39
     },
     {
       "role": "aliases",
       "target_category": "rune",
       "path": "aliases/runes.json",
-      "sha256": "bdb865abf66e4e6d0810f9e4f38451a3bfbbfbfdd345b4c66be44ab2178fdf95",
+      "sha256": "2a852c5d3e562bc866c3732971ed13301675e8d39ebfd1a1d881b2df996f8e03",
       "expected_count": 8
     },
     {
       "role": "aliases",
       "target_category": "summoner_spell",
       "path": "aliases/summoner_spells.json",
-      "sha256": "d50b67ccb1c65fd9752ea09734fa449af26986679684927892951c20676a5ed5",
+      "sha256": "8d88ae7ddbc6c5fe9fd481cba8135cf1c13a72fda210c8a9694cfecaf559586c",
       "expected_count": 10
     }
   ],
@@ -49,7 +49,7 @@
     {
       "role": "terms",
       "path": "terms/gameplay.json",
-      "sha256": "d918a626bc8745f84d9706a2269ce241dd5fdd404e7ae467dbd68ce6604678c1",
+      "sha256": "a3fc4b9791bae1f0950c2f9428fda58e95f0788286068c8e0b8f92d576a51207",
       "expected_concept_count": 26,
       "expected_alias_count": 15
     }
@@ -63,5 +63,6 @@
     "rune": 62,
     "rune_tree": 5,
     "summoner_spell": 34
-  }
+  },
+  "hash_algorithm": "sha256-canonical-json-v1"
 }

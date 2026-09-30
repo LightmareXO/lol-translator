@@ -2,7 +2,7 @@
   "status": "ok",
   "version": "lol-ko-ja-app-16.18.1-2026-09-27",
   "patch": "16.18.1",
-  "dictionary_sha256": "374fa1fd99b32974cc7d3943c49e075d6234dc88167d6f523a0d921c3c3f485d",
+  "dictionary_sha256": "edf41937b49dc0355b7651291e2f4286301a8cb0c9f949d6caffc90319b1caa0",
   "official_counts": {
     "champion": 173,
     "champion_ability": 865,

@@ -9,6 +9,8 @@ from pathlib import Path
 import unicodedata
 from typing import Any
 
+from .hashing import HASH_ALGORITHM, json_file_sha256
+
 
 ACTIVE_STATUSES = (
     "source_checked",
@@ -31,10 +33,6 @@ KOREAN_PARTICLES = tuple(
 
 def _read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
-
-
-def _sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def _normalized(value: str) -> str:
@@ -155,8 +153,10 @@ class AppDictionary:
         self.manifest_path = manifest_path
         self.base = manifest_path.parent
         self.manifest = _read_json(manifest_path)
-        if self.manifest.get("schema_version") != 2:
+        if self.manifest.get("schema_version") != 3:
             raise ValueError("unsupported app dictionary manifest schema")
+        if self.manifest.get("hash_algorithm") != HASH_ALGORITHM:
+            raise ValueError("unsupported app dictionary hash algorithm")
 
         self.official_path = self._manifest_file_path(self.manifest["official_file"])
         self.official = _read_json(self.official_path)
@@ -193,9 +193,9 @@ class AppDictionary:
                 raise ValueError(f"duplicate dictionary ID: {concept['id']}")
             self.entries[concept["id"]] = {**concept, "origin": "curated_concept"}
         self.validate()
-        self.official_sha256 = _sha256(self.official_path)
+        self.official_sha256 = json_file_sha256(self.official_path)
         self.file_sha256 = {
-            item["path"]: _sha256(self.base / item["path"])
+            item["path"]: json_file_sha256(self.base / item["path"])
             for item in self._manifest_items()
         }
         identity = ":".join(
@@ -221,7 +221,7 @@ class AppDictionary:
         path = (self.base / item["path"]).resolve()
         if path.parent != self.base.resolve() and self.base.resolve() not in path.parents:
             raise ValueError(f"dictionary path escapes base directory: {item['path']}")
-        if _sha256(path) != item["sha256"]:
+        if json_file_sha256(path) != item["sha256"]:
             raise ValueError(f"dictionary hash differs from manifest: {item['path']}")
         return path
 
@@ -262,6 +262,7 @@ class AppDictionary:
             "version": self.version,
             "patch": self.official["patch"],
             "sha256": self.sha256,
+            "hash_algorithm": HASH_ALGORITHM,
             "official_version": self.official["dictionary_version"],
             "official_sha256": self.official_sha256,
             "alias_version": self.aliases["version"],
