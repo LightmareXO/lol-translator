@@ -7,6 +7,8 @@
 チャンピオン、アイテム、ルーン、サモナースペルの別名は`aliases/`に置きます。
 特定の正式名称へ紐づかないゲーム用語と、その別名は`terms/gameplay.json`に置きます。
 出典は`sources.json`、読み込むファイルとSHA-256は`manifest.json`で管理します。
+SHA-256はJSONをキー順・空白なしのUTF-8へ正規化した意味内容に対して計算します。
+このためLFとCRLF、インデント、末尾改行の違いでは変化せず、JSONの値や配列順の変更は検出されます。
 
 現在の配布対象は次のファイルです。
 
@@ -57,7 +59,7 @@ python analyzer/app_dictionary/validate_dictionary.py `
 `added_ids`、`removed_ids`、`renamed`を確認します。
 削除IDや名称変更は、別名の参照先と過去動画の旧称に影響するため、人が判断します。
 
-採用時は`manifest.json`のパッチ、ファイル名、SHA-256、期待件数を更新します。
+採用時は`manifest.json`のパッチとファイル名を更新した後、`update_manifest.py`でSHA-256と期待件数を再生成します。
 `AppDictionary.load_default`とTauriのresource指定も、新しい正式名称ファイルへ合わせます。
 
 ## 別名の追加
@@ -109,7 +111,7 @@ python analyzer/app_dictionary/validate_dictionary.py `
 python -m unittest discover -s analyzer -p "test_*.py"
 ```
 
-検証処理は正式名称件数、ファイルをまたぐID重複、ロケール欠落、別名の出典、参照先、カテゴリ、調査結果との整合、全配布ファイルのSHA-256、旧v1のSHA-256を確認します。
+検証処理は正式名称件数、ファイルをまたぐID重複、ロケール欠落、別名の出典、参照先、カテゴリ、調査結果との整合、全配布JSONの正規化SHA-256、旧v1の生バイトSHA-256を確認します。
 `migration-baseline.json`との照合により、分割前から存在した出典、補助概念、別名、代表的な候補選択結果が維持されていることも確認します。
 衝突一覧は、同じ正式名を持つ別IDを削除するための一覧ではありません。
 ゲームモード違い、アイテム派生、スキル名と一般名の重複を確認するための一覧です。

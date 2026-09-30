@@ -17,6 +17,7 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from app_dictionary.dictionary import AppDictionary
+from app_dictionary.hashing import HASH_ALGORITHM, canonical_json_sha256
 from translation_evaluation.evaluate import (
     LocalClient,
     chat_with_retry,
@@ -107,13 +108,17 @@ def load_dictionary_from_git_ref(repo_root: Path, ref: str) -> AppDictionary:
         path = base / relative
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(output)
+    manifest["schema_version"] = 3
+    manifest["hash_algorithm"] = HASH_ALGORITHM
     for item in [
         manifest["official_file"],
         manifest["sources_file"],
         *manifest["alias_files"],
         *manifest["term_files"],
     ]:
-        item["sha256"] = hashlib.sha256((base / item["path"]).read_bytes()).hexdigest()
+        item["sha256"] = canonical_json_sha256(
+            json.loads((base / item["path"]).read_text(encoding="utf-8"))
+        )
     (base / "manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",

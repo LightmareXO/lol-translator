@@ -7,6 +7,7 @@ import tempfile
 import unittest
 
 from app_dictionary.dictionary import AppDictionary, collision_report
+from app_dictionary.hashing import HASH_ALGORITHM, json_file_sha256
 from app_dictionary.update_manifest import update_manifest
 from app_dictionary.validate_dictionary import official_diff, validate
 
@@ -223,12 +224,90 @@ class AppDictionaryTests(unittest.TestCase):
             copied = Path(temporary) / "app_dictionary"
             shutil.copytree(BASE, copied)
             source_path = copied / "sources.json"
-            source_path.write_text(
-                source_path.read_text(encoding="utf-8") + " ",
-                encoding="utf-8",
-            )
+            sources = json.loads(source_path.read_text(encoding="utf-8"))
+            sources["unexpected_tampering"] = True
+            source_path.write_text(json.dumps(sources, ensure_ascii=False), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "hash differs from manifest"):
                 AppDictionary(copied / "manifest.json")
+
+    def test_canonical_json_hash_ignores_line_endings_and_formatting(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base = Path(temporary)
+            lf = base / "lf.json"
+            crlf = base / "crlf.json"
+            compact = base / "compact.json"
+            document = '{\n  "label": "한글",\n  "items": [1, 2]\n}\n'
+            lf.write_bytes(document.encode("utf-8"))
+            crlf.write_bytes(document.replace("\n", "\r\n").encode("utf-8"))
+            compact.write_text(
+                '{"items":[1,2],"label":"한글"}',
+                encoding="utf-8",
+            )
+            self.assertEqual(json_file_sha256(lf), json_file_sha256(crlf))
+            self.assertEqual(json_file_sha256(lf), json_file_sha256(compact))
+
+    def test_manifest_regeneration_tracks_semantic_content_changes(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            copied = Path(temporary) / "app_dictionary"
+            shutil.copytree(BASE, copied)
+            before = update_manifest(copied)["sources_file"]["sha256"]
+            source_path = copied / "sources.json"
+            sources = json.loads(source_path.read_text(encoding="utf-8"))
+            sources["sources"]["test-source"] = {
+                "kind": "test",
+                "url": "https://example.invalid/test",
+            }
+            source_path.write_text(
+                json.dumps(sources, ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            after = update_manifest(copied)["sources_file"]["sha256"]
+            self.assertNotEqual(before, after)
+            self.assertEqual(after, json_file_sha256(source_path))
+            self.assertEqual(
+                AppDictionary(copied / "manifest.json").manifest["hash_algorithm"],
+                HASH_ALGORITHM,
+            )
+
+    def test_dictionary_loads_with_lf_and_crlf_resources(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            copied = Path(temporary) / "app_dictionary"
+            shutil.copytree(BASE, copied)
+            manifest = json.loads((copied / "manifest.json").read_text(encoding="utf-8"))
+            items = [
+                manifest["official_file"],
+                manifest["sources_file"],
+                *manifest["alias_files"],
+                *manifest["term_files"],
+            ]
+            for newline in (b"\n", b"\r\n"):
+                for item in items:
+                    path = copied / item["path"]
+                    normalized = path.read_bytes().replace(b"\r\n", b"\n")
+                    path.write_bytes(normalized.replace(b"\n", newline))
+                AppDictionary(copied / "manifest.json")
+
+    def test_tauri_distribution_includes_runtime_hashing_and_dictionary_files(self):
+        repo_root = Path(__file__).parent.parent
+        tauri = json.loads((repo_root / "src-tauri" / "tauri.conf.json").read_text(encoding="utf-8"))
+        resources = tauri["bundle"]["resources"]
+        self.assertIn(
+            "../analyzer/app_dictionary/hashing.py",
+            resources,
+        )
+        manifest = json.loads((BASE / "manifest.json").read_text(encoding="utf-8"))
+        managed_paths = [
+            manifest["official_file"]["path"],
+            manifest["sources_file"]["path"],
+            *(item["path"] for item in manifest["alias_files"]),
+            *(item["path"] for item in manifest["term_files"]),
+        ]
+        for relative in managed_paths:
+            with self.subTest(path=relative):
+                self.assertIn(
+                    f"../analyzer/app_dictionary/{relative}",
+                    resources,
+                )
 
     def test_duplicate_alias_ids_across_files_are_rejected(self):
         with tempfile.TemporaryDirectory() as temporary:
