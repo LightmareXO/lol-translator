@@ -27,12 +27,15 @@ function App() {
     setSelecting(true);
     setSelectionError(null);
     try {
-      const path = await open({
-        title: "動画ファイルを選択",
-        multiple: false,
-        directory: false,
-        filters: [{ name: "動画", extensions: videoExtensions }],
-      });
+      const path =
+        import.meta.env.MODE === "windows-e2e"
+          ? (import.meta.env.VITE_LOL_TRANSLATOR_E2E_VIDEO ?? null)
+          : await open({
+              title: "動画ファイルを選択",
+              multiple: false,
+              directory: false,
+              filters: [{ name: "動画", extensions: videoExtensions }],
+            });
       if (path === null) return;
 
       const extension = path.split(".").pop()?.toLowerCase();

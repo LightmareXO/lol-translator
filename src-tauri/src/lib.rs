@@ -2,7 +2,18 @@ mod analyzer;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-    tauri::Builder::default()
+    let builder = tauri::Builder::default();
+    #[cfg(all(windows, feature = "windows-e2e"))]
+    let builder = match std::env::var("TAURI_WEBDRIVER_PORT")
+        .ok()
+        .and_then(|port| port.parse::<u16>().ok())
+        .filter(|&port| port != 0)
+    {
+        Some(port) => builder.plugin(tauri_plugin_wdio_webdriver::init_with_port(port)),
+        None => builder,
+    };
+
+    builder
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_dialog::init())
         .manage(analyzer::AnalyzerState::default())
