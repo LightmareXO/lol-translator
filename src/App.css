@@ -112,7 +112,7 @@ button.secondary:hover {
 .video {
   display: block;
   width: 100%;
-  max-height: 65vh;
+  max-height: min(65vh, max(180px, calc(100vh - 280px)));
   background: #000;
   border-radius: 6px;
   object-fit: contain;
@@ -120,6 +120,45 @@ button.secondary:hover {
 }
 .video-stage {
   position: relative;
+}
+.playback-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 10px 0;
+}
+.playback-seek {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 0 100%;
+}
+.playback-time {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.playback-volume,
+.playback-rate {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.playback:fullscreen {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  padding: 12px 20px;
+  overflow: auto;
+  background: #090e15;
+  color: #e5edf9;
+}
+.playback:fullscreen .video {
+  height: 100%;
+  max-height: none;
+}
+.subtitle-replay {
+  margin-top: 8px;
 }
 .playback-subtitles {
   min-height: 178px;
@@ -613,4 +652,16 @@ textarea:read-only {
   .subtitle-list {
     max-height: 260px;
   }
+}
+.playback-seek input {
+  flex: 1;
+  min-width: 0;
+}
+.playback-volume input {
+  width: 90px;
+}
+.playback:fullscreen .playback-subtitles {
+  min-height: 0;
+  max-height: 40vh;
+  overflow: auto;
 }

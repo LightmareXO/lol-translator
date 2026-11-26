@@ -42,7 +42,7 @@ describe("local video selection and playback", () => {
     expect(screen.getByText("動画が選択されていません")).toBeInTheDocument();
   });
 
-  it("loads the selected path with native playback controls and no autoplay", async () => {
+  it("loads the selected path with app playback controls and no autoplay", async () => {
     render(<App />);
     const video = await selectFirstVideo();
     expect(open).toHaveBeenCalledWith(
@@ -53,7 +53,8 @@ describe("local video selection and playback", () => {
     );
     expect(convertFileSrc).toHaveBeenCalledWith(firstPath);
     expect(video).toHaveAttribute("src", assetUrl);
-    expect(video.controls).toBe(true);
+    expect(video.controls).toBe(false);
+    expect(screen.getByRole("slider", { name: "再生位置" })).toBeDisabled();
     expect(video.autoplay).toBe(false);
     expect(screen.getByRole("status")).toHaveTextContent("読み込んでいます");
     fireEvent.loadedData(video);

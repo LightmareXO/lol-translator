@@ -45,6 +45,7 @@ beforeEach(() => {
     },
   );
   vi.spyOn(HTMLMediaElement.prototype, "pause").mockImplementation(() => {});
+  vi.spyOn(HTMLMediaElement.prototype, "play").mockResolvedValue(undefined);
   vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(
     function (this: HTMLElement) {
       if (this.classList.contains("region-surface")) {
@@ -212,6 +213,9 @@ describe("subtitle selection and playback integration", () => {
     const panel = screen.getByRole("region", { name: "再生位置の字幕" });
     expect(panel).toHaveTextContent("안녕");
     expect(panel).toHaveTextContent("こんにちは");
+    expect(
+      within(panel).getByRole("button", { name: "この字幕をもう一度" }),
+    ).toBeEnabled();
     expect(panel.previousElementSibling).toHaveClass("video-stage");
     expect(video.parentElement).not.toHaveTextContent("こんにちは");
     expect(screen.getByText("0:01.5")).toBeInTheDocument();
@@ -223,6 +227,9 @@ describe("subtitle selection and playback integration", () => {
     expect(screen.getByRole("slider", { name: "解析開始" })).toHaveValue("1");
     expect(screen.getByRole("slider", { name: "解析終了" })).toHaveValue("4");
     expect(panel).toHaveTextContent("この時刻に字幕はありません。");
+    expect(
+      within(panel).getByRole("button", { name: "この字幕をもう一度" }),
+    ).toBeDisabled();
     expect(within(panel).queryByText("こんにちは")).not.toBeInTheDocument();
   });
 
@@ -253,6 +260,60 @@ describe("subtitle selection and playback integration", () => {
     const panel = screen.getByRole("region", { name: "再生位置の字幕" });
     expect(within(panel).getByText("こんにちは")).toBeInTheDocument();
     expect(within(panel).getByText("下段の訳")).toBeInTheDocument();
+    fireEvent.click(
+      within(panel).getByRole("button", { name: "この字幕をもう一度" }),
+    );
+    expect(video.currentTime).toBe(1);
+    expect(video.play).toHaveBeenCalledOnce();
+  });
+
+  it("seeks without changing playback and replays from the visible subtitle start", () => {
+    render(
+      <VideoPlayer
+        path="C:/test.mp4"
+        url="asset://first"
+        initialProject={savedProject()}
+      />,
+    );
+    const video = loadVideo();
+    const slider = screen.getByRole("slider", {
+      name: "再生位置",
+    });
+    fireEvent.change(slider, { target: { value: "1.5" } });
+    expect(video.currentTime).toBe(1.5);
+    expect(video.play).not.toHaveBeenCalled();
+    expect(screen.getByText("0:01.5 / 2:00.0")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "この字幕をもう一度" }));
+    expect(video.currentTime).toBe(1);
+    expect(video.play).toHaveBeenCalledOnce();
+    fireEvent.play(video);
+    fireEvent.change(slider, { target: { value: "1.8" } });
+    expect(video.currentTime).toBe(1.8);
+    expect(video.pause).not.toHaveBeenCalled();
+    expect(screen.getByRole("button", { name: "一時停止" })).toBeEnabled();
+    expect(screen.getByRole("slider", { name: "解析開始" })).toHaveValue("1");
+    expect(screen.getByRole("slider", { name: "解析終了" })).toHaveValue("4");
+  });
+
+  it("scopes seek shortcuts to the playback button", () => {
+    render(
+      <VideoPlayer
+        path="C:/test.mp4"
+        url="asset://first"
+        initialProject={savedProject()}
+      />,
+    );
+    const video = loadVideo();
+    fireEvent.keyDown(screen.getByRole("button", { name: "再生" }), {
+      key: "ArrowRight",
+    });
+    expect(video.currentTime).toBe(5);
+    fireEvent.keyDown(screen.getByRole("slider", { name: "解析開始" }), {
+      key: "ArrowRight",
+    });
+    expect(video.currentTime).toBe(5);
+    fireEvent.keyDown(screen.getByLabelText("修正後の韓国語"), { key: " " });
+    expect(video.play).not.toHaveBeenCalled();
   });
 
   it("updates the playback panel when Korean and Japanese are edited", () => {
@@ -341,18 +402,23 @@ describe("subtitle selection and playback integration", () => {
     await waitFor(() => expect(separator).toHaveStyle({ top: "42%" }));
   });
 
-  it("waits for video dimensions and preserves playback controls outside selection mode", () => {
+  it("waits for video dimensions and disables playback during region selection", () => {
     render(<VideoPlayer path="C:/test.mp4" url="asset://first" />);
     expect(
       screen.getByRole("button", { name: "字幕範囲を指定" }),
     ).toBeDisabled();
     const video = loadVideo();
-    expect(video.controls).toBe(true);
+    const playButton = screen.getByRole("button", {
+      name: "再生",
+    });
+    expect(video.controls).toBe(false);
+    expect(playButton).toBeEnabled();
     fireEvent.click(screen.getByRole("button", { name: "字幕範囲を指定" }));
     expect(video.pause).toHaveBeenCalled();
-    expect(video.controls).toBe(false);
+    expect(playButton).toBeDisabled();
+    expect(screen.getByRole("slider", { name: "再生位置" })).toBeDisabled();
     fireEvent.click(screen.getByRole("button", { name: "範囲指定を終了" }));
-    expect(video.controls).toBe(true);
+    expect(playButton).toBeEnabled();
     expect(
       screen.queryByRole("button", { name: "字幕範囲をドラッグして指定" }),
     ).not.toBeInTheDocument();
@@ -530,7 +596,7 @@ describe("subtitle selection and playback integration", () => {
   });
 
   it("supports keyboard selection and Escape cancellation", () => {
-    const { surface, video } = setup();
+    const { surface } = setup();
     fireEvent.keyDown(surface, { key: "Enter" });
     expect(onChange).toHaveBeenLastCalledWith({
       x: 0,
@@ -549,7 +615,7 @@ describe("subtitle selection and playback integration", () => {
       { width: "100%" },
     );
     fireEvent.keyDown(surface, { key: "Escape" });
-    expect(video.controls).toBe(true);
+    expect(screen.getByRole("button", { name: "再生" })).toBeEnabled();
   });
 
   it("clears selection and exits selection mode on a media error", () => {

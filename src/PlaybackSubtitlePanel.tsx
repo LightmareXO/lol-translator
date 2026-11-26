@@ -10,6 +10,8 @@ import {
 interface PlaybackSubtitlePanelProps {
   project: AnalysisProject | null;
   currentTime: number;
+  onReplay?: (seconds: number) => void;
+  replayDisabled?: boolean;
 }
 
 function JapaneseSubtitle({ subtitle }: { subtitle: SubtitleRecord }) {
@@ -82,8 +84,11 @@ function SubtitleItem({ subtitle }: { subtitle: SubtitleRecord }) {
 export function PlaybackSubtitlePanel({
   project,
   currentTime,
+  onReplay,
+  replayDisabled,
 }: PlaybackSubtitlePanelProps) {
   let content: ReactNode;
+  let replayStart: number | undefined;
   if (!project) {
     content = (
       <p className="playback-subtitle-empty">
@@ -107,6 +112,9 @@ export function PlaybackSubtitlePanel({
         return effectiveKorean(subtitle).trim() || displayableJapanese;
       },
     );
+    if (subtitles.length > 0) {
+      replayStart = Math.min(...subtitles.map((item) => item.start_seconds));
+    }
     content =
       subtitles.length > 0 ? (
         <div className="playback-subtitle-list">
@@ -122,6 +130,18 @@ export function PlaybackSubtitlePanel({
   return (
     <section className="playback-subtitles" aria-label="再生位置の字幕">
       {content}
+      {onReplay && (
+        <button
+          type="button"
+          className="secondary subtitle-replay"
+          disabled={replayDisabled || replayStart === undefined}
+          onClick={() => {
+            if (replayStart !== undefined) onReplay(replayStart);
+          }}
+        >
+          この字幕をもう一度
+        </button>
+      )}
     </section>
   );
 }
