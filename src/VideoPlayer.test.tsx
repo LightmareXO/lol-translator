@@ -213,9 +213,7 @@ describe("subtitle selection and playback integration", () => {
     const panel = screen.getByRole("region", { name: "再生位置の字幕" });
     expect(panel).toHaveTextContent("안녕");
     expect(panel).toHaveTextContent("こんにちは");
-    expect(
-      within(panel).getByRole("button", { name: "この字幕をもう一度" }),
-    ).toBeEnabled();
+    expect(within(panel).queryByRole("button")).not.toBeInTheDocument();
     expect(panel.previousElementSibling).toHaveClass("video-stage");
     expect(video.parentElement).not.toHaveTextContent("こんにちは");
     expect(screen.getByText("0:01.5")).toBeInTheDocument();
@@ -227,9 +225,6 @@ describe("subtitle selection and playback integration", () => {
     expect(screen.getByRole("slider", { name: "解析開始" })).toHaveValue("1");
     expect(screen.getByRole("slider", { name: "解析終了" })).toHaveValue("4");
     expect(panel).toHaveTextContent("この時刻に字幕はありません。");
-    expect(
-      within(panel).getByRole("button", { name: "この字幕をもう一度" }),
-    ).toBeDisabled();
     expect(within(panel).queryByText("こんにちは")).not.toBeInTheDocument();
   });
 
@@ -260,14 +255,9 @@ describe("subtitle selection and playback integration", () => {
     const panel = screen.getByRole("region", { name: "再生位置の字幕" });
     expect(within(panel).getByText("こんにちは")).toBeInTheDocument();
     expect(within(panel).getByText("下段の訳")).toBeInTheDocument();
-    fireEvent.click(
-      within(panel).getByRole("button", { name: "この字幕をもう一度" }),
-    );
-    expect(video.currentTime).toBe(1);
-    expect(video.play).toHaveBeenCalledOnce();
   });
 
-  it("seeks without changing playback and replays from the visible subtitle start", () => {
+  it("seeks with the playback slider and ten-second buttons without changing playback state", () => {
     render(
       <VideoPlayer
         path="C:/test.mp4"
@@ -283,12 +273,20 @@ describe("subtitle selection and playback integration", () => {
     expect(video.currentTime).toBe(1.5);
     expect(video.play).not.toHaveBeenCalled();
     expect(screen.getByText("0:01.5 / 2:00.0")).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: "この字幕をもう一度" }));
-    expect(video.currentTime).toBe(1);
-    expect(video.play).toHaveBeenCalledOnce();
+    const rewind = screen.getByRole("button", { name: "10秒戻る" });
+    const forward = screen.getByRole("button", { name: "10秒進む" });
+    fireEvent.click(forward);
+    expect(video.currentTime).toBe(11.5);
+    fireEvent.click(rewind);
+    expect(video.currentTime).toBe(1.5);
+    fireEvent.click(rewind);
+    expect(video.currentTime).toBe(0);
+    expect(video.play).not.toHaveBeenCalled();
     fireEvent.play(video);
-    fireEvent.change(slider, { target: { value: "1.8" } });
-    expect(video.currentTime).toBe(1.8);
+    fireEvent.change(slider, { target: { value: "115" } });
+    fireEvent.click(forward);
+    expect(video.currentTime).toBe(120);
+    expect(video.play).not.toHaveBeenCalled();
     expect(video.pause).not.toHaveBeenCalled();
     expect(screen.getByRole("button", { name: "一時停止" })).toBeEnabled();
     expect(screen.getByRole("slider", { name: "解析開始" })).toHaveValue("1");

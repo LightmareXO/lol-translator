@@ -157,9 +157,6 @@ button.secondary:hover {
   height: 100%;
   max-height: none;
 }
-.subtitle-replay {
-  margin-top: 8px;
-}
 .playback-subtitles {
   min-height: 178px;
   margin-top: 10px;

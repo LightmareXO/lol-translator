@@ -158,11 +158,9 @@ export function VideoPlayer({
     else video.pause();
   }
 
-  function replaySubtitle(seconds: number) {
+  function seekBy(seconds: number) {
     const video = videoRef.current;
-    if (!video || playbackDisabled) return;
-    seek(seconds);
-    play(video);
+    if (video) seek(video.currentTime + seconds);
   }
 
   async function toggleFullscreen() {
@@ -184,9 +182,7 @@ export function VideoPlayer({
   }
 
   function handlePlaybackKey(event: KeyboardEvent<HTMLButtonElement>) {
-    const video = videoRef.current;
     if (
-      !video ||
       playbackDisabled ||
       event.defaultPrevented ||
       event.nativeEvent.isComposing ||
@@ -198,7 +194,7 @@ export function VideoPlayer({
       return;
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
       event.preventDefault();
-      seek(video.currentTime + (event.key === "ArrowLeft" ? -5 : 5));
+      seekBy(event.key === "ArrowLeft" ? -5 : 5);
     }
   }
 
@@ -298,12 +294,7 @@ export function VideoPlayer({
             />
           )}
         </div>
-        <PlaybackSubtitlePanel
-          project={project}
-          currentTime={currentTime}
-          onReplay={replaySubtitle}
-          replayDisabled={playbackDisabled}
-        />
+        <PlaybackSubtitlePanel project={project} currentTime={currentTime} />
         <div className="playback-controls">
           <div className="playback-seek">
             <input
@@ -323,6 +314,15 @@ export function VideoPlayer({
           </div>
           <button
             type="button"
+            className="secondary"
+            aria-label="10秒戻る"
+            disabled={playbackDisabled || duration === 0}
+            onClick={() => seekBy(-10)}
+          >
+            −10秒
+          </button>
+          <button
+            type="button"
             disabled={playbackDisabled}
             onClick={togglePlayback}
             onKeyDown={handlePlaybackKey}
@@ -330,6 +330,15 @@ export function VideoPlayer({
             title="Spaceで再生・一時停止、左右の矢印キーで5秒移動"
           >
             {paused ? "再生" : "一時停止"}
+          </button>
+          <button
+            type="button"
+            className="secondary"
+            aria-label="10秒進む"
+            disabled={playbackDisabled || duration === 0}
+            onClick={() => seekBy(10)}
+          >
+            ＋10秒
           </button>
           <button
             className="secondary"
