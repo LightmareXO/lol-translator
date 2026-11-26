@@ -62,6 +62,41 @@ cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings
 VitestとReact Testing Libraryは解析リクエスト、時刻判定、字幕の消失、韓国語と日本語の修正、保存コマンド、再読込を検証します。
 Pythonテストは区間統合、空白正規化、数字と文字差の保持、UTF-8 JSON、修正と再翻訳の状態遷移を検証します。
 
+## WindowsのE2Eテスト
+
+### 初回セットアップ
+
+WindowsのTauriビルド環境とWebView2に加え、Bun、Node.js、`libx264` が使えるFFmpegを用意します。
+Node.jsはWebdriverIOの対応バージョンを使います。動作確認にはNode.js v26.12.1を使いました。
+FFmpegをPATHに追加するか、`LOL_TRANSLATOR_FFMPEG` に実行ファイルの絶対パスを設定します。
+
+```powershell
+bun install --frozen-lockfile
+bun run test:e2e:windows
+```
+
+FFmpegで短い合成MP4を生成し、WebdriverIOと `@wdio/tauri-service` でWindows用のTauri実行ファイルを起動します。
+テストが終わるとサービスがアプリを終了します。Python、OCRモデル、Ollama、手持ちの動画は不要です。
+E2Eビルドの出力先を共有するため、このコマンドは一度に1つだけ実行します。
+
+### 動画の読み込みと専用ビルド
+
+テストが「動画を選択」ボタンを押すと、E2Eビルドではダイアログの選択結果に当たる合成動画のパスが返ります。
+以降は通常どおり動画を読み込み、WebView2内の `video.currentTime` が進むことをテストで確認します。
+
+テスト用の動画パス、ファイルへのアクセス許可、組み込みWebDriverは専用ビルドで有効になります。
+通常の `bun run tauri build --no-bundle` で作ったアプリではファイル選択ダイアログが開きます。
+E2E用の実行ファイルは `.windows-e2e/target/` に出力します。
+
+### ログとテストの追加
+
+各回の合成動画、WebView2プロファイル、ログは `.windows-e2e/runs/run-*/` に保存します。
+ビルドの出力は `build.log`、テスト結果は `runner.log` に記録します。WebDriverの通信とアプリの出力も別のログに残ります。
+テストが失敗した場合のエラー詳細は `failure-*.txt`、取得できたスクリーンショットは `failure-*.png` で確認できます。
+
+テストを増やすには `e2e/windows/` に `*.e2e.mjs` を追加します。
+動画を使うテストでは `video.e2e.mjs` を参考に「動画を選択」ボタンで同じ合成動画を開けます。
+
 ## 解析の動作
 
 解析時間は1本の「解析区間」バーにある開始・終了のつまみで指定し、秒数欄で微調整できます。

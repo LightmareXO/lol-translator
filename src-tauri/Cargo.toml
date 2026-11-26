@@ -17,6 +17,9 @@ crate-type = ["staticlib", "cdylib", "rlib"]
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
 
+[features]
+windows-e2e = ["dep:tauri-plugin-wdio-webdriver"]
+
 [dependencies]
 tauri = { version = "2", features = ["protocol-asset"] }
 tauri-plugin-dialog = "2"
@@ -25,4 +28,5 @@ serde = { version = "1", features = ["derive"] }
 serde_json = { version = "1", features = ["float_roundtrip"] }
 
 [target.'cfg(windows)'.dependencies]
+tauri-plugin-wdio-webdriver = { version = "=1.5.1", optional = true }
 windows-sys = { version = "0.61", features = ["Win32_Storage_FileSystem"] }

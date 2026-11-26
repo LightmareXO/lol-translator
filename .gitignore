@@ -27,6 +27,7 @@ analyzer/translation_evaluation/.venv*/
 # Local runtime jobs and saved projects
 .lol-translator/
 analyzer/runtime-work/
+.windows-e2e/
 
 # Editor directories and files
 .vscode/*
